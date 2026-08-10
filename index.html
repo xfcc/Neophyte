@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <title>Neophyte · 每日投资观察</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">跳到主要内容</a>
+    <main class="shell" id="main-content">
+      <header class="topbar">
+        <a class="brand" href="#daily" aria-label="Neophyte 每日更新">Neophyte</a>
+        <nav class="view-tabs" aria-label="内容视图">
+          <a class="view-tab" href="#daily" data-view-target="daily" aria-current="page">每日更新</a>
+          <a class="view-tab" href="#five-day" data-view-target="five-day">近 5 日更新</a>
+          <a class="view-tab" href="#global" data-view-target="global">全局概览</a>
+        </nav>
+      </header>
+
+      <section class="view-panel" id="view-daily" data-view-panel="daily">
+        <header class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">DAILY UPDATE</p>
+            <h1 id="page-title">发生了什么</h1>
+            <p>先看偏离，再看细节。只描述数据，不解释投资意义。</p>
+          </div>
+          <div class="update-state" id="update-state" role="status">
+            <span class="status-dot"></span>
+            <span id="update-label">正在读取本地数据</span>
+          </div>
+        </header>
+
+        <section class="panel overview-panel" aria-labelledby="overview-title">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">OVERVIEW</p>
+              <h2 id="overview-title">今日概览</h2>
+            </div>
+          </div>
+          <ul class="overview-list" id="overview-list" aria-live="polite">
+            <li class="skeleton-line">正在整理今日描述</li>
+          </ul>
+        </section>
+
+        <section class="section-block" aria-labelledby="advisory-daily-title">
+          <div class="section-heading section-heading-outside">
+            <div>
+              <p class="section-kicker">MANAGED ACCOUNT</p>
+              <h2 id="advisory-daily-title">长钱账户</h2>
+            </div>
+            <span class="section-note">一级账户展示比例与变化，内部基金不重复计入全局配置</span>
+          </div>
+          <div id="advisory-daily"></div>
+        </section>
+
+        <section class="section-block" aria-labelledby="daily-title">
+          <div class="section-heading section-heading-outside">
+            <div>
+              <p class="section-kicker">LATEST MOVEMENT</p>
+              <h2 id="daily-title">最近交易日变化</h2>
+            </div>
+            <span class="section-note" id="baseline-note">产品自身历史分位 · 正在读取基准</span>
+          </div>
+          <div class="group-stack" id="daily-groups"></div>
+        </section>
+      </section>
+
+      <section class="view-panel" id="view-five-day" data-view-panel="five-day" hidden>
+        <header class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">FIVE-DAY UPDATE</p>
+            <h1>近 5 个交易日发生了什么</h1>
+            <p id="history-range">最近五个已确认交易日</p>
+          </div>
+        </header>
+
+        <section class="section-block" aria-labelledby="advisory-history-title">
+          <div class="section-heading section-heading-outside">
+            <div>
+              <p class="section-kicker">MANAGED ACCOUNT</p>
+              <h2 id="advisory-history-title">长钱账户近 5 日</h2>
+            </div>
+            <span class="section-note">历史不足 5 个有效日期时不计算完整累计变化</span>
+          </div>
+          <div id="advisory-history"></div>
+        </section>
+
+        <section class="section-block" aria-labelledby="history-title">
+          <div class="section-heading section-heading-outside">
+            <div>
+              <p class="section-kicker">FIVE-DAY MOVEMENT</p>
+              <h2 id="history-title">近 5 日累计与路径</h2>
+            </div>
+            <span class="section-note">累计涨跌幅按 5 个交易日复合计算，市场基准按同一结束日期比较</span>
+          </div>
+          <div class="group-stack" id="history-groups"></div>
+        </section>
+      </section>
+
+      <section class="view-panel" id="view-global" data-view-panel="global" hidden>
+        <header class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">GLOBAL OVERVIEW</p>
+            <h1 id="global-title">持仓全貌</h1>
+            <p id="global-summary">按实际比例查看四个一级区域，以及各区域的持仓收益</p>
+          </div>
+          <ul class="portfolio-meta" id="portfolio-meta" aria-label="组合快照口径"></ul>
+        </header>
+
+        <section class="panel portfolio-map-panel" aria-labelledby="portfolio-map-title">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">ACTUAL ALLOCATION</p>
+              <h2 id="portfolio-map-title">实际持仓分布</h2>
+            </div>
+            <span class="section-note">面积代表实际占比，红色为持仓盈利，绿色为持仓亏损</span>
+          </div>
+          <div class="portfolio-map" id="portfolio-map"></div>
+        </section>
+
+        <div class="global-analysis-grid">
+          <section class="panel allocation-comparison-panel" aria-labelledby="allocation-comparison-title">
+            <div class="section-heading">
+              <div>
+                <p class="section-kicker">ACTUAL & TARGET</p>
+                <h2 id="allocation-comparison-title">实际比例与目标比例</h2>
+              </div>
+            </div>
+            <div id="allocation-comparison"></div>
+          </section>
+
+          <section class="panel region-return-panel" aria-labelledby="region-return-title">
+            <div class="section-heading">
+              <div>
+                <p class="section-kicker">HOLDING RETURN</p>
+                <h2 id="region-return-title">各区域持仓收益</h2>
+              </div>
+              <span class="section-note">不含历史汇率损益</span>
+            </div>
+            <div id="region-return-chart"></div>
+          </section>
+        </div>
+
+        <section class="panel portfolio-detail-panel" aria-labelledby="portfolio-detail-title">
+          <div class="section-heading portfolio-detail-heading">
+            <div>
+              <p class="section-kicker">LOOK THROUGH</p>
+              <h2 id="portfolio-detail-title">区域明细</h2>
+            </div>
+            <span class="section-note" id="portfolio-detail-note">选择上方区域查看内部持仓</span>
+          </div>
+          <div id="portfolio-detail"></div>
+        </section>
+      </section>
+
+      <footer>
+        <span>Neophyte · 投资观察</span>
+        <span>历史分位与市场共振 ≠ 投资结论</span>
+      </footer>
+    </main>
+    <script src="./assets/app.js"></script>
+  </body>
+</html>

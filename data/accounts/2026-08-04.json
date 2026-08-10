@@ -1,0 +1,193 @@
+{
+  "schema_version": 1,
+  "reference_date": "2026-08-04",
+  "accounts": [
+    {
+      "account_id": "advisory-tiaa001001",
+      "strategy_code": "TIAA001001",
+      "name": "有知有行长钱账户",
+      "status": "confirmed",
+      "holding_return": -0.01114746,
+      "daily_return": 0.0011907340346911975,
+      "allocations": [
+        {
+          "bucket": "equity",
+          "name": "股票基金",
+          "weight": 0.5534264390927287
+        },
+        {
+          "bucket": "bond",
+          "name": "债券基金",
+          "weight": 0.25038608891068836
+        },
+        {
+          "bucket": "cash",
+          "name": "现金及货币基金",
+          "weight": 0.19618747199658304
+        }
+      ],
+      "components": [
+        {
+          "asset_id": "tiaa001001-fund-000905",
+          "symbol": "000905",
+          "name": "鹏华安盈宝货币A",
+          "asset_bucket": "cash",
+          "status": "confirmed",
+          "market_date": "2026-08-04",
+          "value_type": "money_fund_income",
+          "account_weight": 0.1766881440179139,
+          "holding_return": 0.003553364057623717,
+          "daily_return": 3.136587859999753e-05
+        },
+        {
+          "asset_id": "tiaa001001-fund-110020",
+          "symbol": "110020",
+          "name": "易方达沪深300ETF联接A",
+          "asset_bucket": "equity",
+          "status": "confirmed",
+          "market_date": "2026-08-04",
+          "value_type": "nav",
+          "account_weight": 0.16941334852616144,
+          "holding_return": -0.0146,
+          "daily_return": 0.012
+        },
+        {
+          "asset_id": "tiaa001001-fund-000191",
+          "symbol": "000191",
+          "name": "富国信用债债券A",
+          "asset_bucket": "bond",
+          "status": "confirmed",
+          "market_date": "2026-08-04",
+          "value_type": "nav",
+          "account_weight": 0.15278512608158945,
+          "holding_return": 0.0072,
+          "daily_return": 0.0001
+        },
+        {
+          "asset_id": "tiaa001001-fund-007169",
+          "symbol": "007169",
+          "name": "易方达中债1—3年国开行债券指数A",
+          "asset_bucket": "bond",
+          "status": "confirmed",
+          "market_date": "2026-08-04",
+          "value_type": "nav",
+          "account_weight": 0.09760096282909887,
+          "holding_return": 0.0053,
+          "daily_return": 0.0001
+        },
+        {
+          "asset_id": "tiaa001001-fund-009051",
+          "symbol": "009051",
+          "name": "易方达中证红利ETF联接A",
+          "asset_bucket": "equity",
+          "status": "confirmed",
+          "market_date": "2026-08-04",
+          "value_type": "nav",
+          "account_weight": 0.09034360168605118,
+          "holding_return": -0.0074,
+          "daily_return": -0.0153
+        },
+        {
+          "asset_id": "tiaa001001-fund-000248",
+          "symbol": "000248",
+          "name": "汇添富中证主要消费ETF联接A",
+          "asset_bucket": "equity",
+          "status": "confirmed",
+          "market_date": "2026-08-04",
+          "value_type": "nav",
+          "account_weight": 0.07640860183258466,
+          "holding_return": -0.0555,
+          "daily_return": -0.0172
+        },
+        {
+          "asset_id": "tiaa001001-fund-164906",
+          "symbol": "164906",
+          "name": "交银中证海外中国互联网指数（LOF）A",
+          "asset_bucket": "equity",
+          "status": "confirmed",
+          "market_date": "2026-08-03",
+          "value_type": "nav",
+          "account_weight": 0.065076720134632,
+          "holding_return": 0.0055,
+          "daily_return": 0.0172
+        },
+        {
+          "asset_id": "tiaa001001-fund-090010",
+          "symbol": "090010",
+          "name": "大成中证红利指数A",
+          "asset_bucket": "equity",
+          "status": "confirmed",
+          "market_date": "2026-08-04",
+          "value_type": "nav",
+          "account_weight": 0.05010708674520874,
+          "holding_return": -0.009,
+          "daily_return": -0.0152
+        },
+        {
+          "asset_id": "tiaa001001-fund-001717",
+          "symbol": "001717",
+          "name": "工银前沿医疗股票A",
+          "asset_bucket": "equity",
+          "status": "confirmed",
+          "market_date": "2026-08-04",
+          "value_type": "nav",
+          "account_weight": 0.04072692173091854,
+          "holding_return": 0.0068,
+          "daily_return": 0.0316
+        },
+        {
+          "asset_id": "tiaa001001-fund-012348",
+          "symbol": "012348",
+          "name": "天弘恒生科技ETF联接A",
+          "asset_bucket": "equity",
+          "status": "confirmed",
+          "market_date": "2026-08-04",
+          "value_type": "nav",
+          "account_weight": 0.03222872846137403,
+          "holding_return": -0.1147,
+          "daily_return": 0.0023
+        },
+        {
+          "asset_id": "tiaa001001-fund-000638",
+          "symbol": "000638",
+          "name": "富国富钱包货币A",
+          "asset_bucket": "cash",
+          "status": "confirmed",
+          "market_date": "2026-08-04",
+          "value_type": "money_fund_income",
+          "account_weight": 0.019499327978669094,
+          "holding_return": 0.0027124567035723707,
+          "daily_return": 2.5930590077870966e-05
+        },
+        {
+          "asset_id": "tiaa001001-fund-000968",
+          "symbol": "000968",
+          "name": "广发中证养老产业指数A",
+          "asset_bucket": "equity",
+          "status": "confirmed",
+          "market_date": "2026-08-04",
+          "value_type": "nav",
+          "account_weight": 0.01908140924631695,
+          "holding_return": -0.0566,
+          "daily_return": -0.0033
+        },
+        {
+          "asset_id": "tiaa001001-fund-005313",
+          "symbol": "005313",
+          "name": "万家中证1000指数增强A",
+          "asset_bucket": "equity",
+          "status": "confirmed",
+          "market_date": "2026-08-04",
+          "value_type": "nav",
+          "account_weight": 0.01004002072948106,
+          "holding_return": 0.0028,
+          "daily_return": 0.0306
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "components_confirmed": 13,
+    "components_total": 13
+  }
+}

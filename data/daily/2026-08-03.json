@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "reference_date": "2026-08-03",
+  "observations": [
+    {
+      "asset_id": "fund-cn-022444",
+      "symbol": "022444",
+      "status": "confirmed",
+      "market_date": "2026-08-03",
+      "daily_return": -0.009669553518876661,
+      "holding": {
+        "return": -0.023625963690624197,
+        "group_weight": 0.5870503290840738
+      }
+    },
+    {
+      "asset_id": "fund-cn-007466",
+      "symbol": "007466",
+      "status": "confirmed",
+      "market_date": "2026-08-03",
+      "daily_return": 0.001146373838542214,
+      "holding": {
+        "return": 0.026603972034894507,
+        "group_weight": 0.24688566483514124
+      }
+    },
+    {
+      "asset_id": "fund-cn-019923",
+      "symbol": "019923",
+      "status": "confirmed",
+      "market_date": "2026-08-03",
+      "daily_return": 0.0072916059032841485,
+      "holding": {
+        "return": -0.013538988860325674,
+        "group_weight": 0.166064006080785
+      }
+    },
+    {
+      "asset_id": "fund-cn-007169",
+      "symbol": "007169",
+      "status": "confirmed",
+      "market_date": "2026-08-03",
+      "daily_return": 9.909820632247879e-05,
+      "holding": {
+        "return": 0.0,
+        "group_weight": 0.45247286312670376
+      }
+    },
+    {
+      "asset_id": "fund-cn-000191",
+      "symbol": "000191",
+      "status": "confirmed",
+      "market_date": "2026-08-03",
+      "daily_return": 0.00014738393515112413,
+      "holding": {
+        "return": -0.0005155018778998377,
+        "group_weight": 0.40464113887076975
+      }
+    },
+    {
+      "asset_id": "fund-cn-006662",
+      "symbol": "006662",
+      "status": "confirmed",
+      "market_date": "2026-08-03",
+      "daily_return": 0.00019685039370087587,
+      "holding": {
+        "return": 0.0,
+        "group_weight": 0.14288599800252652
+      }
+    },
+    {
+      "asset_id": "stock-us-lkncy",
+      "symbol": "LKNCY",
+      "status": "confirmed",
+      "market_date": "2026-08-03",
+      "daily_return": 0.05971428571428583,
+      "holding": {
+        "return": 0.10716417910447773,
+        "group_weight": 0.3385050652550881
+      }
+    },
+    {
+      "asset_id": "stock-us-tal",
+      "symbol": "TAL",
+      "status": "confirmed",
+      "market_date": "2026-08-03",
+      "daily_return": -0.03359999999999996,
+      "holding": {
+        "return": null,
+        "group_weight": 0.6614949347449119,
+        "description": "暂无法计算"
+      }
+    },
+    {
+      "asset_id": "stock-hk-01810",
+      "symbol": "01810",
+      "status": "confirmed",
+      "market_date": "2026-08-03",
+      "daily_return": -0.028492008339124353,
+      "holding": {
+        "return": 0.19487179487179507,
+        "group_weight": 0.04162200785994998
+      }
+    },
+    {
+      "asset_id": "stock-hk-02097",
+      "symbol": "02097",
+      "status": "confirmed",
+      "market_date": "2026-08-03",
+      "daily_return": -0.012356575463371544,
+      "holding": {
+        "return": 0.05566037735849072,
+        "group_weight": 0.1665773490532333
+      }
+    },
+    {
+      "asset_id": "stock-hk-02150",
+      "symbol": "02150",
+      "status": "confirmed",
+      "market_date": "2026-08-03",
+      "daily_return": -0.013698630136986356,
+      "holding": {
+        "return": -0.3207547169811321,
+        "group_weight": 0.04019292604501608
+      }
+    },
+    {
+      "asset_id": "stock-hk-09618",
+      "symbol": "09618",
+      "status": "confirmed",
+      "market_date": "2026-08-03",
+      "daily_return": 0.017309205350118262,
+      "holding": {
+        "return": 0.2553885587789819,
+        "group_weight": 0.19247945694891036
+      }
+    },
+    {
+      "asset_id": "stock-hk-09988",
+      "symbol": "09988",
+      "status": "confirmed",
+      "market_date": "2026-08-03",
+      "daily_return": 0.07008547008547006,
+      "holding": {
+        "return": -0.15639676304317063,
+        "group_weight": 0.5591282600928903
+      }
+    }
+  ],
+  "overview": {
+    "items": []
+  }
+}

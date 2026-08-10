@@ -1,0 +1,123 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-08-05",
+  "assets": [
+    {
+      "id": "fund-cn-022444",
+      "name": "景顺长城中证A500ETF联接A",
+      "symbol": "022444",
+      "asset_type": "mutual_fund",
+      "market": "CN_FUND",
+      "allocation_category": "independent_equity_funds",
+      "monitoring_enabled": true
+    },
+    {
+      "id": "fund-cn-007466",
+      "name": "华泰柏瑞中证红利低波ETF联接A",
+      "symbol": "007466",
+      "asset_type": "mutual_fund",
+      "market": "CN_FUND",
+      "allocation_category": "independent_equity_funds",
+      "monitoring_enabled": true
+    },
+    {
+      "id": "fund-cn-019923",
+      "name": "华泰柏瑞中证2000指数增强A",
+      "symbol": "019923",
+      "asset_type": "mutual_fund",
+      "market": "CN_FUND",
+      "allocation_category": "independent_equity_funds",
+      "monitoring_enabled": true
+    },
+    {
+      "id": "fund-cn-007169",
+      "name": "易方达中债1—3年国开行债券指数A",
+      "symbol": "007169",
+      "asset_type": "mutual_fund",
+      "market": "CN_FUND",
+      "allocation_category": "independent_bond_funds",
+      "monitoring_enabled": true
+    },
+    {
+      "id": "fund-cn-000191",
+      "name": "富国信用债A",
+      "symbol": "000191",
+      "asset_type": "mutual_fund",
+      "market": "CN_FUND",
+      "allocation_category": "independent_bond_funds",
+      "monitoring_enabled": true
+    },
+    {
+      "id": "fund-cn-006662",
+      "name": "易方达安悦超短债A",
+      "symbol": "006662",
+      "asset_type": "mutual_fund",
+      "market": "CN_FUND",
+      "allocation_category": "independent_bond_funds",
+      "monitoring_enabled": true
+    },
+    {
+      "id": "stock-us-lkncy",
+      "name": "瑞幸咖啡",
+      "symbol": "LKNCY",
+      "asset_type": "stock",
+      "market": "US_OTC",
+      "allocation_category": "active_equity",
+      "monitoring_enabled": true
+    },
+    {
+      "id": "stock-us-tal",
+      "name": "好未来",
+      "symbol": "TAL",
+      "asset_type": "stock",
+      "market": "US_NYSE",
+      "allocation_category": "active_equity",
+      "monitoring_enabled": true
+    },
+    {
+      "id": "stock-hk-01810",
+      "name": "小米集团-W",
+      "symbol": "01810",
+      "asset_type": "stock",
+      "market": "HKEX",
+      "allocation_category": "active_equity",
+      "monitoring_enabled": true
+    },
+    {
+      "id": "stock-hk-02097",
+      "name": "蜜雪集团",
+      "symbol": "02097",
+      "asset_type": "stock",
+      "market": "HKEX",
+      "allocation_category": "active_equity",
+      "monitoring_enabled": true
+    },
+    {
+      "id": "stock-hk-02150",
+      "name": "奈雪的茶",
+      "symbol": "02150",
+      "asset_type": "stock",
+      "market": "HKEX",
+      "allocation_category": "active_equity",
+      "monitoring_enabled": true
+    },
+    {
+      "id": "stock-hk-09618",
+      "name": "京东集团-SW",
+      "symbol": "09618",
+      "asset_type": "stock",
+      "market": "HKEX",
+      "allocation_category": "active_equity",
+      "monitoring_enabled": true
+    },
+    {
+      "id": "stock-hk-09988",
+      "name": "阿里巴巴-W",
+      "symbol": "09988",
+      "asset_type": "stock",
+      "market": "HKEX",
+      "allocation_category": "active_equity",
+      "monitoring_enabled": true
+    }
+  ]
+}
