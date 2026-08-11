@@ -180,7 +180,9 @@ function closestReference(details) {
 }
 
 function marketResonance(volatilityIndex, assetId, product, date, windowName) {
-  if (!isProductAnomaly(product)) return { kind: product.level === "record_only" ? "not_applicable" : "not_triggered", details: [] };
+  if (product.level === "record_only") return { kind: "not_applicable", details: [] };
+  if (product.level === "unavailable") return { kind: "unavailable", details: [] };
+  if (!isProductAnomaly(product)) return { kind: "not_triggered", details: [] };
   const assetBaseline = volatilityIndex.assets[assetId];
   if (!assetBaseline || !date) return { kind: "unavailable", details: [] };
 
@@ -192,20 +194,22 @@ function marketResonance(volatilityIndex, assetId, product, date, windowName) {
   if (!available.length) return { kind: "unavailable", details };
 
   const abnormal = available.filter((detail) => isProductAnomaly(detail.classification));
+  const sameDirection = available.filter((detail) => detail.sameDirection);
   const selected = abnormal.length
     ? largestRelativeGap(abnormal)
-    : closestReference(available.filter((detail) => detail.sameDirection));
-  if (!selected) return { kind: "not_triggered", details: [] };
-  const kind = abnormal.length
-    ? selected.sameDirection ? "same_abnormal" : "negative_abnormal"
-    : "same_normal";
+    : sameDirection.length
+      ? closestReference(sameDirection)
+      : largestRelativeGap(available);
+  const kind = selected.sameDirection
+    ? isProductAnomaly(selected.classification) ? "same_abnormal" : "same_normal"
+    : "negative_abnormal";
   return { kind, details: selected ? [selected] : [] };
 }
 
 function renderMarketResonance(resonance) {
-  if (["not_triggered", "not_applicable", "unavailable"].includes(resonance.kind)) {
-    return '<span class="no-resonance">—</span>';
-  }
+  if (resonance.kind === "not_applicable") return '<span class="level-badge level-record-only">仅记录</span>';
+  if (resonance.kind === "not_triggered") return '<span class="level-badge level-normal">不涉及</span>';
+  if (resonance.kind === "unavailable") return '<span class="level-badge level-unavailable">无法判断</span>';
   const visual = resonance.kind === "same_abnormal" ? "attention" : resonance.kind === "negative_abnormal" ? "divergence" : "neutral";
   const available = resonance.details.filter((detail) => Number.isFinite(detail.gap));
   const detailText = !available.length
