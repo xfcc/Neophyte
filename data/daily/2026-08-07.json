@@ -76,7 +76,7 @@
       "daily_return": -0.03473019517795639,
       "holding": {
         "return": 0.00388059701492538,
-        "group_weight": 1.0
+        "group_weight": 0.31164859605226575
       }
     },
     {
@@ -87,7 +87,7 @@
       "daily_return": -0.006420545746388395,
       "holding": {
         "return": 1.250909090909091,
-        "group_weight": 1.0
+        "group_weight": 0.6883514039477342
       }
     },
     {
