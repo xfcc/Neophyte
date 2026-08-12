@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "as_of": "2026-08-05",
+  "as_of": "2026-08-12",
   "assets": [
     {
       "id": "fund-cn-022444",
@@ -78,6 +78,15 @@
       "id": "stock-hk-01810",
       "name": "小米集团-W",
       "symbol": "01810",
+      "asset_type": "stock",
+      "market": "HKEX",
+      "allocation_category": "active_equity",
+      "monitoring_enabled": true
+    },
+    {
+      "id": "stock-hk-02020",
+      "name": "安踏体育",
+      "symbol": "02020",
       "asset_type": "stock",
       "market": "HKEX",
       "allocation_category": "active_equity",
