@@ -1,29 +1,29 @@
 {
   "schema_version": 1,
-  "reference_date": "2026-08-06",
+  "reference_date": "2026-08-13",
   "accounts": [
     {
       "account_id": "advisory-tiaa001001",
       "strategy_code": "TIAA001001",
       "name": "有知有行长钱账户",
       "status": "estimated",
-      "holding_return": -0.009050788184196135,
-      "daily_return": -0.0006766892356989385,
+      "holding_return": -0.005515994679945679,
+      "daily_return": -0.0015512121608975405,
       "allocations": [
         {
           "bucket": "equity",
           "name": "股票基金",
-          "weight": 0.554291320722817
+          "weight": 0.5563085788590634
         },
         {
           "bucket": "bond",
           "name": "债券基金",
-          "weight": 0.24991457879029247
+          "weight": 0.24883611278704929
         },
         {
           "bucket": "cash",
           "name": "现金及货币基金",
-          "weight": 0.19579410048689092
+          "weight": 0.19485530835388737
         }
       ],
       "components": [
@@ -32,12 +32,12 @@
           "symbol": "000905",
           "name": "鹏华安盈宝货币A",
           "asset_bucket": "cash",
-          "status": "confirmed",
-          "market_date": "2026-08-06",
+          "status": "missing",
+          "market_date": null,
           "value_type": "money_fund_income",
-          "account_weight": 0.17633387021414,
+          "account_weight": 0.1754883858521115,
           "holding_return": 0.003616157373832918,
-          "daily_return": 3.119e-05
+          "daily_return": null
         },
         {
           "asset_id": "tiaa001001-fund-110020",
@@ -45,11 +45,11 @@
           "name": "易方达沪深300ETF联接A",
           "asset_bucket": "equity",
           "status": "confirmed",
-          "market_date": "2026-08-06",
+          "market_date": "2026-08-13",
           "value_type": "nav",
-          "account_weight": 0.17082632710154863,
-          "holding_return": -0.004348053853004297,
-          "daily_return": -0.0013136461562712753
+          "account_weight": 0.17134898906241477,
+          "holding_return": -0.0016763581120017301,
+          "daily_return": -0.005168093547713526
         },
         {
           "asset_id": "tiaa001001-fund-000191",
@@ -57,11 +57,11 @@
           "name": "富国信用债债券A",
           "asset_bucket": "bond",
           "status": "confirmed",
-          "market_date": "2026-08-06",
+          "market_date": "2026-08-13",
           "value_type": "nav",
-          "account_weight": 0.1524900120795995,
-          "holding_return": 0.0072716479928767175,
-          "daily_return": 7.367025195215149e-05
+          "account_weight": 0.1518594676805372,
+          "holding_return": 0.008236254359278883,
+          "daily_return": 0.0002944640753828054
         },
         {
           "asset_id": "tiaa001001-fund-007169",
@@ -69,11 +69,11 @@
           "name": "易方达中债1—3年国开行债券指数A",
           "asset_bucket": "bond",
           "status": "confirmed",
-          "market_date": "2026-08-06",
+          "market_date": "2026-08-13",
           "value_type": "nav",
-          "account_weight": 0.09742456671069297,
-          "holding_return": 0.005578244845104052,
-          "daily_return": 0.00019815713861093265
+          "account_weight": 0.09697664510651208,
+          "holding_return": 0.005877079390377515,
+          "daily_return": 9.903931860955062e-05
         },
         {
           "asset_id": "tiaa001001-fund-009051",
@@ -81,11 +81,11 @@
           "name": "易方达中证红利ETF联接A",
           "asset_bucket": "equity",
           "status": "confirmed",
-          "market_date": "2026-08-06",
+          "market_date": "2026-08-13",
           "value_type": "nav",
-          "account_weight": 0.09100442311269241,
-          "holding_return": 0.001885310290652198,
-          "daily_return": 0.011339306954246231
+          "account_weight": 0.09060358151816475,
+          "holding_return": -0.005891594658287369,
+          "daily_return": -0.00815110902108318
         },
         {
           "asset_id": "tiaa001001-fund-000248",
@@ -93,23 +93,23 @@
           "name": "汇添富中证主要消费ETF联接A",
           "asset_bucket": "equity",
           "status": "confirmed",
-          "market_date": "2026-08-06",
+          "market_date": "2026-08-13",
           "value_type": "nav",
-          "account_weight": 0.07535972653199162,
-          "holding_return": -0.06663288573600201,
-          "daily_return": -0.004754700669980516
+          "account_weight": 0.07630536750150883,
+          "holding_return": -0.048948568533063064,
+          "daily_return": 0.0014940504775624586
         },
         {
           "asset_id": "tiaa001001-fund-164906",
           "symbol": "164906",
           "name": "交银中证海外中国互联网指数（LOF）A",
           "asset_bucket": "equity",
-          "status": "confirmed",
-          "market_date": "2026-08-06",
+          "status": "missing",
+          "market_date": "2026-08-12",
           "value_type": "nav",
-          "account_weight": 0.06409444459484832,
-          "holding_return": -0.007676409802184869,
-          "daily_return": -0.01436950146627558
+          "account_weight": 0.062249857201712284,
+          "holding_return": -0.03159137880129914,
+          "daily_return": null
         },
         {
           "asset_id": "tiaa001001-fund-090010",
@@ -117,11 +117,11 @@
           "name": "大成中证红利指数A",
           "asset_bucket": "equity",
           "status": "confirmed",
-          "market_date": "2026-08-06",
+          "market_date": "2026-08-13",
           "value_type": "nav",
-          "account_weight": 0.05046836862562376,
-          "holding_return": 0.00011113992516587068,
-          "daily_return": 0.011237638597542787
+          "account_weight": 0.050235685818004965,
+          "holding_return": -0.007927981328492484,
+          "daily_return": -0.008221917706751514
         },
         {
           "asset_id": "tiaa001001-fund-001717",
@@ -129,11 +129,11 @@
           "name": "工银前沿医疗股票A",
           "asset_bucket": "equity",
           "status": "confirmed",
-          "market_date": "2026-08-06",
+          "market_date": "2026-08-13",
           "value_type": "nav",
-          "account_weight": 0.04147526712571723,
-          "holding_return": 0.02738232453817635,
-          "daily_return": -0.0006060606060604989
+          "account_weight": 0.04418001771056383,
+          "holding_return": 0.1089997196349024,
+          "daily_return": 0.008498583569405138
         },
         {
           "asset_id": "tiaa001001-fund-012348",
@@ -141,11 +141,11 @@
           "name": "天弘恒生科技ETF联接A",
           "asset_bucket": "equity",
           "status": "confirmed",
-          "market_date": "2026-08-06",
+          "market_date": "2026-08-13",
           "value_type": "nav",
-          "account_weight": 0.031754102857997214,
-          "holding_return": -0.1259957514604355,
-          "daily_return": -0.021697131817506432
+          "account_weight": 0.031309016560957345,
+          "holding_return": -0.1311736590546999,
+          "daily_return": 0.003373198405397071
         },
         {
           "asset_id": "tiaa001001-fund-000638",
@@ -153,11 +153,11 @@
           "name": "富国富钱包货币A",
           "asset_bucket": "cash",
           "status": "confirmed",
-          "market_date": "2026-08-06",
+          "market_date": "2026-08-13",
           "value_type": "money_fund_income",
-          "account_weight": 0.01946023027275093,
-          "holding_return": 0.0027630542122318857,
-          "daily_return": 2.48e-05
+          "account_weight": 0.019366922501775883,
+          "holding_return": 0.0028868242122318854,
+          "daily_return": 2.462e-05
         },
         {
           "asset_id": "tiaa001001-fund-000968",
@@ -165,11 +165,11 @@
           "name": "广发中证养老产业指数A",
           "asset_bucket": "equity",
           "status": "confirmed",
-          "market_date": "2026-08-06",
+          "market_date": "2026-08-13",
           "value_type": "nav",
-          "account_weight": 0.01892724733618353,
-          "holding_return": -0.06226075208286419,
-          "daily_return": -0.008570408284727993
+          "account_weight": 0.019379268409152186,
+          "holding_return": -0.03816707948660214,
+          "daily_return": -0.003034193021356102
         },
         {
           "asset_id": "tiaa001001-fund-005313",
@@ -177,17 +177,17 @@
           "name": "万家中证1000指数增强A",
           "asset_bucket": "equity",
           "status": "confirmed",
-          "market_date": "2026-08-06",
+          "market_date": "2026-08-13",
           "value_type": "nav",
-          "account_weight": 0.010381413436214097,
-          "holding_return": 0.03901354356175468,
-          "daily_return": 0.006527415143603221
+          "account_weight": 0.010696795076584359,
+          "holding_return": 0.06515733441142779,
+          "daily_return": -0.009834011901033501
         }
       ]
     }
   ],
   "summary": {
-    "components_confirmed": 13,
+    "components_confirmed": 11,
     "components_total": 13
   }
 }
