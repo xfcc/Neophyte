@@ -22,7 +22,7 @@ const groups = [
   {
     id: "active-stocks",
     label: "主动个股",
-    description: "港股与美股主动个股",
+    description: "港股与美股主动个股 · 按固定 1 USD = 7.80 HKD 合并占比",
     matches: (asset) => asset.allocation_category === "active_equity",
   },
 ];
