@@ -141,10 +141,15 @@ function renderProductVolatility(classification) {
   const directionClass = isProductAnomaly(classification)
     ? ` level-direction-${classification.direction > 0 ? "up" : "down"}`
     : "";
+  const percentileClass = classification.direction > 0
+    ? " classification-note-up"
+    : classification.direction < 0
+      ? " classification-note-down"
+      : "";
   const percentile = isProductAnomaly(classification) && Number.isFinite(classification.percentile)
-    ? `<small class="classification-note">${(classification.percentile * 100).toFixed(2)}%</small>`
+    ? `<small class="classification-note${percentileClass}">${(classification.percentile * 100).toFixed(2)}%</small>`
     : "";
-  return `<span class="level-badge level-${shown}${directionClass}">${productLevelLabels[classification.level]}</span>${percentile}`;
+  return `<span class="volatility-stack"><span class="level-badge level-${shown}${directionClass}">${productLevelLabels[classification.level]}</span>${percentile}</span>`;
 }
 
 function referenceDetail(volatilityIndex, assetBaseline, relationship, product, date, windowName) {
@@ -323,9 +328,9 @@ function renderAdvisoryDaily(accountSnapshot, volatilityIndex) {
   const rows = account.components.map((component) => {
     const classification = productClassification(volatilityIndex, component.asset_id, component.daily_return, "daily", component.market_date);
     const resonance = marketResonance(volatilityIndex, component.asset_id, classification, component.market_date, "daily");
-    return `<tr class="${rowClass(classification.level)}"><td><strong>${component.name}</strong><span class="symbol">${component.symbol} · ${accountBucketLabels[component.asset_bucket]}</span></td><td class="holding-weight">${formatPlainPercent(component.account_weight)}</td><td class="holding-return ${returnClass(component.holding_return)}">${formatPercent(component.holding_return)}</td><td class="movement-value movement-start ${returnClass(component.daily_return)}">${formatAccountDaily(component)}</td><td class="description-cell">${renderProductVolatility(classification)}</td><td class="resonance-cell">${renderMarketResonance(resonance)}</td></tr>`;
+    return `<tr class="${rowClass(classification.level)}"><td><strong>${component.name}</strong><span class="symbol">${component.symbol} · ${accountBucketLabels[component.asset_bucket]}</span></td><td class="movement-value movement-start ${returnClass(component.daily_return)}">${formatAccountDaily(component)}</td><td class="description-cell">${renderProductVolatility(classification)}</td><td class="resonance-cell">${renderMarketResonance(resonance)}</td><td class="holding-return ${returnClass(component.holding_return)}">${formatPercent(component.holding_return)}</td><td class="holding-weight">${formatPlainPercent(component.account_weight)}</td></tr>`;
   }).join("");
-  root.innerHTML = `<article class="data-group panel advisory-card"><div class="account-summary"><div class="account-title"><p>有知有行长钱账户</p><strong>TIAA001001</strong></div><div><span>持仓收益</span><strong class="${returnClass(account.holding_return)}">${formatPercent(account.holding_return)}</strong></div><div><span>当日变化</span><strong class="${returnClass(account.daily_return)}">${formatPercent(account.daily_return)}</strong></div></div>${renderAccountAllocations(account)}<div class="table-wrap"><table><thead><tr><th>内部基金</th><th>账户内占比</th><th>持仓收益</th><th class="movement-start">日涨跌幅</th><th>产品波动</th><th>市场共振</th></tr></thead><tbody>${rows}</tbody></table></div><p class="account-footnote">现金及货币基金只记录公开数据，不参与波动判断。其他产品进入异常或极端分位时，显示精确历史分位；市场共振比较产品与主要基准、宽市场的相对差值，两项同时异常时保留绝对差值较大者。缺失日期不使用临近数据替代。</p></article>`;
+  root.innerHTML = `<article class="data-group panel advisory-card"><div class="account-summary"><div class="account-title"><p>有知有行长钱账户</p><strong>TIAA001001</strong></div><div><span>持仓收益</span><strong class="${returnClass(account.holding_return)}">${formatPercent(account.holding_return)}</strong></div><div><span>当日变化</span><strong class="${returnClass(account.daily_return)}">${formatPercent(account.daily_return)}</strong></div></div>${renderAccountAllocations(account)}<div class="table-wrap"><table class="daily-table"><thead><tr><th>内部基金</th><th class="movement-start">日涨跌幅</th><th>产品波动</th><th>市场共振</th><th>持仓收益</th><th>账户内占比</th></tr></thead><tbody>${rows}</tbody></table></div><p class="account-footnote">现金及货币基金只记录公开数据，不参与波动判断。其他产品进入异常或极端分位时，显示精确历史分位；市场共振比较产品与主要基准、宽市场的相对差值，两项同时异常时保留绝对差值较大者。缺失日期不使用临近数据替代。</p></article>`;
 }
 
 function advisoryComponentEntries(accountSnapshots, assetId) {
@@ -358,8 +363,8 @@ function renderAdvisoryHistory(accountSnapshots, volatilityIndex) {
 function renderDaily(snapshot, assets, volatilityIndex) {
   const dailyGroups = buildDailyGroups(snapshot, assets, volatilityIndex);
   document.querySelector("#daily-groups").innerHTML = dailyGroups.map((group) => {
-    const rows = group.rows.map(({ asset, item, classification, resonance }) => `<tr class="${rowClass(classification.level)}"><td><strong>${asset.name}</strong><span class="symbol">${asset.symbol}</span></td><td class="holding-weight">${formatWeight(item?.holding)}</td><td class="holding-return ${returnClass(item?.holding?.return)}">${formatHolding(item?.holding)}</td><td class="movement-value movement-start ${returnClass(item?.daily_return)}">${formatPercent(item?.daily_return)}</td><td class="description-cell">${renderProductVolatility(classification)}</td><td class="resonance-cell">${renderMarketResonance(resonance)}</td></tr>`).join("");
-    return `<article class="data-group panel"><div class="group-heading"><div><h3>${group.label}</h3><p>${group.description}</p></div><span>${group.rows.length} 项</span></div><div class="table-wrap"><table><thead><tr><th>产品名称</th><th>持仓占比</th><th>持仓收益</th><th class="movement-start">日涨跌幅</th><th>产品波动</th><th>市场共振</th></tr></thead><tbody>${rows}</tbody></table></div></article>`;
+    const rows = group.rows.map(({ asset, item, classification, resonance }) => `<tr class="${rowClass(classification.level)}"><td><strong>${asset.name}</strong><span class="symbol">${asset.symbol}</span></td><td class="movement-value movement-start ${returnClass(item?.daily_return)}">${formatPercent(item?.daily_return)}</td><td class="description-cell">${renderProductVolatility(classification)}</td><td class="resonance-cell">${renderMarketResonance(resonance)}</td><td class="holding-return ${returnClass(item?.holding?.return)}">${formatHolding(item?.holding)}</td><td class="holding-weight">${formatWeight(item?.holding)}</td></tr>`).join("");
+    return `<article class="data-group panel"><div class="group-heading"><div><h3>${group.label}</h3><p>${group.description}</p></div><span>${group.rows.length} 项</span></div><div class="table-wrap"><table class="daily-table"><thead><tr><th>产品名称</th><th class="movement-start">日涨跌幅</th><th>产品波动</th><th>市场共振</th><th>持仓收益</th><th>持仓占比</th></tr></thead><tbody>${rows}</tbody></table></div></article>`;
   }).join("");
 }
 
