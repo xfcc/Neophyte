@@ -9,29 +9,37 @@ const paths = {
 const groups = [
   {
     id: "equity-funds",
-    label: "主动股票基金",
+    label: "独立股票基金",
     description: "独立配置的股票型基金",
     matches: (asset) => asset.allocation_category === "independent_equity_funds",
   },
   {
     id: "bond-funds",
-    label: "主动债券基金",
+    label: "独立债券基金",
     description: "独立配置的债券型基金",
     matches: (asset) => asset.allocation_category === "independent_bond_funds",
   },
   {
-    id: "hk-stocks",
-    label: "港股",
-    description: "港交所主动个股",
-    matches: (asset) => asset.market === "HKEX",
-  },
-  {
-    id: "us-stocks",
-    label: "美股",
-    description: "NYSE 与 OTC 主动个股",
-    matches: (asset) => asset.market.startsWith("US_"),
+    id: "active-stocks",
+    label: "主动个股",
+    description: "港股与美股主动个股",
+    matches: (asset) => asset.allocation_category === "active_equity",
   },
 ];
+
+const portfolioCategoryOrder = [
+  "independent_equity_funds",
+  "independent_bond_funds",
+  "active_equity",
+  "advisory",
+];
+
+const portfolioCategoryLabels = {
+  independent_equity_funds: "独立股票基金",
+  independent_bond_funds: "独立债券基金",
+  active_equity: "主动个股",
+  advisory: "投顾服务产品",
+};
 
 const productLevelLabels = {
   normal: "正常波动",
@@ -279,8 +287,8 @@ function renderOverview(snapshot, assets, snapshots, volatilityIndex, accountSna
   const confirmedCount = dailyRows.filter((row) => row.item?.status === "confirmed" && row.item.market_date).length;
   const accountSummary = accountSnapshot?.summary;
   const accountCoverage = accountSummary
-    ? `、${accountSummary.components_confirmed}/${accountSummary.components_total} 个长钱账户内部持仓确认数据更新`
-    : "、长钱账户内部持仓尚无快照";
+    ? `、${accountSummary.components_confirmed}/${accountSummary.components_total} 个投顾服务产品内部持仓确认数据更新`
+    : "、投顾服务产品内部持仓尚无快照";
   const collectionItems = [{
     text: `${confirmedCount}/${assets.length} 个直接持仓确认数据更新${accountCoverage}${confirmedCount === assets.length ? "。" : `，${assets.length - confirmedCount} 个直接持仓尚未确认。`}`,
   }];
@@ -314,7 +322,7 @@ function renderOverview(snapshot, assets, snapshots, volatilityIndex, accountSna
   root.innerHTML = overviewItems.join("");
 }
 
-function renderAccountAllocations(account, ariaLabel = "长钱账户内部实际比例") {
+function renderAccountAllocations(account, ariaLabel = "投顾服务产品内部实际比例") {
   return `<div class="account-allocation" aria-label="${ariaLabel}"><div class="account-allocation-bar">${account.allocations.map((item) => `<span style="width:${item.weight * 100}%;background:${accountAllocationColors[item.bucket]}"></span>`).join("")}</div><div class="account-allocation-legend">${account.allocations.map((item) => `<span><i style="background:${accountAllocationColors[item.bucket]}"></i>${item.name}<strong>${formatPlainPercent(item.weight)}</strong></span>`).join("")}</div></div>`;
 }
 
@@ -322,7 +330,7 @@ function renderAdvisoryDaily(accountSnapshot, volatilityIndex) {
   const root = document.querySelector("#advisory-daily");
   const account = accountSnapshot?.accounts?.[0];
   if (!account) {
-    root.innerHTML = '<article class="data-group panel empty-account"><p>尚无长钱账户快照。</p></article>';
+    root.innerHTML = '<article class="data-group panel empty-account"><p>尚无投顾服务产品快照。</p></article>';
     return;
   }
   const rows = account.components.map((component) => {
@@ -330,7 +338,7 @@ function renderAdvisoryDaily(accountSnapshot, volatilityIndex) {
     const resonance = marketResonance(volatilityIndex, component.asset_id, classification, component.market_date, "daily");
     return `<tr class="${rowClass(classification.level)}"><td><strong>${component.name}</strong><span class="symbol">${component.symbol} · ${accountBucketLabels[component.asset_bucket]}</span></td><td class="movement-value movement-start ${returnClass(component.daily_return)}">${formatAccountDaily(component)}</td><td class="description-cell">${renderProductVolatility(classification)}</td><td class="resonance-cell">${renderMarketResonance(resonance)}</td><td class="holding-return ${returnClass(component.holding_return)}">${formatPercent(component.holding_return)}</td><td class="holding-weight">${formatPlainPercent(component.account_weight)}</td></tr>`;
   }).join("");
-  root.innerHTML = `<article class="data-group panel advisory-card"><div class="account-summary"><div class="account-title"><p>有知有行长钱账户</p><strong>TIAA001001</strong></div><div><span>持仓收益</span><strong class="${returnClass(account.holding_return)}">${formatPercent(account.holding_return)}</strong></div><div><span>当日变化</span><strong class="${returnClass(account.daily_return)}">${formatPercent(account.daily_return)}</strong></div></div>${renderAccountAllocations(account)}<div class="table-wrap"><table class="daily-table"><thead><tr><th>内部基金</th><th class="movement-start">日涨跌幅</th><th>产品波动</th><th>市场共振</th><th>持仓收益</th><th>账户内占比</th></tr></thead><tbody>${rows}</tbody></table></div><p class="account-footnote">现金及货币基金只记录公开数据，不参与波动判断。其他产品进入异常或极端分位时，显示精确历史分位；市场共振比较产品与主要基准、宽市场的相对差值，两项同时异常时保留绝对差值较大者。缺失日期不使用临近数据替代。</p></article>`;
+  root.innerHTML = `<article class="data-group panel advisory-card"><div class="account-summary"><div class="account-title"><p>投顾服务产品</p><strong>TIAA001001</strong></div><div><span>持仓收益</span><strong class="${returnClass(account.holding_return)}">${formatPercent(account.holding_return)}</strong></div><div><span>当日变化</span><strong class="${returnClass(account.daily_return)}">${formatPercent(account.daily_return)}</strong></div></div>${renderAccountAllocations(account)}<div class="table-wrap"><table class="daily-table"><thead><tr><th>内部基金</th><th class="movement-start">日涨跌幅</th><th>产品波动</th><th>市场共振</th><th>持仓收益</th><th>账户内占比</th></tr></thead><tbody>${rows}</tbody></table></div><p class="account-footnote">现金及货币基金只记录公开数据，不参与波动判断。其他产品进入异常或极端分位时，显示精确历史分位；市场共振比较产品与主要基准、宽市场的相对差值，两项同时异常时保留绝对差值较大者。缺失日期不使用临近数据替代。</p></article>`;
 }
 
 function advisoryComponentEntries(accountSnapshots, assetId) {
@@ -341,7 +349,7 @@ function renderAdvisoryHistory(accountSnapshots, volatilityIndex) {
   const root = document.querySelector("#advisory-history");
   const latestAccount = accountSnapshots.at(-1)?.accounts?.[0];
   if (!latestAccount) {
-    root.innerHTML = '<article class="data-group panel empty-account"><p>尚无长钱账户历史快照。</p></article>';
+    root.innerHTML = '<article class="data-group panel empty-account"><p>尚无投顾服务产品历史快照。</p></article>';
     return;
   }
   const dates = accountSnapshots.map((snapshot) => snapshot.reference_date);
@@ -357,7 +365,20 @@ function renderAdvisoryHistory(accountSnapshots, volatilityIndex) {
   const accountEntries = accountSnapshots.map((snapshot) => snapshot.accounts?.[0]).filter(Boolean);
   const accountComplete = accountEntries.length === 5 && accountEntries.every((item) => Number.isFinite(item.daily_return));
   const accountCumulative = accountComplete ? accountEntries.reduce((result, item) => result * (1 + item.daily_return), 1) - 1 : null;
-  root.innerHTML = `<article class="data-group panel history-group advisory-history-card"><div class="group-heading"><div><h3>有知有行长钱账户</h3><p>${accountComplete ? `账户5日累计 ${formatPercent(accountCumulative)}` : `已积累 ${accountEntries.length}/5 个账户日期，暂不计算完整累计`}</p></div><span>${latestAccount.components.length} 项</span></div><div class="table-wrap"><table><thead><tr><th>内部基金</th>${dates.map((date, index) => `<th class="${index === 0 ? "movement-start" : ""}">${date.slice(5)}</th>`).join("")}<th>5日累计</th><th>产品波动</th><th>市场共振</th></tr></thead><tbody>${rows}</tbody></table></div></article>`;
+  root.innerHTML = `<article class="data-group panel history-group advisory-history-card"><div class="group-heading"><div><h3>投顾服务产品</h3><p>${accountComplete ? `账户5日累计 ${formatPercent(accountCumulative)}` : `已积累 ${accountEntries.length}/5 个账户日期，暂不计算完整累计`}</p></div><span>${latestAccount.components.length} 项</span></div><div class="table-wrap"><table><thead><tr><th>内部基金</th>${dates.map((date, index) => `<th class="${index === 0 ? "movement-start" : ""}">${date.slice(5)}</th>`).join("")}<th>5日累计</th><th>产品波动</th><th>市场共振</th></tr></thead><tbody>${rows}</tbody></table></div></article>`;
+}
+
+function portfolioDisplaySnapshot(portfolioSnapshot) {
+  const order = new Map(portfolioCategoryOrder.map((id, index) => [id, index]));
+  const topLevel = portfolioSnapshot.top_level
+    .map((item, sourceIndex) => ({
+      ...item,
+      name: portfolioCategoryLabels[item.id] ?? item.name,
+      sourceIndex,
+    }))
+    .sort((left, right) => (order.get(left.id) ?? 99) - (order.get(right.id) ?? 99) || left.sourceIndex - right.sourceIndex)
+    .map(({ sourceIndex, ...item }) => item);
+  return { ...portfolioSnapshot, top_level: topLevel };
 }
 
 function renderDaily(snapshot, assets, volatilityIndex) {
@@ -442,7 +463,7 @@ function renderPortfolioDetail(portfolioSnapshot, regionId) {
   const shareLabel = detail.type === "advisory_account" ? "账户内占比" : "区域内占比";
   const content = groupsToRender.map((group) => `<section class="detail-group"><header><div><strong>${group.name}</strong><span>${shareLabel} ${formatPlainPercent(group.weight)}</span></div><div><small>分组持仓收益</small><strong class="${returnClass(group.holding_return)}">${formatPercent(group.holding_return)}</strong></div></header><ul>${group.components.map((component) => renderDetailComponent(component, shareLabel)).join("")}</ul></section>`).join("");
   const note = region.id === "advisory"
-    ? "长钱账户在全局只计算一次。内部基金比例仅用于穿透查看，不与一级账户重复加总。"
+    ? "投顾服务产品在全局只计算一次。内部基金比例仅用于穿透查看，不与一级产品重复加总。"
     : region.id === "active_equity"
       ? "港股与美股先按同日汇率折算成人民币再计算比例。"
       : "区域持仓收益仅展示百分比结果。";
@@ -459,15 +480,16 @@ function renderPortfolioMeta(portfolioSnapshot) {
 }
 
 function renderGlobal(portfolioSnapshot) {
-  let activeId = portfolioSnapshot.top_level[0]?.id;
+  const displaySnapshot = portfolioDisplaySnapshot(portfolioSnapshot);
+  let activeId = displaySnapshot.top_level[0]?.id;
   const selectRegion = (regionId) => {
     activeId = regionId;
-    renderPortfolioMap(portfolioSnapshot, activeId);
-    renderPortfolioDetail(portfolioSnapshot, activeId);
+    renderPortfolioMap(displaySnapshot, activeId);
+    renderPortfolioDetail(displaySnapshot, activeId);
   };
-  renderPortfolioMeta(portfolioSnapshot);
-  renderAllocationComparison(portfolioSnapshot);
-  renderRegionReturns(portfolioSnapshot);
+  renderPortfolioMeta(displaySnapshot);
+  renderAllocationComparison(displaySnapshot);
+  renderRegionReturns(displaySnapshot);
   selectRegion(activeId);
   document.querySelector("#portfolio-map").addEventListener("click", (event) => {
     const button = event.target.closest("[data-portfolio-region]");
@@ -496,7 +518,7 @@ function setViewSummaries(snapshots, assets, accountSnapshot, volatilityIndex, p
   const latest = snapshots.at(-1)?.reference_date;
   if (first && latest) document.querySelector("#history-range").textContent = `${formatChineseDate(first)}至${formatChineseDate(latest)}`;
   document.querySelector("#global-summary").textContent = portfolioSnapshot
-    ? "按实际比例查看四个一级区域；长钱账户内部持仓只作穿透，不重复计入全局"
+    ? "按实际比例查看四个一级区域；投顾服务产品内部持仓只作穿透，不重复计入全局"
     : "组合快照尚未生成";
   document.querySelector("#baseline-note").textContent = `产品自身历史分位 · AkShare基准截至 ${volatilityIndex.baseline_as_of}`;
 }
