@@ -312,12 +312,16 @@ function renderOverviewItem(label, text, type) {
 
 function renderOverview(snapshot) {
   const root = document.querySelector("#overview-list");
-  const labels = ["数据更新：", "正向关注：", "负向关注："];
+  const labels = ["数据更新：", "向上异常：", "向下异常：", "正向关注：", "负向关注："];
   root.innerHTML = (snapshot.overview?.items ?? []).map((item) => {
     const textLabel = labels.find((candidate) => item.text.startsWith(candidate)) ?? "";
     const label = textLabel || (item.type === "coverage" ? "数据更新：" : "");
     const text = textLabel ? item.text.slice(textLabel.length) : item.text;
-    const type = label === "正向关注：" ? "positive" : label === "负向关注：" ? "negative" : item.type;
+    const type = ["向上异常：", "正向关注："].includes(label)
+      ? "positive"
+      : ["向下异常：", "负向关注："].includes(label)
+        ? "negative"
+        : item.type;
     return renderOverviewItem(label, text, type);
   }).join("");
 }
