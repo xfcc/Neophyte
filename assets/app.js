@@ -87,6 +87,19 @@ function formatPlainPercent(value) {
   return `${(value * 100).toFixed(2)}%`;
 }
 
+function sortByWeight(items, getWeight) {
+  return items
+    .map((item, sourceIndex) => ({ item, sourceIndex, weight: getWeight(item) }))
+    .sort((left, right) => {
+      const leftAvailable = Number.isFinite(left.weight);
+      const rightAvailable = Number.isFinite(right.weight);
+      if (leftAvailable !== rightAvailable) return leftAvailable ? -1 : 1;
+      if (!leftAvailable) return left.sourceIndex - right.sourceIndex;
+      return right.weight - left.weight || left.sourceIndex - right.sourceIndex;
+    })
+    .map(({ item }) => item);
+}
+
 function formatWeightDelta(actual, target) {
   if (!Number.isFinite(actual) || !Number.isFinite(target)) return "—";
   const value = (actual - target) * 100;
@@ -258,12 +271,15 @@ function buildDailyGroups(snapshot, assets, volatilityIndex) {
   const observations = new Map(snapshot.observations.map((item) => [item.asset_id, item]));
   return groups.map((group) => ({
     ...group,
-    rows: assets.filter(group.matches).map((asset) => {
-      const item = observations.get(asset.id) ?? null;
-      const classification = savedProductClassification(item, asset.id, "daily", volatilityIndex);
-      const resonance = marketResonance(volatilityIndex, asset.id, classification, item?.market_date, "daily");
-      return { asset, item, classification, resonance };
-    }),
+    rows: sortByWeight(
+      assets.filter(group.matches).map((asset) => {
+        const item = observations.get(asset.id) ?? null;
+        const classification = savedProductClassification(item, asset.id, "daily", volatilityIndex);
+        const resonance = marketResonance(volatilityIndex, asset.id, classification, item?.market_date, "daily");
+        return { asset, item, classification, resonance };
+      }),
+      (row) => row.item?.holding?.group_weight,
+    ),
   }));
 }
 
@@ -296,13 +312,17 @@ function calculateFiveDay(entries, assetId, volatilityIndex) {
 }
 
 function buildWeeklyGroups(snapshots, assets, volatilityIndex) {
+  const latestObservations = new Map((snapshots.at(-1)?.observations ?? []).map((item) => [item.asset_id, item]));
   return groups.map((group) => ({
     ...group,
-    rows: assets.filter(group.matches).map((asset) => ({
-      asset,
-      entries: observationEntries(snapshots, asset.id),
-      metrics: calculateFiveDay(observationEntries(snapshots, asset.id), asset.id, volatilityIndex),
-    })),
+    rows: sortByWeight(
+      assets.filter(group.matches).map((asset) => ({
+        asset,
+        entries: observationEntries(snapshots, asset.id),
+        metrics: calculateFiveDay(observationEntries(snapshots, asset.id), asset.id, volatilityIndex),
+      })),
+      (row) => latestObservations.get(row.asset.id)?.holding?.group_weight,
+    ),
   }));
 }
 
@@ -310,10 +330,14 @@ function renderOverviewItem(label, text, type) {
   return `<li class="overview-item overview-${type}"><span class="overview-marker" aria-hidden="true"></span><span><strong>${label}</strong>${text}</span></li>`;
 }
 
-function renderOverview(snapshot) {
-  const root = document.querySelector("#overview-list");
+function renderOverviewList(root, overview, emptyText = "") {
   const labels = ["数据更新：", "向上异常：", "向下异常：", "正向关注：", "负向关注："];
-  root.innerHTML = (snapshot.overview?.items ?? []).map((item) => {
+  const items = overview?.items ?? [];
+  if (!items.length) {
+    root.innerHTML = renderOverviewItem("", emptyText, "normal");
+    return;
+  }
+  root.innerHTML = items.map((item) => {
     const textLabel = labels.find((candidate) => item.text.startsWith(candidate)) ?? "";
     const label = textLabel || (item.type === "coverage" ? "数据更新：" : "");
     const text = textLabel ? item.text.slice(textLabel.length) : item.text;
@@ -324,6 +348,18 @@ function renderOverview(snapshot) {
         : item.type;
     return renderOverviewItem(label, text, type);
   }).join("");
+}
+
+function renderOverview(snapshot) {
+  renderOverviewList(document.querySelector("#overview-list"), snapshot.overview);
+}
+
+function renderFiveDayOverview(snapshot) {
+  renderOverviewList(
+    document.querySelector("#five-day-overview-list"),
+    snapshot.five_day_overview,
+    "当前没有需要关注的5日累计异常。",
+  );
 }
 
 function renderAccountAllocations(account, ariaLabel = "投顾服务产品内部实际比例") {
@@ -337,7 +373,7 @@ function renderAdvisoryDaily(accountSnapshot, volatilityIndex) {
     root.innerHTML = '<article class="data-group panel empty-account"><p>尚无投顾服务产品快照。</p></article>';
     return;
   }
-  const rows = account.components.map((component) => {
+  const rows = sortByWeight(account.components, (component) => component.account_weight).map((component) => {
     const classification = savedProductClassification(component, component.asset_id, "daily", volatilityIndex);
     const resonance = marketResonance(volatilityIndex, component.asset_id, classification, component.market_date, "daily");
     return `<tr class="${rowClass(classification.level)}"><td><strong>${component.name}</strong><span class="symbol">${component.symbol} · ${accountBucketLabels[component.asset_bucket]}</span></td><td class="movement-value movement-start ${returnClass(component.daily_return)}">${formatAccountDaily(component)}</td><td class="description-cell">${renderProductVolatility(classification)}</td><td class="resonance-cell">${renderMarketResonance(resonance)}</td><td class="holding-return ${returnClass(component.holding_return)}">${formatPercent(component.holding_return)}</td><td class="holding-weight">${formatPlainPercent(component.account_weight)}</td></tr>`;
@@ -357,7 +393,7 @@ function renderAdvisoryHistory(accountSnapshots, volatilityIndex) {
     return;
   }
   const dates = accountSnapshots.map((snapshot) => snapshot.reference_date);
-  const rows = latestAccount.components.map((component) => {
+  const rows = sortByWeight(latestAccount.components, (component) => component.account_weight).map((component) => {
     const entries = advisoryComponentEntries(accountSnapshots, component.asset_id);
     const metrics = calculateFiveDay(entries, component.asset_id, volatilityIndex);
     const cells = entries.map((item, index) => {
@@ -382,7 +418,15 @@ function portfolioDisplaySnapshot(portfolioSnapshot) {
     }))
     .sort((left, right) => (order.get(left.id) ?? 99) - (order.get(right.id) ?? 99) || left.sourceIndex - right.sourceIndex)
     .map(({ sourceIndex, ...item }) => item);
-  return { ...portfolioSnapshot, top_level: topLevel };
+  const lookthrough = Object.fromEntries(Object.entries(portfolioSnapshot.lookthrough ?? {}).map(([id, detail]) => {
+    const groupKey = detail.type === "advisory_account" ? "buckets" : "groups";
+    const detailGroups = sortByWeight(detail[groupKey] ?? [], (group) => group.weight).map((group) => ({
+      ...group,
+      components: sortByWeight(group.components ?? [], (component) => component.weight),
+    }));
+    return [id, { ...detail, [groupKey]: detailGroups }];
+  }));
+  return { ...portfolioSnapshot, top_level: topLevel, lookthrough };
 }
 
 function renderDaily(snapshot, assets, volatilityIndex) {
@@ -396,8 +440,12 @@ function renderDaily(snapshot, assets, volatilityIndex) {
 function renderHistory(snapshots, assets, volatilityIndex) {
   const dates = snapshots.map((snapshot) => snapshot.reference_date);
   const observationsByDate = new Map(snapshots.map((snapshot) => [snapshot.reference_date, new Map(snapshot.observations.map((item) => [item.asset_id, item]))]));
+  const latestObservations = observationsByDate.get(dates.at(-1)) ?? new Map();
   document.querySelector("#history-groups").innerHTML = groups.map((group) => {
-    const groupAssets = assets.filter(group.matches);
+    const groupAssets = sortByWeight(
+      assets.filter(group.matches),
+      (asset) => latestObservations.get(asset.id)?.holding?.group_weight,
+    );
     const rows = groupAssets.map((asset) => {
       const entries = dates.map((date) => observationsByDate.get(date)?.get(asset.id));
       const metrics = calculateFiveDay(entries, asset.id, volatilityIndex);
@@ -558,6 +606,7 @@ async function main() {
     if (!latest) throw new Error("尚无每日快照");
     setUpdateState(manifest, latest);
     renderOverview(latest);
+    renderFiveDayOverview(latest);
     renderAdvisoryDaily(latestAccountSnapshot, volatilityIndex);
     renderDaily(latest, assets, volatilityIndex);
     renderAdvisoryHistory(accountSnapshots, volatilityIndex);
@@ -569,6 +618,7 @@ async function main() {
     document.querySelector("#update-state").classList.add("is-issue");
     document.querySelector("#update-label").textContent = "本地数据读取失败";
     document.querySelector("#overview-list").innerHTML = `<li class="overview-item overview-conflict"><span class="overview-marker"></span><span>${error.message}。请从项目根目录运行 python3 serve.py。</span></li>`;
+    document.querySelector("#five-day-overview-list").innerHTML = `<li class="overview-item overview-conflict"><span class="overview-marker"></span><span>近5日概览暂不可用。</span></li>`;
     activateView("daily");
   }
 }

@@ -49,6 +49,101 @@
     }
   ],
   "lookthrough": {
+    "active_equity": {
+      "type": "direct_holdings",
+      "groups": [
+        {
+          "id": "hk",
+          "name": "港股",
+          "weight": 0.739370999498196,
+          "holding_return": -0.07111392220065169,
+          "holding_return_coverage": 1.0,
+          "components": [
+            {
+              "id": "stock-hk-01810",
+              "name": "小米集团-W",
+              "symbol": "01810",
+              "weight": 0.09592246059232376,
+              "holding_return": 0.024657534246575352,
+              "holding_return_status": "calculated",
+              "status": "confirmed"
+            },
+            {
+              "id": "stock-hk-02020",
+              "name": "安踏体育",
+              "symbol": "02020",
+              "weight": 0.06604287059498226,
+              "holding_return": -0.009615384615384692,
+              "holding_return_status": "calculated",
+              "status": "confirmed"
+            },
+            {
+              "id": "stock-hk-02097",
+              "name": "蜜雪集团",
+              "symbol": "02097",
+              "weight": 0.10231606539868471,
+              "holding_return": 0.05377353773584903,
+              "holding_return_status": "calculated",
+              "status": "confirmed"
+            },
+            {
+              "id": "stock-hk-02150",
+              "name": "奈雪的茶",
+              "symbol": "02150",
+              "weight": 0.025246971161916765,
+              "holding_return": -0.30660377358490576,
+              "holding_return_status": "calculated",
+              "status": "confirmed"
+            },
+            {
+              "id": "stock-hk-09618",
+              "name": "京东集团-SW",
+              "symbol": "09618",
+              "weight": 0.10167487706023623,
+              "holding_return": 0.07771175579634138,
+              "holding_return_status": "calculated",
+              "status": "confirmed"
+            },
+            {
+              "id": "stock-hk-09988",
+              "name": "阿里巴巴-W",
+              "symbol": "09988",
+              "weight": 0.3481677546900521,
+              "holding_return": -0.1462896955077455,
+              "holding_return_status": "calculated",
+              "status": "confirmed"
+            }
+          ]
+        },
+        {
+          "id": "us",
+          "name": "美股",
+          "weight": 0.2606290005018043,
+          "holding_return": 0.45080000000000003,
+          "holding_return_coverage": 1.0,
+          "components": [
+            {
+              "id": "stock-us-lkncy",
+              "name": "瑞幸咖啡",
+              "symbol": "LKNCY",
+              "weight": 0.13096122233651458,
+              "holding_return": 0.0880597014925375,
+              "holding_return_status": "calculated",
+              "status": "confirmed"
+            },
+            {
+              "id": "stock-us-tal",
+              "name": "好未来",
+              "symbol": "TAL",
+              "weight": 0.12966777816528974,
+              "holding_return": 1.1872727272727275,
+              "holding_return_status": "calculated",
+              "status": "confirmed"
+            }
+          ]
+        }
+      ]
+    },
     "advisory": {
       "type": "advisory_account",
       "buckets": [
@@ -198,47 +293,6 @@
         }
       ]
     },
-    "independent_equity_funds": {
-      "type": "direct_holdings",
-      "groups": [
-        {
-          "id": "products",
-          "name": "持仓产品",
-          "weight": 1.0,
-          "holding_return": 0.034795134805932604,
-          "holding_return_coverage": 1.0,
-          "components": [
-            {
-              "id": "fund-cn-022444",
-              "name": "景顺长城中证A500ETF联接A",
-              "symbol": "022444",
-              "weight": 0.592355413171251,
-              "holding_return": 0.02976042443836535,
-              "holding_return_status": "calculated",
-              "status": "confirmed"
-            },
-            {
-              "id": "fund-cn-007466",
-              "name": "华泰柏瑞中证红利低波ETF联接A",
-              "symbol": "007466",
-              "weight": 0.22766063802916203,
-              "holding_return": -0.010517849409144353,
-              "holding_return_status": "calculated",
-              "status": "confirmed"
-            },
-            {
-              "id": "fund-cn-019923",
-              "name": "华泰柏瑞中证2000指数增强A",
-              "symbol": "019923",
-              "weight": 0.17998394879958696,
-              "holding_return": 0.11750928306198238,
-              "holding_return_status": "calculated",
-              "status": "confirmed"
-            }
-          ]
-        }
-      ]
-    },
     "independent_bond_funds": {
       "type": "direct_holdings",
       "groups": [
@@ -280,94 +334,40 @@
         }
       ]
     },
-    "active_equity": {
+    "independent_equity_funds": {
       "type": "direct_holdings",
       "groups": [
         {
-          "id": "hk",
-          "name": "港股",
-          "weight": 0.739370999498196,
-          "holding_return": -0.07111392220065169,
+          "id": "products",
+          "name": "持仓产品",
+          "weight": 1.0,
+          "holding_return": 0.034795134805932604,
           "holding_return_coverage": 1.0,
           "components": [
             {
-              "id": "stock-hk-01810",
-              "name": "小米集团-W",
-              "symbol": "01810",
-              "weight": 0.09592246059232376,
-              "holding_return": 0.024657534246575352,
+              "id": "fund-cn-022444",
+              "name": "景顺长城中证A500ETF联接A",
+              "symbol": "022444",
+              "weight": 0.592355413171251,
+              "holding_return": 0.02976042443836535,
               "holding_return_status": "calculated",
               "status": "confirmed"
             },
             {
-              "id": "stock-hk-02020",
-              "name": "安踏体育",
-              "symbol": "02020",
-              "weight": 0.06604287059498226,
-              "holding_return": -0.009615384615384692,
+              "id": "fund-cn-007466",
+              "name": "华泰柏瑞中证红利低波ETF联接A",
+              "symbol": "007466",
+              "weight": 0.22766063802916203,
+              "holding_return": -0.010517849409144353,
               "holding_return_status": "calculated",
               "status": "confirmed"
             },
             {
-              "id": "stock-hk-02097",
-              "name": "蜜雪集团",
-              "symbol": "02097",
-              "weight": 0.10231606539868471,
-              "holding_return": 0.05377353773584903,
-              "holding_return_status": "calculated",
-              "status": "confirmed"
-            },
-            {
-              "id": "stock-hk-02150",
-              "name": "奈雪的茶",
-              "symbol": "02150",
-              "weight": 0.025246971161916765,
-              "holding_return": -0.30660377358490576,
-              "holding_return_status": "calculated",
-              "status": "confirmed"
-            },
-            {
-              "id": "stock-hk-09618",
-              "name": "京东集团-SW",
-              "symbol": "09618",
-              "weight": 0.10167487706023623,
-              "holding_return": 0.07771175579634138,
-              "holding_return_status": "calculated",
-              "status": "confirmed"
-            },
-            {
-              "id": "stock-hk-09988",
-              "name": "阿里巴巴-W",
-              "symbol": "09988",
-              "weight": 0.3481677546900521,
-              "holding_return": -0.1462896955077455,
-              "holding_return_status": "calculated",
-              "status": "confirmed"
-            }
-          ]
-        },
-        {
-          "id": "us",
-          "name": "美股",
-          "weight": 0.2606290005018043,
-          "holding_return": 0.45080000000000003,
-          "holding_return_coverage": 1.0,
-          "components": [
-            {
-              "id": "stock-us-lkncy",
-              "name": "瑞幸咖啡",
-              "symbol": "LKNCY",
-              "weight": 0.13096122233651458,
-              "holding_return": 0.0880597014925375,
-              "holding_return_status": "calculated",
-              "status": "confirmed"
-            },
-            {
-              "id": "stock-us-tal",
-              "name": "好未来",
-              "symbol": "TAL",
-              "weight": 0.12966777816528974,
-              "holding_return": 1.1872727272727275,
+              "id": "fund-cn-019923",
+              "name": "华泰柏瑞中证2000指数增强A",
+              "symbol": "019923",
+              "weight": 0.17998394879958696,
+              "holding_return": 0.11750928306198238,
               "holding_return_status": "calculated",
               "status": "confirmed"
             }
