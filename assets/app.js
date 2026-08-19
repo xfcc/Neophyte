@@ -144,6 +144,29 @@ function productClassification(volatilityIndex, assetId, value, windowName, date
   };
 }
 
+function savedProductClassification(item, assetId, windowName, volatilityIndex) {
+  const value = windowName === "five_day" ? item?.five_day_return : item?.daily_return;
+  const saved = windowName === "five_day" ? item?.five_day_volatility : item?.volatility;
+  if (saved?.basis !== "historical_percentile") {
+    return productClassification(volatilityIndex, assetId, value, windowName, item?.market_date);
+  }
+  const direction = Number.isFinite(value) ? Math.sign(value) : 0;
+  const directionalLevel = saved.level === "attention"
+    ? direction > 0 ? "abnormal_positive" : "abnormal_negative"
+    : saved.level === "extreme"
+      ? direction > 0 ? "extreme_positive" : "extreme_negative"
+      : saved.level;
+  return {
+    level: directionalLevel,
+    direction,
+    value,
+    windowName,
+    date: item?.market_date ?? null,
+    percentile: saved.percentile,
+    assetBaseline: volatilityIndex.assets[assetId],
+  };
+}
+
 function renderProductVolatility(classification) {
   const shown = visualLevel(classification.level);
   const directionClass = isProductAnomaly(classification)
@@ -237,7 +260,7 @@ function buildDailyGroups(snapshot, assets, volatilityIndex) {
     ...group,
     rows: assets.filter(group.matches).map((asset) => {
       const item = observations.get(asset.id) ?? null;
-      const classification = productClassification(volatilityIndex, asset.id, item?.daily_return, "daily", item?.market_date);
+      const classification = savedProductClassification(item, asset.id, "daily", volatilityIndex);
       const resonance = marketResonance(volatilityIndex, asset.id, classification, item?.market_date, "daily");
       return { asset, item, classification, resonance };
     }),
@@ -249,6 +272,18 @@ function observationEntries(snapshots, assetId) {
 }
 
 function calculateFiveDay(entries, assetId, volatilityIndex) {
+  const latest = entries.at(-1);
+  if (latest?.five_day_volatility?.basis === "historical_percentile") {
+    const classification = savedProductClassification(latest, assetId, "five_day", volatilityIndex);
+    return {
+      available: entries.filter((item) => item && Number.isFinite(item.daily_return)),
+      missing: entries.filter((item) => !item || !Number.isFinite(item.daily_return)).length,
+      cumulative: latest.five_day_return,
+      endDate: latest.market_date,
+      classification,
+      resonance: marketResonance(volatilityIndex, assetId, classification, latest.market_date, "five_day"),
+    };
+  }
   const available = entries.filter((item) => item && Number.isFinite(item.daily_return));
   const missing = entries.length - available.length;
   const cumulative = missing || entries.length !== 5
@@ -275,51 +310,16 @@ function renderOverviewItem(label, text, type) {
   return `<li class="overview-item overview-${type}"><span class="overview-marker" aria-hidden="true"></span><span><strong>${label}</strong>${text}</span></li>`;
 }
 
-function mergeAttentionNames(items) {
-  return [...new Set(items.map((item) => item.name))].join("、") + "。";
-}
-
-function renderOverview(snapshot, assets, snapshots, volatilityIndex, accountSnapshot, accountSnapshots) {
+function renderOverview(snapshot) {
   const root = document.querySelector("#overview-list");
-  const dailyRows = buildDailyGroups(snapshot, assets, volatilityIndex).flatMap((group) => group.rows);
-  const weeklyRows = buildWeeklyGroups(snapshots, assets, volatilityIndex).flatMap((group) => group.rows);
-  const weeklyByAsset = new Map(weeklyRows.map((row) => [row.asset.id, row]));
-  const confirmedCount = dailyRows.filter((row) => row.item?.status === "confirmed" && row.item.market_date).length;
-  const accountSummary = accountSnapshot?.summary;
-  const accountCoverage = accountSummary
-    ? `、${accountSummary.components_confirmed}/${accountSummary.components_total} 个投顾服务产品内部持仓确认数据更新`
-    : "、投顾服务产品内部持仓尚无快照";
-  const collectionItems = [{
-    text: `${confirmedCount}/${assets.length} 个直接持仓确认数据更新${accountCoverage}${confirmedCount === assets.length ? "。" : `，${assets.length - confirmedCount} 个直接持仓尚未确认。`}`,
-  }];
-  snapshot.overview.items
-    .filter((item) => ["missing", "conflict"].includes(item.type))
-    .forEach((item) => collectionItems.push(item));
-
-  const attentionItems = dailyRows.flatMap((row) => {
-    const weekly = weeklyByAsset.get(row.asset.id)?.metrics;
-    const selected = isProductAnomaly(row.classification) ? row.classification : isProductAnomaly(weekly?.classification) ? weekly.classification : null;
-    return selected ? [{ name: row.asset.name, direction: selected.direction, priority: visualLevel(selected.level) === "extreme" ? 2 : 1, magnitude: Math.abs(selected.value) }] : [];
-  });
-
-  (accountSnapshot?.accounts?.[0]?.components ?? []).forEach((component) => {
-    const daily = productClassification(volatilityIndex, component.asset_id, component.daily_return, "daily", component.market_date);
-    if (isProductAnomaly(daily)) {
-      attentionItems.push({ name: component.name, direction: daily.direction, priority: visualLevel(daily.level) === "extreme" ? 2 : 1, magnitude: Math.abs(daily.value) });
-      return;
-    }
-    const entries = advisoryComponentEntries(accountSnapshots, component.asset_id);
-    const weekly = calculateFiveDay(entries, component.asset_id, volatilityIndex).classification;
-    if (isProductAnomaly(weekly)) attentionItems.push({ name: component.name, direction: weekly.direction, priority: visualLevel(weekly.level) === "extreme" ? 2 : 1, magnitude: Math.abs(weekly.value) });
-  });
-
-  attentionItems.sort((a, b) => b.priority - a.priority || b.magnitude - a.magnitude);
-  const positiveItems = attentionItems.filter((item) => item.direction > 0);
-  const negativeItems = attentionItems.filter((item) => item.direction < 0);
-  const overviewItems = [renderOverviewItem("数据更新：", collectionItems.map((item) => item.text).join(" "), "coverage")];
-  if (positiveItems.length) overviewItems.push(renderOverviewItem("正向关注：", mergeAttentionNames(positiveItems), "positive"));
-  if (negativeItems.length) overviewItems.push(renderOverviewItem("负向关注：", mergeAttentionNames(negativeItems), "negative"));
-  root.innerHTML = overviewItems.join("");
+  const labels = ["数据更新：", "正向关注：", "负向关注："];
+  root.innerHTML = (snapshot.overview?.items ?? []).map((item) => {
+    const textLabel = labels.find((candidate) => item.text.startsWith(candidate)) ?? "";
+    const label = textLabel || (item.type === "coverage" ? "数据更新：" : "");
+    const text = textLabel ? item.text.slice(textLabel.length) : item.text;
+    const type = label === "正向关注：" ? "positive" : label === "负向关注：" ? "negative" : item.type;
+    return renderOverviewItem(label, text, type);
+  }).join("");
 }
 
 function renderAccountAllocations(account, ariaLabel = "投顾服务产品内部实际比例") {
@@ -334,7 +334,7 @@ function renderAdvisoryDaily(accountSnapshot, volatilityIndex) {
     return;
   }
   const rows = account.components.map((component) => {
-    const classification = productClassification(volatilityIndex, component.asset_id, component.daily_return, "daily", component.market_date);
+    const classification = savedProductClassification(component, component.asset_id, "daily", volatilityIndex);
     const resonance = marketResonance(volatilityIndex, component.asset_id, classification, component.market_date, "daily");
     return `<tr class="${rowClass(classification.level)}"><td><strong>${component.name}</strong><span class="symbol">${component.symbol} · ${accountBucketLabels[component.asset_bucket]}</span></td><td class="movement-value movement-start ${returnClass(component.daily_return)}">${formatAccountDaily(component)}</td><td class="description-cell">${renderProductVolatility(classification)}</td><td class="resonance-cell">${renderMarketResonance(resonance)}</td><td class="holding-return ${returnClass(component.holding_return)}">${formatPercent(component.holding_return)}</td><td class="holding-weight">${formatPlainPercent(component.account_weight)}</td></tr>`;
   }).join("");
@@ -357,7 +357,7 @@ function renderAdvisoryHistory(accountSnapshots, volatilityIndex) {
     const entries = advisoryComponentEntries(accountSnapshots, component.asset_id);
     const metrics = calculateFiveDay(entries, component.asset_id, volatilityIndex);
     const cells = entries.map((item, index) => {
-      const daily = productClassification(volatilityIndex, component.asset_id, item?.daily_return, "daily", item?.market_date);
+      const daily = savedProductClassification(item, component.asset_id, "daily", volatilityIndex);
       return `<td class="history-value ${index === 0 ? "movement-start " : ""}${returnClass(item?.daily_return)} ${rowClass(daily.level)}">${formatAccountDaily(item)}</td>`;
     }).join("");
     return `<tr><td><strong>${component.name}</strong><span class="symbol">${component.symbol}</span></td>${cells}<td class="history-cumulative ${returnClass(metrics.cumulative)}">${formatPercent(metrics.cumulative)}</td><td class="history-description">${renderProductVolatility(metrics.classification)}</td><td class="resonance-cell">${renderMarketResonance(metrics.resonance)}</td></tr>`;
@@ -399,7 +399,7 @@ function renderHistory(snapshots, assets, volatilityIndex) {
       const metrics = calculateFiveDay(entries, asset.id, volatilityIndex);
       const cells = entries.map((item, index) => {
         if (!item || !Number.isFinite(item.daily_return)) return `<td class="history-missing ${index === 0 ? "movement-start" : ""}">缺失</td>`;
-        const daily = productClassification(volatilityIndex, asset.id, item.daily_return, "daily", item.market_date);
+        const daily = savedProductClassification(item, asset.id, "daily", volatilityIndex);
         return `<td class="history-value ${index === 0 ? "movement-start " : ""}${returnClass(item.daily_return)} ${rowClass(daily.level)}">${formatPercent(item.daily_return)}</td>`;
       }).join("");
       return `<tr><td><strong>${asset.name}</strong><span class="symbol">${asset.symbol}</span></td>${cells}<td class="history-cumulative ${returnClass(metrics.cumulative)}">${formatPercent(metrics.cumulative)}</td><td class="history-description">${renderProductVolatility(metrics.classification)}</td><td class="resonance-cell">${renderMarketResonance(metrics.resonance)}</td></tr>`;
@@ -553,7 +553,7 @@ async function main() {
     const latestAccountSnapshot = accountSnapshots.at(-1) ?? null;
     if (!latest) throw new Error("尚无每日快照");
     setUpdateState(manifest, latest);
-    renderOverview(latest, assets, snapshots, volatilityIndex, latestAccountSnapshot, accountSnapshots);
+    renderOverview(latest);
     renderAdvisoryDaily(latestAccountSnapshot, volatilityIndex);
     renderDaily(latest, assets, volatilityIndex);
     renderAdvisoryHistory(accountSnapshots, volatilityIndex);

@@ -37,7 +37,16 @@
           "value_type": "money_fund_income",
           "account_weight": 0.17637427577701342,
           "holding_return": 0.003616157373832918,
-          "daily_return": null
+          "daily_return": null,
+          "five_day_return": null,
+          "volatility": {
+            "basis": null,
+            "return_window": null,
+            "percentile": null,
+            "level": "unavailable",
+            "description": "无法判断"
+          },
+          "five_day_volatility": null
         },
         {
           "asset_id": "tiaa001001-fund-110020",
@@ -49,7 +58,16 @@
           "value_type": "nav",
           "account_weight": 0.17138689532392398,
           "holding_return": -0.0013096547750013343,
-          "daily_return": 0.0003673190953457084
+          "daily_return": 0.0003673190953457084,
+          "five_day_return": null,
+          "volatility": {
+            "basis": null,
+            "return_window": null,
+            "percentile": null,
+            "level": "normal",
+            "description": "正常波动"
+          },
+          "five_day_volatility": null
         },
         {
           "asset_id": "tiaa001001-fund-000191",
@@ -61,7 +79,16 @@
           "value_type": "nav",
           "account_weight": 0.15268225414077363,
           "holding_return": 0.008310454849002058,
-          "daily_return": 7.359434795417563e-05
+          "daily_return": 7.359434795417563e-05,
+          "five_day_return": null,
+          "volatility": {
+            "basis": null,
+            "return_window": null,
+            "percentile": null,
+            "level": "normal",
+            "description": "正常波动"
+          },
+          "five_day_volatility": null
         },
         {
           "asset_id": "tiaa001001-fund-007169",
@@ -73,7 +100,16 @@
           "value_type": "nav",
           "account_weight": 0.09748550275074376,
           "holding_return": 0.005976690905468596,
-          "daily_return": 9.902951079410194e-05
+          "daily_return": 9.902951079410194e-05,
+          "five_day_return": null,
+          "volatility": {
+            "basis": null,
+            "return_window": null,
+            "percentile": null,
+            "level": "normal",
+            "description": "正常波动"
+          },
+          "five_day_volatility": null
         },
         {
           "asset_id": "tiaa001001-fund-009051",
@@ -85,7 +121,16 @@
           "value_type": "nav",
           "account_weight": 0.0905399601997414,
           "holding_return": -0.0034564021995285854,
-          "daily_return": 0.002449624654286664
+          "daily_return": 0.002449624654286664,
+          "five_day_return": null,
+          "volatility": {
+            "basis": null,
+            "return_window": null,
+            "percentile": null,
+            "level": "normal",
+            "description": "正常波动"
+          },
+          "five_day_volatility": null
         },
         {
           "asset_id": "tiaa001001-fund-000248",
@@ -97,7 +142,16 @@
           "value_type": "nav",
           "account_weight": 0.0757657467830658,
           "holding_return": -0.06181910311629091,
-          "daily_return": -0.013532953274015713
+          "daily_return": -0.013532953274015713,
+          "five_day_return": null,
+          "volatility": {
+            "basis": null,
+            "return_window": null,
+            "percentile": null,
+            "level": "elevated",
+            "description": "正常波动"
+          },
+          "five_day_volatility": null
         },
         {
           "asset_id": "tiaa001001-fund-164906",
@@ -109,7 +163,16 @@
           "value_type": "nav",
           "account_weight": 0.06078382383135831,
           "holding_return": -0.05914772168093696,
-          "daily_return": -0.011170872983036872
+          "daily_return": -0.011170872983036872,
+          "five_day_return": null,
+          "volatility": {
+            "basis": null,
+            "return_window": null,
+            "percentile": null,
+            "level": "normal",
+            "description": "正常波动"
+          },
+          "five_day_volatility": null
         },
         {
           "asset_id": "tiaa001001-fund-090010",
@@ -121,7 +184,16 @@
           "value_type": "nav",
           "account_weight": 0.05019383772923094,
           "holding_return": -0.005556996258289204,
-          "daily_return": 0.0023899324097238495
+          "daily_return": 0.0023899324097238495,
+          "five_day_return": null,
+          "volatility": {
+            "basis": null,
+            "return_window": null,
+            "percentile": null,
+            "level": "normal",
+            "description": "正常波动"
+          },
+          "five_day_volatility": null
         },
         {
           "asset_id": "tiaa001001-fund-001717",
@@ -133,7 +205,16 @@
           "value_type": "nav",
           "account_weight": 0.04437788708896572,
           "holding_return": 0.09903118282919521,
-          "daily_return": -0.008988764044943864
+          "daily_return": -0.008988764044943864,
+          "five_day_return": null,
+          "volatility": {
+            "basis": null,
+            "return_window": null,
+            "percentile": null,
+            "level": "normal",
+            "description": "正常波动"
+          },
+          "five_day_volatility": null
         },
         {
           "asset_id": "tiaa001001-fund-012348",
@@ -145,7 +226,16 @@
           "value_type": "nav",
           "account_weight": 0.03103284067599727,
           "holding_return": -0.1460435475305364,
-          "daily_return": -0.017114914425427896
+          "daily_return": -0.017114914425427896,
+          "five_day_return": null,
+          "volatility": {
+            "basis": null,
+            "return_window": null,
+            "percentile": null,
+            "level": "elevated",
+            "description": "正常波动"
+          },
+          "five_day_volatility": null
         },
         {
           "asset_id": "tiaa001001-fund-000638",
@@ -157,7 +247,16 @@
           "value_type": "money_fund_income",
           "account_weight": 0.019464689436250616,
           "holding_return": 0.0029118942122318852,
-          "daily_return": 2.507e-05
+          "daily_return": 2.507e-05,
+          "five_day_return": null,
+          "volatility": {
+            "basis": null,
+            "return_window": null,
+            "percentile": null,
+            "level": "normal",
+            "description": "正常波动"
+          },
+          "five_day_volatility": null
         },
         {
           "asset_id": "tiaa001001-fund-000968",
@@ -169,7 +268,16 @@
           "value_type": "nav",
           "account_weight": 0.019170246438049987,
           "holding_return": -0.050439090294978506,
-          "daily_return": -0.012758983963478743
+          "daily_return": -0.012758983963478743,
+          "five_day_return": null,
+          "volatility": {
+            "basis": null,
+            "return_window": null,
+            "percentile": null,
+            "level": "elevated",
+            "description": "正常波动"
+          },
+          "five_day_volatility": null
         },
         {
           "asset_id": "tiaa001001-fund-005313",
@@ -181,7 +289,16 @@
           "value_type": "nav",
           "account_weight": 0.010742039824885178,
           "holding_return": 0.0748601846236776,
-          "daily_return": 0.009109311740890691
+          "daily_return": 0.009109311740890691,
+          "five_day_return": null,
+          "volatility": {
+            "basis": null,
+            "return_window": null,
+            "percentile": null,
+            "level": "normal",
+            "description": "正常波动"
+          },
+          "five_day_volatility": null
         }
       ]
     }

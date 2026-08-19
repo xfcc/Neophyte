@@ -8,6 +8,15 @@
       "status": "confirmed",
       "market_date": "2026-08-12",
       "daily_return": 0.007120641676215289,
+      "five_day_return": null,
+      "volatility": {
+        "basis": "configured_standard",
+        "return_window": null,
+        "percentile": null,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "five_day_volatility": null,
       "holding": {
         "return": 0.020061344607477327,
         "group_weight": 0.59244301384549
@@ -19,6 +28,15 @@
       "status": "confirmed",
       "market_date": "2026-08-12",
       "daily_return": -0.004116509698746329,
+      "five_day_return": null,
+      "volatility": {
+        "basis": "configured_standard",
+        "return_window": null,
+        "percentile": null,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "five_day_volatility": null,
       "holding": {
         "return": -0.01212646167171938,
         "group_weight": 0.2294856134359944
@@ -30,6 +48,15 @@
       "status": "confirmed",
       "market_date": "2026-08-12",
       "daily_return": 0.015360983102918668,
+      "five_day_return": null,
+      "volatility": {
+        "basis": "configured_standard",
+        "return_window": null,
+        "percentile": null,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "five_day_volatility": null,
       "holding": {
         "return": 0.09505855469865754,
         "group_weight": 0.1780713727185154
@@ -41,6 +68,15 @@
       "status": "confirmed",
       "market_date": "2026-08-12",
       "daily_return": 0.0,
+      "five_day_return": null,
+      "volatility": {
+        "basis": "configured_standard",
+        "return_window": null,
+        "percentile": null,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "five_day_volatility": null,
       "holding": {
         "return": 0.0004954419342053651,
         "group_weight": 0.45241467187551937
@@ -52,6 +88,15 @@
       "status": "confirmed",
       "market_date": "2026-08-12",
       "daily_return": 7.362143856282088e-05,
+      "five_day_return": null,
+      "volatility": {
+        "basis": "configured_standard",
+        "return_window": null,
+        "percentile": null,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "five_day_volatility": null,
       "holding": {
         "return": 0.00036821562707123334,
         "group_weight": 0.40474629771142656
@@ -63,6 +108,15 @@
       "status": "confirmed",
       "market_date": "2026-08-12",
       "daily_return": 0.0,
+      "five_day_return": null,
+      "volatility": {
+        "basis": "configured_standard",
+        "return_window": null,
+        "percentile": null,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "five_day_volatility": null,
       "holding": {
         "return": 0.00029521747687466515,
         "group_weight": 0.142839030413054
@@ -74,6 +128,15 @@
       "status": "confirmed",
       "market_date": "2026-08-12",
       "daily_return": -0.009378663540445475,
+      "five_day_return": null,
+      "volatility": {
+        "basis": "configured_standard",
+        "return_window": null,
+        "percentile": null,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "five_day_volatility": null,
       "holding": {
         "return": 0.008955223880596996,
         "group_weight": 0.48696153292032845
@@ -85,6 +148,15 @@
       "status": "confirmed",
       "market_date": "2026-08-12",
       "daily_return": -0.02384868421052644,
+      "five_day_return": null,
+      "volatility": {
+        "basis": "configured_standard",
+        "return_window": null,
+        "percentile": null,
+        "level": "attention",
+        "description": "异常波动"
+      },
+      "five_day_volatility": null,
       "holding": {
         "return": 1.1581818181818182,
         "group_weight": 0.5130384670796715
@@ -96,6 +168,15 @@
       "status": "confirmed",
       "market_date": "2026-08-12",
       "daily_return": -0.011252813203300849,
+      "five_day_return": null,
+      "volatility": {
+        "basis": "configured_standard",
+        "return_window": null,
+        "percentile": null,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "five_day_volatility": null,
       "holding": {
         "return": 0.03170254403131101,
         "group_weight": 0.13007207379468375
@@ -107,6 +188,15 @@
       "status": "confirmed",
       "market_date": "2026-08-12",
       "daily_return": -0.02281879194630876,
+      "five_day_return": null,
+      "volatility": {
+        "basis": "configured_standard",
+        "return_window": null,
+        "percentile": null,
+        "level": "elevated",
+        "description": "正常波动"
+      },
+      "five_day_volatility": null,
       "holding": {
         "return": 0.0,
         "group_weight": 0.08980697052591974
@@ -118,6 +208,15 @@
       "status": "confirmed",
       "market_date": "2026-08-12",
       "daily_return": -0.008665511265164683,
+      "five_day_return": null,
+      "volatility": {
+        "basis": "configured_standard",
+        "return_window": null,
+        "percentile": null,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "five_day_volatility": null,
       "holding": {
         "return": 0.0792452830188679,
         "group_weight": 0.14112523939787386
@@ -129,6 +228,15 @@
       "status": "confirmed",
       "market_date": "2026-08-12",
       "daily_return": -0.013605442176870763,
+      "five_day_return": null,
+      "volatility": {
+        "basis": "configured_standard",
+        "return_window": null,
+        "percentile": null,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "five_day_volatility": null,
       "holding": {
         "return": -0.3160377358490567,
         "group_weight": 0.03353883257106378
@@ -140,6 +248,15 @@
       "status": "confirmed",
       "market_date": "2026-08-12",
       "daily_return": -0.02766798418972327,
+      "five_day_return": null,
+      "volatility": {
+        "basis": "configured_standard",
+        "return_window": null,
+        "percentile": null,
+        "level": "elevated",
+        "description": "正常波动"
+      },
+      "five_day_volatility": null,
       "holding": {
         "return": 0.1942211348013516,
         "group_weight": 0.1517343045973644
@@ -151,6 +268,15 @@
       "status": "confirmed",
       "market_date": "2026-08-12",
       "daily_return": -0.030063291139240556,
+      "five_day_return": null,
+      "volatility": {
+        "basis": "configured_standard",
+        "return_window": null,
+        "percentile": null,
+        "level": "elevated",
+        "description": "正常波动"
+      },
+      "five_day_volatility": null,
       "holding": {
         "return": -0.17391568010457448,
         "group_weight": 0.4537225791130945
@@ -158,6 +284,17 @@
     }
   ],
   "overview": {
-    "items": []
+    "items": [
+      {
+        "type": "coverage",
+        "priority": 1,
+        "text": "14/14 个直接持仓、11/13 个长钱账户内部持仓确认数据更新。"
+      },
+      {
+        "type": "attention",
+        "priority": 2,
+        "text": "负向关注：瑞幸咖啡、好未来。"
+      }
+    ]
   }
 }
