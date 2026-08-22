@@ -1,21 +1,21 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-08-21T09:34:55+08:00",
+  "updated_at": "2026-08-22T09:33:39+08:00",
   "snapshots": [
-    "data/daily/2026-08-14.json",
     "data/daily/2026-08-17.json",
     "data/daily/2026-08-18.json",
     "data/daily/2026-08-19.json",
-    "data/daily/2026-08-20.json"
+    "data/daily/2026-08-20.json",
+    "data/daily/2026-08-21.json"
   ],
   "account_snapshots": [
-    "data/accounts/2026-08-14.json",
     "data/accounts/2026-08-17.json",
     "data/accounts/2026-08-18.json",
     "data/accounts/2026-08-19.json",
-    "data/accounts/2026-08-20.json"
+    "data/accounts/2026-08-20.json",
+    "data/accounts/2026-08-21.json"
   ],
-  "latest_portfolio_snapshot": "data/portfolio/2026-08-20.json",
+  "latest_portfolio_snapshot": "data/portfolio/2026-08-21.json",
   "last_run": {
     "status": "partial"
   }
