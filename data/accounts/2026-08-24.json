@@ -1,29 +1,29 @@
 {
   "schema_version": 1,
-  "reference_date": "2026-08-20",
+  "reference_date": "2026-08-24",
   "accounts": [
     {
       "account_id": "advisory-tiaa001001",
       "strategy_code": "TIAA001001",
       "name": "投顾服务产品",
       "status": "estimated",
-      "holding_return": -0.008290989552462436,
-      "daily_return": 0.003019811912303092,
+      "holding_return": -0.013092551239098027,
+      "daily_return": -0.0033808144975679315,
       "allocations": [
         {
           "bucket": "equity",
           "name": "股票基金",
-          "weight": 0.5540421058593058
+          "weight": 0.55334066209487
         },
         {
           "bucket": "bond",
           "name": "债券基金",
-          "weight": 0.25017280995063135
+          "weight": 0.25056630485200404
         },
         {
           "bucket": "cash",
           "name": "现金及货币基金",
-          "weight": 0.19578508419006294
+          "weight": 0.1960930330531261
         }
       ],
       "components": [
@@ -33,12 +33,12 @@
           "name": "鹏华安盈宝货币A",
           "asset_bucket": "cash",
           "status": "confirmed",
-          "market_date": "2026-08-20",
+          "market_date": "2026-08-24",
           "value_type": "money_fund_income",
-          "account_weight": 0.1763257500587792,
-          "holding_return": 0.0038197773738329176,
-          "daily_return": 3.106e-05,
-          "five_day_return": 0.0001862634889020498,
+          "account_weight": 0.17660309148386266,
+          "holding_return": 0.0038812773738329176,
+          "daily_return": 3.0799999999999996e-05,
+          "five_day_return": null,
           "volatility": {
             "basis": "historical_percentile",
             "return_window": "daily",
@@ -60,25 +60,25 @@
           "name": "易方达沪深300ETF联接A",
           "asset_bucket": "equity",
           "status": "confirmed",
-          "market_date": "2026-08-20",
+          "market_date": "2026-08-24",
           "value_type": "nav",
-          "account_weight": 0.16885916221985273,
-          "holding_return": -0.0157682434910158,
-          "daily_return": 0.0008523332623056046,
-          "five_day_return": -0.014115548092564212,
+          "account_weight": 0.17011495130635765,
+          "holding_return": -0.02137356592802131,
+          "daily_return": -0.0114826965816488,
+          "five_day_return": -0.03492276695768959,
           "volatility": {
             "basis": "historical_percentile",
             "return_window": "daily",
-            "percentile": 0.5267249757045676,
+            "percentile": 0.12196307094266277,
             "level": "normal",
             "description": "正常波动"
           },
           "five_day_volatility": {
             "basis": "historical_percentile",
             "return_window": "five_day",
-            "percentile": 0.2580252918287938,
-            "level": "normal",
-            "description": "正常波动"
+            "percentile": 0.07855058365758755,
+            "level": "attention",
+            "description": "异常波动"
           }
         },
         {
@@ -87,16 +87,16 @@
           "name": "富国信用债债券A",
           "asset_bucket": "bond",
           "status": "confirmed",
-          "market_date": "2026-08-20",
+          "market_date": "2026-08-24",
           "value_type": "nav",
-          "account_weight": 0.15268517732125172,
-          "holding_return": 0.00860725680789498,
-          "daily_return": -7.356186552887056e-05,
-          "five_day_return": 0.0003679717397706561,
+          "account_weight": 0.15292533467009775,
+          "holding_return": 0.008829858277064728,
+          "daily_return": 0.00022070183182520964,
+          "five_day_return": 0.0003678905157826762,
           "volatility": {
             "basis": "historical_percentile",
             "return_window": "daily",
-            "percentile": 0.18443530528313826,
+            "percentile": 0.5814615627965833,
             "level": "normal",
             "description": "正常波动"
           },
@@ -114,23 +114,23 @@
           "name": "易方达中债1—3年国开行债券指数A",
           "asset_bucket": "bond",
           "status": "confirmed",
-          "market_date": "2026-08-20",
+          "market_date": "2026-08-24",
           "value_type": "nav",
-          "account_weight": 0.09748763262937961,
-          "holding_return": 0.006275525450742059,
-          "daily_return": 0.0,
-          "five_day_return": 0.0003961180431766298,
+          "account_weight": 0.0976409701819063,
+          "holding_return": 0.0064747484809244416,
+          "daily_return": 0.00019798059790132605,
+          "five_day_return": 0.0002970002970001939,
           "volatility": {
             "basis": "historical_percentile",
             "return_window": "daily",
-            "percentile": 0.2521440823327616,
+            "percentile": 0.6066323613493425,
             "level": "normal",
             "description": "正常波动"
           },
           "five_day_volatility": {
             "basis": "historical_percentile",
             "return_window": "five_day",
-            "percentile": 0.3765042979942693,
+            "percentile": 0.3312320916905444,
             "level": "normal",
             "description": "正常波动"
           }
@@ -141,25 +141,25 @@
           "name": "易方达中证红利ETF联接A",
           "asset_bucket": "equity",
           "status": "confirmed",
-          "market_date": "2026-08-20",
+          "market_date": "2026-08-24",
           "value_type": "nav",
-          "account_weight": 0.09217037805729605,
-          "holding_return": 0.014768263943440774,
-          "daily_return": 0.005370067709549398,
-          "five_day_return": 0.020782299486368894,
+          "account_weight": 0.09225818208212165,
+          "holding_return": 0.02686567164179099,
+          "daily_return": 0.01254841208365609,
+          "five_day_return": 0.02662373360559145,
           "volatility": {
             "basis": "historical_percentile",
             "return_window": "daily",
-            "percentile": 0.7544459644322845,
-            "level": "normal",
-            "description": "正常波动"
+            "percentile": 0.9288645690834473,
+            "level": "attention",
+            "description": "异常波动"
           },
           "five_day_volatility": {
             "basis": "historical_percentile",
             "return_window": "five_day",
-            "percentile": 0.8511659807956105,
-            "level": "normal",
-            "description": "正常波动"
+            "percentile": 0.9094650205761317,
+            "level": "attention",
+            "description": "异常波动"
           }
         },
         {
@@ -168,23 +168,23 @@
           "name": "汇添富中证主要消费ETF联接A",
           "asset_bucket": "equity",
           "status": "confirmed",
-          "market_date": "2026-08-20",
+          "market_date": "2026-08-24",
           "value_type": "nav",
-          "account_weight": 0.07530716420126052,
-          "holding_return": -0.06724094248796553,
-          "daily_return": 0.006616722261715946,
-          "five_day_return": -0.019233843039053733,
+          "account_weight": 0.07429472174289609,
+          "holding_return": -0.07843932100329365,
+          "daily_return": 0.003033311272887751,
+          "five_day_return": -0.007205633495278141,
           "volatility": {
             "basis": "historical_percentile",
             "return_window": "daily",
-            "percentile": 0.7161619846771251,
+            "percentile": 0.6121853338197738,
             "level": "normal",
             "description": "正常波动"
           },
           "five_day_volatility": {
             "basis": "historical_percentile",
             "return_window": "five_day",
-            "percentile": 0.22762148337595908,
+            "percentile": 0.3847278041651443,
             "level": "normal",
             "description": "正常波动"
           }
@@ -194,26 +194,26 @@
           "symbol": "164906",
           "name": "交银中证海外中国互联网指数（LOF）A",
           "asset_bucket": "equity",
-          "status": "confirmed",
-          "market_date": "2026-08-20",
+          "status": "missing",
+          "market_date": "2026-08-21",
           "value_type": "nav",
-          "account_weight": 0.06046199364449104,
-          "holding_return": -0.06387166617458906,
-          "daily_return": -0.011226611226611172,
-          "five_day_return": -0.016135705419942026,
+          "account_weight": 0.06088177970037676,
+          "holding_return": -0.05885247515008363,
+          "daily_return": null,
+          "five_day_return": null,
           "volatility": {
             "basis": "historical_percentile",
             "return_window": "daily",
-            "percentile": 0.23929098966026588,
-            "level": "normal",
-            "description": "正常波动"
+            "percentile": null,
+            "level": "unavailable",
+            "description": "无法判断"
           },
           "five_day_volatility": {
             "basis": "historical_percentile",
             "return_window": "five_day",
-            "percentile": 0.3165680473372781,
-            "level": "normal",
-            "description": "正常波动"
+            "percentile": null,
+            "level": "unavailable",
+            "description": "无法判断"
           }
         },
         {
@@ -222,23 +222,23 @@
           "name": "大成中证红利指数A",
           "asset_bucket": "equity",
           "status": "confirmed",
-          "market_date": "2026-08-20",
+          "market_date": "2026-08-24",
           "value_type": "nav",
-          "account_weight": 0.051094159504748264,
-          "holding_return": 0.012558811543733617,
-          "daily_return": 0.005370411241079953,
-          "five_day_return": 0.020650509727771604,
+          "account_weight": 0.05114082317683193,
+          "holding_return": 0.024487830178194336,
+          "daily_return": 0.01244782895218588,
+          "five_day_return": 0.026465238855276185,
           "volatility": {
             "basis": "historical_percentile",
             "return_window": "daily",
-            "percentile": 0.7205734406438632,
+            "percentile": 0.8890845070422535,
             "level": "normal",
             "description": "正常波动"
           },
           "five_day_volatility": {
             "basis": "historical_percentile",
             "return_window": "five_day",
-            "percentile": 0.7983383685800605,
+            "percentile": 0.8580060422960725,
             "level": "normal",
             "description": "正常波动"
           }
@@ -249,25 +249,25 @@
           "name": "工银前沿医疗股票A",
           "asset_bucket": "equity",
           "status": "confirmed",
-          "market_date": "2026-08-20",
+          "market_date": "2026-08-24",
           "value_type": "nav",
-          "account_weight": 0.0451327710642986,
-          "holding_return": 0.11803370611507424,
-          "daily_return": 0.03728323699421976,
-          "five_day_return": 0.008146067415730096,
+          "account_weight": 0.04351601866544761,
+          "holding_return": 0.028005358088532883,
+          "daily_return": -0.04486251808972508,
+          "five_day_return": -0.07898409154339958,
           "volatility": {
             "basis": "historical_percentile",
             "return_window": "daily",
-            "percentile": 0.9843505477308294,
-            "level": "attention",
-            "description": "异常波动"
+            "percentile": 0.005477308294209703,
+            "level": "extreme",
+            "description": "极端波动"
           },
           "five_day_volatility": {
             "basis": "historical_percentile",
             "return_window": "five_day",
-            "percentile": 0.5905172413793104,
-            "level": "normal",
-            "description": "正常波动"
+            "percentile": 0.01371473354231975,
+            "level": "attention",
+            "description": "异常波动"
           }
         },
         {
@@ -276,23 +276,23 @@
           "name": "天弘恒生科技ETF联接A",
           "asset_bucket": "equity",
           "status": "confirmed",
-          "market_date": "2026-08-20",
+          "market_date": "2026-08-24",
           "value_type": "nav",
-          "account_weight": 0.030990538623565177,
-          "holding_return": -0.14697291556027614,
-          "daily_return": 0.0034358894268311513,
-          "five_day_return": -0.018184596577017098,
+          "account_weight": 0.03144025780539562,
+          "holding_return": -0.1651619755708974,
+          "daily_return": -0.03380454824830981,
+          "five_day_return": -0.036912237708684126,
           "volatility": {
             "basis": "historical_percentile",
             "return_window": "daily",
-            "percentile": 0.611879576891782,
-            "level": "normal",
-            "description": "正常波动"
+            "percentile": 0.04068348250610252,
+            "level": "attention",
+            "description": "异常波动"
           },
           "five_day_volatility": {
             "basis": "historical_percentile",
             "return_window": "five_day",
-            "percentile": 0.36,
+            "percentile": 0.20408163265306123,
             "level": "normal",
             "description": "正常波动"
           }
@@ -303,11 +303,11 @@
           "name": "富国富钱包货币A",
           "asset_bucket": "cash",
           "status": "confirmed",
-          "market_date": "2026-08-20",
+          "market_date": "2026-08-24",
           "value_type": "money_fund_income",
-          "account_weight": 0.019459334131283725,
-          "holding_return": 0.003012714212231885,
-          "daily_return": 2.476e-05,
+          "account_weight": 0.01948994156926341,
+          "holding_return": 0.0030697842122318847,
+          "daily_return": 3.1859999999999997e-05,
           "five_day_return": null,
           "volatility": {
             "basis": "historical_percentile",
@@ -330,23 +330,23 @@
           "name": "广发中证养老产业指数A",
           "asset_bucket": "equity",
           "status": "confirmed",
-          "market_date": "2026-08-20",
+          "market_date": "2026-08-24",
           "value_type": "nav",
-          "account_weight": 0.019437653748027073,
-          "holding_return": -0.036928619680252184,
-          "daily_return": 0.019790176442537,
-          "five_day_return": 0.0012876038862228434,
+          "account_weight": 0.01906538909187075,
+          "holding_return": -0.07408241387074976,
+          "daily_return": -0.01826429509370897,
+          "five_day_return": -0.0334939475849102,
           "volatility": {
             "basis": "historical_percentile",
             "return_window": "daily",
-            "percentile": 0.9419146647543922,
+            "percentile": 0.06920043026174257,
             "level": "attention",
             "description": "异常波动"
           },
           "five_day_volatility": {
             "basis": "historical_percentile",
             "return_window": "five_day",
-            "percentile": 0.5077199281867145,
+            "percentile": 0.1066427289048474,
             "level": "normal",
             "description": "正常波动"
           }
@@ -357,32 +357,32 @@
           "name": "万家中证1000指数增强A",
           "asset_bucket": "equity",
           "status": "confirmed",
-          "market_date": "2026-08-20",
+          "market_date": "2026-08-24",
           "value_type": "nav",
-          "account_weight": 0.010588284795766323,
-          "holding_return": 0.059766862071289006,
-          "daily_return": 0.01118683296901124,
-          "five_day_return": -0.005060728744939458,
+          "account_weight": 0.010628538523571889,
+          "holding_return": 0.04784044201873194,
+          "daily_return": -0.013449216519698104,
+          "five_day_return": -0.053442084119544764,
           "volatility": {
             "basis": "historical_percentile",
             "return_window": "daily",
-            "percentile": 0.8268482490272373,
+            "percentile": 0.11673151750972763,
             "level": "normal",
             "description": "正常波动"
           },
           "five_day_volatility": {
             "basis": "historical_percentile",
             "return_window": "five_day",
-            "percentile": 0.35185185185185186,
-            "level": "normal",
-            "description": "正常波动"
+            "percentile": 0.03508771929824561,
+            "level": "attention",
+            "description": "异常波动"
           }
         }
       ]
     }
   ],
   "summary": {
-    "components_confirmed": 13,
+    "components_confirmed": 12,
     "components_total": 13
   }
 }

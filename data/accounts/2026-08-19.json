@@ -7,8 +7,8 @@
       "strategy_code": "TIAA001001",
       "name": "投顾服务产品",
       "status": "estimated",
-      "holding_return": -0.011306838446589085,
-      "daily_return": -0.007222518434745611,
+      "holding_return": -0.011276747807404619,
+      "daily_return": -0.007217029205419278,
       "allocations": [
         {
           "bucket": "equity",
@@ -32,13 +32,13 @@
           "symbol": "000905",
           "name": "鹏华安盈宝货币A",
           "asset_bucket": "cash",
-          "status": "missing",
-          "market_date": null,
+          "status": "confirmed",
+          "market_date": "2026-08-19",
           "value_type": "money_fund_income",
           "account_weight": 0.17684372829680506,
-          "holding_return": 0.003616157373832918,
-          "daily_return": null,
-          "five_day_return": null,
+          "holding_return": 0.003788717373832918,
+          "daily_return": 3.104e-05,
+          "five_day_return": 0.00020372619867092823,
           "volatility": {
             "basis": "historical_percentile",
             "return_window": "daily",
@@ -382,7 +382,7 @@
     }
   ],
   "summary": {
-    "components_confirmed": 12,
+    "components_confirmed": 13,
     "components_total": 13
   }
 }
