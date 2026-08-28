@@ -1,144 +1,144 @@
 {
   "schema_version": 1,
-  "reference_date": "2026-08-20",
+  "reference_date": "2026-08-27",
   "observations": [
     {
       "asset_id": "fund-cn-022444",
       "symbol": "022444",
       "status": "confirmed",
-      "market_date": "2026-08-20",
-      "daily_return": 0.0019142738243862478,
-      "five_day_return": -0.014571054354944435,
+      "market_date": "2026-08-27",
+      "daily_return": 0.011083333333333334,
+      "five_day_return": 0.007891676358198874,
       "volatility": {
         "basis": "historical_percentile",
         "return_window": "daily",
-        "percentile": 0.5602836879432624,
+        "percentile": 0.8416075650118203,
         "level": "normal",
         "description": "正常波动"
       },
       "five_day_volatility": {
         "basis": "historical_percentile",
         "return_window": "five_day",
-        "percentile": 0.2171837708830549,
+        "percentile": 0.5727923627684964,
         "level": "normal",
         "description": "正常波动"
       },
       "holding": {
-        "return": -0.0020724529553178828,
-        "group_weight": 0.5862465426606331
+        "return": 0.005802868274890294,
+        "group_weight": 0.5859873622564814
       }
     },
     {
       "asset_id": "fund-cn-007466",
       "symbol": "007466",
       "status": "confirmed",
-      "market_date": "2026-08-20",
-      "daily_return": 0.005687789799072807,
-      "five_day_return": 0.019746740220662362,
+      "market_date": "2026-08-27",
+      "daily_return": -0.005495511998534486,
+      "five_day_return": 0.0012294830023973358,
       "volatility": {
         "basis": "historical_percentile",
         "return_window": "daily",
-        "percentile": 0.7666470241602829,
+        "percentile": 0.21449616971125515,
         "level": "normal",
         "description": "正常波动"
       },
       "five_day_volatility": {
         "basis": "historical_percentile",
         "return_window": "five_day",
-        "percentile": 0.8316597755463674,
+        "percentile": 0.4991139988186651,
         "level": "normal",
         "description": "正常波动"
       },
       "holding": {
-        "return": 0.006434449050300106,
-        "group_weight": 0.2364833652547465
+        "return": 0.007671843098434605,
+        "group_weight": 0.23481634477256394
       }
     },
     {
       "asset_id": "fund-cn-019923",
       "symbol": "019923",
       "status": "confirmed",
-      "market_date": "2026-08-20",
-      "daily_return": 0.01451925145192523,
-      "five_day_return": -0.0049053220106544115,
+      "market_date": "2026-08-27",
+      "daily_return": 0.01988862370723954,
+      "five_day_return": 0.019293967984734595,
       "volatility": {
         "basis": "historical_percentile",
         "return_window": "daily",
-        "percentile": 0.8304794520547946,
-        "level": "normal",
-        "description": "正常波动"
+        "percentile": 0.9058219178082192,
+        "level": "attention",
+        "description": "异常波动"
       },
       "five_day_volatility": {
         "basis": "historical_percentile",
         "return_window": "five_day",
-        "percentile": 0.3568965517241379,
+        "percentile": 0.6793103448275862,
         "level": "normal",
         "description": "正常波动"
       },
       "holding": {
-        "return": 0.07774921451013994,
-        "group_weight": 0.17727009208462036
+        "return": 0.09854327335047142,
+        "group_weight": 0.17919629297095468
       }
     },
     {
       "asset_id": "fund-cn-007169",
       "symbol": "007169",
       "status": "confirmed",
-      "market_date": "2026-08-20",
-      "daily_return": 0.0,
-      "five_day_return": 0.0003961180431766298,
+      "market_date": "2026-08-27",
+      "daily_return": -9.897070467135283e-05,
+      "five_day_return": 9.899029895077405e-05,
       "volatility": {
         "basis": "historical_percentile",
         "return_window": "daily",
-        "percentile": 0.2521440823327616,
+        "percentile": 0.20240137221269297,
         "level": "normal",
         "description": "正常波动"
       },
       "five_day_volatility": {
         "basis": "historical_percentile",
         "return_window": "five_day",
-        "percentile": 0.3765042979942693,
+        "percentile": 0.25673352435530084,
         "level": "normal",
         "description": "正常波动"
       },
       "holding": {
-        "return": 0.0009908838684105081,
-        "group_weight": 0.4523969665677072
+        "return": 0.0010899722552515367,
+        "group_weight": 0.45240878155041647
       }
     },
     {
       "asset_id": "fund-cn-000191",
       "symbol": "000191",
       "status": "confirmed",
-      "market_date": "2026-08-20",
-      "daily_return": -7.356186552887056e-05,
-      "five_day_return": 0.0003679717397706561,
+      "market_date": "2026-08-27",
+      "daily_return": -0.0001471129091578094,
+      "five_day_return": -1.1102230246251565e-16,
       "volatility": {
         "basis": "historical_percentile",
         "return_window": "daily",
-        "percentile": 0.18443530528313826,
+        "percentile": 0.15311610249920912,
         "level": "normal",
         "description": "正常波动"
       },
       "five_day_volatility": {
         "basis": "historical_percentile",
         "return_window": "five_day",
-        "percentile": 0.3145391194171682,
+        "percentile": 0.20367437440608172,
         "level": "normal",
         "description": "正常波动"
       },
       "holding": {
         "return": 0.0010310037557992313,
-        "group_weight": 0.4047981550496211
+        "group_weight": 0.4047686587519229
       }
     },
     {
       "asset_id": "fund-cn-006662",
       "symbol": "006662",
       "status": "confirmed",
-      "market_date": "2026-08-20",
+      "market_date": "2026-08-27",
       "daily_return": 0.0,
-      "five_day_return": 0.00029513034923733805,
+      "five_day_return": 0.0001966955153420713,
       "volatility": {
         "basis": "historical_percentile",
         "return_window": "daily",
@@ -149,221 +149,221 @@
       "five_day_volatility": {
         "basis": "historical_percentile",
         "return_window": "five_day",
-        "percentile": 0.21018418201516792,
+        "percentile": 0.1143011917659805,
         "level": "normal",
         "description": "正常波动"
       },
       "holding": {
-        "return": 0.0005904349537491083,
-        "group_weight": 0.1428048783826717
+        "return": 0.000787246604998959,
+        "group_weight": 0.14282255969766053
       }
     },
     {
       "asset_id": "stock-us-lkncy",
       "symbol": "LKNCY",
       "status": "confirmed",
-      "market_date": "2026-08-20",
-      "daily_return": -0.002196595277320079,
-      "five_day_return": 0.03650884198516824,
+      "market_date": "2026-08-27",
+      "daily_return": -0.04523293607800649,
+      "five_day_return": -0.02999449642267471,
       "volatility": {
         "basis": "historical_percentile",
         "return_window": "daily",
-        "percentile": 0.4815059445178336,
-        "level": "normal",
-        "description": "正常波动"
+        "percentile": 0.09907529722589167,
+        "level": "attention",
+        "description": "异常波动"
       },
       "five_day_volatility": {
         "basis": "historical_percentile",
         "return_window": "five_day",
-        "percentile": 0.6874172185430464,
+        "percentile": 0.34701986754966885,
         "level": "normal",
         "description": "正常波动"
       },
       "holding": {
-        "return": 0.08477611940298524,
-        "group_weight": 0.12902039472369892
+        "return": 0.052238805970149294,
+        "group_weight": 0.12970024831500532
       }
     },
     {
       "asset_id": "stock-us-tal",
       "symbol": "TAL",
       "status": "confirmed",
-      "market_date": "2026-08-20",
-      "daily_return": -0.05363036303630353,
-      "five_day_return": -0.011206896551724022,
+      "market_date": "2026-08-27",
+      "daily_return": 0.0025662959794696683,
+      "five_day_return": 0.021795989537925164,
       "volatility": {
         "basis": "historical_percentile",
         "return_window": "daily",
-        "percentile": 0.046370967741935484,
-        "level": "attention",
-        "description": "异常波动"
+        "percentile": 0.5375504032258065,
+        "level": "normal",
+        "description": "正常波动"
       },
       "five_day_volatility": {
         "basis": "historical_percentile",
         "return_window": "five_day",
-        "percentile": 0.3897578203834511,
+        "percentile": 0.637991927346115,
         "level": "normal",
         "description": "正常波动"
       },
       "holding": {
-        "return": 1.0854545454545454,
-        "group_weight": 0.1221681833363368
+        "return": 1.1309090909090909,
+        "group_weight": 0.12936909874483934
       }
     },
     {
       "asset_id": "stock-hk-01810",
       "symbol": "01810",
       "status": "confirmed",
-      "market_date": "2026-08-20",
-      "daily_return": 0.011661807580174877,
-      "five_day_return": 0.07264296754250377,
+      "market_date": "2026-08-27",
+      "daily_return": -0.03443429374560791,
+      "five_day_return": -0.01008645533141228,
       "volatility": {
         "basis": "historical_percentile",
         "return_window": "daily",
-        "percentile": 0.6908358509566969,
-        "level": "normal",
-        "description": "正常波动"
-      },
-      "five_day_volatility": {
-        "basis": "historical_percentile",
-        "return_window": "five_day",
-        "percentile": 0.8773965691220988,
-        "level": "normal",
-        "description": "正常波动"
-      },
-      "holding": {
-        "return": 0.08649706457925643,
-        "group_weight": 0.10108536634152891
-      }
-    },
-    {
-      "asset_id": "stock-hk-02020",
-      "symbol": "02020",
-      "status": "confirmed",
-      "market_date": "2026-08-20",
-      "daily_return": 0.016972165648336812,
-      "five_day_return": 0.035245335176226966,
-      "volatility": {
-        "basis": "historical_percentile",
-        "return_window": "daily",
-        "percentile": 0.758150436820797,
-        "level": "normal",
-        "description": "正常波动"
-      },
-      "five_day_volatility": {
-        "basis": "historical_percentile",
-        "return_window": "five_day",
-        "percentile": 0.7236084452975048,
-        "level": "normal",
-        "description": "正常波动"
-      },
-      "holding": {
-        "return": 0.028846153846153966,
-        "group_weight": 0.06818528403260551
-      }
-    },
-    {
-      "asset_id": "stock-hk-02097",
-      "symbol": "02097",
-      "status": "confirmed",
-      "market_date": "2026-08-20",
-      "daily_return": 0.05802347878406722,
-      "five_day_return": 0.039180675014217625,
-      "volatility": {
-        "basis": "historical_percentile",
-        "return_window": "daily",
-        "percentile": 0.9428571428571428,
+        "percentile": 0.0850956696878147,
         "level": "attention",
         "description": "异常波动"
       },
       "five_day_volatility": {
         "basis": "historical_percentile",
         "return_window": "five_day",
-        "percentile": 0.7658959537572254,
+        "percentile": 0.4399596367305752,
         "level": "normal",
         "description": "正常波动"
       },
       "holding": {
-        "return": 0.10094334905660385,
-        "group_weight": 0.10623794800639041
+        "return": 0.07553816046966721,
+        "group_weight": 0.10370359188787333
+      }
+    },
+    {
+      "asset_id": "stock-hk-02020",
+      "symbol": "02020",
+      "status": "confirmed",
+      "market_date": "2026-08-27",
+      "daily_return": -0.01206349206349211,
+      "five_day_return": 0.03871829105473945,
+      "volatility": {
+        "basis": "historical_percentile",
+        "return_window": "daily",
+        "percentile": 0.2919241423396548,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "five_day_volatility": {
+        "basis": "historical_percentile",
+        "return_window": "five_day",
+        "percentile": 0.745361484325016,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "holding": {
+        "return": 0.06868131868131866,
+        "group_weight": 0.073400104156446
+      }
+    },
+    {
+      "asset_id": "stock-hk-02097",
+      "symbol": "02097",
+      "status": "confirmed",
+      "market_date": "2026-08-27",
+      "daily_return": -0.08366858070520589,
+      "five_day_return": -0.023993102998847604,
+      "volatility": {
+        "basis": "historical_percentile",
+        "return_window": "daily",
+        "percentile": 0.008571428571428572,
+        "level": "extreme",
+        "description": "极端波动"
+      },
+      "five_day_volatility": {
+        "basis": "historical_percentile",
+        "return_window": "five_day",
+        "percentile": 0.3959537572254335,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "holding": {
+        "return": 0.0745283018867926,
+        "group_weight": 0.10745850724189203
       }
     },
     {
       "asset_id": "stock-hk-02150",
       "symbol": "02150",
       "status": "confirmed",
-      "market_date": "2026-08-20",
-      "daily_return": -0.027210884353741527,
-      "five_day_return": -0.01379310344827589,
+      "market_date": "2026-08-27",
+      "daily_return": -0.07586206896551717,
+      "five_day_return": -0.06293706293706292,
       "volatility": {
         "basis": "historical_percentile",
         "return_window": "daily",
-        "percentile": 0.21103117505995203,
-        "level": "normal",
-        "description": "正常波动"
+        "percentile": 0.02238209432454037,
+        "level": "attention",
+        "description": "异常波动"
       },
       "five_day_volatility": {
         "basis": "historical_percentile",
         "return_window": "five_day",
-        "percentile": 0.5252606255012029,
+        "percentile": 0.2413793103448276,
         "level": "normal",
         "description": "正常波动"
       },
       "holding": {
-        "return": -0.32547169811320764,
-        "group_weight": 0.024408784087105943
+        "return": -0.3679245283018868,
+        "group_weight": 0.023704082479829126
       }
     },
     {
       "asset_id": "stock-hk-09618",
       "symbol": "09618",
       "status": "confirmed",
-      "market_date": "2026-08-20",
-      "daily_return": 0.01687388987566618,
-      "five_day_return": -0.06910569105691067,
+      "market_date": "2026-08-27",
+      "daily_return": -0.008841732979664063,
+      "five_day_return": -0.020960698689956314,
       "volatility": {
         "basis": "historical_percentile",
         "return_window": "daily",
-        "percentile": 0.7568106312292359,
+        "percentile": 0.387375415282392,
         "level": "normal",
         "description": "正常波动"
       },
       "five_day_volatility": {
         "basis": "historical_percentile",
         "return_window": "five_day",
-        "percentile": 0.12258494337108594,
+        "percentile": 0.38507661558960693,
         "level": "normal",
         "description": "正常波动"
       },
       "holding": {
-        "return": 0.11169365800613629,
-        "group_weight": 0.10423518053048506
+        "return": 0.0883917822051341,
+        "group_weight": 0.10576030431796397
       }
     },
     {
       "asset_id": "stock-hk-09988",
       "symbol": "09988",
       "status": "confirmed",
-      "market_date": "2026-08-20",
-      "daily_return": 0.016103059581320522,
-      "five_day_return": 0.035274815422477346,
+      "market_date": "2026-08-27",
+      "daily_return": -0.009433962264150941,
+      "five_day_return": -0.08478605388272586,
       "volatility": {
         "basis": "historical_percentile",
         "return_window": "daily",
-        "percentile": 0.7534996956786366,
+        "percentile": 0.36944613511868535,
         "level": "normal",
         "description": "正常波动"
       },
       "five_day_volatility": {
         "basis": "historical_percentile",
         "return_window": "five_day",
-        "percentile": 0.738255033557047,
-        "level": "normal",
-        "description": "正常波动"
+        "percentile": 0.06650396583282489,
+        "level": "attention",
+        "description": "异常波动"
       },
       "holding": {
-        "return": -0.14965871801955377,
-        "group_weight": 0.3446588589418484
+        "return": -0.22175579977225413,
+        "group_weight": 0.3269040628561509
       }
     }
   ],
@@ -372,21 +372,27 @@
       {
         "type": "coverage",
         "priority": 1,
-        "text": "14/14 个直接持仓、11/13 个长钱账户内部持仓确认数据更新。"
+        "text": "14/14 个直接持仓、12/13 个长钱账户内部持仓确认数据更新。"
       },
       {
         "type": "attention",
         "priority": 2,
-        "text": "向上异常：工银前沿医疗股票A单日上涨3.73%，处于自身历史98.44%分位，属于异常波动；同期中证A500指数上涨0.22%，方向一致；蜜雪集团单日上涨5.80%，处于自身历史94.29%分位，属于异常波动；同期Global X MSCI China Consumer Discretionary ETF上涨0.49%，方向一致；广发中证养老产业指数A单日上涨1.98%，处于自身历史94.19%分位，属于异常波动；同期中证A500指数上涨0.22%，方向一致。"
+        "text": "向上异常：万家中证1000指数增强A单日上涨2.39%，位于自身历史96.06%分位，属于异常波动；同日宽市参考中证A500指数上涨1.15%，两者方向一致；华泰柏瑞中证2000指数增强A单日上涨1.99%，位于自身历史90.58%分位，属于异常波动；同日主要参考华泰柏瑞中证2000ETF上涨1.91%，两者方向一致。"
       },
       {
         "type": "attention",
         "priority": 2,
-        "text": "向下异常：好未来单日下跌5.36%，处于自身历史4.64%分位，属于异常波动；同期iShares MSCI China ETF上涨0.22%，方向相反。"
+        "text": "向下异常：蜜雪集团单日下跌8.37%，位于自身历史0.86%分位，属于极端波动；同日宽市参考恒生指数下跌0.34%，两者方向一致；奈雪的茶单日下跌7.59%，位于自身历史2.24%分位，属于异常波动；同日宽市参考恒生指数下跌0.34%，两者方向一致；小米集团-W单日下跌3.44%，位于自身历史8.51%分位，属于异常波动；同日主要参考恒生科技指数下跌0.13%，两者方向一致；瑞幸咖啡单日下跌4.52%，位于自身历史9.91%分位，属于异常波动；同日宽市参考MCHI下跌0.36%，两者方向一致。"
       }
     ]
   },
   "five_day_overview": {
-    "items": []
+    "items": [
+      {
+        "type": "attention",
+        "priority": 2,
+        "text": "向下异常：工银前沿医疗股票A近5日累计下跌5.93%，位于自身历史3.64%分位，属于异常波动；截至同一市场日，宽市参考中证A500指数近5日累计上涨0.82%，两者方向相反；阿里巴巴-W近5日累计下跌8.48%，位于自身历史6.65%分位，属于异常波动；截至同一市场日，宽市参考恒生指数近5日累计下跌0.52%，两者方向一致。"
+      }
+    ]
   }
 }
