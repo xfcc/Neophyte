@@ -7,23 +7,23 @@
       "strategy_code": "TIAA001001",
       "name": "投顾服务产品",
       "status": "estimated",
-      "holding_return": -0.009182832341742775,
-      "daily_return": -0.00040277405228845883,
+      "holding_return": -0.009150368369659212,
+      "daily_return": -0.00037002240294566914,
       "allocations": [
         {
           "bucket": "equity",
           "name": "股票基金",
-          "weight": 0.5536390637368063
+          "weight": 0.553461085571999
         },
         {
           "bucket": "bond",
           "name": "债券基金",
-          "weight": 0.25040314837262817
+          "weight": 0.25050299199510634
         },
         {
           "bucket": "cash",
           "name": "现金及货币基金",
-          "weight": 0.19595778789056562
+          "weight": 0.19603592243289447
         }
       ],
       "components": [
@@ -35,7 +35,7 @@
           "status": "confirmed",
           "market_date": "2026-08-28",
           "value_type": "money_fund_income",
-          "account_weight": 0.17648128851389205,
+          "account_weight": 0.17655165716244683,
           "holding_return": 0.004060387373832917,
           "daily_return": 4.555e-05,
           "five_day_return": null,
@@ -62,7 +62,7 @@
           "status": "confirmed",
           "market_date": "2026-08-28",
           "value_type": "nav",
-          "account_weight": 0.1704833820978878,
+          "account_weight": 0.16984942768014905,
           "holding_return": -0.011263031065011253,
           "daily_return": -0.004115660616293759,
           "five_day_return": -0.0012699756587999378,
@@ -89,7 +89,7 @@
           "status": "confirmed",
           "market_date": "2026-08-28",
           "value_type": "nav",
-          "account_weight": 0.15281986222456997,
+          "account_weight": 0.15288079631717336,
           "holding_return": 0.00860725680789498,
           "daily_return": 0.0,
           "five_day_return": -1.1102230246251565e-16,
@@ -116,7 +116,7 @@
           "status": "confirmed",
           "market_date": "2026-08-28",
           "value_type": "nav",
-          "account_weight": 0.0975832861480582,
+          "account_weight": 0.09762219567793298,
           "holding_return": 0.006375136965833139,
           "daily_return": 0.0,
           "five_day_return": 9.899029895077405e-05,
@@ -143,7 +143,7 @@
           "status": "confirmed",
           "market_date": "2026-08-28",
           "value_type": "nav",
-          "account_weight": 0.09375136133520727,
+          "account_weight": 0.09402450076503663,
           "holding_return": 0.03385703063629242,
           "daily_return": 0.0025137111517368194,
           "five_day_return": 0.019442292796282068,
@@ -170,7 +170,7 @@
           "status": "confirmed",
           "market_date": "2026-08-28",
           "value_type": "nav",
-          "account_weight": 0.07487405079384261,
+          "account_weight": 0.07557568934154218,
           "holding_return": -0.06511274385609322,
           "daily_return": 0.008968609865470878,
           "five_day_return": 0.017538054268696257,
@@ -194,26 +194,26 @@
           "symbol": "164906",
           "name": "交银中证海外中国互联网指数（LOF）A",
           "asset_bucket": "equity",
-          "status": "missing",
-          "market_date": "2026-08-27",
+          "status": "confirmed",
+          "market_date": "2026-08-28",
           "value_type": "nav",
-          "account_weight": 0.05969462990843223,
-          "holding_return": -0.07656726700127936,
-          "daily_return": null,
-          "five_day_return": null,
+          "account_weight": 0.059731161107672084,
+          "holding_return": -0.07637043598071058,
+          "daily_return": 0.00021315144410105624,
+          "five_day_return": -0.01861340583498905,
           "volatility": {
             "basis": "historical_percentile",
             "return_window": "daily",
-            "percentile": null,
-            "level": "unavailable",
-            "description": "无法判断"
+            "percentile": 0.5132939438700148,
+            "level": "normal",
+            "description": "正常波动"
           },
           "five_day_volatility": {
             "basis": "historical_percentile",
             "return_window": "five_day",
-            "percentile": null,
-            "level": "unavailable",
-            "description": "无法判断"
+            "percentile": 0.29622781065088755,
+            "level": "normal",
+            "description": "正常波动"
           }
         },
         {
@@ -224,7 +224,7 @@
           "status": "confirmed",
           "market_date": "2026-08-28",
           "value_type": "nav",
-          "account_weight": 0.051962487134359185,
+          "account_weight": 0.05211048757803613,
           "holding_return": 0.03137850553847277,
           "daily_return": 0.0024485092899322325,
           "five_day_return": 0.019257523614264027,
@@ -251,7 +251,7 @@
           "status": "confirmed",
           "market_date": "2026-08-28",
           "value_type": "nav",
-          "account_weight": 0.04249168025604696,
+          "account_weight": 0.041879052188696475,
           "holding_return": 0.036104794243170035,
           "daily_return": -0.014810426540284305,
           "five_day_return": -0.037337192474674485,
@@ -278,7 +278,7 @@
           "status": "confirmed",
           "market_date": "2026-08-28",
           "value_type": "nav",
-          "account_weight": 0.03053510715074988,
+          "account_weight": 0.03043620143264214,
           "holding_return": -0.1633032395114179,
           "daily_return": -0.0036363636363635488,
           "five_day_return": -0.03165334972341749,
@@ -305,7 +305,7 @@
           "status": "confirmed",
           "market_date": "2026-08-28",
           "value_type": "money_fund_income",
-          "account_weight": 0.019476499376673555,
+          "account_weight": 0.01948426527044765,
           "holding_return": 0.0031701742122318844,
           "daily_return": 2.484e-05,
           "five_day_return": null,
@@ -332,7 +332,7 @@
           "status": "confirmed",
           "market_date": "2026-08-28",
           "value_type": "nav",
-          "account_weight": 0.019068160170844395,
+          "account_weight": 0.01913947047149938,
           "holding_return": -0.05291600990767853,
           "daily_return": 0.0033396946564885344,
           "five_day_return": 0.004178106720782893,
@@ -359,7 +359,7 @@
           "status": "confirmed",
           "market_date": "2026-08-28",
           "value_type": "nav",
-          "account_weight": 0.010778204889436004,
+          "account_weight": 0.010715095006725099,
           "holding_return": 0.07108685398558046,
           "daily_return": -0.006251562890722706,
           "five_day_return": 0.00843748017509327,
@@ -382,7 +382,7 @@
     }
   ],
   "summary": {
-    "components_confirmed": 12,
+    "components_confirmed": 13,
     "components_total": 13
   }
 }
