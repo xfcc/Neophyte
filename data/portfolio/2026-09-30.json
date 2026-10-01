@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "reference_date": "2026-09-29",
+  "reference_date": "2026-09-30",
   "status": "complete",
   "coverage": {
     "valued_positions": 15,
@@ -11,8 +11,8 @@
       "id": "independent_equity_funds",
       "name": "独立股票基金",
       "target_weight": 0.175,
-      "actual_weight": 0.19316359557954238,
-      "holding_return": -0.01642971298924544,
+      "actual_weight": 0.1931988919005855,
+      "holding_return": -0.013161875091875492,
       "holding_return_status": "calculated",
       "holding_return_coverage": 1.0,
       "status": "complete"
@@ -21,8 +21,8 @@
       "id": "independent_bond_funds",
       "name": "独立债券基金",
       "target_weight": 0.175,
-      "actual_weight": 0.19690555291719716,
-      "holding_return": 0.002636604305765483,
+      "actual_weight": 0.19624539908025238,
+      "holding_return": 0.0024119703518703213,
       "holding_return_status": "calculated",
       "holding_return_coverage": 1.0,
       "status": "complete"
@@ -31,8 +31,8 @@
       "id": "active_equity",
       "name": "主动个股",
       "target_weight": 0.15,
-      "actual_weight": 0.15868717185041986,
-      "holding_return": -0.0730830399111927,
+      "actual_weight": 0.15877643654998483,
+      "holding_return": -0.06861343139141307,
       "holding_return_status": "calculated",
       "holding_return_coverage": 1.0,
       "status": "complete"
@@ -41,8 +41,8 @@
       "id": "advisory",
       "name": "投顾服务产品",
       "target_weight": 0.5,
-      "actual_weight": 0.45124367965284057,
-      "holding_return": -0.032833494099310356,
+      "actual_weight": 0.4517792724691774,
+      "holding_return": -0.028632894458028746,
       "holding_return_status": "estimated",
       "holding_return_coverage": 1.0,
       "status": "estimated"
@@ -55,16 +55,16 @@
         {
           "id": "hk",
           "name": "港股",
-          "weight": 0.7242168155590197,
-          "holding_return": -0.17722407561057296,
+          "weight": 0.7223153473935762,
+          "holding_return": -0.1753857170311366,
           "holding_return_coverage": 1.0,
           "components": [
             {
               "id": "stock-hk-01810",
               "name": "小米集团-W",
               "symbol": "01810",
-              "weight": 0.10210294766719002,
-              "holding_return": -0.013698630136986356,
+              "weight": 0.10176912731328805,
+              "holding_return": -0.012133072407044976,
               "holding_return_status": "calculated",
               "status": "confirmed"
             },
@@ -72,8 +72,8 @@
               "id": "stock-hk-02020",
               "name": "安踏体育",
               "symbol": "02020",
-              "weight": 0.07445006600732607,
-              "holding_return": 0.009615384615384581,
+              "weight": 0.07434105724400747,
+              "holding_return": 0.013049450549450725,
               "holding_return_status": "calculated",
               "status": "confirmed"
             },
@@ -81,8 +81,8 @@
               "id": "stock-hk-02097",
               "name": "蜜雪集团",
               "symbol": "02097",
-              "weight": 0.09278402784042268,
-              "holding_return": -0.13584905660377355,
+              "weight": 0.0916788987747416,
+              "holding_return": -0.14198117924528297,
               "holding_return_status": "calculated",
               "status": "confirmed"
             },
@@ -90,8 +90,8 @@
               "id": "stock-hk-02150",
               "name": "奈雪的茶",
               "symbol": "02150",
-              "weight": 0.02772885111497348,
-              "holding_return": -0.3113207547169812,
+              "weight": 0.02702738437091458,
+              "holding_return": -0.32547169811320764,
               "holding_return_status": "calculated",
               "status": "confirmed"
             },
@@ -99,8 +99,8 @@
               "id": "stock-hk-09618",
               "name": "京东集团-SW",
               "symbol": "09618",
-              "weight": 0.10443267762388186,
-              "holding_return": 0.0010097479513766494,
+              "weight": 0.10513589519389802,
+              "holding_return": 0.012660685851877629,
               "holding_return_status": "calculated",
               "status": "confirmed"
             },
@@ -108,8 +108,8 @@
               "id": "stock-hk-09988",
               "name": "阿里巴巴-W",
               "symbol": "09988",
-              "weight": 0.32271824530522564,
-              "holding_return": -0.2844196184918909,
+              "weight": 0.3223629844967266,
+              "holding_return": -0.28172440048244407,
               "holding_return_status": "calculated",
               "status": "confirmed"
             }
@@ -118,16 +118,16 @@
         {
           "id": "us",
           "name": "美股",
-          "weight": 0.27578318444098043,
-          "holding_return": 0.3883999999999999,
+          "weight": 0.2776846526064237,
+          "holding_return": 0.40440000000000004,
           "holding_return_coverage": 1.0,
           "components": [
             {
               "id": "stock-us-lkncy",
               "name": "瑞幸咖啡",
               "symbol": "LKNCY",
-              "weight": 0.135984707626257,
-              "holding_return": 0.021791044776119373,
+              "weight": 0.13449238158850002,
+              "holding_return": 0.015223880597015071,
               "holding_return_status": "calculated",
               "status": "confirmed"
             },
@@ -135,8 +135,8 @@
               "id": "stock-us-tal",
               "name": "好未来",
               "symbol": "TAL",
-              "weight": 0.13979847681472343,
-              "holding_return": 1.1327272727272724,
+              "weight": 0.1431922710179237,
+              "holding_return": 1.1945454545454544,
               "holding_return_status": "calculated",
               "status": "confirmed"
             }
@@ -150,16 +150,16 @@
         {
           "id": "equity",
           "name": "股票基金",
-          "weight": 0.5415038164558562,
-          "holding_return": -0.06677902703857322,
+          "weight": 0.5412623184467722,
+          "holding_return": -0.05918265875622781,
           "holding_return_coverage": 1.0,
           "components": [
             {
               "id": "tiaa001001-fund-110020",
               "name": "易方达沪深300ETF联接A",
               "symbol": "110020",
-              "weight": 0.16510301047812972,
-              "holding_return": -0.06275865681806281,
+              "weight": 0.16486903478791695,
+              "holding_return": -0.06003457488606001,
               "holding_return_status": "calculated",
               "status": "confirmed"
             },
@@ -167,8 +167,8 @@
               "id": "tiaa001001-fund-009051",
               "name": "易方达中证红利ETF联接A",
               "symbol": "009051",
-              "weight": 0.09244795883853096,
-              "holding_return": -0.008719560094265444,
+              "weight": 0.0931071093898885,
+              "holding_return": 0.002670856245090336,
               "holding_return_status": "calculated",
               "status": "confirmed"
             },
@@ -176,8 +176,8 @@
               "id": "tiaa001001-fund-000248",
               "name": "汇添富中证主要消费ETF联接A",
               "symbol": "000248",
-              "weight": 0.07487897455904621,
-              "holding_return": -0.09673169495819611,
+              "weight": 0.07564777980875594,
+              "holding_return": -0.08350646060298961,
               "holding_return_status": "calculated",
               "status": "confirmed"
             },
@@ -185,8 +185,8 @@
               "id": "tiaa001001-fund-164906",
               "name": "交银中证海外中国互联网指数（LOF）A",
               "symbol": "164906",
-              "weight": 0.05747322939231521,
-              "holding_return": -0.13335301643539021,
+              "weight": 0.056848545250276036,
+              "holding_return": -0.13906111603188664,
               "holding_return_status": "calculated",
               "status": "missing"
             },
@@ -194,8 +194,8 @@
               "id": "tiaa001001-fund-090010",
               "name": "大成中证红利指数A",
               "symbol": "090010",
-              "weight": 0.051235801172944774,
-              "holding_return": -0.01111399251657852,
+              "weight": 0.05160164790518272,
+              "holding_return": 0.00025932649205362424,
               "holding_return_status": "calculated",
               "status": "confirmed"
             },
@@ -203,8 +203,8 @@
               "id": "tiaa001001-fund-001717",
               "name": "工银前沿医疗股票A",
               "symbol": "001717",
-              "weight": 0.04228692865068931,
-              "holding_return": 0.02021743870907433,
+              "weight": 0.0434031188797545,
+              "holding_return": 0.05168063300208714,
               "holding_return_status": "calculated",
               "status": "confirmed"
             },
@@ -212,8 +212,8 @@
               "id": "tiaa001001-fund-012348",
               "name": "天弘恒生科技ETF联接A",
               "symbol": "012348",
-              "weight": 0.028720063712224218,
-              "holding_return": -0.23008497079129053,
+              "weight": 0.02860117962908534,
+              "holding_return": -0.22995220392989912,
               "holding_return_status": "calculated",
               "status": "confirmed"
             },
@@ -221,8 +221,8 @@
               "id": "tiaa001001-fund-000968",
               "name": "广发中证养老产业指数A",
               "symbol": "000968",
-              "weight": 0.01880321228681679,
-              "holding_return": -0.09265931096599866,
+              "weight": 0.0190264803520209,
+              "holding_return": -0.07791038054492239,
               "holding_return_status": "calculated",
               "status": "confirmed"
             },
@@ -230,8 +230,8 @@
               "id": "tiaa001001-fund-005313",
               "name": "万家中证1000指数增强A",
               "symbol": "005313",
-              "weight": 0.010486791171673764,
-              "holding_return": 0.02223569840307249,
+              "weight": 0.010385144212768899,
+              "holding_return": 0.016710464254430235,
               "holding_return_status": "calculated",
               "status": "confirmed"
             }
@@ -240,16 +240,16 @@
         {
           "id": "bond",
           "name": "债券基金",
-          "weight": 0.25745051198029706,
-          "holding_return": 0.010304327777396491,
+          "weight": 0.2576338569452939,
+          "holding_return": 0.010000359114750777,
           "holding_return_coverage": 1.0,
           "components": [
             {
               "id": "tiaa001001-fund-000191",
               "name": "富国信用债债券A",
               "symbol": "000191",
-              "weight": 0.15720042452439237,
-              "holding_return": 0.011352674927654682,
+              "weight": 0.15646529792415204,
+              "holding_return": 0.010981672479038362,
               "holding_return_status": "calculated",
               "status": "confirmed"
             },
@@ -257,8 +257,8 @@
               "id": "tiaa001001-fund-007169",
               "name": "易方达中债1—3年国开行债券指数A",
               "symbol": "007169",
-              "weight": 0.10033590699663995,
-              "holding_return": 0.008666201812929542,
+              "weight": 0.09988361593362372,
+              "holding_return": 0.008466978782747159,
               "holding_return_status": "calculated",
               "status": "confirmed"
             }
@@ -267,16 +267,16 @@
         {
           "id": "cash",
           "name": "现金及货币基金",
-          "weight": 0.20104567156384665,
-          "holding_return": 0.004646285925079866,
+          "weight": 0.2011038246079338,
+          "holding_return": 0.004676655731585704,
           "holding_return_coverage": 1.0,
           "components": [
             {
               "id": "tiaa001001-fund-000905",
               "name": "鹏华安盈宝货币A",
               "symbol": "000905",
-              "weight": 0.18104729385932655,
-              "holding_return": 0.004749577373832916,
+              "weight": 0.18026677926746953,
+              "holding_return": 0.004780607373832915,
               "holding_return_status": "calculated",
               "status": "confirmed"
             },
@@ -284,8 +284,8 @@
               "id": "tiaa001001-fund-000638",
               "name": "富国富钱包货币A",
               "symbol": "000638",
-              "weight": 0.019980404357270085,
-              "holding_return": 0.003711304212231885,
+              "weight": 0.01989426665910504,
+              "holding_return": 0.003735704212231885,
               "holding_return_status": "calculated",
               "status": "confirmed"
             }
@@ -300,15 +300,15 @@
           "id": "products",
           "name": "持仓产品",
           "weight": 1.0,
-          "holding_return": 0.002636604305765483,
+          "holding_return": 0.0024119703518703213,
           "holding_return_coverage": 1.0,
           "components": [
             {
               "id": "fund-cn-007169",
               "name": "易方达中债1—3年国开行债券指数A",
               "symbol": "007169",
-              "weight": 0.45270890245027745,
-              "holding_return": 0.003369005152595861,
+              "weight": 0.4527209163618265,
+              "holding_return": 0.0031708283789138036,
               "holding_return_status": "calculated",
               "status": "confirmed"
             },
@@ -316,8 +316,8 @@
               "id": "fund-cn-000191",
               "name": "富国信用债A",
               "symbol": "000191",
-              "weight": 0.40521718498481274,
-              "holding_return": 0.003755799396126136,
+              "weight": 0.4051593091853409,
+              "holding_return": 0.0033875837690551247,
               "holding_return_status": "calculated",
               "status": "confirmed"
             },
@@ -325,8 +325,8 @@
               "id": "fund-cn-006662",
               "name": "易方达安悦超短债A",
               "symbol": "006662",
-              "weight": 0.1420739125649098,
-              "holding_return": -0.002853768943121282,
+              "weight": 0.14211977445283266,
+              "holding_return": -0.0027553631174964677,
               "holding_return_status": "calculated",
               "status": "confirmed"
             }
@@ -341,15 +341,15 @@
           "id": "products",
           "name": "持仓产品",
           "weight": 1.0,
-          "holding_return": -0.01642971298924544,
+          "holding_return": -0.013161875091875492,
           "holding_return_coverage": 1.0,
           "components": [
             {
               "id": "fund-cn-022444",
               "name": "景顺长城中证A500ETF联接A",
               "symbol": "022444",
-              "weight": 0.5717818461630461,
-              "holding_return": -0.055210146729669174,
+              "weight": 0.5709885091272516,
+              "holding_return": -0.05338638812898944,
               "holding_return_status": "calculated",
               "status": "confirmed"
             },
@@ -357,8 +357,8 @@
               "id": "fund-cn-007466",
               "name": "华泰柏瑞中证红利低波ETF联接A",
               "symbol": "007466",
-              "weight": 0.24242274011049225,
-              "holding_return": 0.0014848728577614434,
+              "weight": 0.24500835771096108,
+              "holding_return": 0.01552929530408953,
               "holding_return_status": "calculated",
               "status": "confirmed"
             },
@@ -366,8 +366,8 @@
               "id": "fund-cn-019923",
               "name": "华泰柏瑞中证2000指数增强A",
               "symbol": "019923",
-              "weight": 0.18579541372646172,
-              "holding_return": 0.09648671808054843,
+              "weight": 0.1840031331617872,
+              "holding_return": 0.0895172807769209,
               "holding_return_status": "calculated",
               "status": "confirmed"
             }
