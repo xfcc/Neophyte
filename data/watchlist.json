@@ -66,15 +66,6 @@
       "monitoring_enabled": true
     },
     {
-      "id": "stock-us-tal",
-      "name": "好未来",
-      "symbol": "TAL",
-      "asset_type": "stock",
-      "market": "US_NYSE",
-      "allocation_category": "active_equity",
-      "monitoring_enabled": true
-    },
-    {
       "id": "stock-hk-01810",
       "name": "小米集团-W",
       "symbol": "01810",

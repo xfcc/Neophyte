@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "reference_date": "2026-10-06",
+  "reference_date": "2026-10-07",
   "status": "partial",
   "coverage": {
-    "valued_positions": 9,
-    "positions_total": 15
+    "valued_positions": 8,
+    "positions_total": 14
   },
   "top_level": [
     {
@@ -31,8 +31,8 @@
       "id": "active_equity",
       "name": "主动个股",
       "target_weight": 0.15,
-      "actual_weight": 0.2589762268841665,
-      "holding_return": -0.07381449506376205,
+      "actual_weight": 0.22686624418453316,
+      "holding_return": -0.17203013683446267,
       "holding_return_status": "calculated",
       "holding_return_coverage": 1.0,
       "status": "complete"
@@ -41,8 +41,8 @@
       "id": "advisory",
       "name": "投顾服务产品",
       "target_weight": 0.5,
-      "actual_weight": 0.7410237731158335,
-      "holding_return": -0.02863101540936186,
+      "actual_weight": 0.7731337558154668,
+      "holding_return": -0.028630545743705604,
       "holding_return_status": "estimated",
       "holding_return_coverage": 1.0,
       "status": "estimated"
@@ -55,16 +55,16 @@
         {
           "id": "hk",
           "name": "港股",
-          "weight": 0.7180518312177276,
-          "holding_return": -0.18483070361884468,
+          "weight": 0.8445559395819129,
+          "holding_return": -0.19497766919568835,
           "holding_return_coverage": 1.0,
           "components": [
             {
               "id": "stock-hk-01810",
               "name": "小米集团-W",
               "symbol": "01810",
-              "weight": 0.09836701375896365,
-              "holding_return": -0.050489236790606684,
+              "weight": 0.11560998613298451,
+              "holding_return": -0.06301369863013684,
               "holding_return_status": "calculated",
               "status": "confirmed"
             },
@@ -72,8 +72,8 @@
               "id": "stock-hk-02020",
               "name": "安踏体育",
               "symbol": "02020",
-              "weight": 0.07237638893641804,
-              "holding_return": -0.01923076923076905,
+              "weight": 0.08614006381149167,
+              "holding_return": -0.01991758241758257,
               "holding_return_status": "calculated",
               "status": "confirmed"
             },
@@ -81,8 +81,8 @@
               "id": "stock-hk-02097",
               "name": "蜜雪集团",
               "symbol": "02097",
-              "weight": 0.08702399145926452,
-              "holding_return": -0.19009433962264155,
+              "weight": 0.10430976192449729,
+              "holding_return": -0.18490566037735856,
               "holding_return_status": "calculated",
               "status": "confirmed"
             },
@@ -90,8 +90,8 @@
               "id": "stock-hk-02150",
               "name": "奈雪的茶",
               "symbol": "02150",
-              "weight": 0.026228838427588465,
-              "holding_return": -0.34905660377358494,
+              "weight": 0.030106767222131382,
+              "holding_return": -0.37264150943396224,
               "holding_return_status": "calculated",
               "status": "confirmed"
             },
@@ -99,8 +99,8 @@
               "id": "stock-hk-09618",
               "name": "京东集团-SW",
               "symbol": "09618",
-              "weight": 0.10501672120186145,
-              "holding_return": 0.00586430540991878,
+              "weight": 0.1266446067810158,
+              "holding_return": 0.018486154802128008,
               "holding_return_status": "calculated",
               "status": "confirmed"
             },
@@ -108,8 +108,8 @@
               "id": "stock-hk-09988",
               "name": "阿里巴巴-W",
               "symbol": "09988",
-              "weight": 0.3290388774336315,
-              "holding_return": -0.2709435284446572,
+              "weight": 0.38174475370979216,
+              "holding_return": -0.28981005451078434,
               "holding_return_status": "calculated",
               "status": "confirmed"
             }
@@ -118,25 +118,16 @@
         {
           "id": "us",
           "name": "美股",
-          "weight": 0.28194816878227236,
-          "holding_return": 0.41800000000000004,
+          "weight": 0.15544406041808723,
+          "holding_return": -0.020298507462686514,
           "holding_return_coverage": 1.0,
           "components": [
             {
               "id": "stock-us-lkncy",
               "name": "瑞幸咖啡",
               "symbol": "LKNCY",
-              "weight": 0.1316288347911596,
-              "holding_return": -0.011940298507462588,
-              "holding_return_status": "calculated",
-              "status": "confirmed"
-            },
-            {
-              "id": "stock-us-tal",
-              "name": "好未来",
-              "symbol": "TAL",
-              "weight": 0.15031933399111277,
-              "holding_return": 1.2909090909090906,
+              "weight": 0.15544406041808723,
+              "holding_return": -0.020298507462686466,
               "holding_return_status": "calculated",
               "status": "confirmed"
             }
@@ -268,7 +259,7 @@
           "id": "cash",
           "name": "现金及货币基金",
           "weight": 0.2011038246079338,
-          "holding_return": 0.0046862920282252744,
+          "holding_return": 0.004688700343165445,
           "holding_return_coverage": 1.0,
           "components": [
             {
@@ -285,7 +276,7 @@
               "name": "富国富钱包货币A",
               "symbol": "000638",
               "weight": 0.01989426665910504,
-              "holding_return": 0.0038324842122318846,
+              "holding_return": 0.0038566742122318845,
               "holding_return_status": "calculated",
               "status": "confirmed"
             }
