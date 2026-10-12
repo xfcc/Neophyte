@@ -33,6 +33,7 @@
   };
   async function showPage(nextPage = 0) {
     const id = ++requestId; ++detailId;
+    const movedPage = nextPage !== page;
     $('valuation-detail').hidden = true;
     page = nextPage;
     const selected = group(), kind = $('valuation-kind').value, paths = selected.pages[kind], total = selected.counts[kind];
@@ -48,6 +49,7 @@
       if (id !== requestId) return;
       $('valuation-rows').innerHTML = result.companies.map(c => `<tr><td><strong>${esc(c.name)}</strong><small>${esc(c.symbol)}</small></td><td>${esc(c.industry ?? '行业未确认')}</td><td>${num(c.scores.VS)}</td><td>${num(c.scores.QS)}</td><td class="valuation-fs">${num(c.scores.FS)}</td><td><span class="valuation-status ${c.status}">${c.scope_status === 'excluded' ? '已核验 · 收入或利润不为正' : labels[c.status]}</span></td><td><button type="button" data-valuation-detail="${esc(c.detail_path)}" aria-label="查看${esc(c.name)}详情">查看</button></td></tr>`).join('');
       $('valuation-message').textContent = `显示第 ${page*index.page_size+1}–${page*index.page_size+result.companies.length} 家`;
+      if (movedPage) $('valuation-list-title').scrollIntoView({block:'start'});
     } catch (error) {
       if (id === requestId) { $('valuation-message').textContent = error.message; $('valuation-retry').hidden = false; }
     } finally { if (id === requestId) busy(false); }
@@ -60,7 +62,7 @@
       if (id !== detailId) return;
       const percent = new Set(['DY','ROE','DR']);
       const names = {PE:'市盈率 PE',PB:'市净率 PB',DY:'普通股息率 DY（辅助）',ROE:'净资产收益率 ROE',CCR:'现金利润比 CCR',DR:'资产负债率 DR'};
-      const metrics = Object.entries(c.metrics).map(([key, m]) => `<div><dt>${names[key]}</dt><dd>${Number.isFinite(m.number) ? percent.has(key) ? `${(m.number*100).toFixed(2)}%` : m.number.toFixed(4) : '—'}</dd>${m.status === 'missing' ? `<small>${esc(explain(m.reason))}</small>` : ''}</div>`).join('');
+      const metrics = ['PE','PB','DY','ROE','CCR','DR'].map(key => { const m = c.metrics[key]; return `<div><dt>${names[key]}</dt><dd>${Number.isFinite(m.number) ? percent.has(key) ? `${(m.number*100).toFixed(2)}%` : m.number.toFixed(4) : '—'}</dd>${m.status === 'missing' ? `<small>${esc(explain(m.reason))}</small>` : ''}</div>`; }).join('');
       const money = m => Number.isFinite(m.amount) ? `${(m.amount/1e8).toFixed(2)} 亿 ${esc(m.currency)}` : '待确认';
       const periods = c.financial_period ? `${c.financial_period.start} 至 ${c.financial_period.end}` : '财务期间待确认';
       const gaps = Object.entries(c.missing).map(([key, reason]) => `<li>${esc(names[key] ?? (key === 'ttm_revenue' ? 'TTM营业收入' : 'TTM归母净利润'))}：${esc(explain(reason))}</li>`).join('');
@@ -95,7 +97,7 @@
   $('valuation-prev').addEventListener('click', () => showPage(page-1));
   $('valuation-next').addEventListener('click', () => showPage(page+1));
   $('valuation-rows').addEventListener('click', event => { const button = event.target.closest('[data-valuation-detail]'); if (button) showDetail(button.dataset.valuationDetail); });
-  $('valuation-retry').addEventListener('click', () => index ? showPage(page) : ensure());
+  $('valuation-retry').addEventListener('click', () => { index = null; ensure(); });
   window.addEventListener('neophyte:view', event => { if (event.detail === 'valuation') ensure(); });
   if (window.location.hash === '#valuation') ensure();
 })();

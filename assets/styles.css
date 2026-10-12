@@ -287,6 +287,7 @@ footer { display: flex; justify-content: space-between; padding: 22px 4px 0; col
 #valuation-count, .valuation-message, .valuation-pagination { color: var(--muted); font-size: 13px; }
 .valuation-message { margin-bottom: 12px; min-height: 20px; }
 .valuation-table { width: 100%; min-width: 790px; border-collapse: collapse; font-size: 13px; }
+.valuation-list .table-scroll { overflow-x: auto; max-width: 100%; }
 .valuation-table th, .valuation-table td { padding: 16px 12px; border-bottom: 1px solid var(--line); text-align: left; font-variant-numeric: tabular-nums; }
 .valuation-table th { color: var(--muted); font-weight: 600; font-size: 12px; }
 .valuation-table td:first-child { width: 30%; }
