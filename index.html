@@ -17,6 +17,7 @@
           <a class="view-tab" href="#daily" data-view-target="daily" aria-current="page">每日更新</a>
           <a class="view-tab" href="#five-day" data-view-target="five-day">近 5 日更新</a>
           <a class="view-tab" href="#global" data-view-target="global">全局概览</a>
+          <a class="view-tab" href="#valuation" data-view-target="valuation">低估值研究</a>
         </nav>
       </header>
 
@@ -168,11 +169,25 @@
         </section>
       </section>
 
+      <section class="view-panel" id="view-valuation" data-view-panel="valuation" hidden>
+        <header class="hero"><div class="hero-copy"><p class="eyebrow">LOW VALUATION RESEARCH</p><h1>按行业寻找低估值企业</h1><p>TTM收入与归母利润为正，VS ≥ 1。质量参与加权，股息率作为辅助观察。</p></div><p class="valuation-meta" id="valuation-meta">进入此页后加载研究结果</p></header>
+        <div class="valuation-stats" id="valuation-stats"></div>
+        <section class="panel valuation-coverage" aria-label="研究覆盖与缺口"><p id="valuation-coverage">正在读取研究覆盖情况</p><details><summary>模型规则与数据边界</summary><div id="valuation-rules"></div></details></section>
+        <section class="panel valuation-list" aria-labelledby="valuation-list-title">
+          <div class="section-heading"><h2 id="valuation-list-title">行业候选与研究清单</h2><span class="section-note">仅在行业内部按FS排序</span></div>
+          <div class="valuation-filters"><label>行业<select id="valuation-industry"><option value="all">全部行业</option></select></label><label>查看范围<select id="valuation-kind"><option value="candidates">低估值候选</option><option value="assessed">已核验企业</option><option value="pending">待确认企业</option><option value="all">全部研究企业</option></select></label><span id="valuation-count" role="status" aria-live="polite"></span></div>
+          <div class="valuation-message" id="valuation-message" role="status" aria-live="polite"></div>
+          <div class="table-scroll"><table class="valuation-table"><thead><tr><th>企业</th><th>行业</th><th>VS</th><th>QS</th><th>FS</th><th>研究状态</th><th>详情</th></tr></thead><tbody id="valuation-rows"></tbody></table></div>
+          <nav class="valuation-pagination" aria-label="研究列表分页"><button id="valuation-prev" type="button" disabled>上一页</button><span id="valuation-page" aria-live="polite"></span><button id="valuation-next" type="button" disabled>下一页</button></nav><button class="valuation-retry" id="valuation-retry" type="button" hidden>重新加载</button>
+        </section>
+        <section class="panel valuation-detail" id="valuation-detail" aria-labelledby="valuation-detail-title" hidden></section>
+      </section>
       <footer>
         <span>Neophyte · 投资观察</span>
         <span>历史分位与市场共振 ≠ 投资结论</span>
       </footer>
     </main>
     <script src="./assets/app.js"></script>
+    <script src="./assets/valuation.js"></script>
   </body>
 </html>

@@ -18,5 +18,8 @@
   "latest_portfolio_snapshot": "data/portfolio/2026-10-09.json",
   "last_run": {
     "status": "partial"
+  },
+  "valuation_view": {
+    "index_path": "data/valuation/2026-10-12-daa1d4be84da/index.json"
   }
 }
