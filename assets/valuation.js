@@ -5,6 +5,13 @@
   const num = value => Number.isFinite(value) ? value.toFixed(3) : '—';
   const labels = {candidate:'低估值候选',assessed:'已核验 · 非候选',pending:'待确认'};
   const reasons = {
+    official_report_not_found:'港交所查询窗口内未找到财报', official_comparable_report_not_found:'未找到可用于当前TTM的对应报告',
+    official_pdf_unavailable:'财报原件下载或文本提取未完成', official_table_currency_unit_or_period_unconfirmed:'原文表格的币种、单位或期间尚未确认',
+    official_financial_fields_unconfirmed:'尚未从原文确认财务字段', ttm_components_unavailable:'缺少期间匹配的TTM报表组件',
+    ttm_revenue_component_or_extraction_unavailable:'缺少已核验的TTM营业收入组件', ttm_parent_profit_component_missing:'缺少TTM归母利润组件',
+    revenue_original_table_conflict:'原文营业收入提取存在冲突，保持缺失', parent_profit_original_table_conflict:'原文归母利润提取存在冲突，保持缺失',
+    parent_equity_original_table_conflict:'原文归母净资产提取存在冲突，保持缺失', assets_original_table_conflict:'原文总资产提取存在冲突，保持缺失',
+    liabilities_original_table_conflict:'原文总负债提取存在冲突，保持缺失', net_profit_original_table_conflict:'原文合并净利润提取存在冲突，保持缺失', ocf_original_table_conflict:'原文经营现金流提取存在冲突，保持缺失',
     required_input_missing:'必要数据尚未确认', financial_metadata_or_point_in_time_unavailable:'财报币种、公告日期或可用时间尚未确认',
     financial_announcement_date_not_returned:'缺少财报实际公告日期', statement_currency_not_returned:'报表原始币种未确认',
     quote_currency_unconfirmed:'报价币种未确认', H_share_total_issuer_market_cap_unconfirmed:'尚未确认市值覆盖整家公司',
@@ -81,8 +88,8 @@
       index = await fetchJson(manifest.valuation_view.index_path);
       $('valuation-meta').textContent = `观察 ${index.snapshot_date} · 价格 ${index.price_date} · 名录 ${index.registry_as_of ?? '待确认'} · 模型 V${index.model_version}`;
       const s = index.summary;
-      $('valuation-stats').innerHTML = [['研究企业',s.companies],['财务核验',s.companies-s.scope_unknown],['完整评分',s.FS_valid],['低估值候选',s.candidates]].map(([label, count]) => `<div><span>${label}</span><strong>${count.toLocaleString()}</strong></div>`).join('');
-      $('valuation-coverage').textContent = `${s.scope_unknown.toLocaleString()} 家财务资格待确认。候选仅来自已核验子集。目标价格日缺失 ${index.gaps.price} 家、报价币种未确认 ${index.gaps.quotation_currency} 家、H股全公司市值口径未确认 ${index.gaps.whole_issuer_market_cap} 家，缺口可能重叠。`;
+      $('valuation-stats').innerHTML = [['研究企业',s.companies],['收入与利润确认',s.companies-s.scope_unknown],['完整评分',s.FS_valid],['低估值候选',s.candidates]].map(([label, count]) => `<div><span>${label}</span><strong>${count.toLocaleString()}</strong></div>`).join('');
+      $('valuation-coverage').textContent = `${s.scope_unknown.toLocaleString()} 家收入或利润资格待确认。TTM营业收入缺失 ${index.gaps.revenue ?? '—'} 家、TTM归母利润缺失 ${index.gaps.parent_profit ?? '—'} 家。候选仅来自已核验子集。目标价格日缺失 ${index.gaps.price} 家、报价币种未确认 ${index.gaps.quotation_currency} 家、H股全公司市值口径未确认 ${index.gaps.whole_issuer_market_cap} 家，缺口可能重叠。`;
       $('valuation-industry').innerHTML = index.groups.map(g => `<option value="${g.id}">${esc(g.name)} · ${g.counts.all} 家</option>`).join('');
       const w = index.model.weights, b = index.model.baselines;
       $('valuation-rules').textContent = `VS = ${w.PE.toFixed(4)} × ${b.PE}/PE + ${w.PB.toFixed(4)} × ${b.PB}/PB。QS = ${w.ROE} × ROE/${b.ROE} + ${w.CCR} × CCR + ${w.DR} × (1−DR)/${b.DR}。FS = ${w.VS} × VS + ${w.QS} × QS。权重按原始精度计算。仅同行业内比较，不设质量准入门槛，不截断有效极端值；股息率缺失不影响V1.1核心评分。FS是评价指数，不是收益率或上涨概率。名录之后的上市及退市变更尚待核验。`;
