@@ -59,7 +59,7 @@ const resonanceLabels = {
 
 const accountAllocationColors = { equity: "#a43e35", bond: "#2e5f7a", cash: "#6f8980" };
 const accountBucketLabels = { equity: "股票基金", bond: "债券基金", cash: "现金及货币基金" };
-const viewNames = new Set(["daily", "five-day", "global", "valuation"]);
+const viewNames = new Set(["daily", "five-day", "global"]);
 
 function formatPercent(value) {
   if (!Number.isFinite(value)) return "—";
@@ -561,9 +561,8 @@ function activateView(name = requestedView()) {
     if (tab.dataset.viewTarget === activeName) tab.setAttribute("aria-current", "page");
     else tab.removeAttribute("aria-current");
   });
-  const titles = { daily: document.querySelector("#page-title")?.textContent ?? "每日更新", "five-day": "近 5 日更新", global: "全局概览", valuation: "低估值研究" };
+  const titles = { daily: document.querySelector("#page-title")?.textContent ?? "每日更新", "five-day": "近 5 日更新", global: "全局概览" };
   document.title = `Neophyte · ${titles[activeName]}`;
-  window.dispatchEvent(new CustomEvent('neophyte:view', { detail: activeName }));
 }
 
 function setViewSummaries(snapshots, assets, accountSnapshot, volatilityIndex, portfolioSnapshot) {
