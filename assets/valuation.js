@@ -12,6 +12,9 @@
     revenue_original_table_conflict:'原文营业收入提取存在冲突，保持缺失', parent_profit_original_table_conflict:'原文归母利润提取存在冲突，保持缺失',
     parent_equity_original_table_conflict:'原文归母净资产提取存在冲突，保持缺失', assets_original_table_conflict:'原文总资产提取存在冲突，保持缺失',
     liabilities_original_table_conflict:'原文总负债提取存在冲突，保持缺失', net_profit_original_table_conflict:'原文合并净利润提取存在冲突，保持缺失', ocf_original_table_conflict:'原文经营现金流提取存在冲突，保持缺失',
+    income_comparative_revision_unconfirmed:'利润表标记了重列，TTM可比组件尚未核验', equity_comparative_revision_unconfirmed:'资产负债表标记了重列，期初归母净资产尚待核验',
+    original_document_period_currency_or_basis_conflict:'同一余额日期的原件期间、币种或会计准则冲突，保持缺失',
+    liabilities_presentation_sign_unconfirmed:'负债表采用减项列示，负债金额符号尚未确认', assets_presentation_sign_unconfirmed:'资产金额的列示符号尚未确认',
     required_input_missing:'必要数据尚未确认', financial_metadata_or_point_in_time_unavailable:'财报币种、公告日期或可用时间尚未确认',
     financial_announcement_date_not_returned:'缺少财报实际公告日期', statement_currency_not_returned:'报表原始币种未确认',
     quote_currency_unconfirmed:'报价币种未确认', H_share_total_issuer_market_cap_unconfirmed:'尚未确认市值覆盖整家公司',
@@ -54,7 +57,7 @@
       if (!paths.length) return;
       const result = await fetchJson(paths[page]);
       if (id !== requestId) return;
-      $('valuation-rows').innerHTML = result.companies.map(c => `<tr><td><strong>${esc(c.name)}</strong><small>${esc(c.symbol)}</small></td><td>${esc(c.industry ?? '行业未确认')}</td><td>${num(c.scores.VS)}</td><td>${num(c.scores.QS)}</td><td class="valuation-fs">${num(c.scores.FS)}</td><td><span class="valuation-status ${c.status}">${c.scope_status === 'excluded' ? '已核验 · 收入或利润不为正' : labels[c.status]}</span></td><td><button type="button" data-valuation-detail="${esc(c.detail_path)}" aria-label="查看${esc(c.name)}详情">查看</button></td></tr>`).join('');
+      $('valuation-rows').innerHTML = result.companies.map(c => `<tr><td><strong>${esc(c.name)}</strong><small>${esc(c.symbol)}</small></td><td>${esc(c.industry ?? '行业未确认')}</td><td>${num(c.scores.VS)}</td><td>${num(c.scores.QS)}</td><td class="valuation-fs">${num(c.scores.FS)}</td><td><span class="valuation-status ${c.status}">${c.scope_status === 'excluded' ? '收入或利润不为正' : c.scope_status === 'eligible' && c.candidate === null ? '收入利润已确认 · 估值待确认' : labels[c.status]}</span></td><td><button type="button" data-valuation-detail="${esc(c.detail_path)}" aria-label="查看${esc(c.name)}详情">查看</button></td></tr>`).join('');
       $('valuation-message').textContent = `显示第 ${page*index.page_size+1}–${page*index.page_size+result.companies.length} 家`;
       if (movedPage) $('valuation-list-title').scrollIntoView({block:'start'});
     } catch (error) {
@@ -88,7 +91,7 @@
       index = await fetchJson(manifest.valuation_view.index_path);
       $('valuation-meta').textContent = `观察 ${index.snapshot_date} · 价格 ${index.price_date} · 名录 ${index.registry_as_of ?? '待确认'} · 模型 V${index.model_version}`;
       const s = index.summary;
-      $('valuation-stats').innerHTML = [['研究企业',s.companies],['收入与利润确认',s.companies-s.scope_unknown],['完整评分',s.FS_valid],['低估值候选',s.candidates]].map(([label, count]) => `<div><span>${label}</span><strong>${count.toLocaleString()}</strong></div>`).join('');
+      $('valuation-stats').innerHTML = [['研究企业',s.companies],['收入与利润确认',index.financial_confirmed ?? s.companies-s.scope_unknown],['完整评分',s.FS_valid],['低估值候选',s.candidates]].map(([label, count]) => `<div><span>${label}</span><strong>${count.toLocaleString()}</strong></div>`).join('');
       $('valuation-coverage').textContent = `${s.scope_unknown.toLocaleString()} 家收入或利润资格待确认。TTM营业收入缺失 ${index.gaps.revenue ?? '—'} 家、TTM归母利润缺失 ${index.gaps.parent_profit ?? '—'} 家。候选仅来自已核验子集。目标价格日缺失 ${index.gaps.price} 家、报价币种未确认 ${index.gaps.quotation_currency} 家、H股全公司市值口径未确认 ${index.gaps.whole_issuer_market_cap} 家，缺口可能重叠。`;
       $('valuation-industry').innerHTML = index.groups.map(g => `<option value="${g.id}">${esc(g.name)} · ${g.counts.all} 家</option>`).join('');
       const w = index.model.weights, b = index.model.baselines;
