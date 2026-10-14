@@ -24,8 +24,8 @@
         "description": "正常波动"
       },
       "holding": {
-        "return": -0.0779242311199535,
-        "group_weight": 0.5640896218129866
+        "return": -0.06280808951596828,
+        "group_weight": 0.6480545627912409
       }
     },
     {
@@ -51,7 +51,7 @@
       },
       "holding": {
         "return": 0.03668873352719171,
-        "group_weight": 0.25366684000399503
+        "group_weight": 0.20480560082528934
       }
     },
     {
@@ -77,7 +77,7 @@
       },
       "holding": {
         "return": 0.06398171950871179,
-        "group_weight": 0.18224353818301842
+        "group_weight": 0.1471398363834698
       }
     },
     {
@@ -159,6 +159,32 @@
       }
     },
     {
+      "asset_id": "stock-hk-03933",
+      "symbol": "03933",
+      "status": "confirmed",
+      "market_date": "2026-10-13",
+      "daily_return": 0.0047361299052774974,
+      "five_day_return": -0.025590551181102317,
+      "volatility": {
+        "basis": "historical_percentile",
+        "return_window": "daily",
+        "percentile": 0.5989804587935429,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "five_day_volatility": {
+        "basis": "historical_percentile",
+        "return_window": "five_day",
+        "percentile": 0.3173894557823129,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "holding": {
+        "return": -0.010000000000000009,
+        "group_weight": 0.08148774117078952
+      }
+    },
+    {
       "asset_id": "stock-us-lkncy",
       "symbol": "LKNCY",
       "status": "confirmed",
@@ -181,7 +207,7 @@
       },
       "holding": {
         "return": -0.020895522388059806,
-        "group_weight": 0.15284432389805597
+        "group_weight": 0.14038938519282687
       }
     },
     {
@@ -207,7 +233,7 @@
       },
       "holding": {
         "return": -0.019960861056751544,
-        "group_weight": 0.11967548062561982
+        "group_weight": 0.10992339603590948
       }
     },
     {
@@ -233,7 +259,7 @@
       },
       "holding": {
         "return": -0.00480769230769218,
-        "group_weight": 0.08656637950605188
+        "group_weight": 0.07951228077877039
       }
     },
     {
@@ -259,7 +285,7 @@
       },
       "holding": {
         "return": -0.2108490566037735,
-        "group_weight": 0.09994862174853333
+        "group_weight": 0.0918040343291117
       }
     },
     {
@@ -285,7 +311,7 @@
       },
       "holding": {
         "return": -0.339622641509434,
-        "group_weight": 0.0313646302558159
+        "group_weight": 0.02880879738361246
       }
     },
     {
@@ -311,7 +337,7 @@
       },
       "holding": {
         "return": 0.01848615480212845,
-        "group_weight": 0.12533903671752716
+        "group_weight": 0.11512544173489321
       }
     },
     {
@@ -337,7 +363,7 @@
       },
       "holding": {
         "return": -0.27768157346827393,
-        "group_weight": 0.3842615272483959
+        "group_weight": 0.35294892337408634
       }
     }
   ],
@@ -346,7 +372,7 @@
       {
         "type": "coverage",
         "priority": 1,
-        "text": "13/13 个直接持仓、12/13 个长钱账户内部持仓确认数据更新。"
+        "text": "14/14 个直接持仓、12/13 个长钱账户内部持仓确认数据更新。"
       }
     ]
   },

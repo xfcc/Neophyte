@@ -57,6 +57,15 @@
       "monitoring_enabled": true
     },
     {
+      "id": "stock-hk-03933",
+      "name": "联邦制药",
+      "symbol": "03933",
+      "asset_type": "stock",
+      "market": "HKEX",
+      "allocation_category": "active_equity",
+      "monitoring_enabled": true
+    },
+    {
       "id": "stock-us-lkncy",
       "name": "瑞幸咖啡",
       "symbol": "LKNCY",
