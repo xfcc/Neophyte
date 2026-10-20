@@ -3,6 +3,15 @@
   "as_of": "2026-08-12",
   "assets": [
     {
+      "id": "fund-cn-002656",
+      "name": "南方创业板ETF联接A",
+      "symbol": "002656",
+      "asset_type": "mutual_fund",
+      "market": "CN_FUND",
+      "allocation_category": "independent_equity_funds",
+      "monitoring_enabled": true
+    },
+    {
       "id": "fund-cn-022444",
       "name": "景顺长城中证A500ETF联接A",
       "symbol": "022444",
