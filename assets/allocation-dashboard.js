@@ -61,7 +61,7 @@
       const weights=new Map(children.map(c=>[c.id,c.actual_weight]));
       days.push({date,valid,reason,basis:snapshot?.history_basis??'configured_positions',estimated:snapshot?.history_source_status==='estimated',values:series.map(c=>valid?(weights.get(c.id)??0):null)});
     }
-    return {start,end:today,series,days,snapshot:within.at(-1)??null};
+    return {start,end:today,layerId,series,days,snapshot:within.at(-1)??null};
   }
   const chartColors={equity:'#477a68',bond:'#7198b0',cash:'#bf9858',gold:'#9b80a5',unclassified:'#a3aaa2',direct_equity_funds:'#477a68',advisory_equity_funds:'#7198b0',active_stocks:'#bf9858',direct_bond_funds:'#477a68',advisory_bond_funds:'#7198b0'};
   function color(id){if(chartColors[id])return chartColors[id];let hash=0;for(const ch of id)hash=(hash*31+ch.charCodeAt(0))>>>0;return `hsl(${hash%360} 30% 52%)`;}
@@ -115,7 +115,14 @@
     const transitions=days.filter((d,i)=>d.valid&&days[i-1]?.valid&&d.basis!==days[i-1].basis);
     const basisInfo=transitions.map(d=>`<span class="allocation-history-badge">${e(d.date)} 起切换估值口径，分段展示</span>`).join('');
     const summary=days.filter(d=>d.valid).map(d=>d.date+' '+series.map((c,k)=>c.name+' '+p(d.values[k])).join('，')).join('；');
-    return `<div class="allocation-chart" data-vchart-section="${e(id)}" role="img" aria-label="${e('每日仓位百分比堆叠面积图。周末不占位，缺失数据及口径变化处断开。'+summary)}">${!days.some(d=>d.valid)?'<span class="allocation-chart-empty">暂无完整估值</span>':''}</div><div class="allocation-legend">${days.some(d=>d.basis==='legacy_registered_positions')?'<span class="allocation-history-badge">旧版估算 · 不含未登记额外现金</span>':''}${basisInfo}${series.map(c=>`<span><i style="background:${color(c.id)}"></i>${e(c.name)}</span>`).join('')}</div>${gapInfo}`;
+    const layer=data.snapshot?.layers?.[data.layerId];
+    const legend=series.map(c=>{
+      const child=layerChildren(layer,data.layerId).find(x=>x.id===c.id);
+      if(!Number.isFinite(child?.target_weight))return `<span><i style="background:${color(c.id)}"></i>${e(c.name)}</span>`;
+      const actual=completeLayer(data.snapshot,data.layerId)?child.actual_weight:null;
+      return `<span class="allocation-target-item" title="${e(data.snapshot.reference_date+' · '+(layer.name??'该层')+'内比例')}"><i style="background:${color(c.id)}"></i><span>${e(c.name)}<small>实际 ${p(actual)} · 目标 ${p(child.target_weight)}${Number.isFinite(actual)?' · '+e(ui.delta(actual,child.target_weight)):''}</small></span></span>`;
+    }).join('');
+    return `<div class="allocation-chart" data-vchart-section="${e(id)}" role="img" aria-label="${e('每日仓位百分比堆叠面积图。周末不占位，缺失数据及口径变化处断开。'+summary)}">${!days.some(d=>d.valid)?'<span class="allocation-chart-empty">暂无完整估值</span>':''}</div><div class="allocation-legend">${days.some(d=>d.basis==='legacy_registered_positions')?'<span class="allocation-history-badge">旧版估算 · 不含未登记额外现金</span>':''}${basisInfo}${legend}</div>${gapInfo}`;
   }
 
   function productRows(snapshot,layerId) {

@@ -23,12 +23,16 @@
     document.querySelectorAll('[data-v2-panel]').forEach(x=>x.hidden=x.dataset.v2Panel!==tab);
     $('#v2-title').textContent={allocation:'资产配置',profit:'资产浮盈',volatility:'波动识别'}[tab];
     if(state.snapshots.length)renderCoverage();
-    $('#v2-subtitle').textContent={allocation:'从全账户到各类持仓，逐层查看。交易日逐点记录，可独立查看最近30个交易日或全部',profit:'按投资标的查看当前持仓与成本的差额',volatility:'识别近5个有效交易日变化的少见程度'}[tab];
+    $('#v2-subtitle').textContent={allocation:'',profit:'当前持仓相对成本的变化',volatility:'近5个有效交易日 · 产品自身历史分位'}[tab];
   }
   function renderCoverage() {
     const allocationView=!['profit','volatility'].includes(location.hash.slice(1));
     const s=allocationView?(state.snapshots.at(-1)??state.selected):state.selected, c=s?.coverage??{};
-    $('#v2-status').textContent=s ? `估值日 ${s.reference_date} · 行情快照 ${s.valuation_input_date??'—'} · ${s.status==='complete'?'全账户测算可用':'全账户测算不完整'}${c.account_source_status==='estimated'?' · 投顾源快照为估算，本页按配置份额估值':''}` : '尚无2.0配置快照；历史事实仍可在波动识别中查看。';
+    const view=location.hash.slice(1);
+    $('#v2-status').textContent=view==='volatility'
+      ? `行情日 ${state.daily?.reference_date??'—'} · 按5日累计分组 · 货币基金仅记录`
+      : s ? `估值日 ${s.reference_date} · 行情日 ${s.valuation_input_date??'—'} · ${allocationView?(s.status==='complete'?'全账户估值完整':'全账户估值待补齐'):`持仓估值 ${c.valued_positions??0}/${c.positions_total??0}`}`
+      : '尚无2.0持仓估值快照。';
     $('#v2-coverage').innerHTML=s?[
       ['行情采集',`直接 ${c.direct_confirmed??0}/${c.direct_total??0} · 投顾 ${c.advisory_confirmed??0}/${c.advisory_total??0}`],['估值覆盖',`${c.valued_positions??0}/${c.positions_total??0}`],['细分分类',c.classification==='complete'?'完整':'待完善'],
       ['账户对账',c.reconciliation==='confirmed'?'已确认':'待核对'],['现金记录',c.cash_date??'未录入'],
@@ -41,6 +45,13 @@
       else state.allocationDashboard.render();
     }
   }
+  function profitValue(row,field) {
+    if(Number.isFinite(row[field]))return p(row[field],true);
+    const reason=row.status==='missing'
+      ? `目标日数据未取得${row.market_date?'；最新可用行情 '+row.market_date:''}`
+      : field==='holding_return'?'成本缺失或不可比，暂不计算持仓盈亏':'缺少可比的相邻交易日行情';
+    return `<details class="v2-cell-detail"><summary aria-label="查看${field==='holding_return'?'持仓盈亏':'日涨跌幅'}缺失原因">—</summary><span>${e(reason)}</span></details>`;
+  }
   function renderProfit() {
     const s=state.selected;
     if(!s?.positions?.length){$('#v2-profit').innerHTML=missing('尚无该日期可用的2.0持仓估值。');return;}
@@ -49,7 +60,7 @@
       const rows=ui.sortRows(s.positions.filter(r=>group==='advisory'?!r.id.startsWith('direct:'):r.id.startsWith('direct:')&&r.method===group),'class_weight');
       if(!rows.length)return '';
       const layer=s.layers[group];
-      return `<h3>${e(title)} <small>${layer?`${layer.status==='partial'?'已知部分':'分类'}浮盈 ${p(layer.holding_return,true)} · 已计价 ${rows.filter(r=>r.status==='confirmed').length}/${rows.length} · 已知市值中成本可比 ${p(layer.holding_return_coverage)}`:`已计价 ${rows.filter(r=>r.status==='confirmed').length}/${rows.length}`}</small></h3><div class="v2-table-wrap"><table><thead><tr><th>产品名称</th><th>分类</th><th>日涨跌幅</th><th>持仓盈亏</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${e(r.name)}<small>${e(r.symbol)}</small></td><td>${e(labels[r.method]??r.method)}<small>${e(labels[r.subgroup]??r.subgroup)}</small></td><td class="${numberClass(r.daily_return)}">${p(r.daily_return,true)}</td><td class="${numberClass(r.holding_return)}">${p(r.holding_return,true)}</td></tr>`).join('')}</tbody></table></div>`;
+      return `<h3>${e(title)} <small>${layer?`${layer.status==='partial'?'已知部分':'分类'}浮盈 <strong class="${numberClass(layer.holding_return)}">${p(layer.holding_return,true)}</strong> · 已计价 ${rows.filter(r=>r.status==='confirmed').length}/${rows.length} · 成本可比 ${p(layer.holding_return_coverage)}`:`已计价 ${rows.filter(r=>r.status==='confirmed').length}/${rows.length}`}</small></h3><div class="v2-table-wrap"><table><thead><tr><th>产品名称</th><th>分类</th><th>日涨跌幅</th><th>持仓盈亏</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${e(r.name)}<small>${e(r.symbol)}</small></td><td>${e(labels[r.method]??r.method)}<small>${e(['active_stocks','cash'].includes(r.method)&&r.subgroup==='unclassified'?'':labels[r.subgroup]??r.subgroup)}</small></td><td class="${numberClass(r.daily_return)}">${profitValue(r,'daily_return')}</td><td class="${numberClass(r.holding_return)}">${profitValue(r,'holding_return')}</td></tr>`).join('')}</tbody></table></div>`;
     }).join('')||missing('该分类没有持仓。');
     window.dispatchEvent(new CustomEvent('neophyte:snapshot',{detail:s}));
   }
@@ -57,7 +68,7 @@
     if(!state.daily){$('#v2-volatility').innerHTML=missing('缺少行情事实快照。');return;}
     const rows=ui.marketRows(state.daily,state.account,state.watch,state.selected?.positions??[]);
     const grouped=ui.groupFiveDayRows(rows), names={extreme:'极端波动',attention:'异常波动',normal:'正常波动',unavailable:'数据不足',record_only:'仅记录'};
-    $('#v2-volatility').innerHTML=Object.entries(grouped).map(([key,list])=>`<h3>${names[key]} <small>${list.length}个标的</small></h3>${list.length?`<div class="v2-table-wrap"><table><thead><tr><th>产品名称</th><th>单日变化</th><th>5日累计</th><th>历史分位</th><th>市场共振</th><th>描述</th></tr></thead><tbody>${list.map(r=>{
+    $('#v2-volatility').innerHTML=Object.entries(grouped).map(([key,list])=>`<h3 class="${list.length?'':'v2-group-empty'}">${names[key]} <small>${list.length}个标的</small></h3>${list.length?`<div class="v2-table-wrap"><table><thead><tr><th>产品名称</th><th>单日变化</th><th>5日累计</th><th>历史分位</th><th>市场共振</th><th>描述</th></tr></thead><tbody>${list.map(r=>{
       const saved=r.five_day_volatility;
       const product=savedProductClassification(r,r.asset_id,'five_day',state.index);
       const resonance=marketResonance(state.index,r.asset_id,product,r.market_date,'five_day');
@@ -72,7 +83,7 @@
         brief+=` 同市场持仓样本${peers.length}个，中位累计变化${p(median,true)}；末日${Math.sign(r.daily_return)===Math.sign(cumulative)?'延续':'未延续'}窗口方向。观察下一有效交易日是否延续，并核验公司公告。`;
       }
       return `<tr><td>${e(r.name??r.symbol)}<small>${e(r.symbol)}</small></td><td class="${numberClass(r.daily_return)}">${p(r.daily_return,true)}</td><td class="${numberClass(cumulative)}">${p(cumulative,true)}</td><td>${percentile}</td><td>${renderMarketResonance(resonance)}</td><td>${e(brief)}</td></tr>`;
-    }).join('')}</tbody></table></div>`:missing('无此类标的。')}`).join('');
+    }).join('')}</tbody></table></div>`:''}`).join('');
   }
   async function chooseDate(date) {
     const request=state.selection=(state.selection??0)+1;

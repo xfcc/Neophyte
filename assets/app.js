@@ -54,7 +54,7 @@ const productLevelLabels = {
 const resonanceLabels = {
   same_normal: "同向正常",
   same_abnormal: "同向异常",
-  negative_abnormal: "负向异常",
+  negative_abnormal: "方向相反",
 };
 
 const accountAllocationColors = { equity: "#a43e35", bond: "#2e5f7a", cash: "#6f8980" };
