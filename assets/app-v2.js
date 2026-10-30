@@ -63,9 +63,6 @@
     }).join('')||missing('该分类没有持仓。');
     window.dispatchEvent(new CustomEvent('neophyte:snapshot',{detail:s}));
   }
-  function overview(target,source) {
-    $(target).innerHTML=source?.items?.length?source.items.map(x=>`<li>${e(x.text)}</li>`).join(''):'<li>此窗口没有已校验的异常概览。</li>';
-  }
   function renderVolatility() {
     if(!state.daily){$('#v2-volatility').innerHTML=missing('缺少行情事实快照。');return;}
     const rows=ui.marketRows(state.daily,state.account,state.watch,state.selected?.positions??[]);
@@ -86,7 +83,6 @@
       }
       return `<tr><td>${e(r.name??r.symbol)}<small>${e(r.symbol)}</small></td><td>${e(labels[state.selected?.positions?.find(x=>x.asset_id===r.asset_id)?.asset_class]??(r.asset_bucket==='bond'?'债券':r.asset_bucket==='equity'?'股票':'待分类'))}</td><td>${e(facts?.window_start_date??'起日证据不足')} 至 ${e(r.market_date??'缺失')}</td><td class="${numberClass(cumulative)}">${p(cumulative,true)}</td><td>${percentile}</td><td>${Number.isFinite(cumulative)?cumulative>0?'正向':cumulative<0?'负向':'持平':'—'}</td><td class="${numberClass(r.daily_return)}">${p(r.daily_return,true)}</td><td>${renderMarketResonance(resonance)}</td><td>${e(brief)}</td></tr>`;
     }).join('')}</tbody></table></div>`:missing('无此类标的。')}`).join('');
-    overview('#v2-daily-overview',state.daily.overview);overview('#v2-five-overview',state.daily.five_day_overview);
   }
   async function chooseDate(date) {
     const request=state.selection=(state.selection??0)+1;

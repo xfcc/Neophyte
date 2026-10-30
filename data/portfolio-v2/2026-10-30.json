@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "reference_date": "2026-10-30",
-  "generated_at": "2026-10-30T10:32:21+08:00",
+  "generated_at": "2026-10-30T11:18:57+08:00",
   "valuation_input_date": "2026-10-29",
   "configuration_versions": {
-    "holdings": "c7ba40fd7170131ead9faa6bcc5413d1a378c34158e2d9a3764c3f3fe5f67f7b",
+    "holdings": "f0826bc8c1d20c5a8022efeb6ac20be2dcff8f13663e3d5b8c183da99c286596",
     "allocation": "116062739f4689078d4404041a9740e37087d5f5d26dfec1933623d28108864f"
   },
   "status": "partial",
@@ -571,25 +571,25 @@
       "denominator_id": "direct_equity_funds",
       "status": "complete",
       "target_version": "116062739f4689078d4404041a9740e37087d5f5d26dfec1933623d28108864f",
-      "holding_return": -0.07833055469223228,
+      "holding_return": -0.06760858470558435,
       "holding_return_coverage": 1.0,
       "children": [
         {
           "id": "direct_equity_funds:cn_broad",
           "name": "A股宽基",
-          "actual_weight": 0.8171612824205621,
+          "actual_weight": 0.844387603624447,
           "target_weight": 0.55,
-          "delta_pp": 26.716128242056204,
-          "holding_return": -0.10204947666132431,
+          "delta_pp": 29.438760362444693,
+          "holding_return": -0.08577020007514535,
           "holding_return_coverage": 1.0,
           "status": "complete"
         },
         {
           "id": "direct_equity_funds:cn_dividend",
           "name": "A股红利",
-          "actual_weight": 0.18283871757943806,
+          "actual_weight": 0.15561239637555302,
           "target_weight": 0.15,
-          "delta_pp": 3.283871757943807,
+          "delta_pp": 0.5612396375553025,
           "holding_return": 0.04504114335210046,
           "holding_return_coverage": 1.0,
           "status": "complete"
@@ -622,23 +622,23 @@
       "denominator_id": "direct_equity_funds:cn_broad",
       "status": "complete",
       "target_version": null,
-      "holding_return": -0.10204947666132431,
+      "holding_return": -0.08577020007514535,
       "holding_return_coverage": 1.0,
       "children": [
         {
           "id": "direct:fund-cn-002656",
           "name": "南方创业板ETF联接A",
-          "actual_weight": 0.19484599908425862,
+          "actual_weight": 0.3368360463660637,
           "target_weight": null,
           "delta_pp": null,
-          "holding_return": -0.09106323411905716,
+          "holding_return": -0.04613088543747511,
           "holding_return_coverage": 1.0,
           "status": "complete"
         },
         {
           "id": "direct:fund-cn-022444",
           "name": "景顺长城中证A500ETF联接A",
-          "actual_weight": 0.6615461178896423,
+          "actual_weight": 0.544881523971696,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": -0.11723818698721562,
@@ -648,7 +648,7 @@
         {
           "id": "direct:fund-cn-019923",
           "name": "华泰柏瑞中证2000指数增强A",
-          "actual_weight": 0.14360788302609903,
+          "actual_weight": 0.11828242966224052,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": -0.041816623821765236,
@@ -704,7 +704,7 @@
       "denominator_id": "equity",
       "status": "partial",
       "target_version": null,
-      "holding_return": -0.11258607469838158,
+      "holding_return": -0.10566752737642734,
       "holding_return_coverage": 1.0,
       "children": [
         {
@@ -713,7 +713,7 @@
           "actual_weight": null,
           "target_weight": null,
           "delta_pp": null,
-          "holding_return": -0.07833055469223228,
+          "holding_return": -0.06760858470558435,
           "holding_return_coverage": 1.0,
           "status": "complete"
         },
@@ -745,7 +745,7 @@
       "denominator_id": "global",
       "status": "partial",
       "target_version": "116062739f4689078d4404041a9740e37087d5f5d26dfec1933623d28108864f",
-      "holding_return": -0.07009185061943338,
+      "holding_return": -0.06730146592072239,
       "holding_return_coverage": 1.0,
       "children": [
         {
@@ -754,7 +754,7 @@
           "actual_weight": null,
           "target_weight": 0.6,
           "delta_pp": null,
-          "holding_return": -0.11258607469838158,
+          "holding_return": -0.10566752737642734,
           "holding_return_coverage": 1.0,
           "status": "partial"
         },
@@ -815,7 +815,7 @@
       "market_date": "2026-10-29",
       "date_difference": true,
       "daily_return": -0.04207634470792365,
-      "holding_return": -0.09106323411905716,
+      "holding_return": -0.04613088543747511,
       "class_weight": null,
       "global_weight": null,
       "status": "confirmed",
