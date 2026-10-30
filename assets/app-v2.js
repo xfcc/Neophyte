@@ -42,24 +42,14 @@
     }
   }
   function renderProfit() {
-    const s=state.selected, filter=$('#v2-filter').value, weight=$('#v2-weight').value;
+    const s=state.selected;
     if(!s?.positions?.length){$('#v2-profit').innerHTML=missing('尚无该日期可用的2.0持仓估值。');return;}
-    const field=$('#v2-sort').value==='weight'?weight:$('#v2-sort').value;
-    const scope=$('#v2-subfilter').value;
-    const options=new Map();
-    (s.positions??[]).filter(r=>filter==='all'||r.asset_class===filter).forEach(r=>{
-      options.set(r.method,labels[r.method]??r.method);
-      if(['direct_equity_funds','direct_bond_funds'].includes(r.method))options.set(r.method+'/'+r.subgroup,(labels[r.method]??r.method)+' · '+(labels[r.subgroup]??r.subgroup));
-    });
-    $('#v2-subfilter').innerHTML='<option value="all">全部内部分类</option>'+[...options].map(([value,label])=>`<option value="${e(value)}">${e(label)}</option>`).join('');
-    $('#v2-subfilter').value=options.has(scope)?scope:'all';
-    const filtered=ui.filterRows(s.positions,filter,$('#v2-subfilter').value);
     const groups=[['direct_equity_funds','主动股票基金'],['direct_bond_funds','主动债券基金'],['active_stocks','主动个股'],['advisory','投顾服务']];
     $('#v2-profit').innerHTML=groups.map(([group,title])=>{
-      const rows=ui.sortRows(filtered.filter(r=>group==='advisory'?!r.id.startsWith('direct:'):r.id.startsWith('direct:')&&r.method===group),field);
+      const rows=ui.sortRows(s.positions.filter(r=>group==='advisory'?!r.id.startsWith('direct:'):r.id.startsWith('direct:')&&r.method===group),'class_weight');
       if(!rows.length)return '';
       const layer=s.layers[group];
-      return `<h3>${e(title)} <small>${layer&&filter==='all'&&$('#v2-subfilter').value==='all'?`${layer.status==='partial'?'已知部分':'分类'}浮盈 ${p(layer.holding_return,true)} · 已计价 ${rows.filter(r=>r.status==='confirmed').length}/${rows.length} · 已知市值中成本可比 ${p(layer.holding_return_coverage)}`:`当前筛选已计价 ${rows.filter(r=>r.status==='confirmed').length}/${rows.length}`}</small></h3><div class="v2-table-wrap"><table><thead><tr><th>产品名称</th><th>分类</th><th>日涨跌幅</th><th>持仓盈亏</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${e(r.name)}<small>${e(r.symbol)}</small></td><td>${e(labels[r.method]??r.method)}<small>${e(labels[r.subgroup]??r.subgroup)}</small></td><td class="${numberClass(r.daily_return)}">${p(r.daily_return,true)}</td><td class="${numberClass(r.holding_return)}">${p(r.holding_return,true)}</td></tr>`).join('')}</tbody></table></div>`;
+      return `<h3>${e(title)} <small>${layer?`${layer.status==='partial'?'已知部分':'分类'}浮盈 ${p(layer.holding_return,true)} · 已计价 ${rows.filter(r=>r.status==='confirmed').length}/${rows.length} · 已知市值中成本可比 ${p(layer.holding_return_coverage)}`:`已计价 ${rows.filter(r=>r.status==='confirmed').length}/${rows.length}`}</small></h3><div class="v2-table-wrap"><table><thead><tr><th>产品名称</th><th>分类</th><th>日涨跌幅</th><th>持仓盈亏</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${e(r.name)}<small>${e(r.symbol)}</small></td><td>${e(labels[r.method]??r.method)}<small>${e(labels[r.subgroup]??r.subgroup)}</small></td><td class="${numberClass(r.daily_return)}">${p(r.daily_return,true)}</td><td class="${numberClass(r.holding_return)}">${p(r.holding_return,true)}</td></tr>`).join('')}</tbody></table></div>`;
     }).join('')||missing('该分类没有持仓。');
     window.dispatchEvent(new CustomEvent('neophyte:snapshot',{detail:s}));
   }
@@ -103,7 +93,6 @@
   }
   window.addEventListener('hashchange',activate);activate();
   $('#v2-date').addEventListener('change',ev=>chooseDate(ev.target.value).catch(showError));
-  ['#v2-filter','#v2-subfilter','#v2-weight','#v2-sort'].forEach(s=>$(s).addEventListener('change',renderProfit));
   function showError(error){$('#v2-status').textContent='数据读取失败：'+error.message;}
   if(location.protocol==='file:'){showError(new Error('请运行 python3 serve.py 后打开本地查看页'));return;}
   try{
