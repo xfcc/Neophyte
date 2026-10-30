@@ -18,34 +18,44 @@
     return value.toISOString().slice(0,10);
   }
   function initialSelections() {
-    return Object.fromEntries(sections.map(section=>[section.id,{range:'7',layer:section.layer}]));
+    return Object.fromEntries(sections.map(section=>[section.id,{range:'30',layer:section.layer}]));
   }
   function createController() {
     const selections=initialSelections();
     return {selections, update(id,patch){
       const section=sections.find(s=>s.id===id);if(!section)return;
-      if(['7','30','all'].includes(patch.range))selections[id].range=patch.range;
+      if(['30','all'].includes(patch.range))selections[id].range=patch.range;
       if(patch.layer!==undefined&&(section.choices??[[section.layer]]).some(choice=>choice[0]===patch.layer))selections[id].layer=patch.layer;
     }};
   }
   const assetClasses=['equity','bond','cash','gold'];
   const layerChildren=(layer,id)=> (layer?.children??[]).filter(c=>id!=='global'||assetClasses.includes(c.id));
+  function completeLayer(snapshot,layerId) {
+    const layer=snapshot?.layers?.[layerId],children=layerChildren(layer,layerId);
+    return layer?.status==='complete'&&children.length>0&&children.every(c=>Number.isFinite(c.actual_weight)&&c.actual_weight>=0&&c.actual_weight<=1)&&Math.abs(children.reduce((n,c)=>n+c.actual_weight,0)-1)<.00001;
+  }
+  function isValuationDay(date,layerId,snapshot) {
+    return ![0,6].includes(new Date(date+'T12:00:00Z').getUTCDay())&&(completeLayer(snapshot,layerId)||!calendar.closedMarkets(date,layerId).length);
+  }
   function buildSeries(snapshots,layerId,range,today) {
     const saved=snapshots.filter(s=>s.reference_date<=today).sort((a,b)=>a.reference_date.localeCompare(b.reference_date));
-    const start=range==='all'?(saved[0]?.reference_date??today):offsetDate(today,1-Number(range));
+    const savedByDate=new Map(saved.map(s=>[s.reference_date,s]));
+    let start=saved[0]?.reference_date??today;
+    if(range!=='all'){
+      let count=0;start=today;
+      while(count<Number(range)){
+        if(isValuationDay(start,layerId,savedByDate.get(start)))count++;
+        if(count<Number(range))start=offsetDate(start,-1);
+      }
+    }
     const within=saved.filter(s=>s.reference_date>=start);
     const series=[...new Map(within.flatMap(s=>layerChildren(s.layers?.[layerId],layerId).map(c=>[c.id,{id:c.id,name:c.name}]))).values()];
     const byDate=new Map(within.map(s=>[s.reference_date,s]));
     const days=[];
     for(let date=start;date<=today;date=offsetDate(date,1)){
-      // CN, HK and US securities markets share the Saturday/Sunday closure.
-      // Keep every weekday: a local holiday may still be an overseas trading day.
-      if([0,6].includes(new Date(date+'T12:00:00Z').getUTCDay()))continue;
+      if(!isValuationDay(date,layerId,byDate.get(date)))continue;
       const snapshot=byDate.get(date),layer=snapshot?.layers?.[layerId],children=layerChildren(layer,layerId);
-      const valid=layer?.status==='complete'&&children.length>0&&children.every(c=>Number.isFinite(c.actual_weight)&&c.actual_weight>=0&&c.actual_weight<=1)&&Math.abs(children.reduce((n,c)=>n+c.actual_weight,0)-1)<.00001;
-      // Verified market closures are not missing observations. Keep actual
-      // complete records, and never hide an open-market failure as a holiday.
-      if(!valid&&calendar.closedMarkets(date,layerId).length)continue;
+      const valid=completeLayer(snapshot,layerId);
       const missing=(snapshot?.positions??[]).filter(row=>row.status==='missing'&&(layerId==='global'||layerId==='equity'&&row.asset_class==='equity'||layerId==='bond'&&row.asset_class==='bond'||layerId==='advisory'&&!row.id?.startsWith('direct:')||row.method===layerId));
       const reason=valid?null:missing.length?missing.map(row=>`${row.name}（${row.symbol}）未取得目标日数据${row.market_date?'，最新可用 '+row.market_date:''}`).join('；'):snapshot?'该层历史估值或必要汇率不完整，无法从现有证据恢复':'尚无当日仓位快照';
       const weights=new Map(children.map(c=>[c.id,c.actual_weight]));
@@ -127,7 +137,7 @@
     return ui.sortRows(positions.map(row=>({...row,weight:weights.get(row.id)??null})),'weight');
   }
   function rangeControl(section,selection) {
-    return `<label class="allocation-date-control">时间范围<select data-allocation-range data-allocation-section="${section.id}" aria-label="${section.title}的时间范围">${[['7','最近7天'],['30','最近30天'],['all','全部']].map(([value,label])=>`<option value="${value}" ${selection.range===value?'selected':''}>${label}</option>`).join('')}</select></label>`;
+    return `<div class="allocation-range-tabs" role="group" aria-label="${section.title}的时间范围">${[['30','30个交易日'],['all','全部']].map(([value,label])=>`<button type="button" data-allocation-range="${value}" data-allocation-section="${section.id}" aria-pressed="${selection.range===value}">${label}</button>`).join('')}</div>`;
   }
   function renderSection(section,selection,snapshots,today) {
     const data=buildSeries(snapshots,selection.layer,selection.range,today);
@@ -165,8 +175,11 @@
       const control=event.target;
       const id=control.dataset.allocationSection;
       if(!id)return;
-      if(control.hasAttribute('data-allocation-range'))update(id,{range:control.value});
       if(control.hasAttribute('data-allocation-layer'))update(id,{layer:control.value});
+    });
+    element.addEventListener('click',event=>{
+      const control=event.target.closest('button[data-allocation-range]');
+      if(control&&element.contains(control))update(control.dataset.allocationSection,{range:control.dataset.allocationRange});
     });
     render();
     return {render,update};

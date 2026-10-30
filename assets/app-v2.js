@@ -23,7 +23,7 @@
     document.querySelectorAll('[data-v2-panel]').forEach(x=>x.hidden=x.dataset.v2Panel!==tab);
     $('#v2-title').textContent={allocation:'资产配置',profit:'资产浮盈',volatility:'波动识别'}[tab];
     if(state.snapshots.length)renderCoverage();
-    $('#v2-subtitle').textContent={allocation:'从全账户到各类持仓，逐层查看。每日一个节点，可独立查看最近7天、30天或全部',profit:'按投资标的查看当前持仓与成本的差额',volatility:'识别近5个有效交易日变化的少见程度'}[tab];
+    $('#v2-subtitle').textContent={allocation:'从全账户到各类持仓，逐层查看。交易日逐点记录，可独立查看最近30个交易日或全部',profit:'按投资标的查看当前持仓与成本的差额',volatility:'识别近5个有效交易日变化的少见程度'}[tab];
   }
   function renderCoverage() {
     const allocationView=!['profit','volatility'].includes(location.hash.slice(1));
