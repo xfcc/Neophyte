@@ -54,12 +54,12 @@
     $('#v2-subfilter').innerHTML='<option value="all">全部内部分类</option>'+[...options].map(([value,label])=>`<option value="${e(value)}">${e(label)}</option>`).join('');
     $('#v2-subfilter').value=options.has(scope)?scope:'all';
     const filtered=ui.filterRows(s.positions,filter,$('#v2-subfilter').value);
-    const groups=filter==='all'?['equity','bond','cash','gold']:[filter];
-    $('#v2-profit').innerHTML=groups.map(cls=>{
-      const rows=ui.sortRows(filtered.filter(r=>r.asset_class===cls),field);
+    const groups=[['direct_equity_funds','主动股票基金'],['direct_bond_funds','主动债券基金'],['active_stocks','主动个股'],['advisory','投顾服务']];
+    $('#v2-profit').innerHTML=groups.map(([group,title])=>{
+      const rows=ui.sortRows(filtered.filter(r=>group==='advisory'?!r.id.startsWith('direct:'):r.id.startsWith('direct:')&&r.method===group),field);
       if(!rows.length)return '';
-      const layer=s.layers[cls];
-      return `<h3>${e(labels[cls])} <small>${layer&&$('#v2-subfilter').value==='all'?`${layer.status==='partial'?'已知部分':'分类'}浮盈 ${p(layer.holding_return,true)} · 已计价 ${rows.filter(r=>r.status==='confirmed').length}/${rows.length} · 已知市值中成本可比 ${p(layer.holding_return_coverage)}`:`当前筛选已计价 ${rows.filter(r=>r.status==='confirmed').length}/${rows.length}`}</small></h3><div class="v2-table-wrap"><table><thead><tr><th>投资标的</th><th>分类</th><th>市场日期</th><th>日涨跌幅</th><th>持仓浮盈收益率</th>${window.NeophyteLocalDetails?'<th>浮盈金额（人民币）</th>':''}<th>占${weight==='global_weight'?'全账户':e(labels[cls])}比例</th><th>数据状态</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${e(r.name)}<small>${e(r.symbol)}</small></td><td>${e(labels[r.method]??r.method)}<small>${e(labels[r.subgroup]??r.subgroup)}</small></td><td>${e(r.market_date??'缺失')}</td><td class="${numberClass(r.daily_return)}">${p(r.daily_return,true)}</td><td class="${numberClass(r.holding_return)}">${p(r.holding_return,true)}</td>${window.NeophyteLocalDetails?`<td data-private-profit="${e(r.id)}">—</td>`:''}<td>${p(r[weight])}</td><td>${r.status==='missing'?'估值缺失':r.holding_return_status==='unavailable'?'收益率不可比':'已计价'}${r.date_difference?' · 日期差异':''}</td></tr>`).join('')}</tbody></table></div>`;
+      const layer=s.layers[group];
+      return `<h3>${e(title)} <small>${layer&&filter==='all'&&$('#v2-subfilter').value==='all'?`${layer.status==='partial'?'已知部分':'分类'}浮盈 ${p(layer.holding_return,true)} · 已计价 ${rows.filter(r=>r.status==='confirmed').length}/${rows.length} · 已知市值中成本可比 ${p(layer.holding_return_coverage)}`:`当前筛选已计价 ${rows.filter(r=>r.status==='confirmed').length}/${rows.length}`}</small></h3><div class="v2-table-wrap"><table><thead><tr><th>投资标的</th><th>分类</th><th>市场日期</th><th>日涨跌幅</th><th>持仓浮盈收益率</th>${window.NeophyteLocalDetails?'<th>浮盈金额（人民币）</th>':''}<th>占${weight==='global_weight'?'全账户':'所属资产分类'}比例</th><th>数据状态</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${e(r.name)}<small>${e(r.symbol)}</small></td><td>${e(labels[r.method]??r.method)}<small>${e(labels[r.subgroup]??r.subgroup)}</small></td><td>${e(r.market_date??'缺失')}</td><td class="${numberClass(r.daily_return)}">${p(r.daily_return,true)}</td><td class="${numberClass(r.holding_return)}">${p(r.holding_return,true)}</td>${window.NeophyteLocalDetails?`<td data-private-profit="${e(r.id)}">—</td>`:''}<td>${p(r[weight])}</td><td>${r.status==='missing'?'估值缺失':r.holding_return_status==='unavailable'?'收益率不可比':'已计价'}${r.date_difference?' · 日期差异':''}</td></tr>`).join('')}</tbody></table></div>`;
     }).join('')||missing('该分类没有持仓。');
     window.dispatchEvent(new CustomEvent('neophyte:snapshot',{detail:s}));
   }
