@@ -269,3 +269,97 @@ footer { display: flex; justify-content: space-between; padding: 22px 4px 0; col
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
 }
+
+/* 2.0: explicit denominators, readable numeric fallbacks and local controls. */
+.v2-panel { margin: 24px 0; padding: 28px; }
+.v2-status { padding: 14px 18px; border-left: 3px solid var(--accent, #2e5f7a); background: #f0f2ef; line-height: 1.6; }
+.v2-coverage { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 22px 0; }
+.v2-coverage div { border-bottom: 1px solid #d9ded9; padding: 12px 0; }
+.v2-coverage span, .v2-coverage strong { display: block; }
+.v2-coverage span { color: #606960; font-size: 13px; margin-bottom: 8px; }
+.v2-coverage strong { font-size: 16px; font-weight: 500; }
+.v2-date, .v2-toolbar label { display: flex; gap: 10px; align-items: center; font-size: 14px; }
+.v2-toolbar { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; margin-bottom: 20px; }
+.v2-toolbar h2 { margin-right: auto; }
+.v2-date select, .v2-toolbar select, .v2-layer-nav button, .v2-allocation-row button, #v2-timeline button { min-height: 44px; border: 1px solid #d3d9d3; background: transparent; color: inherit; border-radius: 5px; padding: 8px 12px; font: inherit; }
+.v2-layer-nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0; }
+.v2-layer-nav [aria-pressed="true"] { background: #243d35; color: #fff; border-color: #243d35; }
+.v2-allocation-row { display: grid; grid-template-columns: 145px 1fr 180px; gap: 22px; align-items: center; padding: 16px 0; border-bottom: 1px solid #e5e8e3; }
+.v2-allocation-row button { text-align: left; cursor: pointer; }
+.v2-allocation-row button:disabled { border: 0; cursor: default; opacity: 1; }
+.v2-allocation-row small { color: #626b64; font-size: 13px; }
+.v2-bar { height: 22px; background: #edf0eb; position: relative; margin: 4px 0 10px; }
+.v2-fill { display: block; height: 100%; background: #597867; }
+.v2-color-equity { background: #a43e35; }.v2-color-bond { background: #2e5f7a; }.v2-color-cash { background: #6f8980; }.v2-color-gold { background: #b18b3b; }
+.v2-bar i { position: absolute; top: -4px; bottom: -4px; width: 2px; background: #26322b; }
+.v2-empty { color: #687269; line-height: 1.7; padding: 16px 0; }
+.v2-table-wrap { overflow-x: auto; margin: 16px 0 28px; }
+.v2-table-wrap table { width: 100%; min-width: 800px; border-collapse: collapse; font-size: 14px; }
+.v2-table-wrap th, .v2-table-wrap td { text-align: left; padding: 16px 12px; border-bottom: 1px solid #e2e6df; font-variant-numeric: tabular-nums; vertical-align: top; }
+.v2-table-wrap th { color: #59645c; font-weight: 500; font-size: 13px; background: #f5f6f2; }
+.v2-table-wrap td small { display: block; color: #687269; margin-top: 6px; }
+.v2-panel h3 { margin-top: 28px; font-size: 18px; }.v2-panel h3 small { color: #69716a; font-size: 13px; font-weight: 400; }
+.v2-up { color: var(--red, #a43e35); }.v2-down { color: var(--green, #3b795f); }
+.v2-timeline-svg { width: 100%; max-height: 220px; }
+button:focus-visible, select:focus-visible, a:focus-visible { outline: 3px solid #366f9a; outline-offset: 3px; }
+#v2-volatility td:last-child { min-width: 240px; line-height: 1.7; }
+@media(max-width: 760px) { .v2-coverage { grid-template-columns: repeat(2,1fr); }.v2-hero { align-items: flex-start; gap: 18px; flex-direction: column; }.v2-panel { padding: 18px; }.v2-allocation-row { grid-template-columns: 110px 1fr; gap: 12px; }.v2-allocation-row>span { grid-column: 2; font-size: 13px; }.v2-toolbar { align-items: flex-start; flex-direction: column; }.topbar { flex-wrap: wrap; }.view-tabs { order: 3; width: 100%; justify-content: space-between; } }
+
+/* Allocation homepage: independent dated sections, overview before details. */
+body[data-view="allocation"] .v2-date { display: none; }
+.allocation-section-heading { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.allocation-section-heading h2 { font-size: 23px; }
+.allocation-section-heading .section-kicker { font-size: 11px; letter-spacing: .06em; }
+.allocation-section-controls { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 12px 18px; }
+.allocation-date-control, .allocation-subview-control { display: flex; align-items: center; gap: 10px; color: var(--muted); font-size: 12px; white-space: nowrap; }
+.allocation-section-controls select { min-height: 44px; min-width: 118px; max-width: 100%; padding: 8px 30px 8px 12px; border: 1px solid var(--line); border-radius: 7px; background: var(--surface); color: var(--ink); font: inherit; font-size: 14px; }
+.allocation-subview-control select { min-width: 152px; }
+.allocation-section-meta { display: flex; flex-wrap: wrap; gap: 6px 20px; margin: 16px 0 20px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.allocation-incomplete, .allocation-method-note { margin: 10px 0; padding: 10px 12px; border-left: 2px solid var(--line); background: #f4f5ef; color: var(--muted); font-size: 12px; line-height: 1.7; }
+.allocation-weight-table { margin: 18px 0 0; }
+.allocation-weight-table table { min-width: 600px; table-layout: fixed; }
+.allocation-weight-table th:first-child { width: 25%; }
+.allocation-weight-table th:nth-child(2) { width: 36%; }
+.allocation-weight-table th:nth-child(3) { width: 16%; }
+.allocation-weight-table th:nth-child(4) { width: 23%; }
+.allocation-weight-table td { vertical-align: middle; }
+.allocation-cell-weight { display: grid; grid-template-columns: 80px minmax(0,1fr); align-items: center; gap: 12px; }
+.allocation-cell-weight strong { font-weight: 550; }
+.allocation-cell-weight .v2-bar { height: 10px; margin: 0; border-radius: 2px; }
+.allocation-cell-weight .v2-bar.is-unavailable { background: repeating-linear-gradient(135deg,#f1f3ed,#f1f3ed 5px,#e7ebe4 5px,#e7ebe4 6px); }
+.allocation-cell-weight .v2-bar i { top: -4px; bottom: -4px; }
+.allocation-product-table { margin: 20px 0 0; }
+.allocation-product-table table { min-width: 690px; }
+.allocation-empty-state { border: 1px dashed var(--line); border-radius: 8px; padding: 22px; margin-bottom: 0; }
+@media(max-width:760px) {
+  .allocation-section-heading { flex-direction: column; align-items: stretch; gap: 16px; }
+  .allocation-section-heading h2 { font-size: 21px; }
+  .allocation-section-controls { justify-content: flex-start; }
+  .allocation-section-controls label { flex: 1 1 150px; justify-content: space-between; }
+  .allocation-section-controls select { flex: 1; width: 0; min-width: 115px; }
+  .allocation-section-meta { gap: 6px 12px; }
+}
+body[data-view="allocation"] .v2-coverage { grid-template-columns: repeat(6,minmax(0,1fr)); margin: 16px 0 20px; }
+body[data-view="allocation"] .v2-coverage strong { font-size: 14px; line-height: 1.7; }
+@media(max-width:1000px) { body[data-view="allocation"] .v2-coverage { grid-template-columns: repeat(3,minmax(0,1fr)); } }
+@media(max-width:600px) { body[data-view="allocation"] .v2-coverage { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+
+/* Daily percentage stacked area charts share the saved layer denominator. */
+.allocation-chart{margin:22px 0 8px;width:100%}
+.allocation-legend{display:flex;flex-wrap:wrap;gap:10px 20px;margin:4px 0 18px;color:#59645b;font-size:12px}
+.allocation-legend span{display:inline-flex;align-items:center;gap:7px}
+.allocation-legend i{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+.allocation-daily-data{margin:16px 0;font-size:13px}
+.allocation-daily-data summary{cursor:pointer;color:#53695b;padding:6px 0}
+.allocation-daily-data .v2-table-wrap{margin-top:10px}
+@media(max-width:600px){.allocation-chart{margin-top:14px}.allocation-legend{gap:9px 14px;font-size:11px}}
+
+.v2-date, #v2-coverage { display: none; }
+
+.allocation-history-badge{padding:3px 8px;border:1px solid var(--line);border-radius:5px;color:var(--muted)}
+
+.allocation-chart[data-vchart-section]{height:320px;position:relative}
+.allocation-chart[data-vchart-section] .allocation-chart-empty{display:grid;place-items:center;height:100%;color:#969f96;font-size:16px}
+@media(max-width:600px){.allocation-chart[data-vchart-section]{height:240px}}
+
+.allocation-gaps{font-size:12px;color:var(--muted);margin:8px 0 0}.allocation-gaps summary{cursor:pointer}.allocation-gaps ul{padding-left:20px;line-height:1.8}

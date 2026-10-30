@@ -623,7 +623,7 @@ async function main() {
   }
 }
 
-if (window.location.protocol !== "file:") {
+if (window.location.protocol !== "file:" && !window.Neophyte2) {
   window.addEventListener("hashchange", () => activateView());
   activateView();
   main();

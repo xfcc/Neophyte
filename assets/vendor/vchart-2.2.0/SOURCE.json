@@ -1,0 +1,9 @@
+{
+  "package": "@visactor/vchart",
+  "version": "2.2.0",
+  "license": "MIT",
+  "repository": "https://github.com/VisActor/VChart",
+  "tarball": "https://registry.npmjs.org/@visactor/vchart/-/vchart-2.2.0.tgz",
+  "integrity": "sha512-QTsPDszCegIHl4gMuCwFBmMvBJJuf7Bl7GLUHik+33fW2H+CTHLJPJ2ASC/FEhbVDWm/Ra+DRu1lcaxTo2N38Q==",
+  "bundle_sha256": "f547f6ee5d4f23e5f0534f8df405d41f4c373d79cff55ca45f51571040e7d17c"
+}
