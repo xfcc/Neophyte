@@ -67,7 +67,7 @@
     if(!state.daily){$('#v2-volatility').innerHTML=missing('缺少行情事实快照。');return;}
     const rows=ui.marketRows(state.daily,state.account,state.watch,state.selected?.positions??[]);
     const grouped=ui.groupFiveDayRows(rows), names={extreme:'极端波动',attention:'异常波动',normal:'正常波动',unavailable:'数据不足',record_only:'仅记录'};
-    $('#v2-volatility').innerHTML=Object.entries(grouped).map(([key,list])=>`<h3>${names[key]} <small>${list.length}个标的</small></h3>${list.length?`<div class="v2-table-wrap"><table><thead><tr><th>投资标的</th><th>分类</th><th>5日窗口</th><th>5日累计</th><th>历史分位</th><th>方向</th><th>单日变化</th><th>市场参考与共振</th><th>事实描述</th></tr></thead><tbody>${list.map(r=>{
+    $('#v2-volatility').innerHTML=Object.entries(grouped).map(([key,list])=>`<h3>${names[key]} <small>${list.length}个标的</small></h3>${list.length?`<div class="v2-table-wrap"><table><thead><tr><th>产品名称</th><th>单日变化</th><th>5日累计</th><th>历史分位</th><th>市场共振</th><th>描述</th></tr></thead><tbody>${list.map(r=>{
       const saved=r.five_day_volatility;
       const product=savedProductClassification(r,r.asset_id,'five_day',state.index);
       const resonance=marketResonance(state.index,r.asset_id,product,r.market_date,'five_day');
@@ -81,7 +81,7 @@
         const median=peers.length?peers.length%2?peers[(peers.length-1)/2]:(peers[peers.length/2-1]+peers[peers.length/2])/2:null;
         brief+=` 同市场持仓样本${peers.length}个，中位累计变化${p(median,true)}；末日${Math.sign(r.daily_return)===Math.sign(cumulative)?'延续':'未延续'}窗口方向。观察下一有效交易日是否延续，并核验公司公告。`;
       }
-      return `<tr><td>${e(r.name??r.symbol)}<small>${e(r.symbol)}</small></td><td>${e(labels[state.selected?.positions?.find(x=>x.asset_id===r.asset_id)?.asset_class]??(r.asset_bucket==='bond'?'债券':r.asset_bucket==='equity'?'股票':'待分类'))}</td><td>${e(facts?.window_start_date??'起日证据不足')} 至 ${e(r.market_date??'缺失')}</td><td class="${numberClass(cumulative)}">${p(cumulative,true)}</td><td>${percentile}</td><td>${Number.isFinite(cumulative)?cumulative>0?'正向':cumulative<0?'负向':'持平':'—'}</td><td class="${numberClass(r.daily_return)}">${p(r.daily_return,true)}</td><td>${renderMarketResonance(resonance)}</td><td>${e(brief)}</td></tr>`;
+      return `<tr><td>${e(r.name??r.symbol)}<small>${e(r.symbol)}</small></td><td class="${numberClass(r.daily_return)}">${p(r.daily_return,true)}</td><td class="${numberClass(cumulative)}">${p(cumulative,true)}</td><td>${percentile}</td><td>${renderMarketResonance(resonance)}</td><td>${e(brief)}</td></tr>`;
     }).join('')}</tbody></table></div>`:missing('无此类标的。')}`).join('');
   }
   async function chooseDate(date) {
