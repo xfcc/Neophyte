@@ -32,7 +32,7 @@
   const layerChildren=(layer,id)=> (layer?.children??[]).filter(c=>id!=='global'||assetClasses.includes(c.id));
   function completeLayer(snapshot,layerId) {
     const layer=snapshot?.layers?.[layerId],children=layerChildren(layer,layerId);
-    return layer?.status==='complete'&&children.length>0&&children.every(c=>Number.isFinite(c.actual_weight)&&c.actual_weight>=0&&c.actual_weight<=1)&&Math.abs(children.reduce((n,c)=>n+c.actual_weight,0)-1)<.00001;
+    return ['complete','estimated'].includes(layer?.status)&&children.length>0&&children.every(c=>Number.isFinite(c.actual_weight)&&c.actual_weight>=0&&c.actual_weight<=1)&&Math.abs(children.reduce((n,c)=>n+c.actual_weight,0)-1)<.00001;
   }
   function isValuationDay(date,layerId,snapshot) {
     return ![0,6].includes(new Date(date+'T12:00:00Z').getUTCDay())&&(completeLayer(snapshot,layerId)||!calendar.closedMarkets(date,layerId).length);
@@ -56,10 +56,11 @@
       if(!isValuationDay(date,layerId,byDate.get(date)))continue;
       const snapshot=byDate.get(date),layer=snapshot?.layers?.[layerId],children=layerChildren(layer,layerId);
       const valid=completeLayer(snapshot,layerId);
-      const missing=(snapshot?.positions??[]).filter(row=>row.status==='missing'&&(layerId==='global'||layerId==='equity'&&row.asset_class==='equity'||layerId==='bond'&&row.asset_class==='bond'||layerId==='advisory'&&!row.id?.startsWith('direct:')||row.method===layerId));
-      const reason=valid?null:missing.length?missing.map(row=>`${row.name}（${row.symbol}）未取得目标日数据${row.market_date?'，最新可用 '+row.market_date:''}`).join('；'):snapshot?'该层历史估值或必要汇率不完整，无法从现有证据恢复':'尚无当日仓位快照';
+      const positions=(snapshot?.positions??[]).filter(row=>layerId==='global'||layerId==='equity'&&row.asset_class==='equity'||layerId==='bond'&&row.asset_class==='bond'||layerId==='advisory'&&!row.id?.startsWith('direct:')||row.method===layerId);
+      const missing=positions.filter(row=>row.status==='missing');
+      const reason=valid?null:layerId==='global'&&snapshot?.coverage?.reconciliation==='unconfirmed'?'该日账户对账未确认，无法生成全账户比例':missing.length?missing.map(row=>`${row.name}（${row.symbol}）未取得目标日数据${row.market_date?'，最新可用 '+row.market_date:''}`).join('；'):snapshot?'该层历史估值或必要汇率不完整，无法从现有证据恢复':'尚无当日仓位快照';
       const weights=new Map(children.map(c=>[c.id,c.actual_weight]));
-      days.push({date,valid,reason,basis:snapshot?.history_basis??'configured_positions',estimated:snapshot?.history_source_status==='estimated',values:series.map(c=>valid?(weights.get(c.id)??0):null)});
+      days.push({date,valid,reason,basis:snapshot?.history_basis??'configured_positions',values:series.map(c=>valid?(weights.get(c.id)??0):null)});
     }
     return {start,end:today,layerId,series,days,snapshot:within.at(-1)??null};
   }

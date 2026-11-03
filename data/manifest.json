@@ -20,8 +20,7 @@
     "data/portfolio-v2/2026-10-29.json",
     "data/portfolio-v2/2026-10-30.json",
     "data/portfolio-v2/2026-10-31.json",
-    "data/portfolio-v2/2026-11-02.json",
-    "data/portfolio-v2/2026-11-03.json"
+    "data/portfolio-v2/2026-11-02.json"
   ],
   "allocation_history_snapshots": [
     "data/allocation-history/2026-09-08.json",
@@ -62,7 +61,7 @@
     "data/allocation-history/2026-10-27.json",
     "data/allocation-history/2026-10-28.json"
   ],
-  "latest_portfolio_v2_snapshot": "data/portfolio-v2/2026-11-03.json",
+  "latest_portfolio_v2_snapshot": "data/portfolio-v2/2026-11-02.json",
   "last_run": {
     "status": "partial"
   }

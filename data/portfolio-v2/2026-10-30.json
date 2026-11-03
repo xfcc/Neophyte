@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "reference_date": "2026-10-30",
-  "generated_at": "2026-11-03T17:14:10+08:00",
+  "generated_at": "2026-11-03T17:46:25+08:00",
   "valuation_input_date": "2026-10-29",
   "configuration_versions": {
     "holdings": "f0826bc8c1d20c5a8022efeb6ac20be2dcff8f13663e3d5b8c183da99c286596",
@@ -19,6 +19,7 @@
     "valuation_basis": "configured_positions",
     "valued_positions": 28,
     "positions_total": 28,
+    "estimated_positions": 0,
     "direct_confirmed": 15,
     "direct_total": 15,
     "advisory_confirmed": 13,

@@ -31,7 +31,7 @@
     const view=location.hash.slice(1);
     $('#v2-status').textContent=view==='volatility'
       ? `行情日 ${state.daily?.reference_date??'—'} · 按5日累计分组 · 货币基金仅记录`
-      : s ? `估值日 ${s.reference_date} · 行情日 ${s.valuation_input_date??'—'} · ${allocationView?(s.status==='complete'?'全账户估值完整':'全账户估值待补齐'):`持仓估值 ${c.valued_positions??0}/${c.positions_total??0}`}`
+      : s ? `估值日 ${s.reference_date} · 行情日 ${s.valuation_input_date??'—'} · ${allocationView?(['complete','estimated'].includes(s.status)?'全账户仓位可用':'全账户估值待补齐'):`持仓估值 ${c.valued_positions??0}/${c.positions_total??0}`}`
       : '尚无2.0持仓估值快照。';
     $('#v2-coverage').innerHTML=s?[
       ['行情采集',`直接 ${c.direct_confirmed??0}/${c.direct_total??0} · 投顾 ${c.advisory_confirmed??0}/${c.advisory_total??0}`],['估值覆盖',`${c.valued_positions??0}/${c.positions_total??0}`],['细分分类',c.classification==='complete'?'完整':'待完善'],
@@ -41,13 +41,13 @@
   }
   function renderAllocation() {
     if(window.NeophyteAllocation){
-      if(!state.allocationDashboard)state.allocationDashboard=window.NeophyteAllocation.mount($('#v2-allocation-dashboard'),state.allocationSnapshots??state.snapshots);
+      if(!state.allocationDashboard)state.allocationDashboard=window.NeophyteAllocation.mount($('#v2-allocation-dashboard'),state.allocationSnapshots??state.snapshots,{today:state.daily?.reference_date??state.snapshots.at(-1)?.reference_date});
       else state.allocationDashboard.render();
     }
   }
   function profitValue(row,field) {
     if(Number.isFinite(row[field]))return p(row[field],true);
-    const reason=row.status==='missing'
+    const reason=['missing','estimated'].includes(row.status)
       ? `目标日数据未取得${row.market_date?'；最新可用行情 '+row.market_date:''}`
       : field==='holding_return'?'成本缺失或不可比，暂不计算持仓盈亏':'缺少可比的相邻交易日行情';
     return `<details class="v2-cell-detail"><summary aria-label="查看${field==='holding_return'?'持仓盈亏':'日涨跌幅'}缺失原因">—</summary><span>${e(reason)}</span></details>`;
@@ -60,7 +60,7 @@
       const rows=ui.sortRows(s.positions.filter(r=>group==='advisory'?!r.id.startsWith('direct:'):r.id.startsWith('direct:')&&r.method===group),'class_weight');
       if(!rows.length)return '';
       const layer=s.layers[group];
-      return `<h3>${e(title)} <small>${layer?`${layer.status==='partial'?'已知部分':'分类'}浮盈 <strong class="${numberClass(layer.holding_return)}">${p(layer.holding_return,true)}</strong> · 已计价 ${rows.filter(r=>r.status==='confirmed').length}/${rows.length} · 成本可比 ${p(layer.holding_return_coverage)}`:`已计价 ${rows.filter(r=>r.status==='confirmed').length}/${rows.length}`}</small></h3><div class="v2-table-wrap"><table><thead><tr><th>产品名称</th><th>分类</th><th>日涨跌幅</th><th>持仓盈亏</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${e(r.name)}<small>${e(r.symbol)}</small></td><td>${e(labels[r.method]??r.method)}<small>${e(['active_stocks','cash'].includes(r.method)&&r.subgroup==='unclassified'?'':labels[r.subgroup]??r.subgroup)}</small></td><td class="${numberClass(r.daily_return)}">${profitValue(r,'daily_return')}</td><td class="${numberClass(r.holding_return)}">${profitValue(r,'holding_return')}</td></tr>`).join('')}</tbody></table></div>`;
+      return `<h3>${e(title)} <small>${layer?`${layer.status==='partial'?'已知部分':'分类'}浮盈 <strong class="${numberClass(layer.holding_return)}">${p(layer.holding_return,true)}</strong> · 已计价 ${rows.filter(r=>r.status!=='missing').length}/${rows.length} · 成本可比 ${p(layer.holding_return_coverage)}`:`已计价 ${rows.filter(r=>r.status!=='missing').length}/${rows.length}`}</small></h3><div class="v2-table-wrap"><table><thead><tr><th>产品名称</th><th>分类</th><th>日涨跌幅</th><th>持仓盈亏</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${e(r.name)}<small>${e(r.symbol)}</small></td><td>${e(labels[r.method]??r.method)}<small>${e(['active_stocks','cash'].includes(r.method)&&r.subgroup==='unclassified'?'':labels[r.subgroup]??r.subgroup)}</small></td><td class="${numberClass(r.daily_return)}">${profitValue(r,'daily_return')}</td><td class="${numberClass(r.holding_return)}">${profitValue(r,'holding_return')}</td></tr>`).join('')}</tbody></table></div>`;
     }).join('')||missing('该分类没有持仓。');
     window.dispatchEvent(new CustomEvent('neophyte:snapshot',{detail:s}));
   }
