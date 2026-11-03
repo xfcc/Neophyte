@@ -25,7 +25,7 @@
       },
       "holding": {
         "return": -0.0671520010187775,
-        "group_weight": 0.28108403745368843
+        "group_weight": 0.24364272552659164
       }
     },
     {
@@ -51,7 +51,7 @@
       },
       "holding": {
         "return": -0.12372598498301446,
-        "group_weight": 0.46152369387357495
+        "group_weight": 0.40004723031981115
       }
     },
     {
@@ -77,7 +77,7 @@
       },
       "holding": {
         "return": 0.04547423126894756,
-        "group_weight": 0.1573177804034516
+        "group_weight": 0.13636253818791091
       }
     },
     {
@@ -103,7 +103,7 @@
       },
       "holding": {
         "return": -0.04992859183090537,
-        "group_weight": 0.10007448826928494
+        "group_weight": 0.08674423954659741
       }
     },
     {
@@ -390,6 +390,32 @@
       "holding": {
         "return": -0.3299014224013045,
         "group_weight": 0.30482166885138373
+      }
+    },
+    {
+      "asset_id": "fund-cn-013308",
+      "symbol": "013308",
+      "status": "confirmed",
+      "market_date": "2026-11-02",
+      "daily_return": 0.02122905027932953,
+      "five_day_return": -0.005007620291748394,
+      "volatility": {
+        "basis": "historical_percentile",
+        "return_window": "daily",
+        "percentile": null,
+        "level": "unavailable",
+        "description": "无法判断"
+      },
+      "five_day_volatility": {
+        "basis": "historical_percentile",
+        "return_window": "five_day",
+        "percentile": null,
+        "level": "unavailable",
+        "description": "无法判断"
+      },
+      "holding": {
+        "return": 0.020616647611433336,
+        "group_weight": 0.13320326641908878
       }
     }
   ]

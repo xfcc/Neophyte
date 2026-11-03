@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-03T09:32:45+08:00",
+  "updated_at": "2026-11-03T15:57:05+08:00",
   "snapshots": [
     "data/daily/2026-10-27.json",
     "data/daily/2026-10-28.json",
@@ -20,6 +20,7 @@
     "data/portfolio-v2/2026-10-29.json",
     "data/portfolio-v2/2026-10-30.json",
     "data/portfolio-v2/2026-10-31.json",
+    "data/portfolio-v2/2026-11-02.json",
     "data/portfolio-v2/2026-11-03.json"
   ],
   "allocation_history_snapshots": [
