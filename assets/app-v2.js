@@ -28,11 +28,14 @@
   function renderCoverage() {
     const allocationView=!['profit','volatility'].includes(location.hash.slice(1));
     const s=allocationView?(state.snapshots.at(-1)??state.selected):state.selected, c=s?.coverage??{};
-    const view=location.hash.slice(1);
-    $('#v2-status').textContent=view==='volatility'
-      ? `行情日 ${state.daily?.reference_date??'—'} · 按5日累计分组 · 货币基金仅记录`
-      : s ? `估值日 ${s.reference_date} · 行情日 ${s.valuation_input_date??'—'} · ${allocationView?(['complete','estimated'].includes(s.status)?'全账户仓位可用':'全账户估值待补齐'):`持仓估值 ${c.valued_positions??0}/${c.positions_total??0}`}`
-      : '尚无2.0持仓估值快照。';
+    const updatedThrough=s?.valuation_input_date;
+    const holdingsConfirmed=(c.direct_confirmed??0)+(c.advisory_confirmed??0);
+    const holdingsTotal=(c.direct_total??0)+(c.advisory_total??0);
+    const referenceSymbols=[...new Set(Object.values(state.index?.assets??{}).flatMap(asset=>Object.values(asset.resonance_baselines??{}).map(r=>r.reference_symbol)).filter(Boolean))];
+    const referenceConfirmed=referenceSymbols.filter(symbol=>Number.isFinite(state.index?.references?.[symbol]?.observations?.[updatedThrough]?.daily_return)).length;
+    $('#v2-status').innerHTML=updatedThrough
+      ? `<span class="v2-update-date"><span class="v2-update-label">数据更新至</span><time datetime="${e(updatedThrough)}">${e(updatedThrough)}</time></span><span class="v2-collection-metrics"><span>持仓采集 <strong>${holdingsConfirmed}/${holdingsTotal}</strong></span><span>共振采集 <strong>${referenceConfirmed}/${referenceSymbols.length}</strong></span></span>`
+      : '尚无可用的仓位数据';
     $('#v2-coverage').innerHTML=s?[
       ['行情采集',`直接 ${c.direct_confirmed??0}/${c.direct_total??0} · 投顾 ${c.advisory_confirmed??0}/${c.advisory_total??0}`],['估值覆盖',`${c.valued_positions??0}/${c.positions_total??0}`],['细分分类',c.classification==='complete'?'完整':'待完善'],
       ['账户对账',c.reconciliation==='confirmed'?'已确认':'待核对'],['现金记录',c.cash_date??'未录入'],

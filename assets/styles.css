@@ -449,32 +449,9 @@ body[data-view] footer { padding-top: 12px; }
   body[data-view] .allocation-legend { font-size: 12px; }
 }
 
-/* Target comparisons stay within the existing chart legend. */
-body[data-view] .allocation-legend .allocation-target-item {
-  display: inline-grid;
-  grid-template-columns: 10px minmax(0, 1fr);
-  align-items: start;
-  gap: 8px;
-  max-width: 100%;
-}
-body[data-view] .allocation-target-item > i { margin-top: 5px; }
-body[data-view] .allocation-legend .allocation-target-item > span {
-  display: block;
-  min-width: 0;
-  color: var(--ink);
-  font-size: 13px;
-  font-weight: 600;
-  line-height: 1.6;
-}
-body[data-view] .allocation-target-item small {
-  display: block;
-  margin-top: 2px;
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 400;
-  font-variant-numeric: tabular-nums;
-  overflow-wrap: anywhere;
-}
+/* Compact actual / target values share one line in the chart legend. */
+body[data-view] .allocation-legend .allocation-target-item { display: inline-flex; align-items: center; gap: 7px; }
+body[data-view] .allocation-target-item > span { color: var(--ink); font-size: 13px; font-variant-numeric: tabular-nums; }
 body[data-view] .allocation-legend .allocation-history-badge {
   display: inline-block;
   align-self: center;
@@ -482,13 +459,37 @@ body[data-view] .allocation-legend .allocation-history-badge {
   font-size: 12px;
   line-height: 1.6;
 }
-@media (max-width: 600px) {
-  body[data-view] .allocation-legend:has(.allocation-target-item) {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 12px;
-  }
-  body[data-view] .allocation-legend .allocation-history-badge { justify-self: start; }
-}
 
 body[data-view] #v2-volatility .v2-group-empty { margin: 16px 0 12px; padding-bottom: 10px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 14px; font-weight: 500; }
+
+/* Shared data freshness sits beside the page title. */
+body[data-view] .v2-page-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 32px;
+  margin-bottom: 24px;
+}
+body[data-view] .v2-hero { margin: 0; }
+body[data-view] .v2-status {
+  display: grid;
+  gap: 10px;
+  width: 336px;
+  margin: 0;
+  padding: 16px 20px;
+  border: 1px solid #dce6dc;
+  border-radius: 12px;
+  background: #eaf0e9;
+  color: var(--green);
+}
+.v2-update-date { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.v2-update-label { font-size: 12px; color: var(--muted); }
+.v2-update-date time { font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1.4; }
+.v2-collection-metrics { display: flex; justify-content: space-between; gap: 20px; padding-top: 10px; border-top: 1px solid #d6e0d6; font-size: 12px; color: var(--muted); }
+.v2-collection-metrics > span { display: flex; align-items: baseline; gap: 10px; }
+.v2-collection-metrics strong { color: var(--green); font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; }
+@media (max-width: 600px) {
+  body[data-view] .v2-page-heading { grid-template-columns: minmax(0, 1fr); gap: 18px; margin-bottom: 20px; }
+  body[data-view] .v2-status { width: 100%; padding: 14px 16px; }
+  .v2-update-date time { font-size: 18px; }
+}
