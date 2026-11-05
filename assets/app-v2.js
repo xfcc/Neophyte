@@ -78,13 +78,7 @@
       const percentile=Number.isFinite(saved?.percentile)?p(saved.percentile):'—';
       const cumulative=key==='unavailable'?null:r.five_day_return;
       const facts=state.selected?.volatility_facts?.[r.asset_id];
-      const path=facts?.window_start_date?`窗口内${facts.positive_days}日上涨、${facts.negative_days}日下跌；最大单日变化${p(facts.largest_daily_return,true)}`:'窗口路径证据不足';
-      let brief=key==='normal'?'正常波动':key==='record_only'?'仅记录':key==='unavailable'?'有效数据或历史基准不足':`${path}；原因未确认（证据等级：未建立）。核验${r.market_date}及前后产品公告。`;
-      if(r.asset_type==='stock'&&['extreme','attention'].includes(key)){
-        const peers=rows.filter(x=>x.asset_type==='stock'&&x.market===r.market&&x.market_date===r.market_date&&Number.isFinite(x.five_day_return)).map(x=>x.five_day_return).sort((a,b)=>a-b);
-        const median=peers.length?peers.length%2?peers[(peers.length-1)/2]:(peers[peers.length/2-1]+peers[peers.length/2])/2:null;
-        brief+=` 同市场持仓样本${peers.length}个，中位累计变化${p(median,true)}；末日${Math.sign(r.daily_return)===Math.sign(cumulative)?'延续':'未延续'}窗口方向。观察下一有效交易日是否延续，并核验公司公告。`;
-      }
+      const brief=ui.volatilityBrief(r,key,facts,rows);
       return `<tr><td>${e(r.name??r.symbol)}<small>${e(r.symbol)}</small></td><td class="${numberClass(r.daily_return)}">${p(r.daily_return,true)}</td><td class="${numberClass(cumulative)}">${p(cumulative,true)}</td><td>${percentile}</td><td>${renderMarketResonance(resonance)}</td><td>${e(brief)}</td></tr>`;
     }).join('')}</tbody></table></div>`:''}`).join('');
   }

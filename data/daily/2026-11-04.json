@@ -1,0 +1,500 @@
+{
+  "schema_version": 1,
+  "reference_date": "2026-11-04",
+  "observations": [
+    {
+      "asset_id": "fund-cn-002656",
+      "symbol": "002656",
+      "status": "confirmed",
+      "market_date": "2026-11-04",
+      "daily_return": 0.060613263608271906,
+      "five_day_return": -0.032244071717755785,
+      "volatility": {
+        "basis": "historical_percentile",
+        "return_window": "daily",
+        "percentile": 0.9971762807583703,
+        "level": "extreme",
+        "description": "极端波动"
+      },
+      "five_day_volatility": {
+        "basis": "historical_percentile",
+        "return_window": "five_day",
+        "percentile": 0.14707070707070707,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "holding": {
+        "return": -0.03634022886536159,
+        "group_weight": 0.13864064743136725
+      }
+    },
+    {
+      "asset_id": "fund-cn-022444",
+      "symbol": "022444",
+      "status": "confirmed",
+      "market_date": "2026-11-04",
+      "daily_return": 0.0282098347985702,
+      "five_day_return": 0.0022600998210753342,
+      "volatility": {
+        "basis": "historical_percentile",
+        "return_window": "daily",
+        "percentile": 0.9952718676122931,
+        "level": "extreme",
+        "description": "极端波动"
+      },
+      "five_day_volatility": {
+        "basis": "historical_percentile",
+        "return_window": "five_day",
+        "percentile": 0.44630071599045346,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "holding": {
+        "return": -0.05755247097959015,
+        "group_weight": 0.372564211797296
+      }
+    },
+    {
+      "asset_id": "fund-cn-007466",
+      "symbol": "007466",
+      "status": "confirmed",
+      "market_date": "2026-11-04",
+      "daily_return": -0.005140021269053663,
+      "five_day_return": 0.011715933669790513,
+      "volatility": {
+        "basis": "historical_percentile",
+        "return_window": "daily",
+        "percentile": 0.22274602239245728,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "five_day_volatility": {
+        "basis": "historical_percentile",
+        "return_window": "five_day",
+        "percentile": 0.6993502658003544,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "holding": {
+        "return": 0.01252668806302859,
+        "group_weight": 0.19656698124399205
+      }
+    },
+    {
+      "asset_id": "fund-cn-019923",
+      "symbol": "019923",
+      "status": "confirmed",
+      "market_date": "2026-11-04",
+      "daily_return": 0.035813010627188335,
+      "five_day_return": -0.026218526218526272,
+      "volatility": {
+        "basis": "historical_percentile",
+        "return_window": "daily",
+        "percentile": 0.9863013698630136,
+        "level": "attention",
+        "description": "异常波动"
+      },
+      "five_day_volatility": {
+        "basis": "historical_percentile",
+        "return_window": "five_day",
+        "percentile": 0.15862068965517243,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "holding": {
+        "return": -0.021985817300243737,
+        "group_weight": 0.07029959449608586
+      }
+    },
+    {
+      "asset_id": "fund-cn-007169",
+      "symbol": "007169",
+      "status": "confirmed",
+      "market_date": "2026-11-04",
+      "daily_return": 0.0003956087429530797,
+      "five_day_return": 0.0007915306223409413,
+      "volatility": {
+        "basis": "historical_percentile",
+        "return_window": "daily",
+        "percentile": 0.8181818181818182,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "five_day_volatility": {
+        "basis": "historical_percentile",
+        "return_window": "five_day",
+        "percentile": 0.5822349570200573,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "holding": {
+        "return": 0.0015481639674768122,
+        "group_weight": 0.36893708343591597
+      }
+    },
+    {
+      "asset_id": "fund-cn-000191",
+      "symbol": "000191",
+      "status": "confirmed",
+      "market_date": "2026-11-04",
+      "daily_return": 0.0004395926441496112,
+      "five_day_return": -0.0003660322108347547,
+      "volatility": {
+        "basis": "historical_percentile",
+        "return_window": "daily",
+        "percentile": 0.7447010439734262,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "five_day_volatility": {
+        "basis": "historical_percentile",
+        "return_window": "five_day",
+        "percentile": 0.17073170731707318,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "holding": {
+        "return": 0.005596877531482303,
+        "group_weight": 0.2031093430601477
+      }
+    },
+    {
+      "asset_id": "fund-cn-006662",
+      "symbol": "006662",
+      "status": "confirmed",
+      "market_date": "2026-11-04",
+      "daily_return": 9.85707244947065e-05,
+      "five_day_return": 9.85707244947065e-05,
+      "volatility": {
+        "basis": "historical_percentile",
+        "return_window": "daily",
+        "percentile": 0.5070270270270271,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "five_day_volatility": {
+        "basis": "historical_percentile",
+        "return_window": "five_day",
+        "percentile": 0.09371614301191766,
+        "level": "attention",
+        "description": "异常波动"
+      },
+      "holding": {
+        "return": -0.0015744932099980291,
+        "group_weight": 0.07117334112232941
+      }
+    },
+    {
+      "asset_id": "stock-hk-03933",
+      "symbol": "03933",
+      "status": "confirmed",
+      "market_date": "2026-11-04",
+      "daily_return": 0.039716312056737646,
+      "five_day_return": 0.06154960173787116,
+      "volatility": {
+        "basis": "historical_percentile",
+        "return_window": "daily",
+        "percentile": 0.9146134239592183,
+        "level": "attention",
+        "description": "异常波动"
+      },
+      "five_day_volatility": {
+        "basis": "historical_percentile",
+        "return_window": "five_day",
+        "percentile": 0.8399234693877551,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "holding": {
+        "return": -0.022666666666666613,
+        "group_weight": 0.07267823767667604
+      }
+    },
+    {
+      "asset_id": "stock-us-lkncy",
+      "symbol": "LKNCY",
+      "status": "confirmed",
+      "market_date": "2026-11-04",
+      "daily_return": 0.0693464252838294,
+      "five_day_return": 0.0948790449261705,
+      "volatility": {
+        "basis": "historical_percentile",
+        "return_window": "daily",
+        "percentile": 0.9319682959048877,
+        "level": "attention",
+        "description": "异常波动"
+      },
+      "five_day_volatility": {
+        "basis": "historical_percentile",
+        "return_window": "five_day",
+        "percentile": 0.8377483443708609,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "holding": {
+        "return": 0.040298507462686706,
+        "group_weight": 0.13476211014768655
+      }
+    },
+    {
+      "asset_id": "stock-hk-01810",
+      "symbol": "01810",
+      "status": "confirmed",
+      "market_date": "2026-11-04",
+      "daily_return": 0.005594405594405494,
+      "five_day_return": 0.12256049960967985,
+      "volatility": {
+        "basis": "historical_percentile",
+        "return_window": "daily",
+        "percentile": 0.6052366565961732,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "five_day_volatility": {
+        "basis": "historical_percentile",
+        "return_window": "five_day",
+        "percentile": 0.9596367305751766,
+        "level": "attention",
+        "description": "异常波动"
+      },
+      "holding": {
+        "return": 0.12563600782778872,
+        "group_weight": 0.11406418093212567
+      }
+    },
+    {
+      "asset_id": "stock-hk-02020",
+      "symbol": "02020",
+      "status": "confirmed",
+      "market_date": "2026-11-04",
+      "daily_return": -0.008317338451695577,
+      "five_day_return": 0.0778859527121003,
+      "volatility": {
+        "basis": "historical_percentile",
+        "return_window": "daily",
+        "percentile": 0.3532921372256552,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "five_day_volatility": {
+        "basis": "historical_percentile",
+        "return_window": "five_day",
+        "percentile": 0.889741949242909,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "holding": {
+        "return": 0.06456043956043955,
+        "group_weight": 0.07684261145896852
+      }
+    },
+    {
+      "asset_id": "stock-hk-02097",
+      "symbol": "02097",
+      "status": "confirmed",
+      "market_date": "2026-11-04",
+      "daily_return": -0.029977375565610975,
+      "five_day_return": 0.032510535821794306,
+      "volatility": {
+        "basis": "historical_percentile",
+        "return_window": "daily",
+        "percentile": 0.14285714285714285,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "five_day_volatility": {
+        "basis": "historical_percentile",
+        "return_window": "five_day",
+        "percentile": 0.7369942196531792,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "holding": {
+        "return": -0.08042895442359255,
+        "group_weight": 0.17004526277694326
+      }
+    },
+    {
+      "asset_id": "stock-hk-02150",
+      "symbol": "02150",
+      "status": "confirmed",
+      "market_date": "2026-11-04",
+      "daily_return": 0.014084507042253502,
+      "five_day_return": 0.06666666666666665,
+      "volatility": {
+        "basis": "historical_percentile",
+        "return_window": "daily",
+        "percentile": 0.7234212629896083,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "five_day_volatility": {
+        "basis": "historical_percentile",
+        "return_window": "five_day",
+        "percentile": 0.8612670408981555,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "holding": {
+        "return": -0.3207547169811321,
+        "group_weight": 0.026770974314737423
+      }
+    },
+    {
+      "asset_id": "stock-hk-09618",
+      "symbol": "09618",
+      "status": "confirmed",
+      "market_date": "2026-11-04",
+      "daily_return": -0.00745573159366264,
+      "five_day_return": 0.06393606393606444,
+      "volatility": {
+        "basis": "historical_percentile",
+        "return_window": "daily",
+        "percentile": 0.40863787375415284,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "five_day_volatility": {
+        "basis": "historical_percentile",
+        "return_window": "five_day",
+        "percentile": 0.8474350433044637,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "holding": {
+        "return": 0.03402073866946287,
+        "group_weight": 0.10559662090813093
+      }
+    },
+    {
+      "asset_id": "stock-hk-09988",
+      "symbol": "09988",
+      "status": "confirmed",
+      "market_date": "2026-11-04",
+      "daily_return": 0.010547463586137562,
+      "five_day_return": 0.017189079878665137,
+      "volatility": {
+        "basis": "historical_percentile",
+        "return_window": "daily",
+        "percentile": 0.674984783931832,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "five_day_volatility": {
+        "basis": "historical_percentile",
+        "return_window": "five_day",
+        "percentile": 0.6345332519829164,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "holding": {
+        "return": -0.3221526706241452,
+        "group_weight": 0.29924000178473165
+      }
+    },
+    {
+      "asset_id": "fund-cn-013308",
+      "symbol": "013308",
+      "status": "confirmed",
+      "market_date": "2026-11-04",
+      "daily_return": 0.017276974899489428,
+      "five_day_return": 0.020381471389645744,
+      "volatility": {
+        "basis": "historical_percentile",
+        "return_window": "daily",
+        "percentile": 0.8138862102217936,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "five_day_volatility": {
+        "basis": "historical_percentile",
+        "return_window": "five_day",
+        "percentile": 0.6834462729912875,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "holding": {
+        "return": 0.045406242334599334,
+        "group_weight": 0.075155643804272
+      }
+    },
+    {
+      "asset_id": "fund-cn-007171",
+      "symbol": "007171",
+      "status": "confirmed",
+      "market_date": "2026-11-04",
+      "daily_return": 0.0003933136676501636,
+      "five_day_return": 0.001082357571583481,
+      "volatility": {
+        "basis": "historical_percentile",
+        "return_window": "daily",
+        "percentile": 0.6319237641453246,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "five_day_volatility": {
+        "basis": "historical_percentile",
+        "return_window": "five_day",
+        "percentile": 0.5438805970149254,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "holding": {
+        "return": 0.0005836105957617299,
+        "group_weight": 0.35678023238160694
+      }
+    },
+    {
+      "asset_id": "fund-cn-000216",
+      "symbol": "000216",
+      "status": "confirmed",
+      "market_date": "2026-11-04",
+      "daily_return": 0.02707077664887203,
+      "five_day_return": -0.00686049222366536,
+      "volatility": {
+        "basis": "historical_percentile",
+        "return_window": "daily",
+        "percentile": 0.9911026374324754,
+        "level": "extreme",
+        "description": "极端波动"
+      },
+      "five_day_volatility": {
+        "basis": "historical_percentile",
+        "return_window": "five_day",
+        "percentile": 0.2758510976773783,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "holding": {
+        "return": 0.03132110720567649,
+        "group_weight": null
+      }
+    },
+    {
+      "asset_id": "fund-cn-501302",
+      "symbol": "501302",
+      "status": "confirmed",
+      "market_date": "2026-11-04",
+      "daily_return": 0.0166902404526168,
+      "five_day_return": 0.03394706559263505,
+      "volatility": {
+        "basis": "historical_percentile",
+        "return_window": "daily",
+        "percentile": 0.9122887163088168,
+        "level": "attention",
+        "description": "异常波动"
+      },
+      "five_day_volatility": {
+        "basis": "historical_percentile",
+        "return_window": "five_day",
+        "percentile": 0.8983981693363844,
+        "level": "normal",
+        "description": "正常波动"
+      },
+      "holding": {
+        "return": 0.020185366260487392,
+        "group_weight": 0.14677292122698693
+      }
+    }
+  ]
+}
