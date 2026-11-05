@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "reference_date": "2026-10-30",
-  "generated_at": "2026-11-05T09:39:50+08:00",
+  "generated_at": "2026-11-05T10:50:10+08:00",
   "valuation_input_date": "2026-10-29",
   "configuration_versions": {
-    "holdings": "f0826bc8c1d20c5a8022efeb6ac20be2dcff8f13663e3d5b8c183da99c286596",
+    "holdings": "5101431c559ade262f8008ee1c5d94439e749ed9e71ad06cb3eb9ca2904a747b",
     "allocation": "116062739f4689078d4404041a9740e37087d5f5d26dfec1933623d28108864f"
   },
   "status": "complete",

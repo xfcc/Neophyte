@@ -393,11 +393,11 @@ body[data-view] .v2-table-wrap td { padding: 13px 14px; vertical-align: middle; 
 body[data-view] .v2-table-wrap tbody tr:last-child td { border-bottom: 0; }
 body[data-view] .v2-table-wrap tbody tr:hover { background: rgba(228, 238, 233, .28); }
 body[data-view] .v2-table-wrap td small { margin-top: 3px; font-size: 12px; line-height: 1.5; }
-body[data-view] #v2-profit table { min-width: 600px; table-layout: fixed; }
-body[data-view] #v2-profit th:first-child { width: 43%; }
-body[data-view] #v2-profit th:nth-child(2) { width: 25%; }
+body[data-view] #v2-profit table { min-width: 760px; table-layout: fixed; }
+body[data-view] #v2-profit th:first-child { width: 34%; }
+body[data-view] #v2-profit th:nth-child(2) { width: 21%; }
 body[data-view] #v2-profit th:nth-child(n+3),
-body[data-view] #v2-profit td:nth-child(n+3) { width: 16%; text-align: right; }
+body[data-view] #v2-profit td:nth-child(n+3) { width: 15%; text-align: right; }
 body[data-view] #v2-profit td:nth-child(n+3) { font-weight: 650; }
 body[data-view] #v2-volatility table { min-width: 940px; table-layout: fixed; }
 body[data-view] #v2-volatility th:first-child { width: 23%; }
@@ -434,9 +434,9 @@ body[data-view] footer { padding-top: 12px; }
   body[data-view] .v2-panel h3 { margin-top: 22px; gap: 4px 8px; }
   body[data-view] .v2-panel h3 small { display: block; flex-basis: 100%; }
   body[data-view] .v2-table-wrap th, body[data-view] .v2-table-wrap td { padding-inline: 12px; }
-  body[data-view] #v2-profit th:first-child { width: 35%; }
-  body[data-view] #v2-profit th:nth-child(2) { width: 29%; }
-  body[data-view] #v2-profit th:nth-child(n+3), body[data-view] #v2-profit td:nth-child(n+3) { width: 18%; }
+  body[data-view] #v2-profit th:first-child { width: 34%; }
+  body[data-view] #v2-profit th:nth-child(2) { width: 21%; }
+  body[data-view] #v2-profit th:nth-child(n+3), body[data-view] #v2-profit td:nth-child(n+3) { width: 15%; }
   body[data-view] #v2-profit th:first-child,
   body[data-view] #v2-profit td:first-child,
   body[data-view] #v2-volatility th:first-child,
