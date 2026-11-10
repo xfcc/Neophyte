@@ -2,7 +2,7 @@
 (async function () {
   'use strict';
   const ui = window.Neophyte2, e = ui.escape, p = ui.percent;
-  const labels = {equity:'股票',bond:'债券',gold:'黄金',cash:'现金',unclassified:'待分类',direct_equity_funds:'主动股票基金',advisory_equity_funds:'投顾股票基金',active_stocks:'主动个股',direct_bond_funds:'主动债券基金',advisory_bond_funds:'投顾债券基金',cn_broad:'A股宽基',cn_dividend:'A股红利',hk_broad:'港股宽基',short_rate:'短期利率债',medium_rate:'中期利率债',credit:'信用债',short_bond:'超短债（混合券种）'};
+  const labels = {equity:'股票',bond:'债券',gold:'黄金',cash:'现金',unclassified:'待分类',direct_equity_funds:'主动股票基金',advisory_equity_funds:'投顾股票基金',active_stocks:'主动个股',direct_bond_funds:'主动债券基金',advisory_bond_funds:'投顾债券基金',cn_broad:'A股宽基',cn_dividend:'A股红利',hk_broad:'港股宽基',cn_theme:'A股主题',short_rate:'短期利率债',medium_rate:'中期利率债',credit:'信用债',short_bond:'超短债（混合券种）'};
   const state = { snapshots:[], selected:null, layer:'global', daily:null, account:null, index:null, watch:[] };
   const $ = s => document.querySelector(s);
   const numberClass = n => Number.isFinite(n) ? n > 0 ? 'v2-up' : n < 0 ? 'v2-down' : '' : '';
