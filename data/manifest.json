@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-10T09:33:27+08:00",
+  "updated_at": "2026-11-11T09:35:30+08:00",
   "snapshots": [
     "data/daily/2026-10-28.json",
     "data/daily/2026-10-29.json",
@@ -10,7 +10,8 @@
     "data/daily/2026-11-04.json",
     "data/daily/2026-11-05.json",
     "data/daily/2026-11-06.json",
-    "data/daily/2026-11-09.json"
+    "data/daily/2026-11-09.json",
+    "data/daily/2026-11-10.json"
   ],
   "account_snapshots": [
     "data/accounts/2026-10-28.json",
@@ -21,9 +22,10 @@
     "data/accounts/2026-11-04.json",
     "data/accounts/2026-11-05.json",
     "data/accounts/2026-11-06.json",
-    "data/accounts/2026-11-09.json"
+    "data/accounts/2026-11-09.json",
+    "data/accounts/2026-11-10.json"
   ],
-  "latest_portfolio_snapshot": "data/portfolio/2026-11-09.json",
+  "latest_portfolio_snapshot": "data/portfolio/2026-11-10.json",
   "portfolio_v2_snapshots": [
     "data/portfolio-v2/2026-10-29.json",
     "data/portfolio-v2/2026-10-30.json",
@@ -33,7 +35,8 @@
     "data/portfolio-v2/2026-11-04.json",
     "data/portfolio-v2/2026-11-05.json",
     "data/portfolio-v2/2026-11-06.json",
-    "data/portfolio-v2/2026-11-09.json"
+    "data/portfolio-v2/2026-11-09.json",
+    "data/portfolio-v2/2026-11-10.json"
   ],
   "allocation_history_snapshots": [
     "data/allocation-history/2026-09-08.json",
@@ -74,7 +77,7 @@
     "data/allocation-history/2026-10-27.json",
     "data/allocation-history/2026-10-28.json"
   ],
-  "latest_portfolio_v2_snapshot": "data/portfolio-v2/2026-11-09.json",
+  "latest_portfolio_v2_snapshot": "data/portfolio-v2/2026-11-10.json",
   "last_run": {
     "status": "partial"
   }
