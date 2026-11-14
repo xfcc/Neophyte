@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "reference_date": "2026-11-11",
-  "generated_at": "2026-11-13T09:33:03+08:00",
+  "generated_at": "2026-11-14T09:33:00+08:00",
   "valuation_input_date": "2026-11-11",
   "configuration_versions": {
     "holdings": "ab26e937b7ab55c1afaf1b6efae27453e2861eb62c6568b3f64263625a991445",
@@ -1715,12 +1715,12 @@
       "cumulative": -0.0061310100032268
     },
     "tiaa001001-fund-005313": {
-      "window_start_date": "2026-11-05",
+      "window_start_date": null,
       "window_end_date": "2026-11-11",
-      "positive_days": 3,
-      "negative_days": 2,
-      "largest_daily_return": -0.02284710017574687,
-      "cumulative": 0.02088772845953013
+      "positive_days": null,
+      "negative_days": null,
+      "largest_daily_return": null,
+      "cumulative": null
     },
     "tiaa001001-fund-007169": {
       "window_start_date": "2026-11-05",
