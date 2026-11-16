@@ -6,7 +6,6 @@
   const sections = [
     {id:'global', title:'全账户仓位', layer:'global', overview:true},
     {id:'equity', title:'股票仓位', layer:'equity', overview:true},
-    {id:'bond', title:'债券仓位', layer:'bond', overview:true},
     {id:'stock-detail', title:'股票仓位明细', layer:'direct_equity_funds', choices:[['direct_equity_funds','股票基金仓位'],['active_stocks','主动个股仓位']]},
     {id:'bond-detail', title:'债券仓位明细', layer:'direct_bond_funds'},
     {id:'advisory', title:'投顾仓位', layer:'advisory'},
@@ -49,7 +48,9 @@
       }
     }
     const within=saved.filter(s=>s.reference_date>=start);
-    const series=[...new Map(within.flatMap(s=>layerChildren(s.layers?.[layerId],layerId).map(c=>[c.id,{id:c.id,name:c.name}]))).values()];
+    const series=[...new Map(within.flatMap(s=>layerChildren(s.layers?.[layerId],layerId)
+      .filter(c=>c.id!=='unclassified'&&!c.id.endsWith(':unclassified'))
+      .map(c=>[c.id,{id:c.id,name:c.name}]))).values()];
     const byDate=new Map(within.map(s=>[s.reference_date,s]));
     const days=[];
     for(let date=start;date<=today;date=offsetDate(date,1)){
@@ -80,7 +81,7 @@
     const {days,series}=data;
     // Each contiguous complete run owns its stack. Never feed incomplete vectors
     // to percent normalization or let the renderer bridge a missing date.
-    const runs=validRuns(days);
+    const runs=series.length?validRuns(days):[];
     const tooltipPattern={
       title:{value:d=>d.date},
       content:[{key:d=>d.name,value:d=>p(d.weight)}]
@@ -90,7 +91,7 @@
       color:{type:'ordinal',domain:series.map(c=>c.id),range:series.map(c=>color(c.id))},
       series:runs.map((run,index)=>({
         type:run.length===1?'bar':'area',id:'run-'+index,stackValue:'run-'+index,
-        stack:true,percent:true,animation:false,invalidType:'break',
+        stack:true,percent:run.every(day=>Math.abs(day.values.reduce((sum,value)=>sum+value,0)-1)<.00001),animation:false,invalidType:'break',
         data:{id:'run-data-'+index,values:run.flatMap(day=>series.map((c,k)=>({date:day.date,category:c.id,name:c.name,weight:day.values[k],basis:day.basis})))},
         xField:'date',yField:'weight',seriesField:'category',
         ...(run.length===1?{barWidth:8,bar:{style:{fillOpacity:.82}}}:{area:{style:{fillOpacity:.82}},line:{style:{lineWidth:1}},point:{visible:true,style:{size:5,stroke:'white',lineWidth:1}}}),
@@ -121,7 +122,7 @@
       const hasTarget=Number.isFinite(child?.target_weight);
       return `<span${hasTarget?' class="allocation-target-item"':''} title="${e(data.snapshot.reference_date+' · '+(layer.name??'该层')+'内比例'+(hasTarget?' · 实际 / 目标':''))}"><i style="background:${color(c.id)}"></i><span>${e(c.name)}：${compact(actual)}${hasTarget?' / '+compact(child.target_weight):''}</span></span>`;
     }).join('');
-    return `<div class="allocation-chart" data-vchart-section="${e(id)}" role="img" aria-label="${e('每日仓位百分比堆叠面积图。周末不占位，缺失数据处断开。'+summary)}">${!days.some(d=>d.valid)?'<span class="allocation-chart-empty">暂无完整估值</span>':''}</div><div class="allocation-legend">${legend}</div>${gapInfo}`;
+    return `<div class="allocation-chart" data-vchart-section="${e(id)}" role="img" aria-label="${e('每日仓位百分比堆叠面积图。周末不占位，缺失数据处断开。'+summary)}">${(!series.length||!days.some(d=>d.valid))?'<span class="allocation-chart-empty">暂无完整估值</span>':''}</div><div class="allocation-legend">${legend}</div>${gapInfo}`;
   }
 
   function productRows(snapshot,layerId) {

@@ -2,7 +2,7 @@
 (async function () {
   'use strict';
   const ui = window.Neophyte2, e = ui.escape, p = ui.percent;
-  const labels = {equity:'股票',bond:'债券',gold:'黄金',cash:'现金',unclassified:'待分类',direct_equity_funds:'主动股票基金',advisory_equity_funds:'投顾股票基金',active_stocks:'主动个股',direct_bond_funds:'主动债券基金',advisory_bond_funds:'投顾债券基金',cn_broad:'A股宽基',cn_dividend:'A股红利',hk_broad:'港股宽基',cn_theme:'A股主题',short_rate:'短期利率债',medium_rate:'中期利率债',credit:'信用债',short_bond:'超短债（混合券种）'};
+  const labels = {equity:'股票',bond:'债券',gold:'黄金',cash:'现金',direct_equity_funds:'主动股票基金',advisory_equity_funds:'投顾股票基金',active_stocks:'主动个股',direct_bond_funds:'主动债券基金',advisory_bond_funds:'投顾债券基金',cn_broad:'A股宽基',cn_dividend:'A股红利',hk_broad:'港股宽基',cn_theme:'A股主题',overseas_theme:'境外主题',short_rate:'短期利率债',medium_rate:'中期利率债',credit:'信用债',short_bond:'超短债（混合券种）'};
   const state = { snapshots:[], selected:null, layer:'global', daily:null, account:null, index:null, watch:[] };
   const $ = s => document.querySelector(s);
   const numberClass = n => Number.isFinite(n) ? n > 0 ? 'v2-up' : n < 0 ? 'v2-down' : '' : '';
@@ -21,7 +21,7 @@
     document.body?.setAttribute('data-view',tab);
     document.querySelectorAll('[data-v2-tab]').forEach(a=>{if(a.dataset.v2Tab===tab)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
     document.querySelectorAll('[data-v2-panel]').forEach(x=>x.hidden=x.dataset.v2Panel!==tab);
-    $('#v2-title').textContent={allocation:'资产配置',profit:'资产浮盈',volatility:'波动识别'}[tab];
+    $('#v2-title').textContent={allocation:'资产配置',profit:'配置浮盈',volatility:'温度波动'}[tab];
     if(state.snapshots.length)renderCoverage();
     $('#v2-subtitle').textContent={allocation:'',profit:'当前持仓相对成本的变化',volatility:'近5个有效交易日 · 产品自身历史分位'}[tab];
   }
@@ -55,17 +55,39 @@
       : field==='holding_return'?'成本缺失或不可比，暂不计算持仓盈亏':'缺少可比的相邻交易日行情';
     return `<details class="v2-cell-detail"><summary aria-label="查看${field==='holding_return'?'持仓盈亏':'日涨跌幅'}缺失原因">—</summary><span>${e(reason)}</span></details>`;
   }
+  function profitProducts(products, title) {
+    if (!products.length) return '';
+    return `<h4>${e(title)}</h4><div class="v2-table-wrap"><table>
+      <thead><tr><th>产品名称</th><th title="占全账户投资资产的比例">总持仓占比</th><th title="占此细分类全部产品市值的比例">分类持仓占比</th><th>持仓盈亏</th></tr></thead>
+      <tbody>${products.map(row=>`<tr><td>${e(row.name)}<small>${e(row.symbol)}</small></td><td>${p(row.global_weight)}</td><td>${p(row.weight)}</td><td class="${numberClass(row.holding_return)}">${profitValue(row,'holding_return')}</td></tr>`).join('')}</tbody>
+    </table></div>`;
+  }
   function renderProfit() {
-    const s=state.selected;
-    if(!s?.positions?.length){$('#v2-profit').innerHTML=missing('尚无该日期可用的2.0持仓估值。');return;}
-    const groups=[['direct_equity_funds','主动股票基金'],['direct_bond_funds','主动债券基金'],['active_stocks','主动个股'],['advisory','投顾服务']];
-    $('#v2-profit').innerHTML=groups.map(([group,title])=>{
-      const rows=window.NeophyteAllocation.productRows(s,group);
-      if(!rows.length)return '';
-      const layer=s.layers[group];
-      return `<h3>${e(title)} <small>${layer?`${layer.status==='partial'?'已知部分':'分类'}浮盈 <strong class="${numberClass(layer.holding_return)}">${p(layer.holding_return,true)}</strong> · 已计价 ${rows.filter(r=>r.status!=='missing').length}/${rows.length} · 成本可比 ${p(layer.holding_return_coverage)}`:`已计价 ${rows.filter(r=>r.status!=='missing').length}/${rows.length}`}</small></h3><div class="v2-table-wrap"><table><thead><tr><th>产品名称</th><th>分类</th><th title="占全账户投资资产的比例，含现金及投顾底层持仓">总持仓占比</th><th title="占本表分类市值的比例">分类持仓占比</th><th>持仓盈亏</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${e(r.name)}<small>${e(r.symbol)}</small></td><td>${e(labels[r.method]??r.method)}<small>${e(['active_stocks','cash'].includes(r.method)&&r.subgroup==='unclassified'?'':labels[r.subgroup]??r.subgroup)}</small></td><td>${p(r.global_weight)}</td><td>${p(r.weight)}</td><td class="${numberClass(r.holding_return)}">${profitValue(r,'holding_return')}</td></tr>`).join('')}</tbody></table></div>`;
-    }).join('')||missing('该分类没有持仓。');
-    window.dispatchEvent(new CustomEvent('neophyte:snapshot',{detail:s}));
+    const snapshot=state.selected;
+    if(!snapshot?.positions?.length){$('#v2-profit').innerHTML=missing('尚无该日期可用的2.0持仓估值。');return;}
+    const positions=new Map(snapshot.positions.map(row=>[row.id,row]));
+    const groups=Object.values(snapshot.layers).filter(layer=>layer.id?.startsWith('profit:')).map(layer=>{
+      const products=ui.sortRows(layer.children.map(child=>({...positions.get(child.id),weight:child.actual_weight})),'weight');
+      const totalWeight=products.every(row=>Number.isFinite(row.global_weight))
+        ?products.reduce((sum,row)=>sum+row.global_weight,0):null;
+      return {layer,products,totalWeight};
+    });
+    $('#v2-profit').innerHTML=['equity','bond','gold','cash'].map(assetClass=>{
+      const sections=ui.sortRows(groups.filter(group=>group.layer.id.startsWith(`profit:${assetClass}:`))
+        .map(group=>({...group,name:group.layer.name})),'totalWeight');
+      if(!sections.length)return '';
+      return `<h3>${e(labels[assetClass])}</h3><div class="profit-groups">${sections.map(({layer,products,totalWeight})=>{
+        const returnLabel=Number.isFinite(layer.holding_return)&&(layer.status==='partial'||layer.holding_return_coverage<1-1e-8)
+          ?'可比部分盈亏':'持仓盈亏';
+        return `<details class="profit-group"><summary><strong>${e(layer.name)}</strong>
+          <span>总持仓占比 <b>${p(totalWeight)}</b></span><span>${returnLabel} <b class="${numberClass(layer.holding_return)}">${p(layer.holding_return,true)}</b></span>
+        </summary><div class="profit-products">
+          ${profitProducts(products.filter(row=>row.id.startsWith('direct:')),'主动持仓')}
+          ${profitProducts(products.filter(row=>!row.id.startsWith('direct:')),'投顾持仓')}
+        </div></details>`;
+      }).join('')}</div>`;
+    }).join('')||missing('该日期尚无按细分类汇总的仓位。');
+    window.dispatchEvent(new CustomEvent('neophyte:snapshot',{detail:snapshot}));
   }
   function renderVolatility() {
     if(!state.daily){$('#v2-volatility').innerHTML=missing('缺少行情事实快照。');return;}
