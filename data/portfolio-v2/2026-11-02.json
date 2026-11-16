@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "reference_date": "2026-11-02",
-  "generated_at": "2026-11-16T10:27:04+08:00",
+  "generated_at": "2026-11-16T17:52:42+08:00",
   "valuation_input_date": "2026-11-02",
   "configuration_versions": {
     "holdings": "a06fa5ead731708b57fc19107546b25bd8333c80419651d13571293e32eedc5b",
@@ -29,7 +29,7 @@
   "layers": {
     "active_stocks": {
       "id": "active_stocks",
-      "name": "主动个股",
+      "name": "个股",
       "denominator_id": "active_stocks",
       "status": "complete",
       "target_version": null,
@@ -761,7 +761,7 @@
         },
         {
           "id": "active_stocks",
-          "name": "主动个股",
+          "name": "个股",
           "actual_weight": 0.20862314094089238,
           "target_weight": null,
           "delta_pp": null,
@@ -946,97 +946,6 @@
         }
       ]
     },
-    "profit:equity:active_stocks": {
-      "id": "profit:equity:active_stocks",
-      "name": "主动个股",
-      "denominator_id": "profit:equity:active_stocks",
-      "status": "complete",
-      "target_version": null,
-      "holding_return": -0.15262163240108936,
-      "holding_return_coverage": 1.0,
-      "children": [
-        {
-          "id": "direct:stock-hk-03933",
-          "name": "联邦制药",
-          "actual_weight": 0.0704981663323981,
-          "target_weight": null,
-          "delta_pp": null,
-          "holding_return": -0.07933333333333328,
-          "holding_return_coverage": 1.0,
-          "status": "complete"
-        },
-        {
-          "id": "direct:stock-us-lkncy",
-          "name": "瑞幸咖啡",
-          "actual_weight": 0.12497533012046658,
-          "target_weight": null,
-          "delta_pp": null,
-          "holding_return": -0.0683582089552239,
-          "holding_return_coverage": 1.0,
-          "status": "complete"
-        },
-        {
-          "id": "direct:stock-hk-01810",
-          "name": "小米集团-W",
-          "actual_weight": 0.11475733375469292,
-          "target_weight": null,
-          "delta_pp": null,
-          "holding_return": 0.09980430528375743,
-          "holding_return_coverage": 1.0,
-          "status": "complete"
-        },
-        {
-          "id": "direct:stock-hk-02020",
-          "name": "安踏体育",
-          "actual_weight": 0.07698134310590611,
-          "target_weight": null,
-          "delta_pp": null,
-          "holding_return": 0.035714285714285775,
-          "holding_return_coverage": 1.0,
-          "status": "complete"
-        },
-        {
-          "id": "direct:stock-hk-02097",
-          "name": "蜜雪集团",
-          "actual_weight": 0.17764925332132175,
-          "target_weight": null,
-          "delta_pp": null,
-          "holding_return": -0.06702412868632708,
-          "holding_return_coverage": 1.0,
-          "status": "complete"
-        },
-        {
-          "id": "direct:stock-hk-02150",
-          "name": "奈雪的茶",
-          "actual_weight": 0.026800533906233888,
-          "target_weight": null,
-          "delta_pp": null,
-          "holding_return": -0.33962264150943394,
-          "holding_return_coverage": 1.0,
-          "status": "complete"
-        },
-        {
-          "id": "direct:stock-hk-09618",
-          "name": "京东集团-SW",
-          "actual_weight": 0.1037308283761281,
-          "target_weight": null,
-          "delta_pp": null,
-          "holding_return": -0.013553924424249554,
-          "holding_return_coverage": 1.0,
-          "status": "complete"
-        },
-        {
-          "id": "direct:stock-hk-09988",
-          "name": "阿里巴巴-W",
-          "actual_weight": 0.30460721108285255,
-          "target_weight": null,
-          "delta_pp": null,
-          "holding_return": -0.3299014224013046,
-          "holding_return_coverage": 1.0,
-          "status": "complete"
-        }
-      ]
-    },
     "profit:equity:cn_broad": {
       "id": "profit:equity:cn_broad",
       "name": "A股宽基",
@@ -1175,6 +1084,108 @@
           "target_weight": null,
           "delta_pp": null,
           "holding_return": -0.07408241387074986,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        }
+      ]
+    },
+    "profit:equity:hk_stock": {
+      "id": "profit:equity:hk_stock",
+      "name": "港股个股",
+      "denominator_id": "profit:equity:hk_stock",
+      "status": "complete",
+      "target_version": null,
+      "holding_return": -0.16342843533151977,
+      "holding_return_coverage": 1.0,
+      "children": [
+        {
+          "id": "direct:stock-hk-03933",
+          "name": "联邦制药",
+          "actual_weight": 0.08056706143165511,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.07933333333333328,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct:stock-hk-01810",
+          "name": "小米集团-W",
+          "actual_weight": 0.13114754098360656,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": 0.09980430528375743,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct:stock-hk-02020",
+          "name": "安踏体育",
+          "actual_weight": 0.08797619742138733,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": 0.035714285714285775,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct:stock-hk-02097",
+          "name": "蜜雪集团",
+          "actual_weight": 0.20302199404935536,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.06702412868632708,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct:stock-hk-02150",
+          "name": "奈雪的茶",
+          "actual_weight": 0.030628318067790677,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.33962264150943394,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct:stock-hk-09618",
+          "name": "京东集团-SW",
+          "actual_weight": 0.11854617583571553,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.013553924424249554,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct:stock-hk-09988",
+          "name": "阿里巴巴-W",
+          "actual_weight": 0.34811271221048945,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.3299014224013046,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        }
+      ]
+    },
+    "profit:equity:overseas_stock": {
+      "id": "profit:equity:overseas_stock",
+      "name": "境外个股",
+      "denominator_id": "profit:equity:overseas_stock",
+      "status": "complete",
+      "target_version": null,
+      "holding_return": -0.0683582089552239,
+      "holding_return_coverage": 1.0,
+      "children": [
+        {
+          "id": "direct:stock-us-lkncy",
+          "name": "瑞幸咖啡",
+          "actual_weight": 1.0,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.0683582089552239,
           "holding_return_coverage": 1.0,
           "status": "complete"
         }
@@ -1365,7 +1376,7 @@
       "market": "HKEX",
       "asset_class": "equity",
       "method": "active_stocks",
-      "subgroup": "unclassified",
+      "subgroup": "hk_stock",
       "market_date": "2026-11-02",
       "date_difference": false,
       "daily_return": 0.010980966325036645,
@@ -1384,7 +1395,7 @@
       "market": "US_OTC",
       "asset_class": "equity",
       "method": "active_stocks",
-      "subgroup": "unclassified",
+      "subgroup": "overseas_stock",
       "market_date": "2026-11-02",
       "date_difference": false,
       "daily_return": 0.00937904269081491,
@@ -1403,7 +1414,7 @@
       "market": "HKEX",
       "asset_class": "equity",
       "method": "active_stocks",
-      "subgroup": "unclassified",
+      "subgroup": "hk_stock",
       "market_date": "2026-11-02",
       "date_difference": false,
       "daily_return": 0.061178247734138935,
@@ -1422,7 +1433,7 @@
       "market": "HKEX",
       "asset_class": "equity",
       "method": "active_stocks",
-      "subgroup": "unclassified",
+      "subgroup": "hk_stock",
       "market_date": "2026-11-02",
       "date_difference": false,
       "daily_return": 0.01412239408204452,
@@ -1441,7 +1452,7 @@
       "market": "HKEX",
       "asset_class": "equity",
       "method": "active_stocks",
-      "subgroup": "unclassified",
+      "subgroup": "hk_stock",
       "market_date": "2026-11-02",
       "date_difference": false,
       "daily_return": 0.0187353629976581,
@@ -1460,7 +1471,7 @@
       "market": "HKEX",
       "asset_class": "equity",
       "method": "active_stocks",
-      "subgroup": "unclassified",
+      "subgroup": "hk_stock",
       "market_date": "2026-11-02",
       "date_difference": false,
       "daily_return": 0.06060606060606055,
@@ -1479,7 +1490,7 @@
       "market": "HKEX",
       "asset_class": "equity",
       "method": "active_stocks",
-      "subgroup": "unclassified",
+      "subgroup": "hk_stock",
       "market_date": "2026-11-02",
       "date_difference": false,
       "daily_return": 0.01195219123505975,
@@ -1498,7 +1509,7 @@
       "market": "HKEX",
       "asset_class": "equity",
       "method": "active_stocks",
-      "subgroup": "unclassified",
+      "subgroup": "hk_stock",
       "market_date": "2026-11-02",
       "date_difference": false,
       "daily_return": 0.024729520865533372,

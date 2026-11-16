@@ -2,7 +2,7 @@
 (async function () {
   'use strict';
   const ui = window.Neophyte2, e = ui.escape, p = ui.percent;
-  const labels = {equity:'股票',bond:'债券',gold:'黄金',cash:'现金',direct_equity_funds:'主动股票基金',advisory_equity_funds:'投顾股票基金',active_stocks:'主动个股',direct_bond_funds:'主动债券基金',advisory_bond_funds:'投顾债券基金',cn_broad:'A股宽基',cn_dividend:'A股红利',hk_broad:'港股宽基',cn_theme:'A股主题',overseas_theme:'境外主题',short_rate:'短期利率债',medium_rate:'中期利率债',credit:'信用债',short_bond:'超短债（混合券种）'};
+  const labels = {equity:'股票',bond:'债券',gold:'黄金',cash:'现金'};
   const state = { snapshots:[], selected:null, layer:'global', daily:null, account:null, index:null, watch:[] };
   const $ = s => document.querySelector(s);
   const numberClass = n => Number.isFinite(n) ? n > 0 ? 'v2-up' : n < 0 ? 'v2-down' : '' : '';
@@ -34,7 +34,7 @@
     const referenceSymbols=[...new Set(Object.values(state.index?.assets??{}).flatMap(asset=>Object.values(asset.resonance_baselines??{}).map(r=>r.reference_symbol)).filter(Boolean))];
     const referenceConfirmed=referenceSymbols.filter(symbol=>Number.isFinite(state.index?.references?.[symbol]?.observations?.[updatedThrough]?.daily_return)).length;
     $('#v2-status').innerHTML=updatedThrough
-      ? `<span class="v2-update-date"><span class="v2-update-label">数据更新至</span><time datetime="${e(updatedThrough)}">${e(updatedThrough)}</time></span><span class="v2-collection-metrics"><span>持仓采集 <strong>${holdingsConfirmed}/${holdingsTotal}</strong></span><span>共振采集 <strong>${referenceConfirmed}/${referenceSymbols.length}</strong></span></span>`
+      ? `<span class="v2-status-item">数据更新至 <time datetime="${e(updatedThrough)}">${e(updatedThrough)}</time></span><span class="v2-status-item">持仓采集 <strong>${holdingsConfirmed}/${holdingsTotal}</strong></span><span class="v2-status-item">共振采集 <strong>${referenceConfirmed}/${referenceSymbols.length}</strong></span>`
       : '尚无可用的仓位数据';
     $('#v2-coverage').innerHTML=s?[
       ['行情采集',`直接 ${c.direct_confirmed??0}/${c.direct_total??0} · 投顾 ${c.advisory_confirmed??0}/${c.advisory_total??0}`],['估值覆盖',`${c.valued_positions??0}/${c.positions_total??0}`],['细分分类',c.classification==='complete'?'完整':'待完善'],
@@ -55,11 +55,20 @@
       : field==='holding_return'?'成本缺失或不可比，暂不计算持仓盈亏':'缺少可比的相邻交易日行情';
     return `<details class="v2-cell-detail"><summary aria-label="查看${field==='holding_return'?'持仓盈亏':'日涨跌幅'}缺失原因">—</summary><span>${e(reason)}</span></details>`;
   }
-  function profitProducts(products, title) {
-    if (!products.length) return '';
-    return `<h4>${e(title)}</h4><div class="v2-table-wrap"><table>
-      <thead><tr><th>产品名称</th><th title="占全账户投资资产的比例">总持仓占比</th><th title="占此细分类全部产品市值的比例">分类持仓占比</th><th>持仓盈亏</th></tr></thead>
-      <tbody>${products.map(row=>`<tr><td>${e(row.name)}<small>${e(row.symbol)}</small></td><td>${p(row.global_weight)}</td><td>${p(row.weight)}</td><td class="${numberClass(row.holding_return)}">${profitValue(row,'holding_return')}</td></tr>`).join('')}</tbody>
+  function profitTable(sections, labelledBy) {
+    const bodies=sections.map(({layer,products})=>{
+      const groups=[
+        ['主动持仓',products.filter(row=>row.id.startsWith('direct:'))],
+        ['投顾持仓',products.filter(row=>!row.id.startsWith('direct:'))]
+      ];
+      return groups.filter(([,rows])=>rows.length).map(([name,rows])=>`<tbody>
+        <tr class="profit-ownership"><th scope="rowgroup" colspan="4">${e(sections.length>1 ? layer.name+' · '+name : name)}</th></tr>
+        ${rows.map(row=>`<tr><td>${e(row.name)}<small>${e(row.symbol)}</small></td><td>${p(row.global_weight)}</td><td>${p(row.weight)}</td><td class="${numberClass(row.holding_return)}">${profitValue(row,'holding_return')}</td></tr>`).join('')}
+      </tbody>`).join('');
+    }).join('');
+    return `<div class="v2-table-wrap"><table aria-labelledby="${labelledBy}">
+      <thead><tr><th scope="col">产品名称</th><th scope="col" title="占全账户投资资产的比例">总持仓占比</th><th scope="col" title="占此细分类全部产品市值的比例">分类持仓占比</th><th scope="col">持仓盈亏</th></tr></thead>
+      ${bodies||'<tbody><tr><td colspan="4">暂无持仓</td></tr></tbody>'}
     </table></div>`;
   }
   function configuredGroups(snapshot) {
@@ -74,27 +83,53 @@
     return ['equity','bond','gold','cash'].map(assetClass=>{
       const sections=ui.sortRows(groups.filter(group=>group.layer.id.startsWith(`profit:${assetClass}:`))
         .map(group=>({...group,name:group.layer.name})),'totalWeight');
-      return {label:labels[assetClass],sections};
+      return {assetClass,label:labels[assetClass],sections};
     });
   }
   function renderProfit() {
     const snapshot=state.selected;
     if(!snapshot?.positions?.length){$('#v2-profit').innerHTML=missing('尚无该日期可用的2.0持仓估值。');return;}
-    $('#v2-profit').innerHTML=configuredGroups(snapshot).map(({label,sections})=>{
-      if(!sections.length)return '';
-      return `<h3>${e(label)}</h3><div class="profit-groups">${sections.map(({layer,products,totalWeight})=>{
+    $('#v2-profit').innerHTML=configuredGroups(snapshot).map(({assetClass,label,sections})=>{
+      const heading=`profit-${assetClass}`;
+      const tabbed=sections.length && ['equity','bond'].includes(assetClass);
+      const summary=({layer,totalWeight})=>{
         const returnLabel=Number.isFinite(layer.holding_return)&&(layer.status==='partial'||layer.holding_return_coverage<1-1e-8)
           ?'可比部分盈亏':'持仓盈亏';
-        return `<details class="profit-group"><summary><strong>${e(layer.name)}</strong>
-          <span>总持仓占比 <b>${p(totalWeight)}</b></span><span>${returnLabel} <b class="${numberClass(layer.holding_return)}">${p(layer.holding_return,true)}</b></span>
-        </summary><div class="profit-products">
-          ${profitProducts(products.filter(row=>row.id.startsWith('direct:')),'主动持仓')}
-          ${profitProducts(products.filter(row=>!row.id.startsWith('direct:')),'投顾持仓')}
-        </div></details>`;
-      }).join('')}</div>`;
-    }).join('')||missing('该日期尚无按细分类汇总的仓位。');
+        return `<div class="profit-summary"><span>总持仓占比 <b>${p(totalWeight)}</b></span><span>${returnLabel} <b class="${numberClass(layer.holding_return)}">${p(layer.holding_return,true)}</b></span></div>`;
+      };
+      const content=tabbed
+        ? `<div class="allocation-range-tabs profit-tabs" role="tablist" aria-label="${e(label)}分类">${sections.map(({layer},i)=>
+            `<button type="button" role="tab" id="${heading}-tab-${i}" aria-controls="${heading}-panel-${i}" aria-selected="${i===0}" tabindex="${i===0?0:-1}">${e(layer.name)}</button>`
+          ).join('')}</div>${sections.map((section,i)=>
+            `<div role="tabpanel" id="${heading}-panel-${i}" aria-labelledby="${heading}-tab-${i}"${i===0?'':' hidden'}>${summary(section)}${profitTable([section],`${heading}-tab-${i}`)}</div>`
+          ).join('')}`
+        : (sections.length===1 ? summary(sections[0]) : '')+profitTable(sections,heading);
+      return `<section class="profit-class" aria-labelledby="${heading}"><h3 id="${heading}">${e(label)}</h3>${content}</section>`;
+    }).join('');
     window.dispatchEvent(new CustomEvent('neophyte:snapshot',{detail:snapshot}));
   }
+  function selectProfitTab(tab) {
+    tab.parentElement.querySelectorAll('[role="tab"]').forEach(button=>{
+      const selected=button===tab;
+      button.setAttribute('aria-selected',String(selected));
+      button.tabIndex=selected?0:-1;
+      document.getElementById(button.getAttribute('aria-controls')).hidden=!selected;
+    });
+  }
+  $('#v2-profit').addEventListener('click',event=>{
+    const tab=event.target.closest('.profit-tabs [role="tab"]');
+    if(tab)selectProfitTab(tab);
+  });
+  $('#v2-profit').addEventListener('keydown',event=>{
+    const tab=event.target.closest('.profit-tabs [role="tab"]');
+    if(!tab||!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;
+    const tabs=[...tab.parentElement.querySelectorAll('[role="tab"]')];
+    const offset=event.key==='ArrowLeft'?-1:1;
+    const index=event.key==='Home'?0:event.key==='End'?tabs.length-1:(tabs.indexOf(tab)+offset+tabs.length)%tabs.length;
+    event.preventDefault();
+    selectProfitTab(tabs[index]);
+    tabs[index].focus();
+  });
   function renderVolatility() {
     const rows=ui.marketRows(state.daily,state.account,state.watch,state.selected?.positions??[]);
     const grouped=ui.groupFiveDayRows(rows), names={extreme:'极端波动',attention:'异常波动',normal:'正常波动',unavailable:'数据不足',record_only:'仅记录'};

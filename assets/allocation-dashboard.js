@@ -1,12 +1,12 @@
-/* Independent daily percentage stacked area views over saved percentage snapshots. */
+/* Daily allocation charts over saved percentage snapshots. */
 (function (root) {
   const ui = typeof module !== 'undefined' && module.exports ? require('./portfolio-v2.js') : root.Neophyte2;
   const e = ui.escape, p = ui.percent;
   const calendar=typeof module!=='undefined'&&module.exports?require('./market-calendar.js'):root.NeophyteCalendar;
   const sections = [
-    {id:'global', title:'全账户仓位', layer:'global', overview:true},
-    {id:'equity', title:'股票仓位', layer:'equity', overview:true},
-    {id:'stock-detail', title:'股票仓位明细', layer:'direct_equity_funds', choices:[['direct_equity_funds','股票基金仓位'],['active_stocks','主动个股仓位']]},
+    {id:'global', title:'全账户仓位', layer:'global'},
+    {id:'stock-funds', title:'股票基金仓位', layer:'direct_equity_funds'},
+    {id:'stocks', title:'个股仓位', layer:'active_stocks'},
     {id:'bond-detail', title:'债券仓位明细', layer:'direct_bond_funds'},
     {id:'advisory', title:'投顾仓位', layer:'advisory'},
   ];
@@ -24,7 +24,6 @@
     return {selections, update(id,patch){
       const section=sections.find(s=>s.id===id);if(!section)return;
       if(['30','all'].includes(patch.range))selections[id].range=patch.range;
-      if(patch.layer!==undefined&&(section.choices??[[section.layer]]).some(choice=>choice[0]===patch.layer))selections[id].layer=patch.layer;
     }};
   }
   const assetClasses=['equity','bond','cash','gold'];
@@ -65,8 +64,25 @@
     }
     return {start,end:today,layerId,series,days,snapshot:within.at(-1)??null};
   }
-  const chartColors={equity:'#477a68',bond:'#7198b0',cash:'#bf9858',gold:'#9b80a5',unclassified:'#a3aaa2',direct_equity_funds:'#477a68',advisory_equity_funds:'#7198b0',active_stocks:'#bf9858',direct_bond_funds:'#477a68',advisory_bond_funds:'#7198b0'};
-  function color(id){if(chartColors[id])return chartColors[id];let hash=0;for(const ch of id)hash=(hash*31+ch.charCodeAt(0))>>>0;return `hsl(${hash%360} 30% 52%)`;}
+  const chartColors={
+    equity:'#147b7b',bond:'#4e76ae',cash:'#8796ab',gold:'#d4a843',
+    cn_broad:'#147b7b',cn_dividend:'#ad7043',hk_broad:'#4e76ae',cn_theme:'#8661a8',overseas_theme:'#64748b',
+    short_rate:'#147b7b',medium_rate:'#4e76ae',credit:'#ad7043',short_bond:'#8661a8'
+  };
+  function color(id){return chartColors[id.split(':').at(-1)]??'#64748b';}
+  const axisText={fill:'#596a81',fontSize:12,fontFamily:'Inter, PingFang SC, Microsoft YaHei, system-ui, sans-serif'};
+  const chartLabels={
+    global:'占全账户资产比例',equity:'占股票资产比例',direct_equity_funds:'占主动股票基金比例',
+    direct_bond_funds:'占主动债券基金比例',active_stocks:'占个股资产比例',advisory:'占投顾资产比例'
+  };
+  const heatBands=[
+    [.05,'#e5f3f1','0–<5%'],[.10,'#c1e1de','5–<10%'],[.20,'#85c3bd','10–<20%'],
+    [.30,'#439b98','20–<30%'],[Infinity,'#147b7b','≥30%']
+  ];
+  function chartType(layerId){
+    if(layerId==='global')return 'area';
+    return ['active_stocks','advisory'].includes(layerId)?'heatmap':'line';
+  }
   function validRuns(days) {
     const runs=[];let run=[];
     for(const day of days){
@@ -78,51 +94,97 @@
     return runs;
   }
   function buildChartSpec(data) {
-    const {days,series}=data;
-    // Each contiguous complete run owns its stack. Never feed incomplete vectors
-    // to percent normalization or let the renderer bridge a missing date.
-    const runs=series.length?validRuns(days):[];
+    const {days,series,layerId}=data;
+    const type=chartType(layerId);
     const tooltipPattern={
       title:{value:d=>d.date},
       content:[{key:d=>d.name,value:d=>p(d.weight)}]
     };
+    const base={
+      background:'transparent',animation:false,autoFit:true,padding:{top:12,right:18,bottom:6,left:0},
+      legends:{visible:false},
+      tooltip:{visible:true,renderMode:'canvas',confine:true,mark:tooltipPattern,dimension:tooltipPattern}
+    };
+    const xAxis={orient:'bottom',type:'band',domain:days.map(d=>d.date),
+      label:{style:axisText,autoRotate:false,autoHide:true},
+      tick:{visible:false},domainLine:{visible:false},grid:{visible:false}};
+    const valuesFor=rows=>rows.flatMap(day=>series.map((c,k)=>({
+      date:day.date,category:c.id,name:c.name,weight:day.values[k],basis:day.basis
+    })));
+    if(type==='heatmap'){
+      const complete=days.filter(day=>day.valid);
+      const latest=complete.at(-1);
+      const names=new Map(series.map(c=>[c.id,c.name]));
+      const order=series.map((c,i)=>({id:c.id,weight:latest?.values[i]})).sort((a,b)=>b.weight-a.weight);
+      return {
+        ...base,type,
+        data:{id:'weights',values:valuesFor(complete)},
+        xField:'date',yField:'category',valueField:'weight',
+        cell:{style:{fill:d=>heatBands.find(([limit])=>d.weight<limit)[1],stroke:'#ffffff',lineWidth:.7}},
+        axes:[{...xAxis,paddingInner:.04,paddingOuter:0},{
+          orient:'left',type:'band',inverse:true,domain:order.map(c=>c.id),paddingInner:.08,paddingOuter:0,
+          label:{autoHide:false,style:axisText,formatMethod:id=>{
+            const name=names.get(id)??id;
+            return name.length>10?name.slice(0,10)+'…':name;
+          }},
+          tick:{visible:false},domainLine:{visible:false},grid:{visible:false}
+        }]
+      };
+    }
+    // Keep each contiguous complete run separate so lines and areas break at missing dates.
+    const runs=series.length?validRuns(days):[];
+    const isStacked=type==='area';
     return {
-      type:'common',background:'transparent',animation:false,autoFit:true,padding:{top:12,right:18,bottom:6,left:0},
+      ...base,type:'common',
       color:{type:'ordinal',domain:series.map(c=>c.id),range:series.map(c=>color(c.id))},
       series:runs.map((run,index)=>({
-        type:run.length===1?'bar':'area',id:'run-'+index,stackValue:'run-'+index,
-        stack:true,percent:run.every(day=>Math.abs(day.values.reduce((sum,value)=>sum+value,0)-1)<.00001),animation:false,invalidType:'break',
-        data:{id:'run-data-'+index,values:run.flatMap(day=>series.map((c,k)=>({date:day.date,category:c.id,name:c.name,weight:day.values[k],basis:day.basis})))},
+        type:isStacked&&run.length===1?'bar':type,id:'run-'+index,stackValue:'run-'+index,
+        stack:isStacked,percent:isStacked&&run.every(day=>Math.abs(day.values.reduce((sum,value)=>sum+value,0)-1)<.00001),
+        animation:false,invalidType:'break',
+        data:{id:'run-data-'+index,values:valuesFor(run)},
         xField:'date',yField:'weight',seriesField:'category',
-        ...(run.length===1?{barWidth:8,bar:{style:{fillOpacity:.82}}}:{area:{style:{fillOpacity:.82}},line:{style:{lineWidth:1}},point:{visible:true,style:{size:5,stroke:'white',lineWidth:1}}}),
+        ...(isStacked&&run.length===1?{barWidth:8,bar:{style:{fillOpacity:.82}}}:{
+          ...(isStacked?{area:{style:{fillOpacity:.82}}}:{}),
+          line:{style:{lineWidth:isStacked?1:2}},
+          point:{visible:true,style:{size:isStacked?5:4,stroke:'white',lineWidth:1}}
+        }),
         tooltip:{mark:tooltipPattern,dimension:tooltipPattern}
       })),
       axes:[
-        {orient:'bottom',type:'band',domain:days.map(d=>d.date),paddingInner:0,paddingOuter:0,
-          label:{style:{fill:'#7a8179',fontSize:12},autoRotate:false,autoHide:true},
-          tick:{visible:false},domainLine:{visible:false},grid:{visible:false}},
+        {...xAxis,paddingInner:0,paddingOuter:0},
         {orient:'left',type:'linear',min:0,max:1,nice:false,tick:{tickMode:'average',tickCount:5,visible:false},
-          label:{formatMethod:v=>Math.round(Number(v)*100)+'%',style:{fill:'#7a8179',fontSize:12}},
-          domainLine:{visible:false},grid:{visible:true,style:{stroke:'#e3e7e2',lineDash:[]}}}
+          label:{formatMethod:v=>Math.round(Number(v)*100)+'%',style:axisText},
+          domainLine:{visible:false},grid:{visible:true,style:{stroke:'#dbe4eb',lineDash:[]}}}
       ],
-      legends:{visible:false},crosshair:{xField:{visible:true,line:{type:'line',style:{stroke:'#a3aaa2'}}}},
-      tooltip:{visible:true,renderMode:'canvas',confine:true,mark:tooltipPattern,dimension:tooltipPattern}
+      crosshair:{xField:{visible:true,line:{type:'line',style:{stroke:'#8796ab'}}}}
     };
   }
   function renderChart(data,id) {
-    const {days,series}=data;
+    const {days,series,layerId}=data;
+    const type=chartType(layerId);
+    const label=chartLabels[layerId];
     const gaps=days.filter(d=>!d.valid);
     const gapInfo=gaps.length?`<details class="allocation-gaps"><summary>缺失数据 · ${gaps.length}天</summary><ul>${gaps.map(d=>`<li>${e(d.date)}：${e(d.reason)}</li>`).join('')}</ul></details>`:'';
     const summary=days.filter(d=>d.valid).map(d=>d.date+' '+series.map((c,k)=>c.name+' '+p(d.values[k])).join('，')).join('；');
     const layer=data.snapshot?.layers?.[data.layerId];
-    const legend=series.map(c=>{
-      const child=layerChildren(layer,data.layerId).find(x=>x.id===c.id);
-      const actual=completeLayer(data.snapshot,data.layerId)?child?.actual_weight:null;
-      const compact=value=>Number.isFinite(value)?`${Number((value*100).toFixed(2))}%`:'—';
-      const hasTarget=Number.isFinite(child?.target_weight);
-      return `<span${hasTarget?' class="allocation-target-item"':''} title="${e(data.snapshot.reference_date+' · '+(layer.name??'该层')+'内比例'+(hasTarget?' · 实际 / 目标':''))}"><i style="background:${color(c.id)}"></i><span>${e(c.name)}：${compact(actual)}${hasTarget?' / '+compact(child.target_weight):''}</span></span>`;
-    }).join('');
-    return `<div class="allocation-chart" data-vchart-section="${e(id)}" role="img" aria-label="${e('每日仓位百分比堆叠面积图。周末不占位，缺失数据处断开。'+summary)}">${(!series.length||!days.some(d=>d.valid))?'<span class="allocation-chart-empty">暂无完整估值</span>':''}</div><div class="allocation-legend">${legend}</div>${gapInfo}`;
+    const compact=value=>Number.isFinite(value)?`${Number((value*100).toFixed(2))}%`:'—';
+    const complete=completeLayer(data.snapshot,layerId);
+    const hasTargets=layerChildren(layer,layerId).some(c=>Number.isFinite(c.target_weight)&&series.some(item=>item.id===c.id));
+    const latestWeights=new Map(layerChildren(layer,layerId).map(child=>[child.id,child]));
+    const legend=series.map(c=>`<span><i style="background:${color(c.id)}"></i><span>${e(c.name)}：${compact(complete?latestWeights.get(c.id)?.actual_weight:null)}</span></span>`).join('');
+    const comparison=hasTargets?`<div class="allocation-comparison-label">${e(data.snapshot.reference_date)} · 实际 / 目标</div><div class="allocation-comparison">${series.map(c=>{
+      const child=latestWeights.get(c.id);
+      const actual=complete?child?.actual_weight:null, target=child?.target_weight;
+      return `<div><div class="allocation-comparison-name"><i style="background:${color(c.id)}"></i><span>${e(c.name)}：${compact(actual)}${Number.isFinite(target)?' / '+compact(target):''}</span></div><div class="allocation-weight-track" aria-hidden="true">
+        ${Number.isFinite(actual)?`<i class="allocation-actual-bar" style="width:${compact(actual)};background:${color(c.id)}"></i>`:''}
+        ${Number.isFinite(target)?`<i class="allocation-target-marker" style="left:${compact(target)}"></i>`:''}
+      </div></div>`;
+    }).join('')}</div>`:'';
+    const empty=!series.length||!days.some(d=>d.valid);
+    const heatLegend=empty?'':`<div class="allocation-legend allocation-heat-scale">${heatBands.map(([,fill,range])=>
+      `<span><i style="background:${fill}"></i>${e(range)}</span>`).join('')}${gaps.length?'<span>空白为缺失数据</span>':''}</div>`;
+    const plotted={area:'百分比堆叠面积图',line:'独立仓位折线图',heatmap:'逐产品仓位热力图'}[type];
+    return `<div class="allocation-chart-caption">${e(label)}</div><div class="allocation-chart" data-vchart-section="${e(id)}" data-chart-type="${type}"${type==='heatmap'?` style="--heatmap-height:${Math.max(250,series.length*25+58)}px"`:''} role="img" aria-label="${e(label+'。'+plotted+'。'+summary)}">${empty?'<span class="allocation-chart-empty">暂无完整估值</span>':''}</div>${type==='heatmap'?heatLegend:hasTargets?comparison:`<div class="allocation-legend">${legend}</div>`}${gapInfo}`;
   }
 
   function productRows(snapshot,layerId) {
@@ -148,8 +210,7 @@
   }
   function renderSection(section,selection,snapshots,today) {
     const data=buildSeries(snapshots,selection.layer,selection.range,today);
-    const choices=section.choices?`<label class="allocation-subview-control">仓位类型<select data-allocation-layer data-allocation-section="${section.id}" aria-label="${section.title}的类型">${section.choices.map(([value,label])=>`<option value="${value}" ${selection.layer===value?'selected':''}>${label}</option>`).join('')}</select></label>`:'';
-    const header=`<header class="allocation-section-heading"><h2>${section.title}</h2><div class="allocation-section-controls">${choices}${rangeControl(section,selection)}</div></header>`;
+    const header=`<header class="allocation-section-heading"><h2>${section.title}</h2><div class="allocation-section-controls">${rangeControl(section,selection)}</div></header>`;
     return `<section class="panel v2-panel allocation-section" data-allocation-section-panel="${section.id}" aria-label="${section.title}">${header}${renderChart(data,section.id)}</section>`;
   }
   function mount(element,snapshots,{today=new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date())}={}) {
@@ -178,12 +239,6 @@
       }
     }
     function update(id,patch){controller.update(id,patch);render(id);}
-    element.addEventListener('change',event=>{
-      const control=event.target;
-      const id=control.dataset.allocationSection;
-      if(!id)return;
-      if(control.hasAttribute('data-allocation-layer'))update(id,{layer:control.value});
-    });
     element.addEventListener('click',event=>{
       const control=event.target.closest('button[data-allocation-range]');
       if(control&&element.contains(control))update(control.dataset.allocationSection,{range:control.dataset.allocationRange});
