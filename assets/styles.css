@@ -505,3 +505,28 @@ body[data-view] .v2-status {
 body[data-view] #v2-profit .profit-products table { min-width: 560px; }
 body[data-view] #v2-profit .profit-products th:nth-child(2),
 body[data-view] #v2-profit .profit-products td:nth-child(2) { text-align: right; }
+
+/* Combined local holdings view. */
+body[data-view] #v2-volatility.v2-combined table { min-width: 660px; table-layout: auto; }
+body[data-view] #v2-volatility.v2-combined th,
+body[data-view] #v2-volatility.v2-combined td { width: auto; text-align: left; }
+body[data-view] #v2-volatility.v2-combined td:first-child { min-width: 180px; }
+body[data-view] #v2-volatility.v2-combined thead th,
+body[data-view] #v2-volatility.v2-combined td:not(:first-child) { white-space: nowrap; }
+body[data-view] #v2-volatility.v2-combined .v2-category th {
+  position: static;
+  background: #eef2eb;
+  color: var(--text);
+  border-top: 1px solid var(--line);
+  box-shadow: none;
+}
+.v2-temperature-badge { display: inline-block; padding: 2px 7px; border-radius: 5px; font-weight: 650; }
+.v2-temperature-badge.v2-tone-cold { background: #dceaff; color: #234d83; }
+.v2-temperature-badge.v2-tone-cool { background: #e2f2f5; color: #245e6a; }
+.v2-temperature-badge.v2-tone-neutral { background: #eceee9; color: #46524a; }
+.v2-temperature-badge.v2-tone-warm { background: #ffebd5; color: #884615; }
+.v2-temperature-badge.v2-tone-hot { background: #fae1df; color: #992d2c; }
+.v2-combined .v2-wave-alert { color: #85500e; }
+.v2-combined .v2-wave-extreme { color: #6c3889; }
+.v2-combined .v2-deviation-warm { color: #884615; }
+.v2-combined .v2-deviation-cool { color: #245e6a; }

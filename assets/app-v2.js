@@ -23,7 +23,7 @@
     document.querySelectorAll('[data-v2-panel]').forEach(x=>x.hidden=x.dataset.v2Panel!==tab);
     $('#v2-title').textContent={allocation:'资产配置',profit:'配置浮盈',volatility:'温度波动'}[tab];
     if(state.snapshots.length)renderCoverage();
-    $('#v2-subtitle').textContent={allocation:'',profit:'当前持仓相对成本的变化',volatility:'近5个有效交易日 · 产品自身历史分位'}[tab];
+    $('#v2-subtitle').textContent={allocation:'',profit:'当前持仓相对成本的变化',volatility:window.NeophyteLocalTemperature ? '' : '近5个有效交易日 · 产品自身历史分位'}[tab];
   }
   function renderCoverage() {
     const allocationView=!['profit','volatility'].includes(location.hash.slice(1));
@@ -62,9 +62,8 @@
       <tbody>${products.map(row=>`<tr><td>${e(row.name)}<small>${e(row.symbol)}</small></td><td>${p(row.global_weight)}</td><td>${p(row.weight)}</td><td class="${numberClass(row.holding_return)}">${profitValue(row,'holding_return')}</td></tr>`).join('')}</tbody>
     </table></div>`;
   }
-  function renderProfit() {
-    const snapshot=state.selected;
-    if(!snapshot?.positions?.length){$('#v2-profit').innerHTML=missing('尚无该日期可用的2.0持仓估值。');return;}
+  function configuredGroups(snapshot) {
+    if (!snapshot?.positions?.length) return [];
     const positions=new Map(snapshot.positions.map(row=>[row.id,row]));
     const groups=Object.values(snapshot.layers).filter(layer=>layer.id?.startsWith('profit:')).map(layer=>{
       const products=ui.sortRows(layer.children.map(child=>({...positions.get(child.id),weight:child.actual_weight})),'weight');
@@ -72,11 +71,18 @@
         ?products.reduce((sum,row)=>sum+row.global_weight,0):null;
       return {layer,products,totalWeight};
     });
-    $('#v2-profit').innerHTML=['equity','bond','gold','cash'].map(assetClass=>{
+    return ['equity','bond','gold','cash'].map(assetClass=>{
       const sections=ui.sortRows(groups.filter(group=>group.layer.id.startsWith(`profit:${assetClass}:`))
         .map(group=>({...group,name:group.layer.name})),'totalWeight');
+      return {label:labels[assetClass],sections};
+    });
+  }
+  function renderProfit() {
+    const snapshot=state.selected;
+    if(!snapshot?.positions?.length){$('#v2-profit').innerHTML=missing('尚无该日期可用的2.0持仓估值。');return;}
+    $('#v2-profit').innerHTML=configuredGroups(snapshot).map(({label,sections})=>{
       if(!sections.length)return '';
-      return `<h3>${e(labels[assetClass])}</h3><div class="profit-groups">${sections.map(({layer,products,totalWeight})=>{
+      return `<h3>${e(label)}</h3><div class="profit-groups">${sections.map(({layer,products,totalWeight})=>{
         const returnLabel=Number.isFinite(layer.holding_return)&&(layer.status==='partial'||layer.holding_return_coverage<1-1e-8)
           ?'可比部分盈亏':'持仓盈亏';
         return `<details class="profit-group"><summary><strong>${e(layer.name)}</strong>
@@ -90,18 +96,35 @@
     window.dispatchEvent(new CustomEvent('neophyte:snapshot',{detail:snapshot}));
   }
   function renderVolatility() {
-    if(!state.daily){$('#v2-volatility').innerHTML=missing('缺少行情事实快照。');return;}
     const rows=ui.marketRows(state.daily,state.account,state.watch,state.selected?.positions??[]);
     const grouped=ui.groupFiveDayRows(rows), names={extreme:'极端波动',attention:'异常波动',normal:'正常波动',unavailable:'数据不足',record_only:'仅记录'};
-    $('#v2-volatility').innerHTML=Object.entries(grouped).map(([key,list])=>`<h3 class="${list.length?'':'v2-group-empty'}">${names[key]} <small>${list.length}个标的</small></h3>${list.length?`<div class="v2-table-wrap"><table><thead><tr><th>产品名称</th><th>单日变化</th><th>5日累计</th><th>历史分位</th><th>市场共振</th><th>描述</th></tr></thead><tbody>${list.map(r=>{
+    function metrics(r,key){
       const saved=r.five_day_volatility;
-      const product=savedProductClassification(r,r.asset_id,'five_day',state.index);
-      const resonance=marketResonance(state.index,r.asset_id,product,r.market_date,'five_day');
       const percentile=Number.isFinite(saved?.percentile)?p(saved.percentile):'—';
       const cumulative=key==='unavailable'?null:r.five_day_return;
+      return {daily:r.daily_return,cumulative,percentile,level:names[key],
+        rank:saved?.percentile};
+    }
+    if (window.NeophyteLocalTemperature) {
+      const byProduct = new Map(Object.entries(grouped).flatMap(([level,list]) =>
+        list.map(row => [`${row.market}:${row.symbol}`,{row,level}])));
+      window.NeophyteLocalTemperature.render({
+        target:$('#v2-volatility'), snapshot:state.selected, groups:configuredGroups(state.selected),
+        volatility(position) {
+          const item=byProduct.get(`${position.market}:${position.symbol}`);
+          return item ? metrics(item.row,item.level) : {level:names.unavailable};
+        }
+      });
+      return;
+    }
+    if(!state.daily){$('#v2-volatility').innerHTML=missing('缺少行情事实快照。');return;}
+    $('#v2-volatility').innerHTML=Object.entries(grouped).map(([key,list])=>`<h3 class="${list.length?'':'v2-group-empty'}">${names[key]} <small>${list.length}个标的</small></h3>${list.length?`<div class="v2-table-wrap"><table><thead><tr><th>产品名称</th><th>单日变化</th><th>5日累计</th><th>历史分位</th><th>市场共振</th><th>描述</th></tr></thead><tbody>${list.map(r=>{
+      const {daily,cumulative,percentile}=metrics(r,key);
+      const product=savedProductClassification(r,r.asset_id,'five_day',state.index);
+      const resonance=renderMarketResonance(marketResonance(state.index,r.asset_id,product,r.market_date,'five_day'));
       const facts=state.selected?.volatility_facts?.[r.asset_id];
       const brief=ui.volatilityBrief(r,key,facts,rows);
-      return `<tr><td>${e(r.name??r.symbol)}<small>${e(r.symbol)}</small></td><td class="${numberClass(r.daily_return)}">${p(r.daily_return,true)}</td><td class="${numberClass(cumulative)}">${p(cumulative,true)}</td><td>${percentile}</td><td>${renderMarketResonance(resonance)}</td><td>${e(brief)}</td></tr>`;
+      return `<tr><td>${e(r.name??r.symbol)}<small>${e(r.symbol)}</small></td><td class="${numberClass(daily)}">${p(daily,true)}</td><td class="${numberClass(cumulative)}">${p(cumulative,true)}</td><td>${percentile}</td><td>${resonance}</td><td>${e(brief)}</td></tr>`;
     }).join('')}</tbody></table></div>`:''}`).join('');
   }
   async function chooseDate(date) {

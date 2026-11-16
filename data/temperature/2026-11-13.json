@@ -1,0 +1,187 @@
+{
+  "reference_date": "2026-11-13",
+  "products": {
+    "000191": {
+      "status": "calculated",
+      "valuation_date": "2026-11-13",
+      "temperature": 95.64,
+      "deviation": -137.59750899999997,
+      "deviation_unit": "bp"
+    },
+    "000216": {
+      "price_context": {
+        "status": "calculated",
+        "valuation_date": "2026-11-13",
+        "price_percentile": 88.50671140939598
+      }
+    },
+    "000248": {
+      "status": "calculated",
+      "valuation_date": "2026-11-13",
+      "temperature": 17.174629324546952,
+      "deviation": -23.45395963634809,
+      "deviation_unit": "%"
+    },
+    "000968": {
+      "status": "calculated",
+      "valuation_date": "2026-11-13",
+      "temperature": 45.42833607907743,
+      "deviation": -2.3731190514170275,
+      "deviation_unit": "%"
+    },
+    "001717": {
+      "context": {
+        "status": "calculated",
+        "valuation_date": "2026-11-13",
+        "temperature": 7.8665568369028005
+      }
+    },
+    "002656": {
+      "status": "calculated",
+      "valuation_date": "2026-11-13",
+      "temperature": 41.47446457990115,
+      "deviation": -5.130069811630333,
+      "deviation_unit": "%"
+    },
+    "005313": {
+      "status": "calculated",
+      "valuation_date": "2026-11-13",
+      "temperature": 57.33113673805601,
+      "deviation": 3.923579106968522,
+      "deviation_unit": "%"
+    },
+    "006662": {
+      "status": "calculated",
+      "valuation_date": "2026-11-13",
+      "temperature": 97.82,
+      "deviation": -114.87500000000004,
+      "deviation_unit": "bp"
+    },
+    "007169": {
+      "status": "calculated",
+      "valuation_date": "2026-11-13",
+      "temperature": 99.32,
+      "deviation": -116.485,
+      "deviation_unit": "bp"
+    },
+    "007171": {
+      "status": "calculated",
+      "valuation_date": "2026-11-13",
+      "temperature": 98.96,
+      "deviation": -134.6325,
+      "deviation_unit": "bp"
+    },
+    "007466": {
+      "status": "calculated",
+      "valuation_date": "2026-11-13",
+      "temperature": 66.59802306425041,
+      "deviation": 9.410240950403082,
+      "deviation_unit": "%"
+    },
+    "009051": {
+      "status": "calculated",
+      "valuation_date": "2026-11-13",
+      "temperature": 58.77265238879736,
+      "deviation": 2.9199966349793938,
+      "deviation_unit": "%"
+    },
+    "012348": {
+      "status": "calculated",
+      "valuation_date": "2026-11-13",
+      "temperature": 6.048906048906049,
+      "deviation": -22.512278391207396,
+      "deviation_unit": "%"
+    },
+    "013308": {
+      "status": "calculated",
+      "valuation_date": "2026-11-13",
+      "temperature": 6.048906048906049,
+      "deviation": -22.512278391207396,
+      "deviation_unit": "%"
+    },
+    "01810": {
+      "status": "calculated",
+      "valuation_date": "2026-11-13",
+      "temperature": 32.608695652173914,
+      "deviation": -15.261565067012528,
+      "deviation_unit": "%"
+    },
+    "019923": {
+      "status": "calculated",
+      "valuation_date": "2026-11-13",
+      "temperature": 51.84243964421855,
+      "deviation": 1.1274358993599298,
+      "deviation_unit": "%"
+    },
+    "02020": {
+      "status": "calculated",
+      "valuation_date": "2026-11-13",
+      "temperature": 2.5,
+      "deviation": -54.39665017129806,
+      "deviation_unit": "%"
+    },
+    "02150": {
+      "status": "calculated",
+      "valuation_date": "2026-11-13",
+      "temperature": 4.615384615384615,
+      "deviation": -72.35588498092989,
+      "deviation_unit": "%"
+    },
+    "022444": {
+      "status": "calculated",
+      "valuation_date": "2026-11-13",
+      "temperature": 43.90715667311412,
+      "deviation": -2.519970404925831,
+      "deviation_unit": "%"
+    },
+    "03933": {
+      "status": "calculated",
+      "valuation_date": "2026-11-13",
+      "temperature": 85.4368932038835,
+      "deviation": 202.93367346938774,
+      "deviation_unit": "%"
+    },
+    "090010": {
+      "status": "calculated",
+      "valuation_date": "2026-11-13",
+      "temperature": 58.77265238879736,
+      "deviation": 2.9199966349793938,
+      "deviation_unit": "%"
+    },
+    "09618": {
+      "status": "calculated",
+      "valuation_date": "2026-11-13",
+      "temperature": 53.521126760563384,
+      "deviation": 6.6287878787878896,
+      "deviation_unit": "%"
+    },
+    "09988": {
+      "status": "calculated",
+      "valuation_date": "2026-11-13",
+      "temperature": 45.23809523809524,
+      "deviation": -7.974137931034475,
+      "deviation_unit": "%"
+    },
+    "110020": {
+      "status": "calculated",
+      "valuation_date": "2026-11-13",
+      "temperature": 15.733113673805601,
+      "deviation": -10.592192192192174,
+      "deviation_unit": "%"
+    },
+    "164906": {
+      "status": "calculated",
+      "valuation_date": "2026-11-11",
+      "temperature": 23.48939575830332,
+      "deviation": -43.44066785927251,
+      "deviation_unit": "%"
+    },
+    "501302": {
+      "status": "calculated",
+      "valuation_date": "2026-11-13",
+      "temperature": 56.0369033293221,
+      "deviation": 2.5741178263851694,
+      "deviation_unit": "%"
+    }
+  }
+}
