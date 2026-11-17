@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "reference_date": "2026-11-10",
-  "generated_at": "2026-11-16T17:52:43+08:00",
+  "generated_at": "2026-11-17T09:58:32+08:00",
   "valuation_input_date": "2026-11-10",
   "configuration_versions": {
     "holdings": "ab26e937b7ab55c1afaf1b6efae27453e2861eb62c6568b3f64263625a991445",
@@ -434,10 +434,10 @@
         {
           "id": "direct_bond_funds:credit",
           "name": "信用债",
-          "actual_weight": 0.20314210335893496,
+          "actual_weight": 0.27432190880898477,
           "target_weight": 0.2,
-          "delta_pp": 0.31421033589349445,
-          "holding_return": 0.0059650931585536185,
+          "delta_pp": 7.432190880898476,
+          "holding_return": 0.0040752791137336,
           "holding_return_coverage": 1.0,
           "status": "complete"
         },
@@ -462,16 +462,6 @@
           "status": "complete"
         },
         {
-          "id": "direct_bond_funds:short_bond",
-          "name": "超短债（混合券种）",
-          "actual_weight": 0.07117980545004983,
-          "target_weight": null,
-          "delta_pp": null,
-          "holding_return": -0.0012792757331235006,
-          "holding_return_coverage": 1.0,
-          "status": "complete"
-        },
-        {
           "id": "direct_bond_funds:unclassified",
           "name": "待分类",
           "actual_weight": 0.0,
@@ -489,16 +479,26 @@
       "denominator_id": "direct_bond_funds:credit",
       "status": "complete",
       "target_version": null,
-      "holding_return": 0.0059650931585536185,
+      "holding_return": 0.0040752791137336,
       "holding_return_coverage": 1.0,
       "children": [
         {
           "id": "direct:fund-cn-000191",
           "name": "富国信用债A",
-          "actual_weight": 1.0,
+          "actual_weight": 0.7405245328049479,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": 0.0059650931585536185,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct:fund-cn-006662",
+          "name": "易方达安悦超短债A",
+          "actual_weight": 0.25947546719505216,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.0012792757331235006,
           "holding_return_coverage": 1.0,
           "status": "complete"
         }
@@ -520,27 +520,6 @@
           "target_weight": null,
           "delta_pp": null,
           "holding_return": 0.000583610595761808,
-          "holding_return_coverage": 1.0,
-          "status": "complete"
-        }
-      ]
-    },
-    "direct_bond_funds:short_bond": {
-      "id": "direct_bond_funds:short_bond",
-      "name": "主动债券基金 · 超短债（混合券种）",
-      "denominator_id": "direct_bond_funds:short_bond",
-      "status": "complete",
-      "target_version": null,
-      "holding_return": -0.0012792757331235006,
-      "holding_return_coverage": 1.0,
-      "children": [
-        {
-          "id": "direct:fund-cn-006662",
-          "name": "易方达安悦超短债A",
-          "actual_weight": 1.0,
-          "target_weight": null,
-          "delta_pp": null,
-          "holding_return": -0.0012792757331235006,
           "holding_return_coverage": 1.0,
           "status": "complete"
         }
@@ -608,7 +587,7 @@
         },
         {
           "id": "direct_equity_funds:hk_broad",
-          "name": "港股宽基",
+          "name": "境外宽基",
           "actual_weight": 0.1401889612281052,
           "target_weight": 0.3,
           "delta_pp": -15.98110387718948,
@@ -733,7 +712,7 @@
     },
     "direct_equity_funds:hk_broad": {
       "id": "direct_equity_funds:hk_broad",
-      "name": "主动股票基金 · 港股宽基",
+      "name": "主动股票基金 · 境外宽基",
       "denominator_id": "direct_equity_funds:hk_broad",
       "status": "complete",
       "target_version": null,
@@ -902,13 +881,13 @@
       "denominator_id": "profit:bond:credit",
       "status": "complete",
       "target_version": null,
-      "holding_return": 0.009533975797815493,
+      "holding_return": 0.007826645541122864,
       "holding_return_coverage": 1.0,
       "children": [
         {
           "id": "direct:fund-cn-000191",
           "name": "富国信用债A",
-          "actual_weight": 0.529370719556392,
+          "actual_weight": 0.4465423003118037,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": 0.0059650931585536185,
@@ -916,9 +895,19 @@
           "status": "complete"
         },
         {
+          "id": "direct:fund-cn-006662",
+          "name": "易方达安悦超短债A",
+          "actual_weight": 0.15646581154695866,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.0012792757331235006,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
           "id": "advisory-tiaa001001:tiaa001001-fund-000191",
           "name": "富国信用债债券A",
-          "actual_weight": 0.47062928044360797,
+          "actual_weight": 0.39699188814123765,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": 0.013578689619351571,
@@ -943,27 +932,6 @@
           "target_weight": null,
           "delta_pp": null,
           "holding_return": 0.000583610595761808,
-          "holding_return_coverage": 1.0,
-          "status": "complete"
-        }
-      ]
-    },
-    "profit:bond:short_bond": {
-      "id": "profit:bond:short_bond",
-      "name": "超短债（混合券种）",
-      "denominator_id": "profit:bond:short_bond",
-      "status": "complete",
-      "target_version": null,
-      "holding_return": -0.0012792757331235006,
-      "holding_return_coverage": 1.0,
-      "children": [
-        {
-          "id": "direct:fund-cn-006662",
-          "name": "易方达安悦超短债A",
-          "actual_weight": 1.0,
-          "target_weight": null,
-          "delta_pp": null,
-          "holding_return": -0.0012792757331235006,
           "holding_return_coverage": 1.0,
           "status": "complete"
         }
@@ -1186,7 +1154,7 @@
     },
     "profit:equity:hk_broad": {
       "id": "profit:equity:hk_broad",
-      "name": "港股宽基",
+      "name": "境外宽基",
       "denominator_id": "profit:equity:hk_broad",
       "status": "complete",
       "target_version": null,
@@ -1205,19 +1173,19 @@
         }
       ]
     },
-    "profit:equity:hk_stock": {
-      "id": "profit:equity:hk_stock",
-      "name": "港股个股",
-      "denominator_id": "profit:equity:hk_stock",
+    "profit:equity:overseas_stock": {
+      "id": "profit:equity:overseas_stock",
+      "name": "境外个股",
+      "denominator_id": "profit:equity:overseas_stock",
       "status": "complete",
       "target_version": null,
-      "holding_return": -0.11717321682533273,
+      "holding_return": -0.09252405530989559,
       "holding_return_coverage": 1.0,
       "children": [
         {
           "id": "direct:stock-hk-03933",
           "name": "联邦制药",
-          "actual_weight": 0.08718125906986388,
+          "actual_weight": 0.07517366299700605,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": 0.05133333333333332,
@@ -1225,9 +1193,19 @@
           "status": "complete"
         },
         {
+          "id": "direct:stock-us-lkncy",
+          "name": "瑞幸咖啡",
+          "actual_weight": 0.13773139090862824,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": 0.09970149253731353,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
           "id": "direct:stock-hk-01810",
           "name": "小米集团-W",
-          "actual_weight": 0.13533273443438604,
+          "actual_weight": 0.11669316868527002,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": 0.19765166340508802,
@@ -1237,7 +1215,7 @@
         {
           "id": "direct:stock-hk-02020",
           "name": "安踏体育",
-          "actual_weight": 0.08778937184714258,
+          "actual_weight": 0.07569801955564086,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": 0.09065934065934082,
@@ -1247,7 +1225,7 @@
         {
           "id": "direct:stock-hk-02097",
           "name": "蜜雪集团",
-          "actual_weight": 0.20034551862345382,
+          "actual_weight": 0.17275165168113502,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": -0.028418230563002668,
@@ -1257,7 +1235,7 @@
         {
           "id": "direct:stock-hk-02150",
           "name": "奈雪的茶",
-          "actual_weight": 0.028401630847902704,
+          "actual_weight": 0.02448983472714766,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": -0.35377358490566035,
@@ -1267,7 +1245,7 @@
         {
           "id": "direct:stock-hk-09618",
           "name": "京东集团-SW",
-          "actual_weight": 0.12394444060534864,
+          "actual_weight": 0.1068734004053821,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": 0.08839178220513413,
@@ -1277,31 +1255,10 @@
         {
           "id": "direct:stock-hk-09988",
           "name": "阿里巴巴-W",
-          "actual_weight": 0.33700504457190245,
+          "actual_weight": 0.29058887103979003,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": -0.31541462560052835,
-          "holding_return_coverage": 1.0,
-          "status": "complete"
-        }
-      ]
-    },
-    "profit:equity:overseas_stock": {
-      "id": "profit:equity:overseas_stock",
-      "name": "境外个股",
-      "denominator_id": "profit:equity:overseas_stock",
-      "status": "complete",
-      "target_version": null,
-      "holding_return": 0.09970149253731353,
-      "holding_return_coverage": 1.0,
-      "children": [
-        {
-          "id": "direct:stock-us-lkncy",
-          "name": "瑞幸咖啡",
-          "actual_weight": 1.0,
-          "target_weight": null,
-          "delta_pp": null,
-          "holding_return": 0.09970149253731353,
           "holding_return_coverage": 1.0,
           "status": "complete"
         }
@@ -1494,7 +1451,7 @@
       "market": "CN_FUND",
       "asset_class": "bond",
       "method": "direct_bond_funds",
-      "subgroup": "short_bond",
+      "subgroup": "credit",
       "market_date": "2026-11-10",
       "date_difference": false,
       "daily_return": 0.0,
@@ -1513,7 +1470,7 @@
       "market": "HKEX",
       "asset_class": "equity",
       "method": "active_stocks",
-      "subgroup": "hk_stock",
+      "subgroup": "overseas_stock",
       "market_date": "2026-11-10",
       "date_difference": false,
       "daily_return": -0.0025300442757748565,
@@ -1551,7 +1508,7 @@
       "market": "HKEX",
       "asset_class": "equity",
       "method": "active_stocks",
-      "subgroup": "hk_stock",
+      "subgroup": "overseas_stock",
       "market_date": "2026-11-10",
       "date_difference": false,
       "daily_return": 0.01661129568106312,
@@ -1570,7 +1527,7 @@
       "market": "HKEX",
       "asset_class": "equity",
       "method": "active_stocks",
-      "subgroup": "hk_stock",
+      "subgroup": "overseas_stock",
       "market_date": "2026-11-10",
       "date_difference": false,
       "daily_return": 0.004427577482606138,
@@ -1589,7 +1546,7 @@
       "market": "HKEX",
       "asset_class": "equity",
       "method": "active_stocks",
-      "subgroup": "hk_stock",
+      "subgroup": "overseas_stock",
       "market_date": "2026-11-10",
       "date_difference": false,
       "daily_return": 0.026047565118912708,
@@ -1608,7 +1565,7 @@
       "market": "HKEX",
       "asset_class": "equity",
       "method": "active_stocks",
-      "subgroup": "hk_stock",
+      "subgroup": "overseas_stock",
       "market_date": "2026-11-10",
       "date_difference": false,
       "daily_return": -0.014388489208632893,
@@ -1627,7 +1584,7 @@
       "market": "HKEX",
       "asset_class": "equity",
       "method": "active_stocks",
-      "subgroup": "hk_stock",
+      "subgroup": "overseas_stock",
       "market_date": "2026-11-10",
       "date_difference": false,
       "daily_return": -0.0017809439002671734,
@@ -1646,7 +1603,7 @@
       "market": "HKEX",
       "asset_class": "equity",
       "method": "active_stocks",
-      "subgroup": "hk_stock",
+      "subgroup": "overseas_stock",
       "market_date": "2026-11-10",
       "date_difference": false,
       "daily_return": -0.028680688336520044,

@@ -1,21 +1,24 @@
-/* Local-only combined valuation temperature and volatility. */
+/* Holdings, valuation temperature, and volatility. */
 (() => {
   let latestRequest = 0;
   const format = new Intl.NumberFormat('zh-CN', {maximumFractionDigits: 1});
   const signed = new Intl.NumberFormat('zh-CN', {maximumFractionDigits: 1, signDisplay: 'exceptZero'});
-  const columns = ['产品名称', '温度', '温度偏离', '5日波动', '30日波动', '百分位偏离度'];
+  const columns = ['产品名称', '持仓占比', '分类占比', '5日波动', '30日波动', '波动率', '温度', '持仓盈亏'];
   const temperatureBands = [
     [20, 'cold', '偏冷'], [40, 'cool', '较冷'], [60, 'neutral', '居中'],
     [80, 'warm', '较热'], [Infinity, 'hot', '偏热']
   ];
-  const waveTone = {'异常波动': 'v2-wave-alert', '极端波动': 'v2-wave-extreme'};
-
   function waveCell(wave) {
-    if (['数据不足', '仅记录'].includes(wave.level) ||
-        !Number.isFinite(wave.rank) || wave.rank < 0 || wave.rank > 1) return '<td>—</td>';
-    const deviation = Number((wave.rank * 100 - 50).toFixed(2));
-    const text = (deviation > 0 ? '+' : '') + deviation.toFixed(2);
-    return `<td class="${waveTone[wave.level] ?? ''}" title="5日波动历史百分位减去50，单位为百分点">${text}</td>`;
+    const {rank, level} = wave;
+    if (['数据不足', '仅记录'].includes(level) ||
+        !Number.isFinite(rank) || rank < 0 || rank > 1) return '<td>—</td>';
+    const text = signed.format(200 * rank - 100) + '%';
+    // Test percentile boundaries directly so rounding cannot trigger a stronger color.
+    const intensity = rank < .1 || rank > .9 ? 'extreme' : rank < .2 || rank > .8 ? 'alert' : '';
+    const direction = rank > .5 ? 'positive' : 'negative';
+    const tone = intensity ? ` v2-wave-${direction} v2-wave-${intensity}` : '';
+    const badge = `<span class="v2-wave${tone}">${text}</span>`;
+    return `<td title="5日涨跌幅历史百分位 ${format.format(rank * 100)}%。波动率 = 2 × 历史百分位 − 100%">${badge}</td>`;
   }
 
   function change(value, percent) {
@@ -34,45 +37,51 @@
     } catch { return null; }
   }
 
-  async function render({target, snapshot, groups, volatility}) {
+  async function render({target, snapshot, groups, renderClassTables, profitValue, volatility}) {
     const request = ++latestRequest;
     const {escape: e, percent} = window.Neophyte2;
-    target.classList.add('v2-combined');
-    target.parentElement.querySelector('h2').textContent = '持仓温度与波动';
-    target.parentElement.querySelector('.section-note')?.remove();
-
-    const populated = groups.filter(group => group.sections.length);
-    if (!populated.length) {
+    if (!groups.length) {
       target.innerHTML = '<p class="v2-empty">该日期尚无持仓分类数据。</p>';
       return;
     }
-    target.innerHTML = populated.map(({label, sections}) => {
-      const groupKey = sections[0].layer.id.split(':')[1];
-      const heading = `v2-combined-${groupKey}`;
-      const headings = groupKey === 'gold' ? columns.map(name => name === '温度' ? '黄金历史价格分位' : name) : columns;
-      return `<h3 id="${e(heading)}">${e(label)}</h3>
-        <div class="v2-table-wrap" role="region" aria-labelledby="${e(heading)}" tabindex="0">
-        <table aria-labelledby="${e(heading)}">
-          <thead><tr>${headings.map(name => `<th scope="col">${e(name)}</th>`).join('')}</tr></thead>
-          ${sections.map(({layer, products}) => {
+    const source = row => row.id.startsWith('direct:') ? '直持' : '投顾';
+    const sum = (rows, field) => rows.every(row => Number.isFinite(row[field]))
+      ? rows.reduce((total, row) => total + row[field], 0) : null;
+    target.innerHTML = renderClassTables(groups, 'holdings', (sections, labelledBy, assetClass) => {
+      const headings = assetClass === 'gold' ? columns.map(name => name === '温度' ? '黄金历史价格分位' : name) : columns;
+      const empty = `<tbody><tr><td colspan="${columns.length}">暂无持仓</td></tr></tbody>`;
+      const category = sections.length === 1 ? sections[0] : null;
+      const summary = category ? `<div class="profit-summary"><span>总持仓占比 <b>${percent(category.totalWeight)}</b></span><span>${Number.isFinite(category.layer.holding_return) && (category.layer.status === 'partial' || category.layer.holding_return_coverage < 1 - 1e-8) ? '可比部分盈亏' : '持仓盈亏'} <b>${change(category.layer.holding_return, percent)}</b></span></div>` : '';
+      const definitions = {'持仓占比': '占全账户投资资产的比例', '分类占比': '占该细分类资产的比例'};
+      return `${summary}<div class="v2-table-wrap" role="region" aria-labelledby="${e(labelledBy)}" tabindex="0">
+        <table aria-labelledby="${e(labelledBy)}">
+          <thead><tr>${headings.map(name => `<th scope="col"${definitions[name] ? ` title="${definitions[name]}"` : ''}>${e(name)}</th>`).join('')}</tr></thead>
+          ${sections.map(({products}) => {
             const distinct = new Map();
             for (const position of products) {
               const key = `${position.market}:${position.symbol}`;
-              if (!distinct.has(key)) distinct.set(key, position);
+              if (!distinct.has(key)) distinct.set(key, []);
+              distinct.get(key).push(position);
             }
-            return `<tbody><tr class="v2-category"><th colspan="${columns.length}" scope="rowgroup">${e(layer.name)}</th></tr>
-              ${[...distinct.values()].map(position => {
+            const holdings = window.Neophyte2.sortRows([...distinct.values()].map(positions => ({
+              positions, weight: sum(positions, 'weight'), globalWeight: sum(positions, 'global_weight')
+            })), 'weight');
+            return `<tbody>
+              ${holdings.map(({positions, weight, globalWeight}) => {
+                const [position] = positions;
                 const wave = volatility(position);
+                const profit = positions.length === 1 ? profitValue(position) : positions
+                  .map(row => `<div class="holding-profit-source"><span>${source(row)}</span>${profitValue(row)}</div>`).join('');
                 return `<tr data-temperature-symbol="${e(position.symbol)}" data-market="${e(position.market)}">
-                  <td>${e(position.name)}<small>${e(position.symbol)}</small></td>
-                  <td data-temperature>—</td>
-                  <td data-deviation>—</td>
+                  <td>${e(position.name)}<small>${e(position.symbol)} · ${[...new Set(positions.map(source))].join('／')}</small></td>
+                  <td>${percent(globalWeight)}</td><td>${percent(weight)}</td>
                   <td>${change(wave.cumulative, percent)}</td><td data-return-30d>—</td>
-                  ${waveCell(wave)}</tr>`;
+                  ${waveCell(wave)}
+                  <td data-temperature>—</td><td>${profit}</td></tr>`;
               }).join('')}</tbody>`;
-          }).join('')}
+          }).join('') || empty}
         </table></div>`;
-    }).join('');
+    });
 
     const date = snapshot.reference_date;
     const [temperatures, longReturns] = await Promise.all([
@@ -92,8 +101,7 @@
           temperature.title = `Au99.99 近10年人民币收盘价分位 · ${price.valuation_date}`;
           return;
         }
-        const context = product?.context;
-        const item = context ?? product;
+        const item = product?.context ?? product;
         if (item?.status !== 'calculated' || !Number.isFinite(item.temperature)) return;
         const [, band, name] = temperatureBands.find(([limit]) => item.temperature < limit);
         const badge = document.createElement('span');
@@ -101,12 +109,6 @@
         badge.textContent = format.format(item.temperature) + '°';
         temperature.replaceChildren(badge);
         temperature.title = `依估值分位${name} · 估值日 ${item.valuation_date}`;
-        if (context) return;
-        const deviation = row.querySelector('[data-deviation]');
-        deviation.textContent = signed.format(item.deviation) + (item.deviation_unit === 'bp' ? ' bp' : '%');
-        // Positive PE deviation and negative yield deviation both indicate richer valuation.
-        const direction = item.deviation_unit === 'bp' ? -item.deviation : item.deviation;
-        if (Math.abs(direction) >= .05) deviation.classList.add(direction > 0 ? 'v2-deviation-warm' : 'v2-deviation-cool');
     });
   }
 

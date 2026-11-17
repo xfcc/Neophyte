@@ -1,4 +1,4 @@
-/* Three views over saved facts. The legacy script supplies locked resonance helpers. */
+/* Allocation and holdings views over saved facts. */
 (async function () {
   'use strict';
   const ui = window.Neophyte2, e = ui.escape, p = ui.percent;
@@ -16,17 +16,18 @@
     }
     return payload;
   }
+  const currentTab = () => ['holdings','profit','volatility'].includes(location.hash.slice(1)) ? 'holdings' : 'allocation';
   function activate() {
-    const tab = ['allocation','profit','volatility'].includes(location.hash.slice(1)) ? location.hash.slice(1) : 'allocation';
+    const tab = currentTab();
     document.body?.setAttribute('data-view',tab);
     document.querySelectorAll('[data-v2-tab]').forEach(a=>{if(a.dataset.v2Tab===tab)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
     document.querySelectorAll('[data-v2-panel]').forEach(x=>x.hidden=x.dataset.v2Panel!==tab);
-    $('#v2-title').textContent={allocation:'资产配置',profit:'配置浮盈',volatility:'温度波动'}[tab];
+    $('#v2-title').textContent={allocation:'资产配置',holdings:'持仓实盘'}[tab];
     if(state.snapshots.length)renderCoverage();
-    $('#v2-subtitle').textContent={allocation:'',profit:'当前持仓相对成本的变化',volatility:window.NeophyteLocalTemperature ? '' : '近5个有效交易日 · 产品自身历史分位'}[tab];
+    $('#v2-subtitle').textContent='';
   }
   function renderCoverage() {
-    const allocationView=!['profit','volatility'].includes(location.hash.slice(1));
+    const allocationView=currentTab()==='allocation';
     const s=allocationView?(state.snapshots.at(-1)??state.selected):state.selected, c=s?.coverage??{};
     const updatedThrough=s?.valuation_input_date;
     const holdingsConfirmed=(c.direct_confirmed??0)+(c.advisory_confirmed??0);
@@ -48,28 +49,12 @@
       else state.allocationDashboard.render();
     }
   }
-  function profitValue(row,field) {
-    if(Number.isFinite(row[field]))return p(row[field],true);
+  function profitValue(row) {
+    if(Number.isFinite(row.holding_return))return `<span class="${numberClass(row.holding_return)}">${p(row.holding_return,true)}</span>`;
     const reason=['missing','estimated'].includes(row.status)
       ? `目标日数据未取得${row.market_date?'；最新可用行情 '+row.market_date:''}`
-      : field==='holding_return'?'成本缺失或不可比，暂不计算持仓盈亏':'缺少可比的相邻交易日行情';
-    return `<details class="v2-cell-detail"><summary aria-label="查看${field==='holding_return'?'持仓盈亏':'日涨跌幅'}缺失原因">—</summary><span>${e(reason)}</span></details>`;
-  }
-  function profitTable(sections, labelledBy) {
-    const bodies=sections.map(({layer,products})=>{
-      const groups=[
-        ['主动持仓',products.filter(row=>row.id.startsWith('direct:'))],
-        ['投顾持仓',products.filter(row=>!row.id.startsWith('direct:'))]
-      ];
-      return groups.filter(([,rows])=>rows.length).map(([name,rows])=>`<tbody>
-        <tr class="profit-ownership"><th scope="rowgroup" colspan="4">${e(sections.length>1 ? layer.name+' · '+name : name)}</th></tr>
-        ${rows.map(row=>`<tr><td>${e(row.name)}<small>${e(row.symbol)}</small></td><td>${p(row.global_weight)}</td><td>${p(row.weight)}</td><td class="${numberClass(row.holding_return)}">${profitValue(row,'holding_return')}</td></tr>`).join('')}
-      </tbody>`).join('');
-    }).join('');
-    return `<div class="v2-table-wrap"><table aria-labelledby="${labelledBy}">
-      <thead><tr><th scope="col">产品名称</th><th scope="col" title="占全账户投资资产的比例">总持仓占比</th><th scope="col" title="占此细分类全部产品市值的比例">分类持仓占比</th><th scope="col">持仓盈亏</th></tr></thead>
-      ${bodies||'<tbody><tr><td colspan="4">暂无持仓</td></tr></tbody>'}
-    </table></div>`;
+      : '成本缺失或不可比，暂不计算持仓盈亏';
+    return `<details class="v2-cell-detail"><summary aria-label="查看持仓盈亏缺失原因">—</summary><span>${e(reason)}</span></details>`;
   }
   function configuredGroups(snapshot) {
     if (!snapshot?.positions?.length) return [];
@@ -81,34 +66,27 @@
       return {layer,products,totalWeight};
     });
     return ['equity','bond','gold','cash'].map(assetClass=>{
-      const sections=ui.sortRows(groups.filter(group=>group.layer.id.startsWith(`profit:${assetClass}:`))
-        .map(group=>({...group,name:group.layer.name})),'totalWeight');
+      const sections=ui.sortSubgroups(groups.filter(group=>group.layer.id.startsWith(`profit:${assetClass}:`)),
+        assetClass, group=>group.layer.id);
       return {assetClass,label:labels[assetClass],sections};
     });
   }
-  function renderProfit() {
-    const snapshot=state.selected;
-    if(!snapshot?.positions?.length){$('#v2-profit').innerHTML=missing('尚无该日期可用的2.0持仓估值。');return;}
-    $('#v2-profit').innerHTML=configuredGroups(snapshot).map(({assetClass,label,sections})=>{
-      const heading=`profit-${assetClass}`;
+  function renderClassTables(groups,prefix,renderTable) {
+    return groups.map(({assetClass,label,sections})=>{
+      const heading=`${prefix}-${assetClass}`;
       const tabbed=sections.length && ['equity','bond'].includes(assetClass);
-      const summary=({layer,totalWeight})=>{
-        const returnLabel=Number.isFinite(layer.holding_return)&&(layer.status==='partial'||layer.holding_return_coverage<1-1e-8)
-          ?'可比部分盈亏':'持仓盈亏';
-        return `<div class="profit-summary"><span>总持仓占比 <b>${p(totalWeight)}</b></span><span>${returnLabel} <b class="${numberClass(layer.holding_return)}">${p(layer.holding_return,true)}</b></span></div>`;
-      };
+      const selected=tabbed?ui.sortRows(sections,'totalWeight')[0]:null;
       const content=tabbed
-        ? `<div class="allocation-range-tabs profit-tabs" role="tablist" aria-label="${e(label)}分类">${sections.map(({layer},i)=>
-            `<button type="button" role="tab" id="${heading}-tab-${i}" aria-controls="${heading}-panel-${i}" aria-selected="${i===0}" tabindex="${i===0?0:-1}">${e(layer.name)}</button>`
+        ? `<div class="allocation-range-tabs holding-tabs" role="tablist" aria-label="${e(label)}分类">${sections.map((section,i)=>
+            `<button type="button" role="tab" id="${heading}-tab-${i}" aria-controls="${heading}-panel-${i}" aria-selected="${section===selected}" tabindex="${section===selected?0:-1}">${e(section.layer.name)}</button>`
           ).join('')}</div>${sections.map((section,i)=>
-            `<div role="tabpanel" id="${heading}-panel-${i}" aria-labelledby="${heading}-tab-${i}"${i===0?'':' hidden'}>${summary(section)}${profitTable([section],`${heading}-tab-${i}`)}</div>`
+            `<div role="tabpanel" id="${heading}-panel-${i}" aria-labelledby="${heading}-tab-${i}"${section===selected?'':' hidden'}>${renderTable([section],`${heading}-tab-${i}`,assetClass)}</div>`
           ).join('')}`
-        : (sections.length===1 ? summary(sections[0]) : '')+profitTable(sections,heading);
-      return `<section class="profit-class" aria-labelledby="${heading}"><h3 id="${heading}">${e(label)}</h3>${content}</section>`;
+        : renderTable(sections,heading,assetClass);
+      return `<section class="holding-class" aria-labelledby="${heading}"><h3 id="${heading}">${e(label)}</h3>${content}</section>`;
     }).join('');
-    window.dispatchEvent(new CustomEvent('neophyte:snapshot',{detail:snapshot}));
   }
-  function selectProfitTab(tab) {
+  function selectHoldingTab(tab) {
     tab.parentElement.querySelectorAll('[role="tab"]').forEach(button=>{
       const selected=button===tab;
       button.setAttribute('aria-selected',String(selected));
@@ -116,51 +94,39 @@
       document.getElementById(button.getAttribute('aria-controls')).hidden=!selected;
     });
   }
-  $('#v2-profit').addEventListener('click',event=>{
-    const tab=event.target.closest('.profit-tabs [role="tab"]');
-    if(tab)selectProfitTab(tab);
+  const holdingsTarget=$('#v2-holdings');
+  holdingsTarget.addEventListener('click',event=>{
+    const tab=event.target.closest('.holding-tabs [role="tab"]');
+    if(tab)selectHoldingTab(tab);
   });
-  $('#v2-profit').addEventListener('keydown',event=>{
-    const tab=event.target.closest('.profit-tabs [role="tab"]');
+  holdingsTarget.addEventListener('keydown',event=>{
+    const tab=event.target.closest('.holding-tabs [role="tab"]');
     if(!tab||!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;
     const tabs=[...tab.parentElement.querySelectorAll('[role="tab"]')];
     const offset=event.key==='ArrowLeft'?-1:1;
     const index=event.key==='Home'?0:event.key==='End'?tabs.length-1:(tabs.indexOf(tab)+offset+tabs.length)%tabs.length;
     event.preventDefault();
-    selectProfitTab(tabs[index]);
+    selectHoldingTab(tabs[index]);
     tabs[index].focus();
   });
-  function renderVolatility() {
+  function renderHoldings() {
     const rows=ui.marketRows(state.daily,state.account,state.watch,state.selected?.positions??[]);
-    const grouped=ui.groupFiveDayRows(rows), names={extreme:'极端波动',attention:'异常波动',normal:'正常波动',unavailable:'数据不足',record_only:'仅记录'};
-    function metrics(r,key){
-      const saved=r.five_day_volatility;
-      const percentile=Number.isFinite(saved?.percentile)?p(saved.percentile):'—';
-      const cumulative=key==='unavailable'?null:r.five_day_return;
-      return {daily:r.daily_return,cumulative,percentile,level:names[key],
-        rank:saved?.percentile};
+    const grouped=ui.groupFiveDayRows(rows);
+    const levels={extreme:'极端波动',attention:'异常波动',normal:'正常波动',unavailable:'数据不足',record_only:'仅记录'};
+    const byProduct=new Map(Object.entries(grouped).flatMap(([level,list])=>
+      list.map(row=>[`${row.market}:${row.symbol}`,{
+        level:levels[level], cumulative:level==='unavailable'?null:row.five_day_return,
+        rank:row.five_day_volatility?.percentile
+      }])));
+    if(!window.NeophyteLocalTemperature){
+      holdingsTarget.innerHTML=missing('持仓实盘组件加载失败，请刷新页面。');return;
     }
-    if (window.NeophyteLocalTemperature) {
-      const byProduct = new Map(Object.entries(grouped).flatMap(([level,list]) =>
-        list.map(row => [`${row.market}:${row.symbol}`,{row,level}])));
-      window.NeophyteLocalTemperature.render({
-        target:$('#v2-volatility'), snapshot:state.selected, groups:configuredGroups(state.selected),
-        volatility(position) {
-          const item=byProduct.get(`${position.market}:${position.symbol}`);
-          return item ? metrics(item.row,item.level) : {level:names.unavailable};
-        }
-      });
-      return;
-    }
-    if(!state.daily){$('#v2-volatility').innerHTML=missing('缺少行情事实快照。');return;}
-    $('#v2-volatility').innerHTML=Object.entries(grouped).map(([key,list])=>`<h3 class="${list.length?'':'v2-group-empty'}">${names[key]} <small>${list.length}个标的</small></h3>${list.length?`<div class="v2-table-wrap"><table><thead><tr><th>产品名称</th><th>单日变化</th><th>5日累计</th><th>历史分位</th><th>市场共振</th><th>描述</th></tr></thead><tbody>${list.map(r=>{
-      const {daily,cumulative,percentile}=metrics(r,key);
-      const product=savedProductClassification(r,r.asset_id,'five_day',state.index);
-      const resonance=renderMarketResonance(marketResonance(state.index,r.asset_id,product,r.market_date,'five_day'));
-      const facts=state.selected?.volatility_facts?.[r.asset_id];
-      const brief=ui.volatilityBrief(r,key,facts,rows);
-      return `<tr><td>${e(r.name??r.symbol)}<small>${e(r.symbol)}</small></td><td class="${numberClass(daily)}">${p(daily,true)}</td><td class="${numberClass(cumulative)}">${p(cumulative,true)}</td><td>${percentile}</td><td>${resonance}</td><td>${e(brief)}</td></tr>`;
-    }).join('')}</tbody></table></div>`:''}`).join('');
+    window.NeophyteLocalTemperature.render({
+      target:holdingsTarget, snapshot:state.selected, groups:configuredGroups(state.selected),
+      renderClassTables, profitValue,
+      volatility:position=>byProduct.get(`${position.market}:${position.symbol}`)??{level:levels.unavailable}
+    });
+    window.dispatchEvent(new CustomEvent('neophyte:snapshot',{detail:state.selected}));
   }
   async function chooseDate(date) {
     const request=state.selection=(state.selection??0)+1;
@@ -177,7 +143,7 @@
     if(request!==state.selection)return;
     state.selected=selected;state.daily=daily;state.account=account;
     $('#v2-date').value=date;
-    renderCoverage();renderAllocation();renderProfit();renderVolatility();
+    renderCoverage();renderAllocation();renderHoldings();
   }
   window.addEventListener('hashchange',activate);activate();
   $('#v2-date').addEventListener('change',ev=>chooseDate(ev.target.value).catch(showError));

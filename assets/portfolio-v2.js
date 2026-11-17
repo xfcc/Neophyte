@@ -11,6 +11,18 @@
   function sortRows(rows, field, ascending = false) {
     return [...rows].sort((a, b) => finite(a[field]) !== finite(b[field]) ? (finite(a[field]) ? -1 : 1) : finite(a[field]) ? (a[field] - b[field]) * (ascending ? 1 : -1) : 0);
   }
+  const subgroupOrder = {
+    equity: ['cn_broad','cn_dividend','cn_theme','hk_broad','overseas_theme','overseas_stock'],
+    bond: ['credit','short_rate','medium_rate']
+  };
+  function sortSubgroups(rows, assetClass, id) {
+    const order=subgroupOrder[assetClass]??[];
+    const rank=row=>{
+      const index=order.indexOf(id(row).split(':').at(-1));
+      return index<0?order.length:index;
+    };
+    return [...rows].sort((a,b)=>rank(a)-rank(b));
+  }
   function filterRows(rows, assetClass, internal = 'all') {
     const [method,subgroup] = internal.split('/');
     return rows.filter(r=>(assetClass==='all'||r.asset_class===assetClass)&&(internal==='all'||r.method===method&&(!subgroup||r.subgroup===subgroup)));
@@ -63,7 +75,7 @@
     return [...details,'原因未确认'].join('；');
   }
   function escape(value) { return String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
-  const api = { percent, delta, sortRows, filterRows, marketRows, groupFiveDayRows, volatilityBrief, escape };
+  const api = { percent, delta, sortRows, sortSubgroups, filterRows, marketRows, groupFiveDayRows, volatilityBrief, escape };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.Neophyte2 = api;
 })(typeof window !== 'undefined' ? window : globalThis);

@@ -27,7 +27,20 @@
     }};
   }
   const assetClasses=['equity','bond','cash','gold'];
-  const layerChildren=(layer,id)=> (layer?.children??[]).filter(c=>id!=='global'||assetClasses.includes(c.id));
+  function layerChildren(layer,id) {
+    const children=layer?.children??[];
+    if(id==='global')return children.filter(c=>assetClasses.includes(c.id));
+    if(id==='direct_equity_funds')return children.map(c=>c.id===id+':hk_broad'?{...c,name:'境外宽基'}:c);
+    if(id!=='direct_bond_funds')return children;
+    const retiredId=id+':short_bond', creditId=id+':credit';
+    const retired=children.find(c=>c.id===retiredId);
+    if(!retired)return children;
+    const credit=children.find(c=>c.id===creditId);
+    if(!credit)return children.map(c=>c===retired?{...c,id:creditId,name:'信用债'}:c);
+    const actual=Number.isFinite(credit.actual_weight)&&Number.isFinite(retired.actual_weight)
+      ?credit.actual_weight+retired.actual_weight:null;
+    return children.filter(c=>c!==retired).map(c=>c===credit?{...c,actual_weight:actual}:c);
+  }
   function completeLayer(snapshot,layerId) {
     const layer=snapshot?.layers?.[layerId],children=layerChildren(layer,layerId);
     return ['complete','estimated'].includes(layer?.status)&&children.length>0&&children.every(c=>Number.isFinite(c.actual_weight)&&c.actual_weight>=0&&c.actual_weight<=1)&&Math.abs(children.reduce((n,c)=>n+c.actual_weight,0)-1)<.00001;
@@ -47,9 +60,11 @@
       }
     }
     const within=saved.filter(s=>s.reference_date>=start);
-    const series=[...new Map(within.flatMap(s=>layerChildren(s.layers?.[layerId],layerId)
+    const availableSeries=[...new Map(within.flatMap(s=>layerChildren(s.layers?.[layerId],layerId)
       .filter(c=>c.id!=='unclassified'&&!c.id.endsWith(':unclassified'))
       .map(c=>[c.id,{id:c.id,name:c.name}]))).values()];
+    const categoryAsset={direct_equity_funds:'equity',direct_bond_funds:'bond'}[layerId];
+    const series=categoryAsset?ui.sortSubgroups(availableSeries,categoryAsset,c=>c.id):availableSeries;
     const byDate=new Map(within.map(s=>[s.reference_date,s]));
     const days=[];
     for(let date=start;date<=today;date=offsetDate(date,1)){
@@ -67,7 +82,7 @@
   const chartColors={
     equity:'#147b7b',bond:'#4e76ae',cash:'#8796ab',gold:'#d4a843',
     cn_broad:'#147b7b',cn_dividend:'#ad7043',hk_broad:'#4e76ae',cn_theme:'#8661a8',overseas_theme:'#64748b',
-    short_rate:'#147b7b',medium_rate:'#4e76ae',credit:'#ad7043',short_bond:'#8661a8'
+    short_rate:'#147b7b',medium_rate:'#4e76ae',credit:'#ad7043'
   };
   function color(id){return chartColors[id.split(':').at(-1)]??'#64748b';}
   const axisText={fill:'#596a81',fontSize:12,fontFamily:'Inter, PingFang SC, Microsoft YaHei, system-ui, sans-serif'};

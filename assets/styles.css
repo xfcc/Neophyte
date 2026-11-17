@@ -310,7 +310,6 @@ footer { display: flex; justify-content: space-between; padding: 22px 4px 0; col
 .v2-up { color: var(--red, #a43e35); }.v2-down { color: var(--green, #3b795f); }
 .v2-timeline-svg { width: 100%; max-height: 220px; }
 button:focus-visible, select:focus-visible, a:focus-visible { outline: 3px solid var(--primary); outline-offset: 3px; }
-#v2-volatility td:last-child { min-width: 240px; line-height: 1.7; }
 @media(max-width: 760px) { .v2-coverage { grid-template-columns: repeat(2,1fr); }.v2-hero { align-items: flex-start; gap: 18px; flex-direction: column; }.v2-panel { padding: 18px; }.v2-allocation-row { grid-template-columns: 110px 1fr; gap: 12px; }.v2-allocation-row>span { grid-column: 2; font-size: 13px; }.v2-toolbar { align-items: flex-start; flex-direction: column; }.topbar { flex-wrap: wrap; }.view-tabs { order: 3; width: 100%; justify-content: space-between; } }
 
 /* Allocation homepage: independent dated sections, overview before details. */
@@ -409,24 +408,6 @@ body[data-view] .v2-table-wrap td { padding: 13px 14px; vertical-align: middle; 
 body[data-view] .v2-table-wrap tbody tr:last-child td { border-bottom: 0; }
 body[data-view] .v2-table-wrap tbody tr:hover { background: var(--paper); }
 body[data-view] .v2-table-wrap td small { margin-top: 3px; font-size: 12px; line-height: 1.5; }
-body[data-view] #v2-profit table { min-width: 760px; table-layout: fixed; }
-body[data-view] #v2-profit th:first-child { width: 34%; }
-body[data-view] #v2-profit th:nth-child(2) { width: 21%; }
-body[data-view] #v2-profit th:nth-child(n+3),
-body[data-view] #v2-profit td:nth-child(n+3) { width: 15%; text-align: right; }
-body[data-view] #v2-profit td:nth-child(n+3) { font-weight: 650; }
-body[data-view] #v2-volatility table { min-width: 940px; table-layout: fixed; }
-body[data-view] #v2-volatility th:first-child { width: 23%; }
-body[data-view] #v2-volatility th:nth-child(2),
-body[data-view] #v2-volatility th:nth-child(3),
-body[data-view] #v2-volatility th:nth-child(4) { width: 10%; text-align: right; }
-body[data-view] #v2-volatility td:nth-child(2),
-body[data-view] #v2-volatility td:nth-child(3),
-body[data-view] #v2-volatility td:nth-child(4) { text-align: right; }
-body[data-view] #v2-volatility th:nth-child(5) { width: 17%; }
-body[data-view] #v2-volatility th:last-child { width: 30%; }
-body[data-view] #v2-volatility td:last-child { min-width: 0; font-size: 13px; overflow-wrap: anywhere; }
-body[data-view] .v2-empty { padding: 8px 0 12px; font-size: 14px; }
 body[data-view] .v2-cell-detail { font-weight: 400; text-align: right; }
 body[data-view] .v2-cell-detail summary { display: inline-block; min-width: 44px; min-height: 44px; padding: 11px 0 11px 10px; color: var(--muted); cursor: pointer; text-decoration: underline dotted; text-underline-offset: 5px; }
 body[data-view] .v2-cell-detail[open] summary { color: var(--primary-strong); }
@@ -450,15 +431,8 @@ body[data-view] footer { padding-top: 12px; }
   body[data-view] .v2-panel h3 { margin-top: 22px; gap: 4px 8px; }
   body[data-view] .v2-panel h3 small { display: block; flex-basis: 100%; }
   body[data-view] .v2-table-wrap th, body[data-view] .v2-table-wrap td { padding-inline: 12px; }
-  body[data-view] #v2-profit th:first-child { width: 34%; }
-  body[data-view] #v2-profit th:nth-child(2) { width: 21%; }
-  body[data-view] #v2-profit th:nth-child(n+3), body[data-view] #v2-profit td:nth-child(n+3) { width: 15%; }
-  body[data-view] #v2-profit th:first-child,
-  body[data-view] #v2-profit td:first-child,
-  body[data-view] #v2-volatility th:first-child,
-  body[data-view] #v2-volatility td:first-child { position: sticky; left: 0; z-index: 1; background: var(--surface); box-shadow: 1px 0 0 var(--line); }
-  body[data-view] #v2-profit th:first-child,
-  body[data-view] #v2-volatility th:first-child { background: var(--surface-subtle); }
+  #v2-holdings :is(th, td):first-child { position: sticky; left: 0; z-index: 1; background: var(--surface); box-shadow: 1px 0 0 var(--line); }
+  #v2-holdings th:first-child { background: var(--surface-subtle); }
   body[data-view] .allocation-section-heading { gap: 12px; }
   body[data-view] .allocation-range-tabs { align-self: flex-start; }
   body[data-view] .allocation-range-tabs button { min-height: 44px; }
@@ -474,7 +448,6 @@ body[data-view] .allocation-legend .allocation-history-badge {
   line-height: 1.6;
 }
 
-body[data-view] #v2-volatility .v2-group-empty { margin: 16px 0 12px; padding-bottom: 10px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 14px; font-weight: 500; }
 
 .v2-footer {
   display: grid;
@@ -500,39 +473,28 @@ body[data-view] #v2-volatility .v2-group-empty { margin: 16px 0 12px; padding-bo
 }
 .v2-footer-note { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; }
 
-#v2-profit .profit-class + .profit-class { margin-top: 28px; }
-#v2-profit .profit-tabs { flex-wrap: wrap; max-width: 100%; margin-bottom: 8px; }
-#v2-profit .profit-tabs button[aria-selected="true"] {
+.holding-class + .holding-class { margin-top: 28px; }
+.holding-tabs { flex-wrap: wrap; max-width: 100%; margin-bottom: 8px; }
+.holding-tabs button[aria-selected="true"] {
   background: var(--primary-soft); color: var(--primary-strong); font-weight: 650; box-shadow: 0 1px 5px #1827360d;
 }
-#v2-profit .profit-summary { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 6px 0 10px; font-size: 13px; color: var(--muted); }
-#v2-profit .profit-summary b { margin-left: 4px; font-variant-numeric: tabular-nums; }
-body[data-view] #v2-profit .profit-class table { min-width: 560px; }
-body[data-view] #v2-profit .profit-class th:nth-child(2),
-body[data-view] #v2-profit .profit-class td:nth-child(2) { text-align: right; }
-#v2-profit .profit-ownership th { font-size: 12px; color: var(--muted); background: var(--paper); }
-
-/* Combined local holdings view. */
-body[data-view] #v2-volatility.v2-combined table { min-width: 660px; table-layout: auto; }
-body[data-view] #v2-volatility.v2-combined th,
-body[data-view] #v2-volatility.v2-combined td { width: auto; text-align: left; }
-body[data-view] #v2-volatility.v2-combined td:first-child { min-width: 180px; }
-body[data-view] #v2-volatility.v2-combined thead th,
-body[data-view] #v2-volatility.v2-combined td:not(:first-child) { white-space: nowrap; }
-body[data-view] #v2-volatility.v2-combined .v2-category th {
-  position: static;
-  background: var(--surface-subtle);
-  color: var(--text);
-  border-top: 1px solid var(--line);
-  box-shadow: none;
-}
-.v2-temperature-badge { display: inline-block; padding: 2px 7px; border-radius: 5px; font-weight: 650; }
+#v2-holdings .profit-summary { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 6px 0 10px; font-size: 13px; color: var(--muted); }
+#v2-holdings .profit-summary b { margin-left: 4px; font-variant-numeric: tabular-nums; }
+#v2-holdings table { min-width: 980px; table-layout: auto; }
+#v2-holdings :is(th, td):not(:first-child) { text-align: right; white-space: nowrap; }
+#v2-holdings :is(th, td):first-child { min-width: 165px; }
+.holding-profit-source { display: flex; justify-content: flex-end; gap: 5px; }
+.holding-profit-source + .holding-profit-source { margin-top: 3px; }
+.holding-profit-source > span:first-child { color: var(--muted); font-size: 11px; }
+#v2-holdings .v2-cell-detail > span { max-width: 24ch; white-space: normal; }
+.v2-temperature-badge, .v2-wave { display: inline-block; padding: 2px 7px; border-radius: 5px; font-weight: 650; }
 .v2-temperature-badge.v2-tone-cold { background: var(--blue-soft); color: var(--blue); }
 .v2-temperature-badge.v2-tone-cool { background: var(--primary-soft); color: var(--primary-strong); }
 .v2-temperature-badge.v2-tone-neutral { background: var(--surface-subtle); color: var(--ink); }
 .v2-temperature-badge.v2-tone-warm { background: var(--amber-soft); color: var(--amber); }
 .v2-temperature-badge.v2-tone-hot { background: var(--red-soft); color: var(--red); }
-.v2-combined .v2-wave-alert { color: var(--amber); }
-.v2-combined .v2-wave-extreme { color: var(--violet); }
-.v2-combined .v2-deviation-warm { color: var(--amber); }
-.v2-combined .v2-deviation-cool { color: var(--primary-strong); }
+.v2-wave { background: var(--surface-subtle); color: var(--ink); }
+.v2-wave-positive { background: var(--red-soft); color: var(--red); }
+.v2-wave-negative { background: var(--green-soft); color: var(--green); }
+.v2-wave-positive.v2-wave-extreme { background: var(--red); color: var(--surface); }
+.v2-wave-negative.v2-wave-extreme { background: var(--green); color: var(--surface); }
