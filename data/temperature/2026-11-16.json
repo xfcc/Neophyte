@@ -16,12 +16,12 @@
     "000248": {
       "status": "calculated",
       "valuation_date": "2026-11-16",
-      "temperature": 19.03584672435105
+      "temperature": 4
     },
     "000968": {
       "status": "calculated",
       "valuation_date": "2026-11-16",
-      "temperature": 46.64194478780387
+      "temperature": 9
     },
     "001717": {
       "context": {
@@ -33,12 +33,12 @@
     "002656": {
       "status": "calculated",
       "valuation_date": "2026-11-16",
-      "temperature": 36.42356819118253
+      "temperature": 13
     },
     "005313": {
       "status": "calculated",
       "valuation_date": "2026-11-16",
-      "temperature": 52.98722702925422
+      "temperature": 9
     },
     "006662": {
       "status": "calculated",
@@ -63,7 +63,7 @@
     "009051": {
       "status": "calculated",
       "valuation_date": "2026-11-16",
-      "temperature": 62.50515039142975
+      "temperature": 25
     },
     "012348": {
       "status": "calculated",
@@ -83,7 +83,7 @@
     "019923": {
       "status": "calculated",
       "valuation_date": "2026-11-16",
-      "temperature": 47.46192893401015
+      "temperature": 13
     },
     "02020": {
       "status": "calculated",
@@ -98,7 +98,7 @@
     "022444": {
       "status": "calculated",
       "valuation_date": "2026-11-16",
-      "temperature": 14.091470951792337
+      "temperature": 11
     },
     "03933": {
       "status": "calculated",
@@ -108,7 +108,7 @@
     "090010": {
       "status": "calculated",
       "valuation_date": "2026-11-16",
-      "temperature": 62.50515039142975
+      "temperature": 25
     },
     "09618": {
       "status": "calculated",
@@ -123,12 +123,12 @@
     "110020": {
       "status": "calculated",
       "valuation_date": "2026-11-16",
-      "temperature": 14.091470951792337
+      "temperature": 11
     },
     "164906": {
       "status": "calculated",
       "valuation_date": "2026-11-13",
-      "temperature": 20.26810724289716
+      "temperature": 0
     },
     "501302": {
       "status": "calculated",

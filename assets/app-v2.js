@@ -75,7 +75,7 @@
     return groups.map(({assetClass,label,sections})=>{
       const heading=`${prefix}-${assetClass}`;
       const tabbed=sections.length && ['equity','bond'].includes(assetClass);
-      const selected=tabbed?ui.sortRows(sections,'totalWeight')[0]:null;
+      const selected=tabbed?sections[0]:null;
       const content=tabbed
         ? `<div class="allocation-range-tabs holding-tabs" role="tablist" aria-label="${e(label)}分类">${sections.map((section,i)=>
             `<button type="button" role="tab" id="${heading}-tab-${i}" aria-controls="${heading}-panel-${i}" aria-selected="${section===selected}" tabindex="${section===selected?0:-1}">${e(section.layer.name)}</button>`
