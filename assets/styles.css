@@ -481,11 +481,12 @@ body[data-view] .allocation-legend .allocation-history-badge {
 #v2-holdings .profit-summary { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 6px 0 10px; font-size: 13px; color: var(--muted); }
 #v2-holdings .profit-summary b { margin-left: 4px; font-variant-numeric: tabular-nums; }
 #v2-holdings table { min-width: 980px; table-layout: auto; }
-#v2-holdings :is(th, td):not(:first-child) { text-align: right; white-space: nowrap; }
+#v2-holdings :is(th, td):not(:first-child) { text-align: center; white-space: nowrap; }
 #v2-holdings :is(th, td):first-child { min-width: 165px; }
-.holding-profit-source { display: flex; justify-content: flex-end; gap: 5px; }
+.holding-profit-source { display: flex; justify-content: center; gap: 5px; }
 .holding-profit-source + .holding-profit-source { margin-top: 3px; }
 .holding-profit-source > span:first-child { color: var(--muted); font-size: 11px; }
+#v2-holdings .v2-cell-detail { text-align: center; }
 #v2-holdings .v2-cell-detail > span { max-width: 24ch; white-space: normal; }
 .v2-temperature-badge, .v2-wave { display: inline-block; padding: 2px 7px; border-radius: 5px; font-weight: 650; }
 .v2-temperature-badge.v2-tone-cold { background: var(--blue-soft); color: var(--blue); }
@@ -496,5 +497,5 @@ body[data-view] .allocation-legend .allocation-history-badge {
 .v2-wave { background: var(--surface-subtle); color: var(--ink); }
 .v2-wave-positive { background: var(--red-soft); color: var(--red); }
 .v2-wave-negative { background: var(--green-soft); color: var(--green); }
-.v2-wave-positive.v2-wave-extreme { background: var(--red); color: var(--surface); }
-.v2-wave-negative.v2-wave-extreme { background: var(--green); color: var(--surface); }
+.v2-wave-positive.v2-wave-extreme { background: #f0cbd0; color: #842b32; }
+.v2-wave-negative.v2-wave-extreme { background: #c2e0d0; color: #1b543d; }
