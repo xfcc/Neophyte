@@ -118,6 +118,8 @@
         level:levels[level], cumulative:level==='unavailable'?null:row.five_day_return,
         rank:row.five_day_volatility?.percentile
       }])));
+    const delayed = state.delayedWave;
+    if(delayed && !Number.isFinite(byProduct.get(delayed.key)?.cumulative)) byProduct.set(delayed.key, delayed);
     if(!window.NeophyteLocalTemperature){
       holdingsTarget.innerHTML=missing('持仓实盘组件加载失败，请刷新页面。');return;
     }
@@ -127,6 +129,30 @@
       volatility:position=>byProduct.get(`${position.market}:${position.symbol}`)??{level:levels.unavailable}
     });
     window.dispatchEvent(new CustomEvent('neophyte:snapshot',{detail:state.selected}));
+  }
+  // This fund consistently discloses after the morning collection.
+  async function delayedAdvisoryWave(account, date) {
+    const symbol = '164906';
+    const component = account?.accounts?.flatMap(a => a.components).find(c => c.symbol === symbol);
+    if (component?.status !== 'missing' || !component.market_date || component.market_date >= date) return null;
+    const holidays = window.NeophyteCalendar?.holidays?.CN;
+    if (!holidays || !/^2026-\d{2}-\d{2}$/.test(date)) return null;
+    const cursor = new Date(date + 'T00:00:00Z');
+    let prior;
+    do {
+      cursor.setUTCDate(cursor.getUTCDate() - 1);
+      prior = cursor.toISOString().slice(0, 10);
+    } while ([0, 6].includes(cursor.getUTCDay()) || holidays.includes(prior.slice(5)));
+    if (!prior.startsWith('2026-') || component.market_date !== prior) return null;
+    const path = state.manifest.account_snapshots?.find(p => p.endsWith('/' + prior + '.json'));
+    if (!path) return null;
+    const saved = await read(dataRoot + path).catch(() => null);
+    if (saved?.reference_date !== prior) return null;
+    const row = saved.accounts.flatMap(a => a.components).find(c => c.symbol === symbol &&
+      c.market_date === prior && c.status === 'confirmed' && Number.isFinite(c.five_day_return));
+    if (!row || row.five_day_volatility?.basis !== 'historical_percentile') return null;
+    return {key:'CN_FUND:' + symbol, marketDate:prior, cumulative:row.five_day_return,
+            rank:row.five_day_volatility.percentile};
   }
   async function chooseDate(date) {
     const request=state.selection=(state.selection??0)+1;
@@ -140,7 +166,9 @@
         [daily,account]=await Promise.all([dailyPath?read(dataRoot+dailyPath):null,accountPath?read(dataRoot+accountPath):null]).catch(error=>{if(request===state.selection)throw error;return [null,null];});
       }
     }
+    const delayed = selected ? await delayedAdvisoryWave(account, selected.valuation_input_date) : null;
     if(request!==state.selection)return;
+    state.delayedWave=delayed;
     state.selected=selected;state.daily=daily;state.account=account;
     $('#v2-date').value=date;
     renderCoverage();renderAllocation();renderHoldings();

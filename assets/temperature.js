@@ -8,7 +8,7 @@
     [20, 'cold', '偏冷'], [40, 'cool', '较冷'], [60, 'neutral', '居中'],
     [80, 'warm', '较热'], [Infinity, 'hot', '偏热']
   ];
-  function waveCell(wave) {
+  function waveCell(wave, dateNote) {
     const {rank, level} = wave;
     if (['数据不足', '仅记录'].includes(level) ||
         !Number.isFinite(rank) || rank < 0 || rank > 1) return '<td>—</td>';
@@ -18,7 +18,7 @@
     const direction = rank > .5 ? 'positive' : 'negative';
     const tone = intensity ? ` v2-wave-${direction} v2-wave-${intensity}` : '';
     const badge = `<span class="v2-wave${tone}">${text}</span>`;
-    return `<td title="5日涨跌幅历史百分位 ${format.format(rank * 100)}%。波动率 = 2 × 历史百分位 − 100%">${badge}</td>`;
+    return `<td title="5日涨跌幅历史百分位 ${format.format(rank * 100)}%。波动率 = 2 × 历史百分位 − 100%">${badge}${dateNote}</td>`;
   }
 
   function change(value, percent) {
@@ -70,13 +70,14 @@
               ${holdings.map(({positions, weight, globalWeight}) => {
                 const [position] = positions;
                 const wave = volatility(position);
+                const dateNote = wave.marketDate ? `<small>截至 ${e(wave.marketDate)}</small>` : '';
                 const profit = positions.length === 1 ? profitValue(position) : positions
                   .map(row => `<div class="holding-profit-source"><span>${source(row)}</span>${profitValue(row)}</div>`).join('');
                 return `<tr data-temperature-symbol="${e(position.symbol)}" data-market="${e(position.market)}">
                   <td>${e(position.name)}<small>${e(position.symbol)} · ${[...new Set(positions.map(source))].join('／')}</small></td>
                   <td>${percent(globalWeight)}</td><td>${percent(weight)}</td>
-                  <td>${change(wave.cumulative, percent)}</td><td data-return-30d>—</td>
-                  ${waveCell(wave)}
+                  <td>${change(wave.cumulative, percent)}${dateNote}</td><td data-return-30d>—</td>
+                  ${waveCell(wave, dateNote)}
                   <td data-temperature>—</td><td>${profit}</td></tr>`;
               }).join('')}</tbody>`;
           }).join('') || empty}
