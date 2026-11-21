@@ -1,0 +1,372 @@
+{
+  "schema_version": 1,
+  "reference_date": "2026-11-20",
+  "accounts": [
+    {
+      "account_id": "advisory-tiaa001001",
+      "strategy_code": "TIAA001001",
+      "name": "投顾服务产品",
+      "status": "missing",
+      "holding_return": null,
+      "daily_return": null,
+      "allocations": [],
+      "components": [
+        {
+          "asset_id": "tiaa001001-fund-000905",
+          "symbol": "000905",
+          "name": "鹏华安盈宝货币A",
+          "asset_bucket": "cash",
+          "status": "confirmed",
+          "market_date": "2026-11-20",
+          "value_type": "money_fund_income",
+          "account_weight": null,
+          "holding_return": null,
+          "daily_return": 3.1140000000000003e-05,
+          "five_day_return": null,
+          "volatility": {
+            "basis": "historical_percentile",
+            "return_window": "daily",
+            "percentile": null,
+            "level": "record_only",
+            "description": "仅记录"
+          },
+          "five_day_volatility": {
+            "basis": "historical_percentile",
+            "return_window": "five_day",
+            "percentile": null,
+            "level": "record_only",
+            "description": "仅记录"
+          }
+        },
+        {
+          "asset_id": "tiaa001001-fund-110020",
+          "symbol": "110020",
+          "name": "易方达沪深300ETF联接A",
+          "asset_bucket": "equity",
+          "status": "confirmed",
+          "market_date": "2026-11-20",
+          "value_type": "nav",
+          "account_weight": null,
+          "holding_return": -0.1404473780711405,
+          "daily_return": -0.007320467057898239,
+          "five_day_return": -0.01471206389239188,
+          "volatility": {
+            "basis": "historical_percentile",
+            "return_window": "daily",
+            "percentile": 0.20724003887269193,
+            "level": "normal",
+            "description": "正常波动"
+          },
+          "five_day_volatility": {
+            "basis": "historical_percentile",
+            "return_window": "five_day",
+            "percentile": 0.2490272373540856,
+            "level": "normal",
+            "description": "正常波动"
+          }
+        },
+        {
+          "asset_id": "tiaa001001-fund-000191",
+          "symbol": "000191",
+          "name": "富国信用债债券A",
+          "asset_bucket": "bond",
+          "status": "confirmed",
+          "market_date": "2026-11-20",
+          "value_type": "nav",
+          "account_weight": null,
+          "holding_return": 0.0120946798248871,
+          "daily_return": 0.0001466490687784816,
+          "five_day_return": 0.0008071025020175426,
+          "volatility": {
+            "basis": "historical_percentile",
+            "return_window": "daily",
+            "percentile": 0.5096488453021196,
+            "level": "normal",
+            "description": "正常波动"
+          },
+          "five_day_volatility": {
+            "basis": "historical_percentile",
+            "return_window": "five_day",
+            "percentile": 0.38517579980994615,
+            "level": "normal",
+            "description": "正常波动"
+          }
+        },
+        {
+          "asset_id": "tiaa001001-fund-007169",
+          "symbol": "007169",
+          "name": "易方达中债1—3年国开行债券指数A",
+          "asset_bucket": "bond",
+          "status": "confirmed",
+          "market_date": "2026-11-20",
+          "value_type": "nav",
+          "account_weight": null,
+          "holding_return": 0.007869309692200455,
+          "daily_return": 9.884353069100626e-05,
+          "five_day_return": 0.0009893153937479138,
+          "volatility": {
+            "basis": "historical_percentile",
+            "return_window": "daily",
+            "percentile": 0.4585477415666095,
+            "level": "normal",
+            "description": "正常波动"
+          },
+          "five_day_volatility": {
+            "basis": "historical_percentile",
+            "return_window": "five_day",
+            "percentile": 0.6641833810888252,
+            "level": "normal",
+            "description": "正常波动"
+          }
+        },
+        {
+          "asset_id": "tiaa001001-fund-009051",
+          "symbol": "009051",
+          "name": "易方达中证红利ETF联接A",
+          "asset_bucket": "equity",
+          "status": "confirmed",
+          "market_date": "2026-11-20",
+          "value_type": "nav",
+          "account_weight": null,
+          "holding_return": -0.031343283582089376,
+          "daily_return": -0.0028303412582887377,
+          "five_day_return": 0.0034993489583334814,
+          "volatility": {
+            "basis": "historical_percentile",
+            "return_window": "daily",
+            "percentile": 0.31874145006839943,
+            "level": "normal",
+            "description": "正常波动"
+          },
+          "five_day_volatility": {
+            "basis": "historical_percentile",
+            "return_window": "five_day",
+            "percentile": 0.5432098765432098,
+            "level": "normal",
+            "description": "正常波动"
+          }
+        },
+        {
+          "asset_id": "tiaa001001-fund-000248",
+          "symbol": "000248",
+          "name": "汇添富中证主要消费ETF联接A",
+          "asset_bucket": "equity",
+          "status": "confirmed",
+          "market_date": "2026-11-20",
+          "value_type": "nav",
+          "account_weight": null,
+          "holding_return": -0.019407144666835574,
+          "daily_return": -0.003860606372574238,
+          "five_day_return": 0.006291924496906187,
+          "volatility": {
+            "basis": "historical_percentile",
+            "return_window": "daily",
+            "percentile": 0.36300620211601603,
+            "level": "normal",
+            "description": "正常波动"
+          },
+          "five_day_volatility": {
+            "basis": "historical_percentile",
+            "return_window": "five_day",
+            "percentile": 0.576909024479357,
+            "level": "normal",
+            "description": "正常波动"
+          }
+        },
+        {
+          "asset_id": "tiaa001001-fund-164906",
+          "symbol": "164906",
+          "name": "交银中证海外中国互联网指数（LOF）A",
+          "asset_bucket": "equity",
+          "status": "missing",
+          "market_date": "2026-11-19",
+          "value_type": "nav",
+          "account_weight": null,
+          "holding_return": null,
+          "daily_return": null,
+          "five_day_return": null,
+          "volatility": {
+            "basis": "historical_percentile",
+            "return_window": "daily",
+            "percentile": null,
+            "level": "unavailable",
+            "description": "无法判断"
+          },
+          "five_day_volatility": {
+            "basis": "historical_percentile",
+            "return_window": "five_day",
+            "percentile": null,
+            "level": "unavailable",
+            "description": "无法判断"
+          }
+        },
+        {
+          "asset_id": "tiaa001001-fund-090010",
+          "symbol": "090010",
+          "name": "大成中证红利指数A",
+          "asset_bucket": "equity",
+          "status": "confirmed",
+          "market_date": "2026-11-20",
+          "value_type": "nav",
+          "account_weight": null,
+          "holding_return": 0.008557774237765381,
+          "daily_return": -0.0029664896539096652,
+          "five_day_return": 0.0031689881347187754,
+          "volatility": {
+            "basis": "historical_percentile",
+            "return_window": "daily",
+            "percentile": 0.3345070422535211,
+            "level": "normal",
+            "description": "正常波动"
+          },
+          "five_day_volatility": {
+            "basis": "historical_percentile",
+            "return_window": "five_day",
+            "percentile": 0.5191339375629406,
+            "level": "normal",
+            "description": "正常波动"
+          }
+        },
+        {
+          "asset_id": "tiaa001001-fund-001717",
+          "symbol": "001717",
+          "name": "工银前沿医疗股票A",
+          "asset_bucket": "equity",
+          "status": "confirmed",
+          "market_date": "2026-11-20",
+          "value_type": "nav",
+          "account_weight": null,
+          "holding_return": -0.13585246565527553,
+          "daily_return": -0.029051452572628644,
+          "five_day_return": -0.07748586631193877,
+          "volatility": {
+            "basis": "historical_percentile",
+            "return_window": "daily",
+            "percentile": 0.029342723004694836,
+            "level": "attention",
+            "description": "异常波动"
+          },
+          "five_day_volatility": {
+            "basis": "historical_percentile",
+            "return_window": "five_day",
+            "percentile": 0.014498432601880877,
+            "level": "attention",
+            "description": "异常波动"
+          }
+        },
+        {
+          "asset_id": "tiaa001001-fund-012348",
+          "symbol": "012348",
+          "name": "天弘恒生科技ETF联接A",
+          "asset_bucket": "equity",
+          "status": "confirmed",
+          "market_date": "2026-11-20",
+          "value_type": "nav",
+          "account_weight": null,
+          "holding_return": -0.3607275624004248,
+          "daily_return": -0.0350701402805611,
+          "five_day_return": -0.07457236209878904,
+          "volatility": {
+            "basis": "historical_percentile",
+            "return_window": "daily",
+            "percentile": 0.03417412530512612,
+            "level": "attention",
+            "description": "异常波动"
+          },
+          "five_day_volatility": {
+            "basis": "historical_percentile",
+            "return_window": "five_day",
+            "percentile": 0.04,
+            "level": "attention",
+            "description": "异常波动"
+          }
+        },
+        {
+          "asset_id": "tiaa001001-fund-000638",
+          "symbol": "000638",
+          "name": "富国富钱包货币A",
+          "asset_bucket": "cash",
+          "status": "confirmed",
+          "market_date": "2026-11-20",
+          "value_type": "money_fund_income",
+          "account_weight": null,
+          "holding_return": null,
+          "daily_return": 2.595e-05,
+          "five_day_return": null,
+          "volatility": {
+            "basis": "historical_percentile",
+            "return_window": "daily",
+            "percentile": null,
+            "level": "record_only",
+            "description": "仅记录"
+          },
+          "five_day_volatility": {
+            "basis": "historical_percentile",
+            "return_window": "five_day",
+            "percentile": null,
+            "level": "record_only",
+            "description": "仅记录"
+          }
+        },
+        {
+          "asset_id": "tiaa001001-fund-000968",
+          "symbol": "000968",
+          "name": "广发中证养老产业指数A",
+          "asset_bucket": "equity",
+          "status": "confirmed",
+          "market_date": "2026-11-20",
+          "value_type": "nav",
+          "account_weight": null,
+          "holding_return": -0.1075208286421977,
+          "daily_return": -0.025927746375030702,
+          "five_day_return": -0.04551475015051165,
+          "volatility": {
+            "basis": "historical_percentile",
+            "return_window": "daily",
+            "percentile": 0.03370383650053783,
+            "level": "attention",
+            "description": "异常波动"
+          },
+          "five_day_volatility": {
+            "basis": "historical_percentile",
+            "return_window": "five_day",
+            "percentile": 0.05709156193895871,
+            "level": "attention",
+            "description": "异常波动"
+          }
+        },
+        {
+          "asset_id": "tiaa001001-fund-005313",
+          "symbol": "005313",
+          "name": "万家中证1000指数增强A",
+          "asset_bucket": "equity",
+          "status": "confirmed",
+          "market_date": "2026-11-20",
+          "value_type": "nav",
+          "account_weight": null,
+          "holding_return": -0.2051748534465333,
+          "daily_return": -0.04771131024461128,
+          "five_day_return": -0.10200974421437281,
+          "volatility": {
+            "basis": "historical_percentile",
+            "return_window": "daily",
+            "percentile": 0.005836575875486381,
+            "level": "extreme",
+            "description": "极端波动"
+          },
+          "five_day_volatility": {
+            "basis": "historical_percentile",
+            "return_window": "five_day",
+            "percentile": 0.006335282651072124,
+            "level": "extreme",
+            "description": "极端波动"
+          }
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "components_confirmed": 12,
+    "components_total": 13
+  }
+}
