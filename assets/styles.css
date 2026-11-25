@@ -499,3 +499,18 @@ body[data-view] .allocation-legend .allocation-history-badge {
 .v2-wave-negative { background: var(--green-soft); color: var(--green); }
 .v2-wave-positive.v2-wave-extreme { background: #f0cbd0; color: #842b32; }
 .v2-wave-negative.v2-wave-extreme { background: #c2e0d0; color: #1b543d; }
+.profit-locked .profit-sensitive > .profit-value { display: none; }
+.profit-locked .profit-sensitive::after { content: "***"; color: var(--muted); letter-spacing: .12em; font-weight: 500; }
+.profit-key { width: 44px; padding: 0; cursor: pointer; }
+.profit-key span { font-size: 26px; line-height: 1; }
+.profit-key[aria-pressed="true"] { background: var(--primary-soft); border-color: var(--primary); }
+.profit-dialog { width: min(360px, calc(100% - 32px)); padding: 26px; border: 1px solid var(--line); border-radius: 16px; color: var(--ink); background: var(--surface); box-shadow: var(--shadow); }
+.profit-dialog::backdrop { background: #18273666; }
+.profit-dialog h2 { margin: 0 0 22px; font-size: 20px; }
+.profit-dialog label { display: block; margin-bottom: 8px; font-size: 14px; }
+.profit-dialog input { width: 100%; min-height: 44px; padding: 10px 12px; border: 1px solid var(--control-line); border-radius: 8px; font: inherit; background: var(--surface); color: var(--ink); }
+.profit-dialog input:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+.profit-dialog [role="alert"] { min-height: 20px; margin: 10px 0 18px; font-size: 13px; color: var(--red); }
+.profit-dialog-actions { display: flex; justify-content: flex-end; gap: 10px; }
+.profit-dialog-actions button { min-height: 44px; padding: 0 18px; border: 1px solid var(--line); border-radius: 8px; font: inherit; cursor: pointer; background: var(--surface); color: var(--ink); }
+.profit-dialog-actions [type="submit"] { background: var(--primary); border-color: var(--primary); color: #fff; }

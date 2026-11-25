@@ -51,7 +51,7 @@
       const headings = assetClass === 'gold' ? columns.map(name => name === '温度' ? '黄金历史价格分位' : name) : columns;
       const empty = `<tbody><tr><td colspan="${columns.length}">暂无持仓</td></tr></tbody>`;
       const category = sections.length === 1 ? sections[0] : null;
-      const summary = category ? `<div class="profit-summary"><span>总持仓占比 <b>${percent(category.totalWeight)}</b></span><span>${Number.isFinite(category.layer.holding_return) && (category.layer.status === 'partial' || category.layer.holding_return_coverage < 1 - 1e-8) ? '可比部分盈亏' : '持仓盈亏'} <b>${change(category.layer.holding_return, percent)}</b></span></div>` : '';
+      const summary = category ? `<div class="profit-summary"><span>总持仓占比 <b>${percent(category.totalWeight)}</b></span><span>${Number.isFinite(category.layer.holding_return) && (category.layer.status === 'partial' || category.layer.holding_return_coverage < 1 - 1e-8) ? '可比部分盈亏' : '持仓盈亏'} <b class="profit-sensitive"><span class="profit-value">${change(category.layer.holding_return, percent)}</span></b></span></div>` : '';
       const definitions = {'持仓占比': '占全账户投资资产的比例', '分类占比': '占该细分类资产的比例'};
       return `${summary}<div class="v2-table-wrap" role="region" aria-labelledby="${e(labelledBy)}" tabindex="0">
         <table aria-labelledby="${e(labelledBy)}">
@@ -78,7 +78,7 @@
                   <td>${percent(globalWeight)}</td><td>${percent(weight)}</td>
                   <td>${change(wave.cumulative, percent)}${dateNote}</td><td data-return-30d>—</td>
                   ${waveCell(wave, dateNote)}
-                  <td data-temperature>—</td><td>${profit}</td></tr>`;
+                  <td data-temperature>—</td><td class="profit-sensitive"><div class="profit-value">${profit}</div></td></tr>`;
               }).join('')}</tbody>`;
           }).join('') || empty}
         </table></div>`;

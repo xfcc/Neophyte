@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" class="profit-locked">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex,nofollow,noarchive" />
   <title>Neophyte · 资产观察</title>
   <link rel="icon" href="data:," />
-  <link rel="stylesheet" href="./assets/styles.css?v=40" />
+  <link rel="stylesheet" href="./assets/styles.css?v=41" />
 </head>
 <body>
 <a class="skip-link" href="#main-content">跳到主要内容</a>
@@ -17,6 +17,9 @@
       <a class="view-tab" href="#allocation" data-v2-tab="allocation" aria-current="page">资产配置</a>
       <a class="view-tab" href="#holdings" data-v2-tab="holdings">持仓实盘</a>
     </nav>
+    <div class="topbar-actions">
+      <button id="profit-unlock" class="manage-link profit-key" type="button" aria-label="解锁持仓盈亏" title="解锁持仓盈亏" aria-pressed="false"><span aria-hidden="true">🔑</span></button>
+    </div>
   </header>
   <header class="hero v2-hero">
     <div><p class="eyebrow">PORTFOLIO OBSERVATION · 2.0</p><h1 id="v2-title">资产配置</h1><p id="v2-subtitle">观察实际结构与目标的关系</p></div>
@@ -34,9 +37,22 @@
     <div class="v2-footer-note"><span>Neophyte · 投资观察</span><span>配置偏离、浮盈与统计异常不自动导出交易结论</span></div>
   </footer>
 </main>
+<dialog id="profit-dialog" class="profit-dialog" aria-labelledby="profit-dialog-title">
+  <form>
+    <h2 id="profit-dialog-title">解锁持仓盈亏</h2>
+    <label for="profit-password">密码</label>
+    <input id="profit-password" name="password" type="password" autocomplete="off" required aria-describedby="profit-error" />
+    <p id="profit-error" role="alert"></p>
+    <div class="profit-dialog-actions">
+      <button type="button" data-close>取消</button>
+      <button type="submit">解锁</button>
+    </div>
+  </form>
+</dialog>
+<script src="./assets/profit-privacy.js?v=1"></script>
 <script src="./assets/portfolio-v2.js?v=3"></script>
 <script src="./assets/app.js?v=2"></script>
-<script src="./assets/temperature.js?v=15"></script>
+<script src="./assets/temperature.js?v=16"></script>
 <script src="./assets/vendor/vchart-2.2.0/vchart.min.js"></script>
 <script src="./assets/market-calendar.js?v=1"></script>
 <script src="./assets/allocation-dashboard.js?v=26"></script>
