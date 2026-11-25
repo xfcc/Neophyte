@@ -1,30 +1,30 @@
 {
   "schema_version": 2,
   "reference_date": "2026-11-23",
-  "generated_at": "2026-11-24T09:34:27+08:00",
+  "generated_at": "2026-11-25T09:42:40+08:00",
   "valuation_input_date": "2026-11-23",
   "configuration_versions": {
-    "holdings": "1366d8f62985a43a55263880b2deadc07db448d9dd99c8cffa130daf99866c46",
-    "allocation": "8ce016c76ea7b1a162d463395dcaa08a5b861a310b86738347cbcf7cfc6fc7a6"
+    "holdings": "372ffe1e213d77e0a87df3fd4a9117b713090932ef9a1f883f0d67f2b5fdbc1f",
+    "allocation": "f2e4a22f070d24dfe99260195e29bfc58035abdf7f9d71c47c192aed372514af"
   },
-  "status": "estimated",
+  "status": "complete",
   "coverage": {
     "configuration": "available",
-    "valuation": "estimated",
+    "valuation": "complete",
     "reconciliation": "confirmed",
     "calculation": "available",
     "classification": "complete",
     "cash_status": "recorded",
-    "account_source_status": "missing",
+    "account_source_status": "estimated",
     "valuation_basis": "configured_positions",
     "valued_positions": 33,
     "positions_total": 33,
-    "estimated_positions": 1,
+    "estimated_positions": 0,
     "direct_confirmed": 20,
     "direct_total": 20,
-    "advisory_confirmed": 12,
+    "advisory_confirmed": 13,
     "advisory_total": 13,
-    "cash_date": "2026-11-16"
+    "cash_date": "2026-11-19"
   },
   "layers": {
     "active_stocks": {
@@ -122,15 +122,15 @@
       "id": "advisory",
       "name": "投顾全部持仓",
       "denominator_id": "advisory",
-      "status": "estimated",
+      "status": "complete",
       "target_version": null,
-      "holding_return": -0.06349653132843176,
+      "holding_return": -0.06313748300415446,
       "holding_return_coverage": 1.0,
       "children": [
         {
           "id": "advisory-tiaa001001:tiaa001001-fund-000905",
           "name": "鹏华安盈宝货币A",
-          "actual_weight": 0.18658373242473109,
+          "actual_weight": 0.18651222505278572,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": 0.0,
@@ -140,7 +140,7 @@
         {
           "id": "advisory-tiaa001001:tiaa001001-fund-110020",
           "name": "易方达沪深300ETF联接A",
-          "actual_weight": 0.15625707077455145,
+          "actual_weight": 0.15619718595858295,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": -0.13929488186913935,
@@ -150,7 +150,7 @@
         {
           "id": "advisory-tiaa001001:tiaa001001-fund-000191",
           "name": "富国信用债债券A",
-          "actual_weight": 0.16210271305055896,
+          "actual_weight": 0.16204058791861511,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": 0.011946278845440372,
@@ -160,7 +160,7 @@
         {
           "id": "advisory-tiaa001001:tiaa001001-fund-007169",
           "name": "易方达中债1—3年国开行债券指数A",
-          "actual_weight": 0.10331228010509219,
+          "actual_weight": 0.10327268614079534,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": 0.007769698177109249,
@@ -170,7 +170,7 @@
         {
           "id": "advisory-tiaa001001:tiaa001001-fund-009051",
           "name": "易方达中证红利ETF联接A",
-          "actual_weight": 0.0924965778172144,
+          "actual_weight": 0.09246112892192383,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": -0.037627651217596016,
@@ -180,7 +180,7 @@
         {
           "id": "advisory-tiaa001001:tiaa001001-fund-000248",
           "name": "汇添富中证主要消费ETF联接A",
-          "actual_weight": 0.0835280817312802,
+          "actual_weight": 0.08349606997156984,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": -0.022295414238662208,
@@ -190,17 +190,17 @@
         {
           "id": "advisory-tiaa001001:tiaa001001-fund-164906",
           "name": "交银中证海外中国互联网指数（LOF）A",
-          "actual_weight": 0.05089029813777338,
+          "actual_weight": 0.05125404014028374,
           "target_weight": null,
           "delta_pp": null,
-          "holding_return": -0.25538824918807207,
+          "holding_return": -0.24977856510186017,
           "holding_return_coverage": 1.0,
-          "status": "estimated"
+          "status": "complete"
         },
         {
           "id": "advisory-tiaa001001:tiaa001001-fund-090010",
           "name": "大成中证红利指数A",
-          "actual_weight": 0.05351868355546567,
+          "actual_weight": 0.05349817276193992,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": 0.002296891786759491,
@@ -210,7 +210,7 @@
         {
           "id": "advisory-tiaa001001:tiaa001001-fund-001717",
           "name": "工银前沿医疗股票A",
-          "actual_weight": 0.03815085455461859,
+          "actual_weight": 0.038136233412082644,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": -0.10688140556368962,
@@ -220,7 +220,7 @@
         {
           "id": "advisory-tiaa001001:tiaa001001-fund-012348",
           "name": "天弘恒生科技ETF联接A",
-          "actual_weight": 0.024555534162488638,
+          "actual_weight": 0.02454612336503135,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": -0.36125862984599044,
@@ -230,7 +230,7 @@
         {
           "id": "advisory-tiaa001001:tiaa001001-fund-000638",
           "name": "富国富钱包货币A",
-          "actual_weight": 0.020591406482062508,
+          "actual_weight": 0.02058351491861774,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": 0.0,
@@ -240,7 +240,7 @@
         {
           "id": "advisory-tiaa001001:tiaa001001-fund-000968",
           "name": "广发中证养老产业指数A",
-          "actual_weight": 0.01940226123266069,
+          "actual_weight": 0.019394825403756876,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": -0.09153343841477153,
@@ -250,7 +250,7 @@
         {
           "id": "advisory-tiaa001001:tiaa001001-fund-005313",
           "name": "万家中证1000指数增强A",
-          "actual_weight": 0.008610505971502235,
+          "actual_weight": 0.008607206034014972,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": -0.18556701030927822,
@@ -294,15 +294,15 @@
       "id": "advisory_equity_funds",
       "name": "投顾股票基金",
       "denominator_id": "advisory_equity_funds",
-      "status": "estimated",
+      "status": "complete",
       "target_version": null,
-      "holding_return": -0.11792828032983406,
+      "holding_return": -0.117287071992138,
       "holding_return_coverage": 1.0,
       "children": [
         {
           "id": "advisory-tiaa001001:tiaa001001-fund-110020",
           "name": "易方达沪深300ETF联接A",
-          "actual_weight": 0.2962725581635346,
+          "actual_weight": 0.2960573438752906,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": -0.13929488186913935,
@@ -312,7 +312,7 @@
         {
           "id": "advisory-tiaa001001:tiaa001001-fund-009051",
           "name": "易方达中证红利ETF联接A",
-          "actual_weight": 0.17537892906502445,
+          "actual_weight": 0.17525153268506374,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": -0.037627651217596016,
@@ -322,7 +322,7 @@
         {
           "id": "advisory-tiaa001001:tiaa001001-fund-000248",
           "name": "汇添富中证主要消费ETF联接A",
-          "actual_weight": 0.15837413520137214,
+          "actual_weight": 0.15825909121284043,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": -0.022295414238662208,
@@ -332,17 +332,17 @@
         {
           "id": "advisory-tiaa001001:tiaa001001-fund-164906",
           "name": "交银中证海外中国互联网指数（LOF）A",
-          "actual_weight": 0.09649098591344284,
+          "actual_weight": 0.097147300661572,
           "target_weight": null,
           "delta_pp": null,
-          "holding_return": -0.25538824918807207,
+          "holding_return": -0.24977856510186017,
           "holding_return_coverage": 1.0,
-          "status": "estimated"
+          "status": "complete"
         },
         {
           "id": "advisory-tiaa001001:tiaa001001-fund-090010",
           "name": "大成中证红利指数A",
-          "actual_weight": 0.10147455860989356,
+          "actual_weight": 0.10140084683907863,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": 0.002296891786759491,
@@ -352,7 +352,7 @@
         {
           "id": "advisory-tiaa001001:tiaa001001-fund-001717",
           "name": "工银前沿医疗股票A",
-          "actual_weight": 0.07233625473070521,
+          "actual_weight": 0.07228370921088857,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": -0.10688140556368962,
@@ -362,7 +362,7 @@
         {
           "id": "advisory-tiaa001001:tiaa001001-fund-012348",
           "name": "天弘恒生科技ETF联接A",
-          "actual_weight": 0.04655873098945503,
+          "actual_weight": 0.04652491042836915,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": -0.36125862984599044,
@@ -372,7 +372,7 @@
         {
           "id": "advisory-tiaa001001:tiaa001001-fund-000968",
           "name": "广发中证养老产业指数A",
-          "actual_weight": 0.03678782368736016,
+          "actual_weight": 0.03676110077606525,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": -0.09153343841477153,
@@ -382,7 +382,7 @@
         {
           "id": "advisory-tiaa001001:tiaa001001-fund-005313",
           "name": "万家中证1000指数增强A",
-          "actual_weight": 0.016326023639212057,
+          "actual_weight": 0.016314164310831637,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": -0.18556701030927822,
@@ -427,7 +427,7 @@
       "name": "主动债券基金",
       "denominator_id": "direct_bond_funds",
       "status": "complete",
-      "target_version": "8ce016c76ea7b1a162d463395dcaa08a5b861a310b86738347cbcf7cfc6fc7a6",
+      "target_version": "f2e4a22f070d24dfe99260195e29bfc58035abdf7f9d71c47c192aed372514af",
       "holding_return": 0.0015915014811468588,
       "holding_return_coverage": 1.0,
       "children": [
@@ -561,26 +561,26 @@
       "name": "主动股票基金",
       "denominator_id": "direct_equity_funds",
       "status": "complete",
-      "target_version": "8ce016c76ea7b1a162d463395dcaa08a5b861a310b86738347cbcf7cfc6fc7a6",
-      "holding_return": -0.06481084079938294,
+      "target_version": "f2e4a22f070d24dfe99260195e29bfc58035abdf7f9d71c47c192aed372514af",
+      "holding_return": -0.06312539154756276,
       "holding_return_coverage": 1.0,
       "children": [
         {
           "id": "direct_equity_funds:cn_broad",
           "name": "A股宽基",
-          "actual_weight": 0.5516651205237869,
+          "actual_weight": 0.5257000208122353,
           "target_weight": 0.55,
-          "delta_pp": 0.16651205237868671,
-          "holding_return": -0.09968341439797644,
+          "delta_pp": -2.429997918776472,
+          "holding_return": -0.09858053115469112,
           "holding_return_coverage": 1.0,
           "status": "complete"
         },
         {
           "id": "direct_equity_funds:cn_dividend",
           "name": "A股红利",
-          "actual_weight": 0.19937830117430172,
+          "actual_weight": 0.18596340282517512,
           "target_weight": 0.15,
-          "delta_pp": 4.937830117430172,
+          "delta_pp": 3.596340282517513,
           "holding_return": 0.028489939709853137,
           "holding_return_coverage": 1.0,
           "status": "complete"
@@ -588,17 +588,17 @@
         {
           "id": "direct_equity_funds:hk_broad",
           "name": "境外宽基",
-          "actual_weight": 0.11967550487974979,
+          "actual_weight": 0.16775400447349148,
           "target_weight": 0.3,
-          "delta_pp": -18.03244951202502,
-          "holding_return": -0.04349342723731541,
+          "delta_pp": -13.22459955265085,
+          "holding_return": -0.04167083525297402,
           "holding_return_coverage": 1.0,
           "status": "complete"
         },
         {
           "id": "direct_equity_funds:cn_theme",
           "name": "A股主题",
-          "actual_weight": 0.059448255043617906,
+          "actual_weight": 0.055448359900836554,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": -0.04971954376747913,
@@ -608,7 +608,7 @@
         {
           "id": "direct_equity_funds:overseas_theme",
           "name": "境外主题",
-          "actual_weight": 0.06983281837854372,
+          "actual_weight": 0.06513421198826151,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": -0.06921076374175501,
@@ -633,13 +633,13 @@
       "denominator_id": "direct_equity_funds:cn_broad",
       "status": "complete",
       "target_version": null,
-      "holding_return": -0.09968341439797644,
+      "holding_return": -0.09858053115469112,
       "holding_return_coverage": 1.0,
       "children": [
         {
           "id": "direct:fund-cn-002656",
           "name": "南方创业板ETF联接A",
-          "actual_weight": 0.33967178546619037,
+          "actual_weight": 0.33246551083028075,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": -0.09231800630043922,
@@ -649,7 +649,7 @@
         {
           "id": "direct:fund-cn-022444",
           "name": "景顺长城中证A500ETF联接A",
-          "actual_weight": 0.5600609077083428,
+          "actual_weight": 0.5481789884955243,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": -0.1012966295191075,
@@ -659,10 +659,10 @@
         {
           "id": "direct:fund-cn-019923",
           "name": "华泰柏瑞中证2000指数增强A",
-          "actual_weight": 0.1002673068254668,
+          "actual_weight": 0.11935550067419508,
           "target_weight": null,
           "delta_pp": null,
-          "holding_return": -0.11513554908863227,
+          "holding_return": -0.10336666289677356,
           "holding_return_coverage": 1.0,
           "status": "complete"
         }
@@ -716,7 +716,7 @@
       "denominator_id": "direct_equity_funds:hk_broad",
       "status": "complete",
       "target_version": null,
-      "holding_return": -0.04349342723731541,
+      "holding_return": -0.04167083525297402,
       "holding_return_coverage": 1.0,
       "children": [
         {
@@ -725,7 +725,7 @@
           "actual_weight": 1.0,
           "target_weight": null,
           "delta_pp": null,
-          "holding_return": -0.04349342723731541,
+          "holding_return": -0.04167083525297402,
           "holding_return_coverage": 1.0,
           "status": "complete"
         }
@@ -766,35 +766,35 @@
       "id": "equity",
       "name": "股票",
       "denominator_id": "equity",
-      "status": "estimated",
+      "status": "complete",
       "target_version": null,
-      "holding_return": -0.0947220344363247,
+      "holding_return": -0.09219635555584092,
       "holding_return_coverage": 1.0,
       "children": [
         {
           "id": "direct_equity_funds",
           "name": "主动股票基金",
-          "actual_weight": 0.6628442286350714,
+          "actual_weight": 0.6781336893366015,
           "target_weight": null,
           "delta_pp": null,
-          "holding_return": -0.06481084079938294,
+          "holding_return": -0.06312539154756276,
           "holding_return_coverage": 1.0,
           "status": "complete"
         },
         {
           "id": "advisory_equity_funds",
           "name": "投顾股票基金",
-          "actual_weight": 0.20454617815321946,
+          "actual_weight": 0.19532615124214583,
           "target_weight": null,
           "delta_pp": null,
-          "holding_return": -0.11792828032983406,
+          "holding_return": -0.117287071992138,
           "holding_return_coverage": 1.0,
-          "status": "estimated"
+          "status": "complete"
         },
         {
           "id": "active_stocks",
           "name": "个股",
-          "actual_weight": 0.13260959321170915,
+          "actual_weight": 0.1265401594212526,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": -0.19120404192868432,
@@ -807,27 +807,27 @@
       "id": "global",
       "name": "全账户",
       "denominator_id": "global",
-      "status": "estimated",
-      "target_version": "8ce016c76ea7b1a162d463395dcaa08a5b861a310b86738347cbcf7cfc6fc7a6",
-      "holding_return": -0.06341289215158512,
+      "status": "complete",
+      "target_version": "f2e4a22f070d24dfe99260195e29bfc58035abdf7f9d71c47c192aed372514af",
+      "holding_return": -0.06265192507093052,
       "holding_return_coverage": 1.0,
       "children": [
         {
           "id": "equity",
           "name": "股票",
-          "actual_weight": 0.49324220851727374,
+          "actual_weight": 0.5294058172427524,
           "target_weight": 0.6,
-          "delta_pp": -10.675779148272625,
-          "holding_return": -0.0947220344363247,
+          "delta_pp": -7.05941827572476,
+          "holding_return": -0.09219635555584092,
           "holding_return_coverage": 1.0,
-          "status": "estimated"
+          "status": "complete"
         },
         {
           "id": "bond",
           "name": "债券",
-          "actual_weight": 0.22268025712663833,
+          "actual_weight": 0.2280676165901077,
           "target_weight": 0.2,
-          "delta_pp": 2.268025712663832,
+          "delta_pp": 2.8067616590107702,
           "holding_return": 0.003567555782231082,
           "holding_return_coverage": 1.0,
           "status": "complete"
@@ -835,9 +835,9 @@
         {
           "id": "cash",
           "name": "现金",
-          "actual_weight": 0.23844694886770046,
+          "actual_weight": 0.1957920284482022,
           "target_weight": 0.15,
-          "delta_pp": 8.844694886770046,
+          "delta_pp": 4.579202844820221,
           "holding_return": 0.0,
           "holding_return_coverage": 1.0,
           "status": "complete"
@@ -845,9 +845,9 @@
         {
           "id": "gold",
           "name": "黄金",
-          "actual_weight": 0.045630585488387276,
+          "actual_weight": 0.046734537718937784,
           "target_weight": 0.05,
-          "delta_pp": -0.43694145116127264,
+          "delta_pp": -0.3265462281062219,
           "holding_return": -0.06986472516490105,
           "holding_return_coverage": 1.0,
           "status": "complete"
@@ -1005,13 +1005,13 @@
       "denominator_id": "profit:equity:cn_broad",
       "status": "complete",
       "target_version": null,
-      "holding_return": -0.10621844203162134,
+      "holding_return": -0.10517274494210903,
       "holding_return_coverage": 1.0,
       "children": [
         {
           "id": "direct:fund-cn-002656",
           "name": "南方创业板ETF联接A",
-          "actual_weight": 0.28911673007045313,
+          "actual_weight": 0.28387937758756243,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": -0.09231800630043922,
@@ -1021,7 +1021,7 @@
         {
           "id": "direct:fund-cn-022444",
           "name": "景顺长城中证A500ETF联接A",
-          "actual_weight": 0.47670423392596767,
+          "actual_weight": 0.4680687319176672,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": -0.1012966295191075,
@@ -1031,17 +1031,17 @@
         {
           "id": "direct:fund-cn-019923",
           "name": "华泰柏瑞中证2000指数增强A",
-          "actual_weight": 0.08534402067738192,
+          "actual_weight": 0.10191302297319793,
           "target_weight": null,
           "delta_pp": null,
-          "holding_return": -0.11513554908863227,
+          "holding_return": -0.10336666289677356,
           "holding_return_coverage": 1.0,
           "status": "complete"
         },
         {
           "id": "advisory-tiaa001001:tiaa001001-fund-110020",
           "name": "易方达沪深300ETF联接A",
-          "actual_weight": 0.14106183873484832,
+          "actual_weight": 0.13850650210262005,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": -0.13929488186913935,
@@ -1051,7 +1051,7 @@
         {
           "id": "advisory-tiaa001001:tiaa001001-fund-005313",
           "name": "万家中证1000指数增强A",
-          "actual_weight": 0.007773176591348934,
+          "actual_weight": 0.0076323654189524815,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": -0.18556701030927822,
@@ -1158,7 +1158,7 @@
       "denominator_id": "profit:equity:hk_broad",
       "status": "complete",
       "target_version": null,
-      "holding_return": -0.04349342723731541,
+      "holding_return": -0.04167083525297402,
       "holding_return_coverage": 1.0,
       "children": [
         {
@@ -1167,7 +1167,7 @@
           "actual_weight": 1.0,
           "target_weight": null,
           "delta_pp": null,
-          "holding_return": -0.04349342723731541,
+          "holding_return": -0.04167083525297402,
           "holding_return_coverage": 1.0,
           "status": "complete"
         }
@@ -1268,15 +1268,15 @@
       "id": "profit:equity:overseas_theme",
       "name": "境外主题",
       "denominator_id": "profit:equity:overseas_theme",
-      "status": "estimated",
+      "status": "complete",
       "target_version": null,
-      "holding_return": -0.1711263050980978,
+      "holding_return": -0.16949494875654184,
       "holding_return_coverage": 1.0,
       "children": [
         {
           "id": "direct:fund-cn-013308",
           "name": "易方达恒生科技ETF联接（QDII）A",
-          "actual_weight": 0.6126957894098773,
+          "actual_weight": 0.6114922745606879,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": -0.06921076374175501,
@@ -1286,17 +1286,17 @@
         {
           "id": "advisory-tiaa001001:tiaa001001-fund-164906",
           "name": "交银中证海外中国互联网指数（LOF）A",
-          "actual_weight": 0.2612473896305317,
+          "actual_weight": 0.26269851717510573,
           "target_weight": null,
           "delta_pp": null,
-          "holding_return": -0.25538824918807207,
+          "holding_return": -0.24977856510186017,
           "holding_return_coverage": 1.0,
-          "status": "estimated"
+          "status": "complete"
         },
         {
           "id": "advisory-tiaa001001:tiaa001001-fund-012348",
           "name": "天弘恒生科技ETF联接A",
-          "actual_weight": 0.12605682095959087,
+          "actual_weight": 0.1258092082642064,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": -0.36125862984599044,
@@ -1342,8 +1342,8 @@
       "date_difference": false,
       "daily_return": 0.029231293676495573,
       "holding_return": -0.09231800630043922,
-      "class_weight": 0.12420711646898021,
-      "global_weight": 0.06126419244072204,
+      "class_weight": 0.11852225724082116,
+      "global_weight": 0.06274637245603266,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1361,8 +1361,8 @@
       "date_difference": false,
       "daily_return": 0.005349182763744187,
       "holding_return": -0.1012966295191075,
-      "class_weight": 0.2047963751183479,
-      "global_weight": 0.10101421635970596,
+      "class_weight": 0.19542301072440177,
+      "global_weight": 0.10345807870059108,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1380,8 +1380,8 @@
       "date_difference": false,
       "daily_return": -0.010291396854764101,
       "holding_return": 0.028489939709853137,
-      "class_weight": 0.13215675624845097,
-      "global_weight": 0.06518529032246498,
+      "class_weight": 0.12610804843942458,
+      "global_weight": 0.06676233444496218,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1398,9 +1398,9 @@
       "market_date": "2026-11-23",
       "date_difference": false,
       "daily_return": 0.03199621186498014,
-      "holding_return": -0.11513554908863227,
-      "class_weight": 0.03666454969113513,
-      "global_weight": 0.01808450346394682,
+      "holding_return": -0.10336666289677356,
+      "class_weight": 0.04254962663250638,
+      "global_weight": 0.022526019860756023,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1419,7 +1419,7 @@
       "daily_return": -9.883376161290425e-05,
       "holding_return": 0.0017461962292596492,
       "class_weight": 0.2849326279412778,
-      "global_weight": 0.06344887085373253,
+      "global_weight": 0.06498390534332317,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1438,7 +1438,7 @@
       "daily_return": -0.0001466275659826044,
       "holding_return": 0.004344944399440125,
       "class_weight": 0.15663647231993372,
-      "global_weight": 0.03487984993161241,
+      "global_weight": 0.03572370691308966,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1457,7 +1457,7 @@
       "daily_return": 9.851246182668305e-05,
       "holding_return": -0.0009840582562486413,
       "class_weight": 0.05498929037153931,
-      "global_weight": 0.01224502931914575,
+      "global_weight": 0.012541276393018328,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1475,8 +1475,8 @@
       "date_difference": false,
       "daily_return": 0.005809731299927456,
       "holding_return": -0.07666666666666673,
-      "class_weight": 0.009823893945745617,
-      "global_weight": 0.004845559146039043,
+      "class_weight": 0.009374262268096333,
+      "global_weight": 0.004962788977089436,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1494,8 +1494,8 @@
       "date_difference": false,
       "daily_return": -0.00026939655172408816,
       "holding_return": 0.10776119402985088,
-      "class_weight": 0.02063245231828375,
-      "global_weight": 0.010176796348597621,
+      "class_weight": 0.019688121668836305,
+      "global_weight": 0.010423006142065025,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1513,8 +1513,8 @@
       "date_difference": false,
       "daily_return": -0.00434153400868309,
       "holding_return": 0.07710371819960862,
-      "class_weight": 0.015616090188414115,
-      "global_weight": 0.0077025148129383075,
+      "class_weight": 0.01490135437504757,
+      "global_weight": 0.007888863690945923,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1532,8 +1532,8 @@
       "date_difference": false,
       "daily_return": -0.0061690314620604925,
       "holding_return": 0.10645604395604391,
-      "class_weight": 0.011426926459636238,
-      "global_weight": 0.00563624244351545,
+      "class_weight": 0.010903925280796528,
+      "global_weight": 0.005772601474433994,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1551,8 +1551,8 @@
       "date_difference": false,
       "daily_return": -0.042952208106473266,
       "holding_return": -0.15174262734584462,
-      "class_weight": 0.022442455194468684,
-      "global_weight": 0.011069566164669696,
+      "class_weight": 0.02141528217780274,
+      "global_weight": 0.01133737496282381,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1570,8 +1570,8 @@
       "date_difference": false,
       "daily_return": 0.015503875968992276,
       "holding_return": -0.3820754716981133,
-      "class_weight": 0.003484467798445873,
-      "global_weight": 0.0017186865924127652,
+      "class_weight": 0.003324986526499872,
+      "global_weight": 0.0017602672093828056,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1589,8 +1589,8 @@
       "date_difference": false,
       "daily_return": -0.0040837161817254275,
       "holding_return": -0.05287583983844022,
-      "class_weight": 0.013838568294692925,
-      "global_weight": 0.006825765988391461,
+      "class_weight": 0.013205188220257002,
+      "global_weight": 0.006990903461589525,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1608,8 +1608,8 @@
       "date_difference": false,
       "daily_return": -0.003599280143971151,
       "holding_return": -0.4404053607886208,
-      "class_weight": 0.03534473901202195,
-      "global_weight": 0.017433517129756354,
+      "class_weight": 0.03372703890391626,
+      "global_weight": 0.017855290594105892,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1627,8 +1627,8 @@
       "date_difference": false,
       "daily_return": -0.0008330358205402844,
       "holding_return": -0.06921076374175501,
-      "class_weight": 0.04628828063153884,
-      "global_weight": 0.022831333767167564,
+      "class_weight": 0.04416970347763207,
+      "global_weight": 0.02338369796694585,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1647,7 +1647,7 @@
       "daily_return": -9.829942003336534e-05,
       "holding_return": 0.0003869163534587504,
       "class_weight": 0.27543518188148564,
-      "global_weight": 0.06133397712309162,
+      "global_weight": 0.06281784545677326,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1666,7 +1666,7 @@
       "daily_return": 0.02100601794027468,
       "holding_return": -0.06986472516490105,
       "class_weight": 1.0,
-      "global_weight": 0.045630585488387276,
+      "global_weight": 0.046734537718937784,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1683,9 +1683,9 @@
       "market_date": "2026-11-23",
       "date_difference": false,
       "daily_return": -0.0009882399446586865,
-      "holding_return": -0.04349342723731541,
-      "class_weight": 0.07932621771853048,
-      "global_weight": 0.03912703882081006,
+      "holding_return": -0.04167083525297402,
+      "class_weight": 0.11375964195459753,
+      "global_weight": 0.06022501621821661,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1703,8 +1703,8 @@
       "date_difference": false,
       "daily_return": 0.01791346032546981,
       "holding_return": -0.04971954376747913,
-      "class_weight": 0.03940493275808791,
-      "global_weight": 0.019436176060073945,
+      "class_weight": 0.03760140086721797,
+      "global_weight": 0.019906400355581867,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1723,7 +1723,7 @@
       "daily_return": 3.0799999999999996e-05,
       "holding_return": 0.0,
       "class_weight": 0.9006086995248672,
-      "global_weight": 0.03569251314923476,
+      "global_weight": 0.03655603109631608,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1741,8 +1741,8 @@
       "date_difference": false,
       "daily_return": 0.0013408093612872207,
       "holding_return": -0.13929488186913935,
-      "class_weight": 0.06060141946402842,
-      "global_weight": 0.02989117797571908,
+      "class_weight": 0.05782774152613299,
+      "global_weight": 0.03061434276194509,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1761,7 +1761,7 @@
       "daily_return": -0.0001466275659826044,
       "holding_return": 0.011946278845440372,
       "class_weight": 0.13925536025288726,
-      "global_weight": 0.031009419427375586,
+      "global_weight": 0.03175963811027282,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1780,7 +1780,7 @@
       "daily_return": -9.883376161290425e-05,
       "holding_return": 0.007769698177109249,
       "class_weight": 0.08875106723287629,
-      "global_weight": 0.01976311047168046,
+      "global_weight": 0.020241244373630504,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1798,8 +1798,8 @@
       "date_difference": false,
       "daily_return": -0.006487713891817348,
       "holding_return": -0.037627651217596016,
-      "class_weight": 0.03587308966885533,
-      "global_weight": 0.017694121974604397,
+      "class_weight": 0.03423120737866063,
+      "global_weight": 0.018122200317505967,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1817,8 +1817,8 @@
       "date_difference": false,
       "daily_return": -0.0029454319966928377,
       "holding_return": -0.022295414238662208,
-      "class_weight": 0.03239482407376193,
-      "global_weight": 0.01597849457067088,
+      "class_weight": 0.030912139185683824,
+      "global_weight": 0.016365066308318656,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1832,16 +1832,14 @@
       "asset_class": "equity",
       "method": "advisory_equity_funds",
       "subgroup": "overseas_theme",
-      "market_date": "2026-11-20",
-      "date_difference": true,
-      "daily_return": null,
-      "holding_return": -0.25538824918807207,
-      "class_weight": 0.019736862394830867,
-      "global_weight": 0.009735053596827905,
-      "status": "estimated",
-      "holding_return_status": "calculated",
-      "valuation_market_date": "2026-11-20",
-      "valuation_lag_trading_days": 1
+      "market_date": "2026-11-23",
+      "date_difference": false,
+      "daily_return": 0.007533703409992043,
+      "holding_return": -0.24977856510186017,
+      "class_weight": 0.018975408341788427,
+      "global_weight": 0.010045691560699444,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
     },
     {
       "id": "advisory-tiaa001001:tiaa001001-fund-090010",
@@ -1857,8 +1855,8 @@
       "date_difference": false,
       "daily_return": -0.006207757860711149,
       "holding_return": 0.002296891786759491,
-      "class_weight": 0.020756233143438597,
-      "global_weight": 0.010237850276169089,
+      "class_weight": 0.019806237145771538,
+      "global_weight": 0.010485537162660942,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1876,8 +1874,8 @@
       "date_difference": false,
       "daily_return": 0.03352559480894013,
       "holding_return": -0.10688140556368962,
-      "class_weight": 0.014796104447083491,
-      "global_weight": 0.007298063234931717,
+      "class_weight": 0.014118898717669312,
+      "global_weight": 0.007474627114195371,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1895,8 +1893,8 @@
       "date_difference": false,
       "daily_return": -0.0008307372793353585,
       "holding_return": -0.36125862984599044,
-      "class_weight": 0.009523410483556888,
-      "global_weight": 0.004697348019526157,
+      "class_weight": 0.009087531690858922,
+      "global_weight": 0.004810992141518579,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1915,7 +1913,7 @@
       "daily_return": 2.361e-05,
       "holding_return": 0.0,
       "class_weight": 0.09939130047513285,
-      "global_weight": 0.003939030681137974,
+      "global_weight": 0.004034328641050318,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1933,8 +1931,8 @@
       "date_difference": false,
       "daily_return": 0.01791346032546981,
       "holding_return": -0.09153343841477153,
-      "class_weight": 0.007524808737823998,
-      "global_weight": 0.003711553280514388,
+      "class_weight": 0.007180404330013486,
+      "global_weight": 0.0038013478224641875,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1952,8 +1950,8 @@
       "date_difference": false,
       "daily_return": 0.02466937945066139,
       "holding_return": -0.18556701030927822,
-      "class_weight": 0.0033394257398399415,
-      "global_weight": 0.0016471457270980836,
+      "class_weight": 0.0031865829255667186,
+      "global_weight": 0.0016869955379214495,
       "status": "confirmed",
       "holding_return_status": "calculated"
     }
@@ -2216,12 +2214,12 @@
       "cumulative": -0.005026342881366164
     },
     "tiaa001001-fund-164906": {
-      "window_start_date": null,
-      "window_end_date": "2026-11-20",
-      "positive_days": null,
-      "negative_days": null,
-      "largest_daily_return": null,
-      "cumulative": null
+      "window_start_date": "2026-11-17",
+      "window_end_date": "2026-11-23",
+      "positive_days": 1,
+      "negative_days": 4,
+      "largest_daily_return": -0.028879476318829367,
+      "cumulative": -0.06259222823413668
     }
   }
 }

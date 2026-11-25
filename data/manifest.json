@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-24T09:34:22+08:00",
+  "updated_at": "2026-11-25T09:41:24+08:00",
   "snapshots": [
     "data/daily/2026-10-29.json",
     "data/daily/2026-10-30.json",
@@ -19,7 +19,8 @@
     "data/daily/2026-11-18.json",
     "data/daily/2026-11-19.json",
     "data/daily/2026-11-20.json",
-    "data/daily/2026-11-23.json"
+    "data/daily/2026-11-23.json",
+    "data/daily/2026-11-24.json"
   ],
   "account_snapshots": [
     "data/accounts/2026-10-29.json",
@@ -39,7 +40,8 @@
     "data/accounts/2026-11-18.json",
     "data/accounts/2026-11-19.json",
     "data/accounts/2026-11-20.json",
-    "data/accounts/2026-11-23.json"
+    "data/accounts/2026-11-23.json",
+    "data/accounts/2026-11-24.json"
   ],
   "portfolio_v2_snapshots": [
     "data/portfolio-v2/2026-10-29.json",
@@ -60,7 +62,8 @@
     "data/portfolio-v2/2026-11-18.json",
     "data/portfolio-v2/2026-11-19.json",
     "data/portfolio-v2/2026-11-20.json",
-    "data/portfolio-v2/2026-11-23.json"
+    "data/portfolio-v2/2026-11-23.json",
+    "data/portfolio-v2/2026-11-24.json"
   ],
   "allocation_history_snapshots": [
     "data/allocation-history/2026-09-08.json",
@@ -101,7 +104,7 @@
     "data/allocation-history/2026-10-27.json",
     "data/allocation-history/2026-10-28.json"
   ],
-  "latest_portfolio_v2_snapshot": "data/portfolio-v2/2026-11-23.json",
+  "latest_portfolio_v2_snapshot": "data/portfolio-v2/2026-11-24.json",
   "last_run": {
     "status": "partial"
   }
