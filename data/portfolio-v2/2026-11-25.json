@@ -1,17 +1,17 @@
 {
   "schema_version": 2,
   "reference_date": "2026-11-25",
-  "generated_at": "2026-11-26T09:31:09+08:00",
+  "generated_at": "2026-11-26T10:22:39+08:00",
   "valuation_input_date": "2026-11-25",
   "configuration_versions": {
     "holdings": "372ffe1e213d77e0a87df3fd4a9117b713090932ef9a1f883f0d67f2b5fdbc1f",
-    "allocation": "f2e4a22f070d24dfe99260195e29bfc58035abdf7f9d71c47c192aed372514af"
+    "allocation": "9f6e0f1daf7ab6f7947926fd9a40be480bc6d4048f80ec7225b513f73affd311"
   },
   "status": "partial",
   "coverage": {
     "configuration": "available",
     "valuation": "partial",
-    "reconciliation": "confirmed",
+    "reconciliation": "unconfirmed",
     "calculation": "partial",
     "classification": "complete",
     "cash_status": "recorded",
@@ -24,7 +24,7 @@
     "direct_total": 20,
     "advisory_confirmed": 12,
     "advisory_total": 13,
-    "cash_date": "2026-11-19"
+    "cash_date": "2026-11-25"
   },
   "layers": {
     "active_stocks": {
@@ -427,7 +427,7 @@
       "name": "主动债券基金",
       "denominator_id": "direct_bond_funds",
       "status": "complete",
-      "target_version": "f2e4a22f070d24dfe99260195e29bfc58035abdf7f9d71c47c192aed372514af",
+      "target_version": "9f6e0f1daf7ab6f7947926fd9a40be480bc6d4048f80ec7225b513f73affd311",
       "holding_return": 0.0007257646905397943,
       "holding_return_coverage": 1.0,
       "children": [
@@ -561,7 +561,7 @@
       "name": "主动股票基金",
       "denominator_id": "direct_equity_funds",
       "status": "complete",
-      "target_version": "f2e4a22f070d24dfe99260195e29bfc58035abdf7f9d71c47c192aed372514af",
+      "target_version": "9f6e0f1daf7ab6f7947926fd9a40be480bc6d4048f80ec7225b513f73affd311",
       "holding_return": -0.08373049895352458,
       "holding_return_coverage": 1.0,
       "children": [
@@ -808,7 +808,7 @@
       "name": "全账户",
       "denominator_id": "global",
       "status": "partial",
-      "target_version": "f2e4a22f070d24dfe99260195e29bfc58035abdf7f9d71c47c192aed372514af",
+      "target_version": "9f6e0f1daf7ab6f7947926fd9a40be480bc6d4048f80ec7225b513f73affd311",
       "holding_return": -0.06277308032836998,
       "holding_return_coverage": 1.0,
       "children": [
