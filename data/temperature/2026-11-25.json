@@ -1,0 +1,134 @@
+{
+  "reference_date": "2026-11-25",
+  "products": {
+    "000191": {
+      "status": "calculated",
+      "valuation_date": "2026-11-25",
+      "temperature": 97.27891156462584
+    },
+    "000216": {
+      "price_context": {
+        "status": "calculated",
+        "valuation_date": "2026-11-25",
+        "price_percentile": 83.73745819397993
+      }
+    },
+    "000248": {
+      "status": "calculated",
+      "valuation_date": "2026-11-25",
+      "temperature": 4
+    },
+    "000968": {
+      "status": "calculated",
+      "valuation_date": "2026-11-25",
+      "temperature": 5
+    },
+    "001717": {
+      "context": {
+        "status": "calculated",
+        "valuation_date": "2026-11-25",
+        "temperature": 4.243922538112897
+      }
+    },
+    "002656": {
+      "status": "calculated",
+      "valuation_date": "2026-11-25",
+      "temperature": 7
+    },
+    "005313": {
+      "status": "calculated",
+      "valuation_date": "2026-11-25",
+      "temperature": 3
+    },
+    "006662": {
+      "status": "calculated",
+      "valuation_date": "2026-11-25",
+      "temperature": 97.29891956782713
+    },
+    "007169": {
+      "status": "calculated",
+      "valuation_date": "2026-11-25",
+      "temperature": 98.99959983993597
+    },
+    "007171": {
+      "status": "calculated",
+      "valuation_date": "2026-11-25",
+      "temperature": 98.63945578231292
+    },
+    "007466": {
+      "status": "calculated",
+      "valuation_date": "2026-11-25",
+      "temperature": 20
+    },
+    "009051": {
+      "status": "calculated",
+      "valuation_date": "2026-11-25",
+      "temperature": 20
+    },
+    "012348": {
+      "status": "calculated",
+      "valuation_date": "2026-11-25",
+      "temperature": 1.0243277848911652
+    },
+    "013308": {
+      "status": "calculated",
+      "valuation_date": "2026-11-25",
+      "temperature": 1.0243277848911652
+    },
+    "01810": {
+      "status": "calculated",
+      "valuation_date": "2026-11-25",
+      "temperature": 52.17391304347826
+    },
+    "019923": {
+      "status": "calculated",
+      "valuation_date": "2026-11-25",
+      "temperature": 5
+    },
+    "02020": {
+      "status": "calculated",
+      "valuation_date": "2026-11-25",
+      "temperature": 2.5210084033613445
+    },
+    "022444": {
+      "status": "calculated",
+      "valuation_date": "2026-11-25",
+      "temperature": 9
+    },
+    "03933": {
+      "status": "calculated",
+      "valuation_date": "2026-11-25",
+      "temperature": 83.49514563106796
+    },
+    "090010": {
+      "status": "calculated",
+      "valuation_date": "2026-11-25",
+      "temperature": 20
+    },
+    "09618": {
+      "status": "calculated",
+      "valuation_date": "2026-11-25",
+      "temperature": 45.070422535211264
+    },
+    "09988": {
+      "status": "calculated",
+      "valuation_date": "2026-11-25",
+      "temperature": 2.380952380952381
+    },
+    "110020": {
+      "status": "calculated",
+      "valuation_date": "2026-11-25",
+      "temperature": 9
+    },
+    "164906": {
+      "status": "calculated",
+      "valuation_date": "2026-11-24",
+      "temperature": 0
+    },
+    "501302": {
+      "status": "calculated",
+      "valuation_date": "2026-11-25",
+      "temperature": 34.843624699278266
+    }
+  }
+}
