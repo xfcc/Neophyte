@@ -1,23 +1,23 @@
 {
   "schema_version": 2,
   "reference_date": "2026-11-25",
-  "generated_at": "2026-11-26T10:26:54+08:00",
+  "generated_at": "2026-11-26T10:43:07+08:00",
   "valuation_input_date": "2026-11-25",
   "configuration_versions": {
     "holdings": "372ffe1e213d77e0a87df3fd4a9117b713090932ef9a1f883f0d67f2b5fdbc1f",
-    "allocation": "9f6e0f1daf7ab6f7947926fd9a40be480bc6d4048f80ec7225b513f73affd311"
+    "allocation": "d6e8b8f66ecd6236a95d1c59b5a3d97b0e9f0fcafb19ddea90df2c48f22baeb4"
   },
-  "status": "partial",
+  "status": "estimated",
   "coverage": {
     "configuration": "available",
-    "valuation": "partial",
-    "reconciliation": "unconfirmed",
-    "calculation": "partial",
+    "valuation": "estimated",
+    "reconciliation": "confirmed",
+    "calculation": "available",
     "classification": "complete",
     "cash_status": "recorded",
     "account_source_status": "missing",
     "valuation_basis": "configured_positions",
-    "valued_positions": 25,
+    "valued_positions": 33,
     "positions_total": 33,
     "estimated_positions": 1,
     "direct_confirmed": 20,
@@ -31,90 +31,90 @@
       "id": "active_stocks",
       "name": "个股",
       "denominator_id": "active_stocks",
-      "status": "partial",
+      "status": "complete",
       "target_version": null,
-      "holding_return": null,
-      "holding_return_coverage": 0,
+      "holding_return": -0.195756058414255,
+      "holding_return_coverage": 1.0,
       "children": [
         {
           "id": "direct:stock-hk-03933",
           "name": "联邦制药",
-          "actual_weight": null,
+          "actual_weight": 0.07163574381421853,
           "target_weight": null,
           "delta_pp": null,
-          "holding_return": null,
-          "holding_return_coverage": 0,
-          "status": "partial"
+          "holding_return": -0.11266666666666668,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
         },
         {
           "id": "direct:stock-us-lkncy",
           "name": "瑞幸咖啡",
-          "actual_weight": null,
+          "actual_weight": 0.1575103699601348,
           "target_weight": null,
           "delta_pp": null,
-          "holding_return": null,
-          "holding_return_coverage": 0,
-          "status": "partial"
+          "holding_return": 0.1200000000000002,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
         },
         {
           "id": "direct:stock-hk-01810",
           "name": "小米集团-W",
-          "actual_weight": null,
+          "actual_weight": 0.1143588493286638,
           "target_weight": null,
           "delta_pp": null,
-          "holding_return": null,
-          "holding_return_coverage": 0,
-          "status": "partial"
+          "holding_return": 0.039530332681017556,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
         },
         {
           "id": "direct:stock-hk-02020",
           "name": "安踏体育",
-          "actual_weight": null,
+          "actual_weight": 0.08708236926476755,
           "target_weight": null,
           "delta_pp": null,
-          "holding_return": null,
-          "holding_return_coverage": 0,
-          "status": "partial"
+          "holding_return": 0.11126373626373635,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
         },
         {
           "id": "direct:stock-hk-02097",
           "name": "蜜雪集团",
-          "actual_weight": null,
+          "actual_weight": 0.1715813307886767,
           "target_weight": null,
           "delta_pp": null,
-          "holding_return": null,
-          "holding_return_coverage": 0,
-          "status": "partial"
+          "holding_return": -0.14530831099195707,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
         },
         {
           "id": "direct:stock-hk-02150",
           "name": "奈雪的茶",
-          "actual_weight": null,
+          "actual_weight": 0.027650535976374735,
           "target_weight": null,
           "delta_pp": null,
-          "holding_return": null,
-          "holding_return_coverage": 0,
-          "status": "partial"
+          "holding_return": -0.35377358490566035,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
         },
         {
           "id": "direct:stock-hk-09618",
           "name": "京东集团-SW",
-          "actual_weight": null,
+          "actual_weight": 0.10796491517003935,
           "target_weight": null,
           "delta_pp": null,
-          "holding_return": null,
-          "holding_return_coverage": 0,
-          "status": "partial"
+          "holding_return": -0.02617577381645893,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
         },
         {
           "id": "direct:stock-hk-09988",
           "name": "阿里巴巴-W",
-          "actual_weight": null,
+          "actual_weight": 0.2622158856971245,
           "target_weight": null,
           "delta_pp": null,
-          "holding_return": null,
-          "holding_return_coverage": 0,
-          "status": "partial"
+          "holding_return": -0.4528707440823119,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
         }
       ]
     },
@@ -427,7 +427,7 @@
       "name": "主动债券基金",
       "denominator_id": "direct_bond_funds",
       "status": "complete",
-      "target_version": "9f6e0f1daf7ab6f7947926fd9a40be480bc6d4048f80ec7225b513f73affd311",
+      "target_version": "d6e8b8f66ecd6236a95d1c59b5a3d97b0e9f0fcafb19ddea90df2c48f22baeb4",
       "holding_return": 0.0007257646905397943,
       "holding_return_coverage": 1.0,
       "children": [
@@ -561,7 +561,7 @@
       "name": "主动股票基金",
       "denominator_id": "direct_equity_funds",
       "status": "complete",
-      "target_version": "9f6e0f1daf7ab6f7947926fd9a40be480bc6d4048f80ec7225b513f73affd311",
+      "target_version": "d6e8b8f66ecd6236a95d1c59b5a3d97b0e9f0fcafb19ddea90df2c48f22baeb4",
       "holding_return": -0.08373049895352458,
       "holding_return_coverage": 1.0,
       "children": [
@@ -766,15 +766,15 @@
       "id": "equity",
       "name": "股票",
       "denominator_id": "equity",
-      "status": "partial",
+      "status": "estimated",
       "target_version": null,
-      "holding_return": -0.09410648872280031,
+      "holding_return": -0.10850376121826227,
       "holding_return_coverage": 1.0,
       "children": [
         {
           "id": "direct_equity_funds",
           "name": "主动股票基金",
-          "actual_weight": null,
+          "actual_weight": 0.6754454811628073,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": -0.08373049895352458,
@@ -784,7 +784,7 @@
         {
           "id": "advisory_equity_funds",
           "name": "投顾股票基金",
-          "actual_weight": null,
+          "actual_weight": 0.1965020294094358,
           "target_weight": null,
           "delta_pp": null,
           "holding_return": -0.12804732049204276,
@@ -794,12 +794,12 @@
         {
           "id": "active_stocks",
           "name": "个股",
-          "actual_weight": null,
+          "actual_weight": 0.12805248942775677,
           "target_weight": null,
           "delta_pp": null,
-          "holding_return": null,
-          "holding_return_coverage": 0,
-          "status": "partial"
+          "holding_return": -0.19555984615384814,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
         }
       ]
     },
@@ -807,27 +807,27 @@
       "id": "global",
       "name": "全账户",
       "denominator_id": "global",
-      "status": "partial",
-      "target_version": "9f6e0f1daf7ab6f7947926fd9a40be480bc6d4048f80ec7225b513f73affd311",
-      "holding_return": -0.06277308032836998,
+      "status": "estimated",
+      "target_version": "d6e8b8f66ecd6236a95d1c59b5a3d97b0e9f0fcafb19ddea90df2c48f22baeb4",
+      "holding_return": -0.07496555219023307,
       "holding_return_coverage": 1.0,
       "children": [
         {
           "id": "equity",
           "name": "股票",
-          "actual_weight": null,
+          "actual_weight": 0.5256968010428431,
           "target_weight": 0.6,
-          "delta_pp": null,
-          "holding_return": -0.09410648872280031,
+          "delta_pp": -7.430319895715687,
+          "holding_return": -0.10850376121826227,
           "holding_return_coverage": 1.0,
-          "status": "partial"
+          "status": "estimated"
         },
         {
           "id": "bond",
           "name": "债券",
-          "actual_weight": null,
+          "actual_weight": 0.23044129918752787,
           "target_weight": 0.2,
-          "delta_pp": null,
+          "delta_pp": 3.0441299187527857,
           "holding_return": 0.0026825586720248137,
           "holding_return_coverage": 1.0,
           "status": "complete"
@@ -835,9 +835,9 @@
         {
           "id": "cash",
           "name": "现金",
-          "actual_weight": null,
+          "actual_weight": 0.19800440350721468,
           "target_weight": 0.15,
-          "delta_pp": null,
+          "delta_pp": 4.800440350721469,
           "holding_return": 0.0,
           "holding_return_coverage": 1.0,
           "status": "complete"
@@ -845,9 +845,9 @@
         {
           "id": "gold",
           "name": "黄金",
-          "actual_weight": null,
+          "actual_weight": 0.045857496262414525,
           "target_weight": 0.05,
-          "delta_pp": null,
+          "delta_pp": -0.4142503737585478,
           "holding_return": -0.09751776825571316,
           "holding_return_coverage": 1.0,
           "status": "complete"
@@ -1177,90 +1177,90 @@
       "id": "profit:equity:overseas_stock",
       "name": "境外个股",
       "denominator_id": "profit:equity:overseas_stock",
-      "status": "partial",
+      "status": "complete",
       "target_version": null,
-      "holding_return": null,
-      "holding_return_coverage": 0,
+      "holding_return": -0.19555984615384814,
+      "holding_return_coverage": 1.0,
       "children": [
         {
           "id": "direct:stock-hk-03933",
           "name": "联邦制药",
-          "actual_weight": null,
+          "actual_weight": 0.07157376710599511,
           "target_weight": null,
           "delta_pp": null,
-          "holding_return": null,
-          "holding_return_coverage": 0,
-          "status": "partial"
+          "holding_return": -0.11266666666666668,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
         },
         {
           "id": "direct:stock-us-lkncy",
           "name": "瑞幸咖啡",
-          "actual_weight": null,
+          "actual_weight": 0.15823926214722034,
           "target_weight": null,
           "delta_pp": null,
-          "holding_return": null,
-          "holding_return_coverage": 0,
-          "status": "partial"
+          "holding_return": 0.12000000000000022,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
         },
         {
           "id": "direct:stock-hk-01810",
           "name": "小米集团-W",
-          "actual_weight": null,
+          "actual_weight": 0.11425991010279368,
           "target_weight": null,
           "delta_pp": null,
-          "holding_return": null,
-          "holding_return_coverage": 0,
-          "status": "partial"
+          "holding_return": 0.039530332681017556,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
         },
         {
           "id": "direct:stock-hk-02020",
           "name": "安踏体育",
-          "actual_weight": null,
+          "actual_weight": 0.0870070286833209,
           "target_weight": null,
           "delta_pp": null,
-          "holding_return": null,
-          "holding_return_coverage": 0,
-          "status": "partial"
+          "holding_return": 0.11126373626373637,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
         },
         {
           "id": "direct:stock-hk-02097",
           "name": "蜜雪集团",
-          "actual_weight": null,
+          "actual_weight": 0.17143288469865697,
           "target_weight": null,
           "delta_pp": null,
-          "holding_return": null,
-          "holding_return_coverage": 0,
-          "status": "partial"
+          "holding_return": -0.1453083109919571,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
         },
         {
           "id": "direct:stock-hk-02150",
           "name": "奈雪的茶",
-          "actual_weight": null,
+          "actual_weight": 0.027626613712024784,
           "target_weight": null,
           "delta_pp": null,
-          "holding_return": null,
-          "holding_return_coverage": 0,
-          "status": "partial"
+          "holding_return": -0.35377358490566035,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
         },
         {
           "id": "direct:stock-hk-09618",
           "name": "京东集团-SW",
-          "actual_weight": null,
+          "actual_weight": 0.10787150774953132,
           "target_weight": null,
           "delta_pp": null,
-          "holding_return": null,
-          "holding_return_coverage": 0,
-          "status": "partial"
+          "holding_return": -0.026175773816458935,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
         },
         {
           "id": "direct:stock-hk-09988",
           "name": "阿里巴巴-W",
-          "actual_weight": null,
+          "actual_weight": 0.26198902580045696,
           "target_weight": null,
           "delta_pp": null,
-          "holding_return": null,
-          "holding_return_coverage": 0,
-          "status": "partial"
+          "holding_return": -0.452870744082312,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
         }
       ]
     },
@@ -1342,8 +1342,8 @@
       "date_difference": false,
       "daily_return": -0.03959903901913686,
       "holding_return": -0.12869443131911817,
-      "class_weight": null,
-      "global_weight": null,
+      "class_weight": 0.11586970504356152,
+      "global_weight": 0.06091233327917807,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1361,8 +1361,8 @@
       "date_difference": false,
       "daily_return": -0.020197044334975267,
       "holding_return": -0.11936101887550729,
-      "class_weight": null,
-      "global_weight": null,
+      "class_weight": 0.19502507459049398,
+      "global_weight": 0.10252405783536454,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1380,8 +1380,8 @@
       "date_difference": false,
       "daily_return": -0.0010552233556102575,
       "holding_return": 0.023803515168588495,
-      "class_weight": null,
-      "global_weight": null,
+      "class_weight": 0.1278476033797568,
+      "global_weight": 0.06720907611773233,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1399,8 +1399,8 @@
       "date_difference": false,
       "daily_return": -0.04046697711025116,
       "holding_return": -0.140158251060553,
-      "class_weight": null,
-      "global_weight": null,
+      "class_weight": 0.04155589282667047,
+      "global_weight": 0.021845799923459894,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1419,7 +1419,7 @@
       "daily_return": -0.0004943153732083205,
       "holding_return": 0.00105308331301905,
       "class_weight": 0.2849867976214127,
-      "global_weight": null,
+      "global_weight": 0.06567272789517142,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1438,7 +1438,7 @@
       "daily_return": -0.000953358756233369,
       "holding_return": 0.003240297518226644,
       "class_weight": 0.15660229277138193,
-      "global_weight": null,
+      "global_weight": 0.03608763580198286,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1457,7 +1457,7 @@
       "daily_return": 0.0,
       "holding_return": -0.0009840582562486413,
       "class_weight": 0.055037825536183596,
-      "global_weight": null,
+      "global_weight": 0.012682988021014646,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1474,11 +1474,11 @@
       "market_date": "2026-11-25",
       "date_difference": false,
       "daily_return": -0.007457121551081247,
-      "holding_return": null,
-      "class_weight": null,
-      "global_weight": null,
-      "status": "missing",
-      "holding_return_status": "unavailable"
+      "holding_return": -0.11266666666666668,
+      "class_weight": 0.009165199055645163,
+      "global_weight": 0.004818115824473548,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
     },
     {
       "id": "direct:stock-us-lkncy",
@@ -1493,11 +1493,11 @@
       "market_date": "2026-11-25",
       "date_difference": false,
       "daily_return": -0.016513761467889743,
-      "holding_return": null,
-      "class_weight": null,
-      "global_weight": null,
-      "status": "missing",
-      "holding_return_status": "unavailable"
+      "holding_return": 0.12000000000000022,
+      "class_weight": 0.020262931443162963,
+      "global_weight": 0.010652158239421209,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
     },
     {
       "id": "direct:stock-hk-01810",
@@ -1512,11 +1512,11 @@
       "market_date": "2026-11-25",
       "date_difference": false,
       "daily_return": 0.0022641509433962703,
-      "holding_return": null,
-      "class_weight": null,
-      "global_weight": null,
-      "status": "missing",
-      "holding_return_status": "unavailable"
+      "holding_return": 0.039530332681017556,
+      "class_weight": 0.014631265930454426,
+      "global_weight": 0.007691609694847029,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
     },
     {
       "id": "direct:stock-hk-02020",
@@ -1531,11 +1531,11 @@
       "market_date": "2026-11-25",
       "date_difference": false,
       "daily_return": 0.006218905472636926,
-      "holding_return": null,
-      "class_weight": null,
-      "global_weight": null,
-      "status": "missing",
-      "holding_return_status": "unavailable"
+      "holding_return": 0.11126373626373637,
+      "class_weight": 0.011141466620611478,
+      "global_weight": 0.005857033361381069,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
     },
     {
       "id": "direct:stock-hk-02097",
@@ -1550,11 +1550,11 @@
       "market_date": "2026-11-25",
       "date_difference": false,
       "daily_return": 0.023763648041104757,
-      "holding_return": null,
-      "class_weight": null,
-      "global_weight": null,
-      "status": "missing",
-      "holding_return_status": "unavailable"
+      "holding_return": -0.1453083109919571,
+      "class_weight": 0.021952407655444615,
+      "global_weight": 0.011540310479655652,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
     },
     {
       "id": "direct:stock-hk-02150",
@@ -1569,11 +1569,11 @@
       "market_date": "2026-11-25",
       "date_difference": false,
       "daily_return": 0.007352941176470562,
-      "holding_return": null,
-      "class_weight": null,
-      "global_weight": null,
-      "status": "missing",
-      "holding_return_status": "unavailable"
+      "holding_return": -0.35377358490566035,
+      "class_weight": 0.0035376566602837735,
+      "global_weight": 0.0018597347894990877,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
     },
     {
       "id": "direct:stock-hk-09618",
@@ -1588,11 +1588,11 @@
       "market_date": "2026-11-25",
       "date_difference": false,
       "daily_return": 0.03348789283874298,
-      "holding_return": null,
-      "class_weight": null,
-      "global_weight": null,
-      "status": "missing",
-      "holding_return_status": "unavailable"
+      "holding_return": -0.026175773816458935,
+      "class_weight": 0.01381321510565304,
+      "global_weight": 0.007261562993158481,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
     },
     {
       "id": "direct:stock-hk-09988",
@@ -1607,11 +1607,11 @@
       "market_date": "2026-11-25",
       "date_difference": false,
       "daily_return": -0.012165450121654486,
-      "holding_return": null,
-      "class_weight": null,
-      "global_weight": null,
-      "status": "missing",
-      "holding_return_status": "unavailable"
+      "holding_return": -0.452870744082312,
+      "class_weight": 0.03354834695650131,
+      "global_weight": 0.017636258675308138,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
     },
     {
       "id": "direct:fund-cn-013308",
@@ -1627,8 +1627,8 @@
       "date_difference": false,
       "daily_return": -0.024584237165582,
       "holding_return": -0.10269079582250647,
-      "class_weight": null,
-      "global_weight": null,
+      "class_weight": 0.043365910761816305,
+      "global_weight": 0.022797320561796234,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1647,7 +1647,7 @@
       "daily_return": -0.0008849557522122575,
       "holding_return": -0.0006949019792082603,
       "class_weight": 0.27538017059207587,
-      "global_weight": null,
+      "global_weight": 0.06345896428172101,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1666,7 +1666,7 @@
       "daily_return": -0.026228654339819246,
       "holding_return": -0.09751776825571316,
       "class_weight": 1.0,
-      "global_weight": null,
+      "global_weight": 0.045857496262414525,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1684,8 +1684,8 @@
       "date_difference": false,
       "daily_return": -0.012655705032386666,
       "holding_return": -0.06072555501894012,
-      "class_weight": null,
-      "global_weight": null,
+      "class_weight": 0.11355316296261175,
+      "global_weight": 0.05969453451774165,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1703,8 +1703,8 @@
       "date_difference": false,
       "daily_return": -0.001239925604463732,
       "holding_return": -0.05136831392329211,
-      "class_weight": null,
-      "global_weight": null,
+      "class_weight": 0.038228131597896495,
+      "global_weight": 0.020096406490859017,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1723,7 +1723,7 @@
       "daily_return": 3.086e-05,
       "holding_return": 0.0,
       "class_weight": 0.9006086995248672,
-      "global_weight": null,
+      "global_weight": 0.03696910027025015,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1741,8 +1741,8 @@
       "date_difference": false,
       "daily_return": -0.015804510364111568,
       "holding_return": -0.15181518151815188,
-      "class_weight": null,
-      "global_weight": null,
+      "class_weight": 0.05803708061785421,
+      "global_weight": 0.03050990762267155,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1761,7 +1761,7 @@
       "daily_return": -0.000953358756233369,
       "holding_return": 0.010833271499592118,
       "class_weight": 0.13922497342613893,
-      "global_weight": null,
+      "global_weight": 0.032083183755668494,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1780,7 +1780,7 @@
       "daily_return": -0.0004943153732083205,
       "holding_return": 0.007072417571471059,
       "class_weight": 0.08876794005280698,
-      "global_weight": null,
+      "global_weight": 0.020455799431969433,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1798,8 +1798,8 @@
       "date_difference": false,
       "daily_return": -0.003948342518713455,
       "holding_return": -0.04878240377062046,
-      "class_weight": null,
-      "global_weight": null,
+      "class_weight": 0.03445816726206784,
+      "global_weight": 0.018114548299468285,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1817,8 +1817,8 @@
       "date_difference": false,
       "daily_return": 0.0018680919516371741,
       "holding_return": -0.021687357486698568,
-      "class_weight": null,
-      "global_weight": null,
+      "class_weight": 0.03150157672690107,
+      "global_weight": 0.016560278113137566,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1836,8 +1836,8 @@
       "date_difference": true,
       "daily_return": null,
       "holding_return": -0.2557819112292098,
-      "class_weight": null,
-      "global_weight": null,
+      "class_weight": 0.019170573339540198,
+      "global_weight": 0.010077909078753495,
       "status": "estimated",
       "holding_return_status": "calculated",
       "valuation_market_date": "2026-11-24",
@@ -1857,8 +1857,8 @@
       "date_difference": false,
       "daily_return": -0.004022346368715124,
       "holding_return": -0.009298707072203954,
-      "class_weight": null,
-      "global_weight": null,
+      "class_weight": 0.01993799757215308,
+      "global_weight": 0.010481341542880848,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1876,8 +1876,8 @@
       "date_difference": false,
       "daily_return": -0.013703443429374573,
       "holding_return": -0.12557241207439024,
-      "class_weight": null,
-      "global_weight": null,
+      "class_weight": 0.014078252830356353,
+      "global_weight": 0.007400892477190686,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1895,8 +1895,8 @@
       "date_difference": false,
       "daily_return": -0.024810765349032815,
       "holding_return": -0.38422729686670215,
-      "class_weight": null,
-      "global_weight": null,
+      "class_weight": 0.008922253199606234,
+      "global_weight": 0.0046903999651272685,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1915,7 +1915,7 @@
       "daily_return": 2.758e-05,
       "holding_return": 0.0,
       "class_weight": 0.09939130047513285,
-      "global_weight": null,
+      "global_weight": 0.0040799150121404,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1933,8 +1933,8 @@
       "date_difference": false,
       "daily_return": -0.001239925604463732,
       "holding_return": -0.09310965998648957,
-      "class_weight": null,
-      "global_weight": null,
+      "class_weight": 0.007300085510728218,
+      "global_weight": 0.003837631600329033,
       "status": "confirmed",
       "holding_return_status": "calculated"
     },
@@ -1952,8 +1952,8 @@
       "date_difference": false,
       "daily_return": -0.04338808694209395,
       "holding_return": -0.22303079307324297,
-      "class_weight": null,
-      "global_weight": null,
+      "class_weight": 0.0030960423502286094,
+      "global_weight": 0.0016275795594083457,
       "status": "confirmed",
       "holding_return_status": "calculated"
     }
