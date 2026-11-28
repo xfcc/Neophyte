@@ -1,0 +1,2274 @@
+{
+  "schema_version": 2,
+  "reference_date": "2026-11-27",
+  "generated_at": "2026-11-28T09:34:53+08:00",
+  "valuation_input_date": "2026-11-27",
+  "configuration_versions": {
+    "holdings": "9b0ae8b59500da27012ced100183dc122074d6d5caab86e8186d790eb74fd8f5",
+    "allocation": "a41a6cc534189730b50348cff85ca8c81e19387d669d5b0778d678c90373447c"
+  },
+  "status": "estimated",
+  "coverage": {
+    "configuration": "available",
+    "valuation": "estimated",
+    "reconciliation": "confirmed",
+    "calculation": "available",
+    "classification": "complete",
+    "cash_status": "recorded",
+    "account_source_status": "missing",
+    "valuation_basis": "configured_positions",
+    "valued_positions": 34,
+    "positions_total": 34,
+    "estimated_positions": 1,
+    "direct_confirmed": 21,
+    "direct_total": 21,
+    "advisory_confirmed": 12,
+    "advisory_total": 13,
+    "cash_date": "2026-11-25"
+  },
+  "layers": {
+    "active_stocks": {
+      "id": "active_stocks",
+      "name": "个股",
+      "denominator_id": "active_stocks",
+      "status": "complete",
+      "target_version": null,
+      "holding_return": -0.15372309066779558,
+      "holding_return_coverage": 1.0,
+      "children": [
+        {
+          "id": "direct:stock-hk-03933",
+          "name": "联邦制药",
+          "actual_weight": 0.07017479251891702,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.08533333333333326,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct:stock-us-lkncy",
+          "name": "瑞幸咖啡",
+          "actual_weight": 0.1508440922747374,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": 0.1286567164179104,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct:stock-hk-01810",
+          "name": "小米集团-W",
+          "actual_weight": 0.11375272489946897,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": 0.08806262230919758,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct:stock-hk-02020",
+          "name": "安踏体育",
+          "actual_weight": 0.08429158751543385,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": 0.1318681318681319,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct:stock-hk-02097",
+          "name": "蜜雪集团",
+          "actual_weight": 0.17523239006545893,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.08150134048257376,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct:stock-hk-02150",
+          "name": "奈雪的茶",
+          "actual_weight": 0.02608538205878111,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.3584905660377358,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct:stock-hk-09618",
+          "name": "京东集团-SW",
+          "actual_weight": 0.10863794410362954,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": 0.031108004194337593,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct:stock-hk-09988",
+          "name": "阿里巴巴-W",
+          "actual_weight": 0.2709810865635731,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.4050306244146324,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        }
+      ]
+    },
+    "advisory": {
+      "id": "advisory",
+      "name": "投顾全部持仓",
+      "denominator_id": "advisory",
+      "status": "estimated",
+      "target_version": null,
+      "holding_return": -0.05846068582491522,
+      "holding_return_coverage": 1.0,
+      "children": [
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-000905",
+          "name": "鹏华安盈宝货币A",
+          "actual_weight": 0.18558578487669522,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": 0.0,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-110020",
+          "name": "易方达沪深300ETF联接A",
+          "actual_weight": 0.15938490100224906,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.11734506784011743,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-000191",
+          "name": "富国信用债债券A",
+          "actual_weight": 0.16084555923560018,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": 0.009497662684573863,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-007169",
+          "name": "易方达中债1—3年国开行债券指数A",
+          "actual_weight": 0.10266829771346606,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": 0.0068731945412888054,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-009051",
+          "name": "易方达中证红利ETF联接A",
+          "actual_weight": 0.0919042310072325,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.03864886095836595,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-000248",
+          "name": "汇添富中证主要消费ETF联接A",
+          "actual_weight": 0.0822072427252155,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.032581707626045,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-164906",
+          "name": "交银中证海外中国互联网指数（LOF）A",
+          "actual_weight": 0.050424094144712155,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.2582422989863203,
+          "holding_return_coverage": 1.0,
+          "status": "estimated"
+        },
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-090010",
+          "name": "大成中证红利指数A",
+          "actual_weight": 0.05316554043064408,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": 0.0010373059682141186,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-001717",
+          "name": "工银前沿医疗股票A",
+          "actual_weight": 0.03944243994359653,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.07168000996853688,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-012348",
+          "name": "天弘恒生科技ETF联接A",
+          "actual_weight": 0.02527709069718092,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.33895379713223583,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-000638",
+          "name": "富国富钱包货币A",
+          "actual_weight": 0.02048127285282088,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": 0.0,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-000968",
+          "name": "广发中证养老产业指数A",
+          "actual_weight": 0.019791174413137838,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.06834046385949119,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-005313",
+          "name": "万家中证1000指数增强A",
+          "actual_weight": 0.00882237095744911,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.1610403611616466,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        }
+      ]
+    },
+    "advisory_bond_funds": {
+      "id": "advisory_bond_funds",
+      "name": "投顾债券基金",
+      "denominator_id": "advisory_bond_funds",
+      "status": "complete",
+      "target_version": null,
+      "holding_return": 0.008473511843876624,
+      "holding_return_coverage": 1.0,
+      "children": [
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-000191",
+          "name": "富国信用债债券A",
+          "actual_weight": 0.6103874805592843,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": 0.009497662684573863,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-007169",
+          "name": "易方达中债1—3年国开行债券指数A",
+          "actual_weight": 0.38961251944071573,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": 0.0068731945412888054,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        }
+      ]
+    },
+    "advisory_equity_funds": {
+      "id": "advisory_equity_funds",
+      "name": "投顾股票基金",
+      "denominator_id": "advisory_equity_funds",
+      "status": "estimated",
+      "target_version": null,
+      "holding_return": -0.10812527242078844,
+      "holding_return_coverage": 1.0,
+      "children": [
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-110020",
+          "name": "易方达沪深300ETF联接A",
+          "actual_weight": 0.30048862383160047,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.11734506784011743,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-009051",
+          "name": "易方达中证红利ETF联接A",
+          "actual_weight": 0.1732672023887326,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.03864886095836595,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-000248",
+          "name": "汇添富中证主要消费ETF联接A",
+          "actual_weight": 0.15498545395552732,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.032581707626045,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-164906",
+          "name": "交银中证海外中国互联网指数（LOF）A",
+          "actual_weight": 0.0950646301012278,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.2582422989863203,
+          "holding_return_coverage": 1.0,
+          "status": "estimated"
+        },
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-090010",
+          "name": "大成中证红利指数A",
+          "actual_weight": 0.10023308342765871,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": 0.0010373059682141186,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-001717",
+          "name": "工银前沿医疗股票A",
+          "actual_weight": 0.07436089883473107,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.07168000996853688,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-012348",
+          "name": "天弘恒生科技ETF联接A",
+          "actual_weight": 0.047654941906669475,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.33895379713223583,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-000968",
+          "name": "广发中证养老产业指数A",
+          "actual_weight": 0.037312334644114466,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.06834046385949119,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-005313",
+          "name": "万家中证1000指数增强A",
+          "actual_weight": 0.016632830909738147,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.1610403611616466,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        }
+      ]
+    },
+    "bond": {
+      "id": "bond",
+      "name": "债券",
+      "denominator_id": "bond",
+      "status": "complete",
+      "target_version": null,
+      "holding_return": 0.002048016890314188,
+      "holding_return_coverage": 1.0,
+      "children": [
+        {
+          "id": "direct_bond_funds",
+          "name": "主动债券基金",
+          "actual_weight": 0.7720643564510716,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": 0.00016665127971616638,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "advisory_bond_funds",
+          "name": "投顾债券基金",
+          "actual_weight": 0.22793564354892837,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": 0.008473511843876624,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        }
+      ]
+    },
+    "direct_bond_funds": {
+      "id": "direct_bond_funds",
+      "name": "主动债券基金",
+      "denominator_id": "direct_bond_funds",
+      "status": "complete",
+      "target_version": "a41a6cc534189730b50348cff85ca8c81e19387d669d5b0778d678c90373447c",
+      "holding_return": 0.00016665127971616638,
+      "holding_return_coverage": 1.0,
+      "children": [
+        {
+          "id": "direct_bond_funds:credit",
+          "name": "信用债",
+          "actual_weight": 0.2740207638341243,
+          "target_weight": 0.2,
+          "delta_pp": 7.402076383412432,
+          "holding_return": 0.0011328556434678672,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct_bond_funds:medium_rate",
+          "name": "中期利率债",
+          "actual_weight": 0.3566954468543107,
+          "target_weight": 0.4,
+          "delta_pp": -4.3304553145689315,
+          "holding_return": -0.001284984706117433,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct_bond_funds:short_rate",
+          "name": "短期利率债",
+          "actual_weight": 0.36928378931156497,
+          "target_weight": 0.4,
+          "delta_pp": -3.0716210688435055,
+          "holding_return": 0.000855051051236102,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct_bond_funds:unclassified",
+          "name": "待分类",
+          "actual_weight": 0.0,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": null,
+          "holding_return_coverage": 0,
+          "status": "complete"
+        }
+      ]
+    },
+    "direct_bond_funds:credit": {
+      "id": "direct_bond_funds:credit",
+      "name": "主动债券基金 · 信用债",
+      "denominator_id": "direct_bond_funds:credit",
+      "status": "complete",
+      "target_version": null,
+      "holding_return": 0.0011328556434678672,
+      "holding_return_coverage": 1.0,
+      "children": [
+        {
+          "id": "direct:fund-cn-000191",
+          "name": "富国信用债A",
+          "actual_weight": 0.739710626547884,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": 0.0019147212607702275,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct:fund-cn-006662",
+          "name": "易方达安悦超短债A",
+          "actual_weight": 0.2602893734521161,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.0010824640818736754,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        }
+      ]
+    },
+    "direct_bond_funds:medium_rate": {
+      "id": "direct_bond_funds:medium_rate",
+      "name": "主动债券基金 · 中期利率债",
+      "denominator_id": "direct_bond_funds:medium_rate",
+      "status": "complete",
+      "target_version": null,
+      "holding_return": -0.001284984706117433,
+      "holding_return_coverage": 1.0,
+      "children": [
+        {
+          "id": "direct:fund-cn-007171",
+          "name": "易方达中债3-5年国开行债券指数A",
+          "actual_weight": 1.0,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.001284984706117433,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        }
+      ]
+    },
+    "direct_bond_funds:short_rate": {
+      "id": "direct_bond_funds:short_rate",
+      "name": "主动债券基金 · 短期利率债",
+      "denominator_id": "direct_bond_funds:short_rate",
+      "status": "complete",
+      "target_version": null,
+      "holding_return": 0.000855051051236102,
+      "holding_return_coverage": 1.0,
+      "children": [
+        {
+          "id": "direct:fund-cn-007169",
+          "name": "易方达中债1—3年国开行债券指数A",
+          "actual_weight": 1.0,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": 0.000855051051236102,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        }
+      ]
+    },
+    "direct_bond_funds:unclassified": {
+      "id": "direct_bond_funds:unclassified",
+      "name": "主动债券基金 · 待分类",
+      "denominator_id": "direct_bond_funds:unclassified",
+      "status": "complete",
+      "target_version": null,
+      "holding_return": null,
+      "holding_return_coverage": 0,
+      "children": []
+    },
+    "direct_equity_funds": {
+      "id": "direct_equity_funds",
+      "name": "主动股票基金",
+      "denominator_id": "direct_equity_funds",
+      "status": "complete",
+      "target_version": "a41a6cc534189730b50348cff85ca8c81e19387d669d5b0778d678c90373447c",
+      "holding_return": -0.034846121706695946,
+      "holding_return_coverage": 1.0,
+      "children": [
+        {
+          "id": "direct_equity_funds:cn_broad",
+          "name": "A股宽基",
+          "actual_weight": 0.5040436277863249,
+          "target_weight": 0.55,
+          "delta_pp": -4.59563722136751,
+          "holding_return": -0.06095336415212594,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct_equity_funds:cn_dividend",
+          "name": "A股红利",
+          "actual_weight": 0.16988823693134514,
+          "target_weight": 0.15,
+          "delta_pp": 1.9888236931345142,
+          "holding_return": 0.020859479238819756,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct_equity_funds:hk_broad",
+          "name": "境外宽基",
+          "actual_weight": 0.2116978434872524,
+          "target_weight": 0.3,
+          "delta_pp": -8.83021565127476,
+          "holding_return": -0.014515933938477022,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct_equity_funds:cn_theme",
+          "name": "A股主题",
+          "actual_weight": 0.05233676788026675,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.02545906861765878,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct_equity_funds:overseas_theme",
+          "name": "境外主题",
+          "actual_weight": 0.06203352391481086,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.036839341994803175,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct_equity_funds:unclassified",
+          "name": "待分类",
+          "actual_weight": 0.0,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": null,
+          "holding_return_coverage": 0,
+          "status": "complete"
+        }
+      ]
+    },
+    "direct_equity_funds:cn_broad": {
+      "id": "direct_equity_funds:cn_broad",
+      "name": "主动股票基金 · A股宽基",
+      "denominator_id": "direct_equity_funds:cn_broad",
+      "status": "complete",
+      "target_version": null,
+      "holding_return": -0.06095336415212594,
+      "holding_return_coverage": 1.0,
+      "children": [
+        {
+          "id": "direct:fund-cn-002656",
+          "name": "南方创业板ETF联接A",
+          "actual_weight": 0.34128854831191635,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.02933568364413113,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct:fund-cn-022444",
+          "name": "景顺长城中证A500ETF联接A",
+          "actual_weight": 0.5403684372152,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.07712222611568996,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct:fund-cn-019923",
+          "name": "华泰柏瑞中证2000指数增强A",
+          "actual_weight": 0.1183430144728835,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.07386286535968517,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        }
+      ]
+    },
+    "direct_equity_funds:cn_dividend": {
+      "id": "direct_equity_funds:cn_dividend",
+      "name": "主动股票基金 · A股红利",
+      "denominator_id": "direct_equity_funds:cn_dividend",
+      "status": "complete",
+      "target_version": null,
+      "holding_return": 0.020859479238819756,
+      "holding_return_coverage": 1.0,
+      "children": [
+        {
+          "id": "direct:fund-cn-007466",
+          "name": "华泰柏瑞中证红利低波ETF联接A",
+          "actual_weight": 1.0,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": 0.020859479238819756,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        }
+      ]
+    },
+    "direct_equity_funds:cn_theme": {
+      "id": "direct_equity_funds:cn_theme",
+      "name": "主动股票基金 · A股主题",
+      "denominator_id": "direct_equity_funds:cn_theme",
+      "status": "complete",
+      "target_version": null,
+      "holding_return": -0.02545906861765878,
+      "holding_return_coverage": 1.0,
+      "children": [
+        {
+          "id": "direct:fund-cn-000968",
+          "name": "广发中证养老产业指数A",
+          "actual_weight": 1.0,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.02545906861765878,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        }
+      ]
+    },
+    "direct_equity_funds:hk_broad": {
+      "id": "direct_equity_funds:hk_broad",
+      "name": "主动股票基金 · 境外宽基",
+      "denominator_id": "direct_equity_funds:hk_broad",
+      "status": "complete",
+      "target_version": null,
+      "holding_return": -0.014515933938477022,
+      "holding_return_coverage": 1.0,
+      "children": [
+        {
+          "id": "direct:fund-cn-501302",
+          "name": "南方恒生指数ETF联接A",
+          "actual_weight": 0.7382079263383643,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.030010484351412556,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct:fund-cn-005554",
+          "name": "南方恒生中国企业ETF联接A",
+          "actual_weight": 0.2617920736616357,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": 0.03196772039552542,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        }
+      ]
+    },
+    "direct_equity_funds:overseas_theme": {
+      "id": "direct_equity_funds:overseas_theme",
+      "name": "主动股票基金 · 境外主题",
+      "denominator_id": "direct_equity_funds:overseas_theme",
+      "status": "complete",
+      "target_version": null,
+      "holding_return": -0.036839341994803175,
+      "holding_return_coverage": 1.0,
+      "children": [
+        {
+          "id": "direct:fund-cn-013308",
+          "name": "易方达恒生科技ETF联接（QDII）A",
+          "actual_weight": 1.0,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.036839341994803175,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        }
+      ]
+    },
+    "direct_equity_funds:unclassified": {
+      "id": "direct_equity_funds:unclassified",
+      "name": "主动股票基金 · 待分类",
+      "denominator_id": "direct_equity_funds:unclassified",
+      "status": "complete",
+      "target_version": null,
+      "holding_return": null,
+      "holding_return_coverage": 0,
+      "children": []
+    },
+    "equity": {
+      "id": "equity",
+      "name": "股票",
+      "denominator_id": "equity",
+      "status": "estimated",
+      "target_version": null,
+      "holding_return": -0.06532623306160382,
+      "holding_return_coverage": 1.0,
+      "children": [
+        {
+          "id": "direct_equity_funds",
+          "name": "主动股票基金",
+          "actual_weight": 0.6908537949550985,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.034846121706695946,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "advisory_equity_funds",
+          "name": "投顾股票基金",
+          "actual_weight": 0.18504846949095904,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.10812527242078844,
+          "holding_return_coverage": 1.0,
+          "status": "estimated"
+        },
+        {
+          "id": "active_stocks",
+          "name": "个股",
+          "actual_weight": 0.12409773555394248,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.15356882377998765,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        }
+      ]
+    },
+    "global": {
+      "id": "global",
+      "name": "全账户",
+      "denominator_id": "global",
+      "status": "estimated",
+      "target_version": "a41a6cc534189730b50348cff85ca8c81e19387d669d5b0778d678c90373447c",
+      "holding_return": -0.04593288242365677,
+      "holding_return_coverage": 1.0,
+      "children": [
+        {
+          "id": "equity",
+          "name": "股票",
+          "actual_weight": 0.5567813547556263,
+          "target_weight": 0.6,
+          "delta_pp": -4.321864524437369,
+          "holding_return": -0.06532623306160382,
+          "holding_return_coverage": 1.0,
+          "status": "estimated"
+        },
+        {
+          "id": "bond",
+          "name": "债券",
+          "actual_weight": 0.2245650947731565,
+          "target_weight": 0.2,
+          "delta_pp": 2.4565094773156493,
+          "holding_return": 0.002048016890314188,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "cash",
+          "name": "现金",
+          "actual_weight": 0.17242002658109426,
+          "target_weight": 0.15,
+          "delta_pp": 2.242002658109427,
+          "holding_return": 0.0,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "gold",
+          "name": "黄金",
+          "actual_weight": 0.04623352389012293,
+          "target_weight": 0.05,
+          "delta_pp": -0.37664761098770705,
+          "holding_return": -0.06689943625491364,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        }
+      ]
+    },
+    "gold": {
+      "id": "gold",
+      "name": "黄金",
+      "denominator_id": "gold",
+      "status": "complete",
+      "target_version": null,
+      "holding_return": -0.06689943625491364,
+      "holding_return_coverage": 1.0,
+      "children": [
+        {
+          "id": "direct:fund-cn-000216",
+          "name": "华安黄金ETF联接A",
+          "actual_weight": 1.0,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.06689943625491364,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        }
+      ]
+    },
+    "profit:bond:credit": {
+      "id": "profit:bond:credit",
+      "name": "信用债",
+      "denominator_id": "profit:bond:credit",
+      "status": "complete",
+      "target_version": null,
+      "holding_return": 0.004434770917678561,
+      "holding_return_coverage": 1.0,
+      "children": [
+        {
+          "id": "direct:fund-cn-000191",
+          "name": "富国信用债A",
+          "actual_weight": 0.44624621951978377,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": 0.0019147212607702275,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct:fund-cn-006662",
+          "name": "易方达安悦超短债A",
+          "actual_weight": 0.1570251186281437,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.0010824640818736754,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-000191",
+          "name": "富国信用债债券A",
+          "actual_weight": 0.39672866185207256,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": 0.009497662684573863,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        }
+      ]
+    },
+    "profit:bond:medium_rate": {
+      "id": "profit:bond:medium_rate",
+      "name": "中期利率债",
+      "denominator_id": "profit:bond:medium_rate",
+      "status": "complete",
+      "target_version": null,
+      "holding_return": -0.001284984706117433,
+      "holding_return_coverage": 1.0,
+      "children": [
+        {
+          "id": "direct:fund-cn-007171",
+          "name": "易方达中债3-5年国开行债券指数A",
+          "actual_weight": 1.0,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.001284984706117433,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        }
+      ]
+    },
+    "profit:bond:short_rate": {
+      "id": "profit:bond:short_rate",
+      "name": "短期利率债",
+      "denominator_id": "profit:bond:short_rate",
+      "status": "complete",
+      "target_version": null,
+      "holding_return": 0.0022778558783531056,
+      "holding_return_coverage": 1.0,
+      "children": [
+        {
+          "id": "direct:fund-cn-007169",
+          "name": "易方达中债1—3年国开行债券指数A",
+          "actual_weight": 0.762496816481345,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": 0.000855051051236102,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-007169",
+          "name": "易方达中债1—3年国开行债券指数A",
+          "actual_weight": 0.23750318351865507,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": 0.0068731945412888054,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        }
+      ]
+    },
+    "profit:cash:cash": {
+      "id": "profit:cash:cash",
+      "name": "货币基金",
+      "denominator_id": "profit:cash:cash",
+      "status": "complete",
+      "target_version": null,
+      "holding_return": 0.0,
+      "holding_return_coverage": 1.0,
+      "children": [
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-000905",
+          "name": "鹏华安盈宝货币A",
+          "actual_weight": 0.9006086995248672,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": 0.0,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-000638",
+          "name": "富国富钱包货币A",
+          "actual_weight": 0.09939130047513285,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": 0.0,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        }
+      ]
+    },
+    "profit:equity:cn_broad": {
+      "id": "profit:equity:cn_broad",
+      "name": "A股宽基",
+      "denominator_id": "profit:equity:cn_broad",
+      "status": "complete",
+      "target_version": null,
+      "holding_return": -0.06991293566061683,
+      "holding_return_coverage": 1.0,
+      "children": [
+        {
+          "id": "direct:fund-cn-002656",
+          "name": "南方创业板ETF联接A",
+          "actual_weight": 0.29206854550264005,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.02933568364413113,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct:fund-cn-022444",
+          "name": "景顺长城中证A500ETF联接A",
+          "actual_weight": 0.4624375012686811,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.07712222611568996,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct:fund-cn-019923",
+          "name": "华泰柏瑞中证2000指数增强A",
+          "actual_weight": 0.10127580394494629,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.07386286535968517,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-110020",
+          "name": "易方达沪深300ETF联接A",
+          "actual_weight": 0.13665399348384122,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.11734506784011743,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-005313",
+          "name": "万家中证1000指数增强A",
+          "actual_weight": 0.007564155799891412,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.1610403611616466,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        }
+      ]
+    },
+    "profit:equity:cn_dividend": {
+      "id": "profit:equity:cn_dividend",
+      "name": "A股红利",
+      "denominator_id": "profit:equity:cn_dividend",
+      "status": "complete",
+      "target_version": null,
+      "holding_return": 0.006763054861673256,
+      "holding_return_coverage": 1.0,
+      "children": [
+        {
+          "id": "direct:fund-cn-007466",
+          "name": "华泰柏瑞中证红利低波ETF联接A",
+          "actual_weight": 0.6987070593394182,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": 0.020859479238819756,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-009051",
+          "name": "易方达中证红利ETF联接A",
+          "actual_weight": 0.1908743340867278,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.03864886095836595,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-090010",
+          "name": "大成中证红利指数A",
+          "actual_weight": 0.11041860657385393,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": 0.0010373059682141186,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        }
+      ]
+    },
+    "profit:equity:cn_theme": {
+      "id": "profit:equity:cn_theme",
+      "name": "A股主题",
+      "denominator_id": "profit:equity:cn_theme",
+      "status": "complete",
+      "target_version": null,
+      "holding_return": -0.03910328287365674,
+      "holding_return_coverage": 1.0,
+      "children": [
+        {
+          "id": "direct:fund-cn-000968",
+          "name": "广发中证养老产业指数A",
+          "actual_weight": 0.42288044449885115,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.02545906861765878,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-000248",
+          "name": "汇添富中证主要消费ETF联接A",
+          "actual_weight": 0.33542929786591325,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.032581707626045,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-001717",
+          "name": "工银前沿医疗股票A",
+          "actual_weight": 0.16093654887102715,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.07168000996853688,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-000968",
+          "name": "广发中证养老产业指数A",
+          "actual_weight": 0.08075370876420852,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.06834046385949119,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        }
+      ]
+    },
+    "profit:equity:hk_broad": {
+      "id": "profit:equity:hk_broad",
+      "name": "境外宽基",
+      "denominator_id": "profit:equity:hk_broad",
+      "status": "complete",
+      "target_version": null,
+      "holding_return": -0.014515933938477022,
+      "holding_return_coverage": 1.0,
+      "children": [
+        {
+          "id": "direct:fund-cn-501302",
+          "name": "南方恒生指数ETF联接A",
+          "actual_weight": 0.7382079263383643,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.030010484351412556,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct:fund-cn-005554",
+          "name": "南方恒生中国企业ETF联接A",
+          "actual_weight": 0.2617920736616357,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": 0.03196772039552542,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        }
+      ]
+    },
+    "profit:equity:overseas_stock": {
+      "id": "profit:equity:overseas_stock",
+      "name": "境外个股",
+      "denominator_id": "profit:equity:overseas_stock",
+      "status": "complete",
+      "target_version": null,
+      "holding_return": -0.15356882377998765,
+      "holding_return_coverage": 1.0,
+      "children": [
+        {
+          "id": "direct:stock-hk-03933",
+          "name": "联邦制药",
+          "actual_weight": 0.07012367256691805,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.08533333333333326,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct:stock-us-lkncy",
+          "name": "瑞幸咖啡",
+          "actual_weight": 0.1514626735014772,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": 0.1286567164179104,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct:stock-hk-01810",
+          "name": "小米集团-W",
+          "actual_weight": 0.11366985990439192,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": 0.08806262230919758,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct:stock-hk-02020",
+          "name": "安踏体育",
+          "actual_weight": 0.08423018395793071,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": 0.1318681318681319,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct:stock-hk-02097",
+          "name": "蜜雪集团",
+          "actual_weight": 0.17510473922322245,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.08150134048257376,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct:stock-hk-02150",
+          "name": "奈雪的茶",
+          "actual_weight": 0.026066379744262538,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.3584905660377358,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct:stock-hk-09618",
+          "name": "京东集团-SW",
+          "actual_weight": 0.10855880505257573,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": 0.03110800419433759,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "direct:stock-hk-09988",
+          "name": "阿里巴巴-W",
+          "actual_weight": 0.27078368604922143,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.4050306244146324,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        }
+      ]
+    },
+    "profit:equity:overseas_theme": {
+      "id": "profit:equity:overseas_theme",
+      "name": "境外主题",
+      "denominator_id": "profit:equity:overseas_theme",
+      "status": "estimated",
+      "target_version": null,
+      "holding_return": -0.15064551913426633,
+      "holding_return_coverage": 1.0,
+      "children": [
+        {
+          "id": "direct:fund-cn-013308",
+          "name": "易方达恒生科技ETF联接（QDII）A",
+          "actual_weight": 0.6187164357791303,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.036839341994803175,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        },
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-164906",
+          "name": "交银中证海外中国互联网指数（LOF）A",
+          "actual_weight": 0.2539706396704234,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.2582422989863203,
+          "holding_return_coverage": 1.0,
+          "status": "estimated"
+        },
+        {
+          "id": "advisory-tiaa001001:tiaa001001-fund-012348",
+          "name": "天弘恒生科技ETF联接A",
+          "actual_weight": 0.1273129245504464,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.33895379713223583,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        }
+      ]
+    },
+    "profit:gold:gold": {
+      "id": "profit:gold:gold",
+      "name": "黄金",
+      "denominator_id": "profit:gold:gold",
+      "status": "complete",
+      "target_version": null,
+      "holding_return": -0.06689943625491364,
+      "holding_return_coverage": 1.0,
+      "children": [
+        {
+          "id": "direct:fund-cn-000216",
+          "name": "华安黄金ETF联接A",
+          "actual_weight": 1.0,
+          "target_weight": null,
+          "delta_pp": null,
+          "holding_return": -0.06689943625491364,
+          "holding_return_coverage": 1.0,
+          "status": "complete"
+        }
+      ]
+    }
+  },
+  "positions": [
+    {
+      "id": "direct:fund-cn-002656",
+      "asset_id": "fund-cn-002656",
+      "name": "南方创业板ETF联接A",
+      "symbol": "002656",
+      "asset_type": "mutual_fund",
+      "market": "CN_FUND",
+      "asset_class": "equity",
+      "method": "direct_equity_funds",
+      "subgroup": "cn_broad",
+      "market_date": "2026-11-27",
+      "date_difference": false,
+      "daily_return": 0.11096774193548375,
+      "holding_return": -0.02933568364413113,
+      "class_weight": 0.11884365292388986,
+      "global_weight": 0.06616993007907085,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
+    },
+    {
+      "id": "direct:fund-cn-022444",
+      "asset_id": "fund-cn-022444",
+      "name": "景顺长城中证A500ETF联接A",
+      "symbol": "022444",
+      "asset_type": "mutual_fund",
+      "market": "CN_FUND",
+      "asset_class": "equity",
+      "method": "direct_equity_funds",
+      "subgroup": "cn_broad",
+      "market_date": "2026-11-27",
+      "date_difference": false,
+      "daily_return": 0.04880748716916572,
+      "holding_return": -0.07712222611568996,
+      "class_weight": 0.18816734203673172,
+      "global_weight": 0.1047680676199768,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
+    },
+    {
+      "id": "direct:fund-cn-007466",
+      "asset_id": "fund-cn-007466",
+      "name": "华泰柏瑞中证红利低波ETF联接A",
+      "symbol": "007466",
+      "asset_type": "mutual_fund",
+      "market": "CN_FUND",
+      "asset_class": "equity",
+      "method": "direct_equity_funds",
+      "subgroup": "cn_dividend",
+      "market_date": "2026-11-27",
+      "date_difference": false,
+      "daily_return": -0.00973306912227534,
+      "holding_return": 0.020859479238819756,
+      "class_weight": 0.11736793320225068,
+      "global_weight": 0.065348276853217,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
+    },
+    {
+      "id": "direct:fund-cn-019923",
+      "asset_id": "fund-cn-019923",
+      "name": "华泰柏瑞中证2000指数增强A",
+      "symbol": "019923",
+      "asset_type": "mutual_fund",
+      "market": "CN_FUND",
+      "asset_class": "equity",
+      "method": "direct_equity_funds",
+      "subgroup": "cn_broad",
+      "market_date": "2026-11-27",
+      "date_difference": false,
+      "daily_return": 0.07783857729138166,
+      "holding_return": -0.07386286535968517,
+      "class_weight": 0.04120945811849608,
+      "global_weight": 0.02294465791996149,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
+    },
+    {
+      "id": "direct:fund-cn-007169",
+      "asset_id": "fund-cn-007169",
+      "name": "易方达中债1—3年国开行债券指数A",
+      "symbol": "007169",
+      "asset_type": "mutual_fund",
+      "market": "CN_FUND",
+      "asset_class": "bond",
+      "method": "direct_bond_funds",
+      "subgroup": "short_rate",
+      "market_date": "2026-11-27",
+      "date_difference": false,
+      "daily_return": 9.89413277925344e-05,
+      "holding_return": 0.000855051051236102,
+      "class_weight": 0.2851108511426465,
+      "global_weight": 0.06402594530770374,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
+    },
+    {
+      "id": "direct:fund-cn-000191",
+      "asset_id": "fund-cn-000191",
+      "name": "富国信用债A",
+      "symbol": "000191",
+      "asset_type": "mutual_fund",
+      "market": "CN_FUND",
+      "asset_class": "bond",
+      "method": "direct_bond_funds",
+      "subgroup": "credit",
+      "market_date": "2026-11-27",
+      "date_difference": false,
+      "daily_return": -0.000661084178051885,
+      "holding_return": 0.0019147212607702275,
+      "class_weight": 0.156494411536785,
+      "global_weight": 0.03514318235822748,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
+    },
+    {
+      "id": "direct:fund-cn-006662",
+      "asset_id": "fund-cn-006662",
+      "name": "易方达安悦超短债A",
+      "symbol": "006662",
+      "asset_type": "mutual_fund",
+      "market": "CN_FUND",
+      "asset_class": "bond",
+      "method": "direct_bond_funds",
+      "subgroup": "credit",
+      "market_date": "2026-11-27",
+      "date_difference": false,
+      "daily_return": 0.0,
+      "holding_return": -0.0010824640818736754,
+      "class_weight": 0.0550672531470393,
+      "global_weight": 0.01236618292186228,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
+    },
+    {
+      "id": "direct:stock-hk-03933",
+      "asset_id": "stock-hk-03933",
+      "name": "联邦制药",
+      "symbol": "03933",
+      "asset_type": "stock",
+      "market": "HKEX",
+      "asset_class": "equity",
+      "method": "active_stocks",
+      "subgroup": "overseas_stock",
+      "market_date": "2026-11-27",
+      "date_difference": false,
+      "daily_return": 0.04573170731707332,
+      "holding_return": -0.08533333333333326,
+      "class_weight": 0.008702188974280645,
+      "global_weight": 0.004845216566439452,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
+    },
+    {
+      "id": "direct:stock-us-lkncy",
+      "asset_id": "stock-us-lkncy",
+      "name": "瑞幸咖啡",
+      "symbol": "LKNCY",
+      "asset_type": "stock",
+      "market": "US_OTC",
+      "asset_class": "equity",
+      "method": "active_stocks",
+      "subgroup": "overseas_stock",
+      "market_date": "2026-11-27",
+      "date_difference": false,
+      "daily_return": 0.007729211087420085,
+      "holding_return": 0.1286567164179104,
+      "class_weight": 0.01879617480247945,
+      "global_weight": 0.010465359670748076,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
+    },
+    {
+      "id": "direct:stock-hk-01810",
+      "asset_id": "stock-hk-01810",
+      "name": "小米集团-W",
+      "symbol": "01810",
+      "asset_type": "stock",
+      "market": "HKEX",
+      "asset_class": "equity",
+      "method": "active_stocks",
+      "subgroup": "overseas_stock",
+      "market_date": "2026-11-27",
+      "date_difference": false,
+      "daily_return": 0.045112781954887105,
+      "holding_return": 0.08806262230919758,
+      "class_weight": 0.014106172214868916,
+      "global_weight": 0.007854053676210889,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
+    },
+    {
+      "id": "direct:stock-hk-02020",
+      "asset_id": "stock-hk-02020",
+      "name": "安踏体育",
+      "symbol": "02020",
+      "asset_type": "stock",
+      "market": "HKEX",
+      "asset_class": "equity",
+      "method": "active_stocks",
+      "subgroup": "overseas_stock",
+      "market_date": "2026-11-27",
+      "date_difference": false,
+      "daily_return": 0.003043213633597164,
+      "holding_return": 0.1318681318681319,
+      "class_weight": 0.010452775094471213,
+      "global_weight": 0.005819910278055552,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
+    },
+    {
+      "id": "direct:stock-hk-02097",
+      "asset_id": "stock-hk-02097",
+      "name": "蜜雪集团",
+      "symbol": "02097",
+      "asset_type": "stock",
+      "market": "HKEX",
+      "asset_class": "equity",
+      "method": "active_stocks",
+      "subgroup": "overseas_stock",
+      "market_date": "2026-11-27",
+      "date_difference": false,
+      "daily_return": 0.061996280223186595,
+      "holding_return": -0.08150134048257376,
+      "class_weight": 0.02173010162236552,
+      "global_weight": 0.012098915420278106,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
+    },
+    {
+      "id": "direct:stock-hk-02150",
+      "asset_id": "stock-hk-02150",
+      "name": "奈雪的茶",
+      "symbol": "02150",
+      "asset_type": "stock",
+      "market": "HKEX",
+      "asset_class": "equity",
+      "method": "active_stocks",
+      "subgroup": "overseas_stock",
+      "market_date": "2026-11-27",
+      "date_difference": false,
+      "daily_return": -0.007299270072992692,
+      "holding_return": -0.3584905660377358,
+      "class_weight": 0.003234778700352135,
+      "global_weight": 0.0018010644671167058,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
+    },
+    {
+      "id": "direct:stock-hk-09618",
+      "asset_id": "stock-hk-09618",
+      "name": "京东集团-SW",
+      "symbol": "09618",
+      "asset_type": "stock",
+      "market": "HKEX",
+      "asset_class": "equity",
+      "method": "active_stocks",
+      "subgroup": "overseas_stock",
+      "market_date": "2026-11-27",
+      "date_difference": false,
+      "daily_return": 0.0535714285714286,
+      "holding_return": 0.03110800419433759,
+      "class_weight": 0.013471901881466538,
+      "global_weight": 0.00750090378069781,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
+    },
+    {
+      "id": "direct:stock-hk-09988",
+      "asset_id": "stock-hk-09988",
+      "name": "阿里巴巴-W",
+      "symbol": "09988",
+      "asset_type": "stock",
+      "market": "HKEX",
+      "asset_class": "equity",
+      "method": "active_stocks",
+      "subgroup": "overseas_stock",
+      "market_date": "2026-11-27",
+      "date_difference": false,
+      "daily_return": 0.07030303030303031,
+      "holding_return": -0.4050306244146324,
+      "class_weight": 0.03360364226365806,
+      "global_weight": 0.018709881464282957,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
+    },
+    {
+      "id": "direct:fund-cn-013308",
+      "asset_id": "fund-cn-013308",
+      "name": "易方达恒生科技ETF联接（QDII）A",
+      "symbol": "013308",
+      "asset_type": "mutual_fund",
+      "market": "CN_FUND",
+      "asset_class": "equity",
+      "method": "direct_equity_funds",
+      "subgroup": "overseas_theme",
+      "market_date": "2026-11-27",
+      "date_difference": false,
+      "daily_return": 0.06119457676804685,
+      "holding_return": -0.036839341994803175,
+      "class_weight": 0.04285609541098494,
+      "global_weight": 0.02386147486246457,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
+    },
+    {
+      "id": "direct:fund-cn-007171",
+      "asset_id": "fund-cn-007171",
+      "name": "易方达中债3-5年国开行债券指数A",
+      "symbol": "007171",
+      "asset_type": "mutual_fund",
+      "market": "CN_FUND",
+      "asset_class": "bond",
+      "method": "direct_bond_funds",
+      "subgroup": "medium_rate",
+      "market_date": "2026-11-27",
+      "date_difference": false,
+      "daily_return": -9.84639621898209e-05,
+      "holding_return": -0.001284984706117433,
+      "class_weight": 0.2753918406246008,
+      "global_weight": 0.061843394789617485,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
+    },
+    {
+      "id": "direct:fund-cn-000216",
+      "asset_id": "fund-cn-000216",
+      "name": "华安黄金ETF联接A",
+      "symbol": "000216",
+      "asset_type": "mutual_fund",
+      "market": "CN_FUND",
+      "asset_class": "gold",
+      "method": "gold",
+      "subgroup": "unclassified",
+      "market_date": "2026-11-27",
+      "date_difference": false,
+      "daily_return": 0.02321536600120999,
+      "holding_return": -0.06689943625491364,
+      "class_weight": 1.0,
+      "global_weight": 0.04623352389012293,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
+    },
+    {
+      "id": "direct:fund-cn-501302",
+      "asset_id": "fund-cn-501302",
+      "name": "南方恒生指数ETF联接A",
+      "symbol": "501302",
+      "asset_type": "mutual_fund",
+      "market": "CN_FUND",
+      "asset_class": "equity",
+      "method": "direct_equity_funds",
+      "subgroup": "hk_broad",
+      "market_date": "2026-11-27",
+      "date_difference": false,
+      "daily_return": 0.020444799042585116,
+      "holding_return": -0.030010484351412556,
+      "class_weight": 0.1079645765116496,
+      "global_weight": 0.06011266317577374,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
+    },
+    {
+      "id": "direct:fund-cn-000968",
+      "asset_id": "fund-cn-000968",
+      "name": "广发中证养老产业指数A",
+      "symbol": "000968",
+      "asset_type": "mutual_fund",
+      "market": "CN_FUND",
+      "asset_class": "equity",
+      "method": "direct_equity_funds",
+      "subgroup": "cn_theme",
+      "market_date": "2026-11-27",
+      "date_difference": false,
+      "daily_return": 0.030510585305105753,
+      "holding_return": -0.02545906861765878,
+      "class_weight": 0.036157054705766384,
+      "global_weight": 0.020131573903049902,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
+    },
+    {
+      "id": "direct:fund-cn-005554",
+      "asset_id": "fund-cn-005554",
+      "name": "南方恒生中国企业ETF联接A",
+      "symbol": "005554",
+      "asset_type": "mutual_fund",
+      "market": "CN_FUND",
+      "asset_class": "equity",
+      "method": "direct_equity_funds",
+      "subgroup": "hk_broad",
+      "market_date": "2026-11-27",
+      "date_difference": false,
+      "daily_return": 0.01869041645760161,
+      "holding_return": 0.03196772039552542,
+      "class_weight": 0.03828768204532918,
+      "global_weight": 0.02131786747965105,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
+    },
+    {
+      "id": "advisory-tiaa001001:tiaa001001-fund-000905",
+      "asset_id": "tiaa001001-fund-000905",
+      "name": "鹏华安盈宝货币A",
+      "symbol": "000905",
+      "asset_type": "money_market_fund",
+      "market": "CN_FUND",
+      "asset_class": "cash",
+      "method": "cash",
+      "subgroup": "unclassified",
+      "market_date": "2026-11-27",
+      "date_difference": false,
+      "daily_return": 3.446e-05,
+      "holding_return": 0.0,
+      "class_weight": 0.9006086995248672,
+      "global_weight": 0.0360492095595933,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
+    },
+    {
+      "id": "advisory-tiaa001001:tiaa001001-fund-110020",
+      "asset_id": "tiaa001001-fund-110020",
+      "name": "易方达沪深300ETF联接A",
+      "symbol": "110020",
+      "asset_type": "mutual_fund",
+      "market": "CN_FUND",
+      "asset_class": "equity",
+      "method": "advisory_equity_funds",
+      "subgroup": "cn_broad",
+      "market_date": "2026-11-27",
+      "date_difference": false,
+      "daily_return": 0.04012593369961115,
+      "holding_return": -0.11734506784011743,
+      "class_weight": 0.05560495993948218,
+      "global_weight": 0.03095980492623722,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
+    },
+    {
+      "id": "advisory-tiaa001001:tiaa001001-fund-000191",
+      "asset_id": "tiaa001001-fund-000191",
+      "name": "富国信用债债券A",
+      "symbol": "000191",
+      "asset_type": "mutual_fund",
+      "market": "CN_FUND",
+      "asset_class": "bond",
+      "method": "advisory_bond_funds",
+      "subgroup": "credit",
+      "market_date": "2026-11-27",
+      "date_difference": false,
+      "daily_return": -0.000661084178051885,
+      "holding_return": 0.009497662684573863,
+      "class_weight": 0.13912906319548946,
+      "global_weight": 0.03124353126219557,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
+    },
+    {
+      "id": "advisory-tiaa001001:tiaa001001-fund-007169",
+      "asset_id": "tiaa001001-fund-007169",
+      "name": "易方达中债1—3年国开行债券指数A",
+      "symbol": "007169",
+      "asset_type": "mutual_fund",
+      "market": "CN_FUND",
+      "asset_class": "bond",
+      "method": "advisory_bond_funds",
+      "subgroup": "short_rate",
+      "market_date": "2026-11-27",
+      "date_difference": false,
+      "daily_return": 9.89413277925344e-05,
+      "holding_return": 0.0068731945412888054,
+      "class_weight": 0.08880658035343891,
+      "global_weight": 0.019942858133549946,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
+    },
+    {
+      "id": "advisory-tiaa001001:tiaa001001-fund-009051",
+      "asset_id": "tiaa001001-fund-009051",
+      "name": "易方达中证红利ETF联接A",
+      "symbol": "009051",
+      "asset_type": "mutual_fund",
+      "market": "CN_FUND",
+      "asset_class": "equity",
+      "method": "advisory_equity_funds",
+      "subgroup": "cn_dividend",
+      "market_date": "2026-11-27",
+      "date_difference": false,
+      "daily_return": 0.000735955515577702,
+      "holding_return": -0.03864886095836595,
+      "class_weight": 0.03206283061501521,
+      "global_weight": 0.01785198626712834,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
+    },
+    {
+      "id": "advisory-tiaa001001:tiaa001001-fund-000248",
+      "asset_id": "tiaa001001-fund-000248",
+      "name": "汇添富中证主要消费ETF联接A",
+      "symbol": "000248",
+      "asset_type": "mutual_fund",
+      "market": "CN_FUND",
+      "asset_class": "equity",
+      "method": "advisory_equity_funds",
+      "subgroup": "cn_theme",
+      "market_date": "2026-11-27",
+      "date_difference": false,
+      "daily_return": 0.00026195840100595724,
+      "holding_return": -0.032581707626045,
+      "class_weight": 0.028679821047831833,
+      "global_weight": 0.015968389617160735,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
+    },
+    {
+      "id": "advisory-tiaa001001:tiaa001001-fund-164906",
+      "asset_id": "tiaa001001-fund-164906",
+      "name": "交银中证海外中国互联网指数（LOF）A",
+      "symbol": "164906",
+      "asset_type": "mutual_fund",
+      "market": "CN_FUND",
+      "asset_class": "equity",
+      "method": "advisory_equity_funds",
+      "subgroup": "overseas_theme",
+      "market_date": "2026-11-26",
+      "date_difference": true,
+      "daily_return": null,
+      "holding_return": -0.2582422989863203,
+      "class_weight": 0.01759156430295636,
+      "global_weight": 0.009794655004870756,
+      "status": "estimated",
+      "holding_return_status": "calculated",
+      "valuation_market_date": "2026-11-26",
+      "valuation_lag_trading_days": 1
+    },
+    {
+      "id": "advisory-tiaa001001:tiaa001001-fund-090010",
+      "asset_id": "tiaa001001-fund-090010",
+      "name": "大成中证红利指数A",
+      "symbol": "090010",
+      "asset_type": "mutual_fund",
+      "market": "CN_FUND",
+      "asset_class": "equity",
+      "method": "advisory_equity_funds",
+      "subgroup": "cn_dividend",
+      "market_date": "2026-11-27",
+      "date_difference": false,
+      "daily_return": 0.0006665926008222467,
+      "holding_return": 0.0010373059682141186,
+      "class_weight": 0.018547978680647857,
+      "global_weight": 0.010327168697789588,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
+    },
+    {
+      "id": "advisory-tiaa001001:tiaa001001-fund-001717",
+      "asset_id": "tiaa001001-fund-001717",
+      "name": "工银前沿医疗股票A",
+      "symbol": "001717",
+      "asset_type": "mutual_fund",
+      "market": "CN_FUND",
+      "asset_class": "equity",
+      "method": "advisory_equity_funds",
+      "subgroup": "cn_theme",
+      "market_date": "2026-11-27",
+      "date_difference": false,
+      "daily_return": 0.06049822064056931,
+      "holding_return": -0.07168000996853688,
+      "class_weight": 0.013760370519339024,
+      "global_weight": 0.007661517739696963,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
+    },
+    {
+      "id": "advisory-tiaa001001:tiaa001001-fund-012348",
+      "asset_id": "tiaa001001-fund-012348",
+      "name": "天弘恒生科技ETF联接A",
+      "symbol": "012348",
+      "asset_type": "mutual_fund",
+      "market": "CN_FUND",
+      "asset_class": "equity",
+      "method": "advisory_equity_funds",
+      "subgroup": "overseas_theme",
+      "market_date": "2026-11-27",
+      "date_difference": false,
+      "daily_return": 0.061167945439045246,
+      "holding_return": -0.33895379713223583,
+      "class_weight": 0.008818474063509751,
+      "global_weight": 0.004909961935958313,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
+    },
+    {
+      "id": "advisory-tiaa001001:tiaa001001-fund-000638",
+      "asset_id": "tiaa001001-fund-000638",
+      "name": "富国富钱包货币A",
+      "symbol": "000638",
+      "asset_type": "money_market_fund",
+      "market": "CN_FUND",
+      "asset_class": "cash",
+      "method": "cash",
+      "subgroup": "unclassified",
+      "market_date": "2026-11-27",
+      "date_difference": false,
+      "daily_return": 3.995e-05,
+      "holding_return": 0.0,
+      "class_weight": 0.09939130047513285,
+      "global_weight": 0.003978395746253435,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
+    },
+    {
+      "id": "advisory-tiaa001001:tiaa001001-fund-000968",
+      "asset_id": "tiaa001001-fund-000968",
+      "name": "广发中证养老产业指数A",
+      "symbol": "000968",
+      "asset_type": "mutual_fund",
+      "market": "CN_FUND",
+      "asset_class": "equity",
+      "method": "advisory_equity_funds",
+      "subgroup": "cn_theme",
+      "market_date": "2026-11-27",
+      "date_difference": false,
+      "daily_return": 0.030510585305105753,
+      "holding_return": -0.06834046385949119,
+      "class_weight": 0.006904590419027869,
+      "global_weight": 0.0038443472075390546,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
+    },
+    {
+      "id": "advisory-tiaa001001:tiaa001001-fund-005313",
+      "asset_id": "tiaa001001-fund-005313",
+      "name": "万家中证1000指数增强A",
+      "symbol": "005313",
+      "asset_type": "mutual_fund",
+      "market": "CN_FUND",
+      "asset_class": "equity",
+      "method": "advisory_equity_funds",
+      "subgroup": "cn_broad",
+      "market_date": "2026-11-27",
+      "date_difference": false,
+      "daily_return": 0.08053458300789718,
+      "holding_return": -0.1610403611616466,
+      "class_weight": 0.00307787990314896,
+      "global_weight": 0.0017137061422503937,
+      "status": "confirmed",
+      "holding_return_status": "calculated"
+    }
+  ],
+  "volatility_facts": {
+    "fund-cn-000191": {
+      "window_start_date": "2026-11-23",
+      "window_end_date": "2026-11-27",
+      "positive_days": 0,
+      "negative_days": 5,
+      "largest_daily_return": -0.000953358756233369,
+      "cumulative": -0.00256598240469208
+    },
+    "fund-cn-000216": {
+      "window_start_date": "2026-11-23",
+      "window_end_date": "2026-11-27",
+      "positive_days": 3,
+      "negative_days": 2,
+      "largest_daily_return": -0.026228654339819246,
+      "cumulative": 0.024261004503993044
+    },
+    "fund-cn-000968": {
+      "window_start_date": "2026-11-23",
+      "window_end_date": "2026-11-27",
+      "positive_days": 2,
+      "negative_days": 3,
+      "largest_daily_return": 0.030510585305105753,
+      "cumulative": 0.043900592910306235
+    },
+    "fund-cn-002656": {
+      "window_start_date": "2026-11-23",
+      "window_end_date": "2026-11-27",
+      "positive_days": 3,
+      "negative_days": 2,
+      "largest_daily_return": 0.11096774193548375,
+      "cumulative": 0.10064769047213207
+    },
+    "fund-cn-005554": {
+      "window_start_date": "2026-11-23",
+      "window_end_date": "2026-11-27",
+      "positive_days": 2,
+      "negative_days": 3,
+      "largest_daily_return": 0.01869041645760161,
+      "cumulative": 0.008444058114988273
+    },
+    "fund-cn-006662": {
+      "window_start_date": "2026-11-23",
+      "window_end_date": "2026-11-27",
+      "positive_days": 1,
+      "negative_days": 1,
+      "largest_daily_return": 9.851246182668305e-05,
+      "cumulative": 0.0
+    },
+    "fund-cn-007169": {
+      "window_start_date": "2026-11-23",
+      "window_end_date": "2026-11-27",
+      "positive_days": 1,
+      "negative_days": 4,
+      "largest_daily_return": -0.0004943153732083205,
+      "cumulative": -0.0009883376161299307
+    },
+    "fund-cn-007171": {
+      "window_start_date": "2026-11-23",
+      "window_end_date": "2026-11-27",
+      "positive_days": 0,
+      "negative_days": 5,
+      "largest_daily_return": -0.0008849557522122575,
+      "cumulative": -0.0017693895606014642
+    },
+    "fund-cn-007466": {
+      "window_start_date": "2026-11-23",
+      "window_end_date": "2026-11-27",
+      "positive_days": 1,
+      "negative_days": 4,
+      "largest_daily_return": -0.010291396854764101,
+      "cumulative": -0.017634135060129563
+    },
+    "fund-cn-013308": {
+      "window_start_date": "2026-11-23",
+      "window_end_date": "2026-11-27",
+      "positive_days": 2,
+      "negative_days": 3,
+      "largest_daily_return": 0.06119457676804685,
+      "cumulative": 0.0339164584077114
+    },
+    "fund-cn-019923": {
+      "window_start_date": "2026-11-23",
+      "window_end_date": "2026-11-27",
+      "positive_days": 2,
+      "negative_days": 3,
+      "largest_daily_return": 0.07783857729138166,
+      "cumulative": 0.0659541365081513
+    },
+    "fund-cn-022444": {
+      "window_start_date": "2026-11-23",
+      "window_end_date": "2026-11-27",
+      "positive_days": 3,
+      "negative_days": 2,
+      "largest_daily_return": 0.04880748716916572,
+      "cumulative": 0.032392273402674476
+    },
+    "fund-cn-501302": {
+      "window_start_date": "2026-11-23",
+      "window_end_date": "2026-11-27",
+      "positive_days": 2,
+      "negative_days": 3,
+      "largest_daily_return": 0.020444799042585116,
+      "cumulative": 0.01116711137464188
+    },
+    "stock-hk-01810": {
+      "window_start_date": "2026-11-23",
+      "window_end_date": "2026-11-27",
+      "positive_days": 3,
+      "negative_days": 2,
+      "largest_daily_return": 0.045112781954887105,
+      "cumulative": 0.005788712011577379
+    },
+    "stock-hk-02020": {
+      "window_start_date": "2026-11-23",
+      "window_end_date": "2026-11-27",
+      "positive_days": 3,
+      "negative_days": 2,
+      "largest_daily_return": 0.015451174289246028,
+      "cumulative": 0.016656384947563607
+    },
+    "stock-hk-02097": {
+      "window_start_date": "2026-11-23",
+      "window_end_date": "2026-11-27",
+      "positive_days": 3,
+      "negative_days": 2,
+      "largest_daily_return": 0.061996280223186595,
+      "cumulative": 0.0362976406533575
+    },
+    "stock-hk-02150": {
+      "window_start_date": "2026-11-23",
+      "window_end_date": "2026-11-27",
+      "positive_days": 3,
+      "negative_days": 1,
+      "largest_daily_return": 0.03816793893129766,
+      "cumulative": 0.05426356589147274
+    },
+    "stock-hk-03933": {
+      "window_start_date": "2026-11-23",
+      "window_end_date": "2026-11-27",
+      "positive_days": 2,
+      "negative_days": 3,
+      "largest_daily_return": 0.04573170731707332,
+      "cumulative": -0.0036310820624545492
+    },
+    "stock-hk-09618": {
+      "window_start_date": "2026-11-23",
+      "window_end_date": "2026-11-27",
+      "positive_days": 3,
+      "negative_days": 2,
+      "largest_daily_return": 0.0535714285714286,
+      "cumulative": 0.08422664624808585
+    },
+    "stock-hk-09988": {
+      "window_start_date": "2026-11-23",
+      "window_end_date": "2026-11-27",
+      "positive_days": 2,
+      "negative_days": 3,
+      "largest_daily_return": 0.07030303030303031,
+      "cumulative": 0.05938812237552482
+    },
+    "stock-us-lkncy": {
+      "window_start_date": "2026-11-20",
+      "window_end_date": "2026-11-27",
+      "positive_days": 2,
+      "negative_days": 3,
+      "largest_daily_return": 0.028024791161411988,
+      "cumulative": -0.004999999999999782
+    },
+    "tiaa001001-fund-000191": {
+      "window_start_date": "2026-11-23",
+      "window_end_date": "2026-11-27",
+      "positive_days": 0,
+      "negative_days": 5,
+      "largest_daily_return": -0.000953358756233369,
+      "cumulative": -0.00256598240469208
+    },
+    "tiaa001001-fund-000248": {
+      "window_start_date": "2026-11-23",
+      "window_end_date": "2026-11-27",
+      "positive_days": 2,
+      "negative_days": 3,
+      "largest_daily_return": -0.011394830890350649,
+      "cumulative": -0.013435303844563706
+    },
+    "tiaa001001-fund-000638": {
+      "window_start_date": null,
+      "window_end_date": "2026-11-27",
+      "positive_days": null,
+      "negative_days": null,
+      "largest_daily_return": null,
+      "cumulative": null
+    },
+    "tiaa001001-fund-000905": {
+      "window_start_date": null,
+      "window_end_date": "2026-11-27",
+      "positive_days": null,
+      "negative_days": null,
+      "largest_daily_return": null,
+      "cumulative": null
+    },
+    "tiaa001001-fund-000968": {
+      "window_start_date": "2026-11-23",
+      "window_end_date": "2026-11-27",
+      "positive_days": 2,
+      "negative_days": 3,
+      "largest_daily_return": 0.030510585305105753,
+      "cumulative": 0.043900592910306235
+    },
+    "tiaa001001-fund-001717": {
+      "window_start_date": "2026-11-23",
+      "window_end_date": "2026-11-27",
+      "positive_days": 3,
+      "negative_days": 2,
+      "largest_daily_return": 0.06049822064056931,
+      "cumulative": 0.07426099495313654
+    },
+    "tiaa001001-fund-005313": {
+      "window_start_date": "2026-11-23",
+      "window_end_date": "2026-11-27",
+      "positive_days": 2,
+      "negative_days": 3,
+      "largest_daily_return": 0.08053458300789718,
+      "cumulative": 0.05552729738894535
+    },
+    "tiaa001001-fund-007169": {
+      "window_start_date": "2026-11-23",
+      "window_end_date": "2026-11-27",
+      "positive_days": 1,
+      "negative_days": 4,
+      "largest_daily_return": -0.0004943153732083205,
+      "cumulative": -0.0009883376161299307
+    },
+    "tiaa001001-fund-009051": {
+      "window_start_date": "2026-11-23",
+      "window_end_date": "2026-11-27",
+      "positive_days": 2,
+      "negative_days": 3,
+      "largest_daily_return": 0.009909984309191433,
+      "cumulative": -0.007541967399237737
+    },
+    "tiaa001001-fund-012348": {
+      "window_start_date": "2026-11-23",
+      "window_end_date": "2026-11-27",
+      "positive_days": 2,
+      "negative_days": 3,
+      "largest_daily_return": 0.061167945439045246,
+      "cumulative": 0.034060228452751806
+    },
+    "tiaa001001-fund-090010": {
+      "window_start_date": "2026-11-23",
+      "window_end_date": "2026-11-27",
+      "positive_days": 2,
+      "negative_days": 3,
+      "largest_daily_return": 0.009759928202827117,
+      "cumulative": -0.0074566558918598425
+    },
+    "tiaa001001-fund-110020": {
+      "window_start_date": "2026-11-23",
+      "window_end_date": "2026-11-27",
+      "positive_days": 4,
+      "negative_days": 1,
+      "largest_daily_return": 0.04012593369961115,
+      "cumulative": 0.026877133105801976
+    },
+    "tiaa001001-fund-164906": {
+      "window_start_date": null,
+      "window_end_date": "2026-11-26",
+      "positive_days": null,
+      "negative_days": null,
+      "largest_daily_return": null,
+      "cumulative": null
+    }
+  }
+}
